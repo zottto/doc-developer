@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Architecture</title>
+    <para>
+        The OTRS framework is modular. The following picture shows the OTRS basic layer architecture.
+    </para>
+    <sect1 id="core-module">
+        <title>Core Module</title>
+        <para>
+            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for the logical work. This modules are to handle system routines like "lock ticket" and "create ticket" A few main core modules are:
+        </para>
+    </sect1>
+    <sect1 id="frontend-handle">
+        <title>Frontend Handle</title>
+        <para>
+            this is the interace between the browser, web server and the Frontend Modules. A Frontend Module can be used via the http-link.
+        </para>
+    </sect1>
+    <sect1 id="forntend-module">
+        <title>Frontende Module</title>
+        <para>
+            Frontend Modules are located under.......
+        </para>
+    </sect1>
+    <sect1 id="cmd-frontend">
+        <title>CMD Frontend</title>
+        <para>
+            The CMD Frontend is like the Web-Frontend-Handle and the Web-Frontend-Module in one (just without the LayoutObject) and is using the core modules to do some actions in the system.
+        </para>
+    </sect1>
+    <sect1 id="database">
+        <title>Database</title>
+        <para>
+            The database interface supports different databases.
+        </para>
+    </sect1>
+</chapter>

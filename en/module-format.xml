@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+ 
+<chapter>
+    <title>Module format</title>
+    <para>
+        
+    </para>
+    <sect1 id="auth-module">
+        <title>Auth Module</title>
+        <para>
+            There are several agent authentification modules (DB, LDAP and HTTPBasicAuth) which comes with the OTRS framework. It's also possible to develop your own authentification modules. The agent authenfification modules are located under Kernel/System/Auth/*.pm. To configure it see in the admin manual. A example of a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm. You just need 3 functions, new(), GetOption() and Auth() reutrn the uid, then the authentification is ok.
+        </para>
+    </sect1>
+    <sect1 id="notify-module">
+        <title>Notifiy Module</title>
+        <para>
+            With agent notification modules you can inform agents about new infos. A normal navigation looks like the following screeen shot.
+        </para>
+    </sect1>
+    <sect1 id="navigation-module">
+        <title>Navigation Module</title>
+        <para>
+            Over this module layer you can create dynamicaly navigation bar items with dynamic content (Name and Decription).
+        </para>
+    </sect1>    
+    <sect1 id="frontend-module">
+        <title>Frontend Module</title>
+        <para>
+            Frontend Modules are located under "$OTRS_HOME/Kernel/Modules/*.pm". There are two public functions in there. new() and Run() which are used from the Frontend Handle (e. g. index.pl). "new()" is used to create an Frontend Module object. The Frontend Handle gives basic framework object to the Frontend Module. For example ParamObject (to get formular params), DBObject (to use existiong database connects), LayoutObject (to use templates and other html layout functions), ConfigObject (to access config settings), LogObject (to use the framework log system), UserObject (to get the user functions from the current user), GroupObject (to get the group functions).
+        </para>
+    </sect1>
+    <sect1 id="core-module">
+        <title>Core Module</title>
+        <para>
+            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer ist for the logical work. This modules are to handle system routines like "lock ticket" and "create ticket". This modules need always pod (Perl Documentation).
+        </para>
+        <para>
+            A few common core modules are: Log (Kernel::System::Log); Ticket (Kernel::System::Ticket), Auth (Kernel::System::Auth), User (Kernel::System::User), Email (Kernel::System::Email).
+        </para>
+    </sect1>
+    <sect1 id="customer-auth-module">
+        <title>Customer Auth Module</title>
+        <para>
+            It's the same as "Agent Auth Modules" but the module location is Kernel/System/CustomerAuth/*.pm.
+        </para>
+    </sect1>
+    <sect1 id="customer-user-module">
+        <title>Customer User Module</title>
+        <para>
+            With this module layer you can have a bridge between your customer source system and OTRS. So it's possible to use your customer data directly for your data ware house (read only and read write).
+        </para>
+    </sect1>
+    <sect1 id="customer-navigation-module">
+        <title>Customer Navigation Module</title>
+        <para>
+            Over This module layer you can create dynamicaly navigation bar items with dynamic content (Name and Description).
+        </para>
+        <para>
+            The Format is the same as the Navigation Module.
+        </para>
+    </sect1>
+    <sect1 id="stats-modul">
+        <title>Stats Modul</title>
+    </sect1>
+    <sect1 id="ticket-modules">
+        <title>Ticket Modules</title>
+        <sect2 id="ticket-number-module">
+            <title>Ticket Number Module</title>
+            <para>
+                If you want to create a won ticket number format, just create a own ticket number module. The modules are located under "Kernel/System/Ticket/Number/*.pm". For default modules see the admin manual. You just need 2 functions, CreateTcketNr() and GetTNByString():
+            </para>
+        </sect2>
+        <sect2 id="agent-ticket-permission-modules">
+            <tilte>Agent Ticket Permission Modules</tilte>
+        </sect2>
+        <sect2 id="customer-ticket-permission-modules">
+            <tilte>Customer Ticket Permission Modules</tilte>
+        </sect2>
+        <sect2 id="articlecompose-module">
+            <tilte>ArticleCompose Module</tilte>
+        </sect2>
+        <sect2 id="articlecheck-module">
+            <tilte>ArticleCheck Module</tilte>
+        </sect2>
+    </sect>
+</chapter>

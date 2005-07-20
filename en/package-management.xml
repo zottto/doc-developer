@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Package Management</title>
+    <para>
+        The OPM (OTRS Package Manager) is a mechanism to distribute software package for the OTRS framework via http, ftp or file upload.
+        
+        For Example, the OTRS project offers OTRS application like calendar, file manager or fweb mail via OTRS packages over online repositories on our ftp servers. This package can be managed (install/upgrade/uninstall) via the admin interface.        
+    </para>
+</chapter>

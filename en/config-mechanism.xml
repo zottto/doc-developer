@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+    
+<chapter>
+    <title>Config Mechanism</title>
+    <para>
+        
+    </para>
+    <sect1 id="default-config">
+        <title>Default Config</title>
+        <para>
+            There are different default config files. The main one which comes with the framework is:
+        </para>
+        <para>
+            This tile ahould leave untouched because it gets updated on framework updates. There are also a sub directory where you can put your own default config files of our on modules. This files are used automatically.
+        </para>
+    </sect1>
+    <sect1 id="custom-config">
+        <title>Custom Config</title>
+    </sect1>
+    <para>
+        If you need to change a config option, copy it to
+    </para>
+    <sect1 id="accessing-config-options">
+        <title>Accessing config options</title>
+        <para>
+            You can access (read and write) config options via the core module "Kernel::Config". The config object is base object and so already available in each frontend modules.
+        </para>
+    </sect1>
+</chapter>

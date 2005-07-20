@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+    
+<chapter>
+    <title>Package Building</title>
+    <para>
+        If you want to crate a own OPM package (.opm) you need to create a spec file (.sopm) which includes necessary properties of the package. After that you need to build it to get a OPM package.
+    </para>
+</chapter>

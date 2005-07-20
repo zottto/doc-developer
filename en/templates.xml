@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+   
+<chapter>
+    <title>Templates</title>
+    <para>
+        The .dtl files are to 70% plain html and just used from Frontend Modules (Kernel/Modules/*.pm). The .dtl files are located under:.......
+    </para>
+</chapter>

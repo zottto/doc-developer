@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?> 
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Database Mechanism</title>
+    <para>
+        OTRS comes with an database layer to support different databases.
+    </para>
+    <sect1 id="how-it-works">
+        <title>How ist works</title>
+        <para>
+            The database layer (Kernel::System::DB) has two input options: SQL and XML.
+        </para>
+    </sect1>
+    <sect2 id="sql">
+        <title>SQL</title>
+        <para>
+            The SQL interace should be used for normal database actions (SELECT, INSERT, UPDATE, ...). It can be used like a normal Perl DBI interface.
+        </para>
+    </sect2>
+    <sect2 id="xml">
+        <title>XML</title>
+        <para>
+            The XML interace should be used for CREATE and DROP tables. This way you can write database independent applications because this syntax is different from database to database.
+        </para>
+    </sect2>
+    <sect1 id="database-driver">
+        <title>Database Driver</title>
+        <para>
+            The database driver are located under $OTRS_HOME/Kernel/System/DB/*.pm.
+        </para>
+    </sect1>
+    <sect1 id="supported-databases">
+        <title>Supported Databases</title>
+        <para>
+            
+        </para>
+    </sect1>
+</chapter>
