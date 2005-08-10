@@ -1,28 +1,58 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-    
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: codesyntax.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+
 <chapter>
     <title>Coding Style Guide</title>
     <para>
-        In order to preserve the consistent development of OTRS project we have set up a few guidelines regarding style.
+        In order to preserve the consistent development of OTRS project we have set
+        up a few guidelines regarding style.
     </para>
     <sect1 id="formatting">
         <title>Formatting</title>
         <para>
-        
+            TAB: We use 4 spaces. Braces examples:
         </para>
+        <programlisting format="linespecific" language="Perl">
+            if ($Condition) {
+                Foo();
+            }
+            else {
+                Bar();
+            }
+
+            while ($Condition == 1) {
+                Foo();
+            }
+        </programlisting>
     </sect1>
     <sect1 id="naming">
         <title>Naming</title>
         <para>
-            Names and comments are written in English. Variables, Objects and Methods must be descriptive nouns or noun phrases with the first letter upper case.
+            Names and comments are written in English. Variables, Objects and Methods
+            must be descriptive nouns or noun phrases with the first letter upper case.
         </para>
+        <programlisting format="linespecific" language="Perl">
+            e. g. @TicktIDs or $Output or BuildQueueView()
+        </programlisting>
     </sect1>
     <sect1 id="source-code-header">
         <title>Source Code Header and Charsetdmin</title>
         <para>
-            Attach the folowing header to each source file. Source files are saved in charset ISO-8859-1.
+            Attach the folowing header to each source file. Source files are saved in
+            charset ISO-8859-1.
         </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # (file name) - a short description what it does.
+            # Copyright (C) (year) (name of author) (email of author)
+            # --
+            # $Id: codesyntax.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+        </programlisting>
     </sect1>
 </chapter>

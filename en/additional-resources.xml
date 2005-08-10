@@ -1,10 +1,22 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: additional-resources.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
 
 <chapter>
     <title>Additional Resources</title>
-    <para>
-    
-    </para>
-</chapter>    
+    <sect1 id="online-library">
+        <title>Online Library</title>
+        <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
+    </sect1>
+    <sect1 id="developer-mailing-list">
+        <title>Developer Mailing list</title>
+        <ulink url="http://lists.otrs.org/">http://lists.otrs.org/</ulink>
+    </sect1>
+    <sect1 id="commercial-support">
+        <title>Commercial Support</title>
+        <para>OTRS GmbH</para>
+        <para>Norsk-Data-Straße 1</para>
+        <para>61352 Bad Homburg (Germany)</para>
+        <para>Web: <ulink url="http://otrs.de/">http://otrs.de/</ulink></para>
+    </sect1>
+</chapter>

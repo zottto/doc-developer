@@ -1,10 +1,227 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-    
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: package-building.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+
 <chapter>
     <title>Package Building</title>
     <para>
-        If you want to crate a own OPM package (.opm) you need to create a spec file (.sopm) which includes necessary properties of the package. After that you need to build it to get a OPM package.
+        If you want to create a own OPM package (.opm) you need to create a spec file (.sopm)
+        which includes necessary properties of the package. After that you need to build it
+        to get a OPM package.
     </para>
+    <sect1 id="package-spec-file">
+        <title>Package Spec File</title>
+        <para>
+            The OPM package is XML based. So you can create/edit the .sopm via a text or xml
+            editor. It contains meta data, a file list and database options.
+        </para>
+        <sect2 id="meta-data">
+            <title>Meta Data</title>
+            <itemizedlist mark="round" >
+                <listitem>
+                    <para>Name</para>
+                    <para>The package name.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Name>Calendar</Name>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>Version</para>
+                    <para>The package version.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Version>1.2</Version>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>Framework</para>
+                    <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9).</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Framework>2.0.x</Framework>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>Vendor</para>
+                    <para>The package vendor.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Vendor>OTRS GmbH</Vendor>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>URL</para>
+                    <para>The vendor URL.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <URL>http://otrs.org/</URL>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>License</para>
+                    <para>The license of the package.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <License>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</License>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>ChangeLog</para>
+                    <para>The package change log.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <ChangeLog>2005-12-02 added change log</ChangeLog>
+                        <ChangeLog>2005-12-02 v1.1 New package</ChangeLog>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>Description</para>
+                    <para>The package description in different languages.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Description Lang="en">A web calendar.</Description>
+                        <Description Lang="de">Ein Web Kalender.</Description>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>BuildHost</para>
+                    <para>This will be filled up automatically by OPM.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <BuildHost>?</BuildHost>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>BuildDate</para>
+                    <para>This will be filled up automatically by OPM.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <BuildDate>?</BuildDate>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>Required</para>
+                    <para>Required modules needs to be installed before.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <Required>SomeOtherPackage</Required>
+                        <Required>SomeotherPackage2</Required>
+                    </programlisting>
+                </listitem>
+                <listitem>
+                    <para>OS (^M)</para>
+                    <para>Required OS.</para>
+                    <programlisting format="linespecific" language="xml">
+                        <OS>Linux</OS>
+                        <OS>MacOS</OS>
+                    </programlisting>
+                </listitem>
+            </itemizedlist>
+        </sect2>
+        <sect2 id="filelist">
+            <title>Filelist</title>
+            <para>
+                This is a file of included file of the package.
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <Filelist>
+                    <File Permission="644" Location="Kernel/Config/Files/Calendar.pm"></File>
+                    <File Permission="644" Location="Kernel/System/CalendarEvent.pm"></File>
+                    <File Permission="644" Location="Kernel/Modules/AgentCalendar.pm"></File>
+                    <File Permission="644" Location="Kernel/Language/de_AgentCalendar.pm"></File>
+                </Filelist>
+            </programlisting>
+        </sect2>
+        <sect2 id="database">
+            <title>Database</title>
+            <para>
+                Install (if a package get installed)
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <DatabaseInstall>
+                    <TableCreate Name="calendar_event">
+                    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
+                    <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
+                    <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
+                    <Column Name="start_time" Required="true" Type="DATE"/>
+                    <Column Name="end_time" Required="true" Type="DATE"/>
+                    <Column Name="owner_id" Required="true" Type="INTEGER"/>
+                    <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
+                    </TableCreate>
+                </DatabaseInstall>
+            </programlisting>
+            <para>
+                Upgrade (if a package get upgraded, take care of the Version Tag in the
+                database actions, this means if the installed package version is below
+                1.3.4, then this database action will be preformed)
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <DatabaseUpgrade Version="1.3.4">
+                    <TableCreate Name="calendar_event_involved" Version="1.3.4">
+                        <Column Name="event_id" Required="true" Type="BIGINT"/>
+                        <Column Name="user_id" Required="true" Type="INTEGER"/>
+                    </TableCreate>
+                </DatabaseUpgrade>
+            </programlisting>
+            <para>
+                Reinstall (if a package is installed and get reinstalled)
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <DatabaseReinstall></DatabaseReinstall>
+            </programlisting>
+            <para>
+                Uninstall (if a package get uninstalled)
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <DatabaseUninstall>
+                    <TableDrop Name="calendar_event" />
+                </DatabaseUninstall>
+            </programlisting>
+        </sect2>
+        <sect2 id="example-sopm">
+            <title>Example .sopm</title>
+            <para>
+                This is a whole example spec file.
+            </para>
+            <programlisting format="linespecific" language="xml">
+                <?xml version="1.0" encoding="utf-8" ?>
+                <otrs_package version="1.0">
+                <Name>Calendar</Name>
+                <Version>1.2</Version>
+                <Framework>2.0.x</Framework>
+                <Vendor>OTRS GmbH</Vendor>
+                <URL>http://otrs.org/</URL>
+                <License>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</License>
+                <ChangeLog>2005-12-02 added change log</ChangeLog>
+                <ChangeLog>2005-12-02 v1.1 New package</ChangeLog>
+                <Description Lang="en">A web calendar.</Description>
+                <Description Lang="de">Ein Web Kalender.</Description>
+                <BuildDate>?</BuildDate>
+                <BuildHost>?</BuildHost>
+                <Filelist>
+                    <File Permission="644" Location="Kernel/Config/Files/Calendar.pm"></File>
+                    <File Permission="644" Location="Kernel/System/CalendarEvent.pm"></File>
+                    <File Permission="644" Location="Kernel/Modules/AgentCalendar.pm"></File>
+                    <File Permission="644" Location="Kernel/Language/de_AgentCalendar.pm"></File>
+                    <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentCalendar.dtl"></File>
+                    <File Permission="644" Location="Kernel/Output/HTML/NotificationCalendar.pm"></File>
+                    <File Permission="644" Location="var/httpd/htdocs/images/Standard/calendar.png"></File>
+                </Filelist>
+                <DatabaseInstall>
+                    <TableCreate Name="calendar_event">
+                    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
+                    <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
+                    <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
+                    <Column Name="start_time" Required="true" Type="DATE"/>
+                    <Column Name="end_time" Required="true" Type="DATE"/>
+                    <Column Name="owner_id" Required="true" Type="INTEGER"/>
+                    <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
+                    </TableCreate>
+                </DatabaseInstall>
+                <DatabaseReinstall></DatabaseReinstall>
+                <DatabaseUninstall>
+                    <TableDrop Name="calendar_event"/>
+                </DatabaseUninstall>
+                </otrs_package>
+            </programlisting>
+        </sect2>
+    </sect1>
+    <sect1 id="package-build">
+        <title>Package Build</title>
+        <screen>
+            shell> bin/opm.pl -a build -p /path/to/example.sopm
+            writing .., /tmp/example-1.0.opm
+            shell>
+        </screen>
+    </sect1>
 </chapter>

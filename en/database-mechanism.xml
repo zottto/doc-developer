@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: database-mechanism.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -8,33 +8,149 @@
         OTRS comes with an database layer to support different databases.
     </para>
     <sect1 id="how-it-works">
-        <title>How ist works</title>
+        <title>How it works</title>
         <para>
             The database layer (Kernel::System::DB) has two input options: SQL and XML.
         </para>
+        <sect2 id="sql">
+            <title>SQL</title>
+            <para>
+                The SQL interace should be used for normal database actions (SELECT, INSERT,
+                UPDATE, ...). It can be used like a normal Perl DBI interface.
+            </para>
+            <para>
+                INSERT/UPDATE/DELETE:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+                $Self->{DBObject}->Do(
+                    SQL=> "INSERT INTO table (name, id) VALUES ('someName', 123)",
+                );
+
+                $Self->{DBObject}->Do(
+                    SQL=> "UPDATE table SET (name = 'SomeName', id = 123)",
+                );
+
+                $Self->{DBObject}->Do(
+                    SQL=> "DELETE FROM table WHERE id = 123",
+                );
+            </programlisting>
+            <para>
+                SELECT:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+                my $SQL = "SELECT id FROM table " .
+                    " WHERE " .
+                    " tn = '123' ";
+                $Self->{DBObject}->Prepare(SQL => $SQL, Limit => 15);
+                while (my @Row = $Self->{DBObject}->FetchrowArray()) {
+                    $Id = $Row[0];
+                }
+                return $Id;
+            </programlisting>
+            <note>
+                <para>
+                    Note: Take care that you use Limit as param and not in the SQL string because
+                    not each database supports LIMIT in SQL string.
+                </para>
+            </note>
+            <para>
+                QUOTE:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+                my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
+            </programlisting>
+        </sect2>
+        <sect2 id="xml">
+            <title>XML</title>
+            <para>
+                The XML interace should be used for CREATE and DROP tables. This way you can
+                write database independent applications because this syntax is different from
+                database to database.
+            </para>
+            <para>
+                INSERT:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+
+                <Insert Table="some_table">
+                    <Data Key="id" Value="1"/>
+                    <Data Key="description" Value="exploit" Type="Quote"/>
+                </Insert>
+
+            </programlisting>
+            <para>
+                CREATE TABLE:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+
+                <TableCreate Name="calendar_event">
+                  <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
+                  <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
+                  <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
+                  <Column Name="start_time" Required="true" Type="DATE"/>
+                  <Column Name="end_time" Required="true" Type="DATE"/>
+                  <Column Name="owner_id" Required="true" Type="INTEGER"/>
+                  <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
+                  <Index Name="title">
+                    <IndexColumn Name="title"/>
+                  </Index>
+                  <Unique>
+                    <UniqueColumn Name="title"/>
+                  </Unique>
+                  <ForeignKey ForeignTable="system_user">
+                    <Reference Local="owner_id" Foreign="id"/>
+                  </ForeignKey>
+                </TableCreate>
+
+            </programlisting>
+            <para>
+                DROP TABLE:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+
+                <DatabaseUninstall>
+                  <TableDrop Name="calendar_event"/>
+                </DatabaseUninstall>
+
+            </programlisting>
+            <para>
+                Code to process XML:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+                my @XMLARRAY = @{$Self->ParseXML(String => $XML)};
+
+                my @SQL = $Self->{DBObject}->SQLProcessor(
+                    Database => \@XMLARRAY,
+                );
+                push(@SQL, $Self->{DBObject}->SQLProcessorPost());
+
+                foreach (@SQL) {
+                    $Self->{DBObject}->Do(SQL => $_);
+                }
+            </programlisting>
+        </sect2>
     </sect1>
-    <sect2 id="sql">
-        <title>SQL</title>
-        <para>
-            The SQL interace should be used for normal database actions (SELECT, INSERT, UPDATE, ...). It can be used like a normal Perl DBI interface.
-        </para>
-    </sect2>
-    <sect2 id="xml">
-        <title>XML</title>
-        <para>
-            The XML interace should be used for CREATE and DROP tables. This way you can write database independent applications because this syntax is different from database to database.
-        </para>
-    </sect2>
     <sect1 id="database-driver">
         <title>Database Driver</title>
         <para>
-            The database driver are located under $OTRS_HOME/Kernel/System/DB/*.pm.
+            The database driver are located under <filename>$OTRS_HOME/Kernel/System/DB/*.pm</filename>.
         </para>
     </sect1>
     <sect1 id="supported-databases">
         <title>Supported Databases</title>
-        <para>
-            
-        </para>
+        <itemizedlist mark="round" >
+            <listitem>
+                <para>MySQL</para>
+            </listitem>
+            <listitem>
+                <para>PostgreSQL</para>
+            </listitem>
+            <listitem>
+                <para>Oracle (experimental)</para>
+            </listitem>
+            <listitem>
+                <para>MaxDB/SAPDB (experimental)</para>
+            </listitem>
+        </itemizedlist>
     </sect1>
 </chapter>

@@ -1,65 +1,588 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
- 
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+
 <chapter>
     <title>Module format</title>
-    <para>
-        
-    </para>
     <sect1 id="auth-module">
         <title>Auth Module</title>
         <para>
-            There are several agent authentification modules (DB, LDAP and HTTPBasicAuth) which comes with the OTRS framework. It's also possible to develop your own authentification modules. The agent authenfification modules are located under Kernel/System/Auth/*.pm. To configure it see in the admin manual. A example of a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm. You just need 3 functions, new(), GetOption() and Auth() reutrn the uid, then the authentification is ok.
+            There are several agent authentification modules (DB, LDAP and HTTPBasicAuth)
+            which comes with the OTRS framework. It's also possible to develop your own
+            authentification modules. The agent authenfification modules are located under
+            Kernel/System/Auth/*.pm. To configure it see in the admin manual. A example of
+            a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm. You
+            just need 3 functions, new(), GetOption() and Auth() reutrn the uid, then the
+            authentification is ok.
         </para>
+        <para>Format:</para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/System/Auth/Simple.pm - provides the simple authentification
+            # Copyright (C) 2001-2005 Martin Edenhofer martin+code at otrs.org
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+            # Note:
+            # available objects are: ConfigObject, LogObject and DBObject
+            # --
+
+            package Kernel::System::Auth::Simple;
+
+            use strict;
+
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+            sub GetOption {
+                my $Self = shift;
+                my %Param = @_;
+                # return option
+                return (PreAuth => 0);
+            }
+            sub Auth {
+                my $Self = shift;
+                my %Param = @_;
+                [...]
+                if ($Autentication) {
+                    return $Param{User};
+                }
+                else {
+                    return;
+                }
+            }
+        </programlisting>
     </sect1>
     <sect1 id="notify-module">
         <title>Notifiy Module</title>
         <para>
-            With agent notification modules you can inform agents about new infos. A normal navigation looks like the following screeen shot.
+            With agent notification modules you can inform agents about new infos. A
+            normal navigation looks like the following screeen shot.
         </para>
+        <para>
+            <screenshot>
+                <graphic fileref="pictures/notify-screen1.png"></graphic>
+            </screenshot>
+        </para>
+        <para>
+            With the following example module you can do something like the following.
+        </para>
+        <para>
+            <screenshot>
+                <graphic fileref="pictures/notify-screen2.png"></graphic>
+            </screenshot>
+        </para>
+        <para>
+            Format:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/Output/HTML/NotificationMotd.pm - message of the day
+            # Copyright (C) 2005 Hans Mueller mail@example.com
+            # --
+            # $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+
+            package Kernel::Output::HTML::NotificationMotd;
+            use strict;
+
+            # --
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+            # --
+            sub Run {
+                my $Self = shift;
+                my %Param = @_;
+                return $Self->{LayoutObject}->Notify(Info =>  Some daily news! );
+            }
+            # --
+            1;
+        </programlisting>
+        <para>
+            To use this module, add the following to the <filename>Kernel/Config.pm</filename>
+            and restart your webserver (if you use mod_perl).
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # Frontend::NotifyModule - module name (50-Motd)
+            $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
+                Module => 'Kernel::Output::HTML::NotificationMotd',
+            };
+        </programlisting>
     </sect1>
     <sect1 id="navigation-module">
         <title>Navigation Module</title>
         <para>
-            Over this module layer you can create dynamicaly navigation bar items with dynamic content (Name and Decription).
+            Over this module layer you can create dynamicaly navigation bar items with
+            dynamic content (Name and Decription).
         </para>
-    </sect1>    
+        <para>
+            Format:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
+            # Copyright (C) 2005 Hans Mueller mail@example.com
+            # --
+            # $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+
+            package Kernel::Output::HTML::NavBarABC;
+            use strict;
+
+            # --
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+            # --
+            sub Run {
+                my $Self = shift;
+                my %Param = @_;
+                my %Return = ();
+                $Return{'0999989'} = {
+                        Block => 'ItemPersonal',
+                        Description => 'Some Desctipton',
+                        Name => 'Text',
+                        Image => 'new-message.png',
+                        Link => 'Action=AgentMailbox&Subaction=New',
+                        AccessKey => 'j',
+                };
+                return %Return;
+            }
+            # --
+            1;
+        </programlisting>
+        <para>
+            To use this module, add the following to the Kernel/Config.pm and restart
+            your webserver (if you use mod_perl)
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            [Kernel/Config.pm]
+            # agent interface notification module
+            $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
+                Module => 'Kernel::Output::HTML::NavBarABC',
+            };
+        </programlisting>
+    </sect1>
     <sect1 id="frontend-module">
         <title>Frontend Module</title>
         <para>
-            Frontend Modules are located under "$OTRS_HOME/Kernel/Modules/*.pm". There are two public functions in there. new() and Run() which are used from the Frontend Handle (e. g. index.pl). "new()" is used to create an Frontend Module object. The Frontend Handle gives basic framework object to the Frontend Module. For example ParamObject (to get formular params), DBObject (to use existiong database connects), LayoutObject (to use templates and other html layout functions), ConfigObject (to access config settings), LogObject (to use the framework log system), UserObject (to get the user functions from the current user), GroupObject (to get the group functions).
+            Frontend Modules are located under "$OTRS_HOME/Kernel/Modules/*.pm". There
+            are two public functions in there. new() and Run() which are used from the
+            Frontend Handle (e. g. index.pl). "new()" is used to create an Frontend
+            Module object. The Frontend Handle gives basic framework object to the
+            Frontend Module. For example ParamObject (to get formular params), DBObject
+            (to use existiong database connects), LayoutObject (to use templates and other
+            html layout functions), ConfigObject (to access config settings), LogObject
+            (to use the framework log system), UserObject (to get the user functions from
+            the current user), GroupObject (to get the group functions).
         </para>
+        <para>
+            For more info for core modules see
+            <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
+        </para>
+        <para>
+            Format:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/Modules/AgentTest.pm - message of the day
+            # Copyright (C) 2005 Hans Mueller mail@example.com
+            # --
+            # $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+
+            package Kernel::Modules::AgentTest;
+            use strict;
+
+            # --
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+            # --
+            sub Run {
+                my $Self = shift;
+                my %Param = @_;
+                [...]
+                # ---------------------------------------------------------- #
+                # add a new object (Note: dtl text „New“)
+                # ---------------------------------------------------------- #
+                if ($Self->{Subaction} eq 'Add') {
+                    my $Output   = '';
+                    my %Frontend = ();
+                    [...]
+                    # add add block
+                    $Self->{LayoutObject}->Block(
+                        Name => 'Add',
+                        Data => {%Param, %Frontend},
+                    );
+                    # build output
+                    $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
+                    $Output .= $Self->{LayoutObject}->NavigationBar();
+                    $Output .= $Self->{LayoutObject}->Output(
+                        Data => {%Param, %Frontend},
+                        TemplateFile => 'AgentTest',
+                    );
+                    $Output .= $Self->{LayoutObject}->Footer();
+                    return $Output;
+                }
+                # ---------------------------------------------------------- #
+                # show overview screen
+                # ---------------------------------------------------------- #
+                else {
+                    # add overview block
+                    $Self->{LayoutObject}->Block(
+                        Name => 'Overview',
+                        Data => {%Param, %Frontend},
+                    );
+                    # build output
+                    $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
+                    $Output .= $Self->{LayoutObject}->NavigationBar();
+                    $Output .= $Self->{LayoutObject}->Output(
+                        Data => {%Param, %Frontend},
+                        TemplateFile => 'AgentTest',
+                    );
+                    $Output .= $Self->{LayoutObject}->Footer();
+                    return $Output;
+                }
+                # ---------------------------------------------------------- #
+                # show error screen
+                # ---------------------------------------------------------- #
+                return $Self->{LayoutObject}->ErrorScreen(Message => "Invalid Subaction process!");
+            }
+            # --
+            1;
+        </programlisting>
+        <para>
+            You also need a module registration for Frontend Modules to use it. Define read
+            only groups with the 'GroupRo' and read write groups with 'Group' param (see
+            table below for details). You also can definde navigation bar icons via the
+            'NavBar' param (see table below for details).
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            [Kernel/Config.pm]
+            $Self->{'Frontend::Module'}->{'AgentTest'} = {
+                Group => ['admin'],
+                GroupRo => ['test', 'admin'],
+                Description => 'A test Module',
+                NavBarName => 'Ticket',
+                NavBar => [
+                    {
+                        Description => 'Test Module',
+                        Name => 'Test',
+                        Image => 'stats.png',
+                        Link => 'Action=AgentTest',
+                        NavBar => 'Ticket',
+                        Prio => 85,
+                    },
+                ],
+            };
+        </programlisting>
+        <para>
+            You can access this Frontend Modules via http (browse) with the Action
+            param = Module or over the navigation bar.
+        </para>
+        <para>
+            <ulink url="">http://localhost/otrs/index.pl?Action=AgentTest</ulink>
+        </para>
+        <para>
+            Description of Frontend::Module options:
+        </para>
+        <informtable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Key</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Group</entry>
+                        <entry>A ARRAY reference of rw groups of this module.</entry>
+                    </row>
+                    <row>
+                        <entry>GroupRo</entry>
+                        <entry>A ARRAY reference of ro groups of this module.</entry>
+                    </row>
+                    <row>
+                        <entry>Description</entry>
+                        <entry>Modul description, just for internal, not shown
+                        in the use interface.</entry>
+                    </row>
+                    <row>
+                        <entry>NafBarName</entry>
+                        <entry>NavBar context name of this module.</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informtable>
+        <para>Descriptio of NavBar (icon points) options:</para>
+        <informtable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Key</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Description</entry>
+                        <entry>The description of the icon which is shown in the navbar
+                        after leaving the mouse over.</entry>
+                    </row>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>The icon name shown in the navbar.</entry>
+                    </row>
+                    <row>
+                        <entry>Image</entry>
+                        <entry>The icon image shown in the navbar.</entry>
+                    </row>
+                    <row>
+                        <entry>Link</entry>
+                        <entry>The Link behind the icon in the navbar.</entry>
+                    </row>
+                    <row>
+                        <entry>NavBar</entry>
+                        <entry>Just shown this icon in this NavBar context.</entry>
+                    </row>
+                    <row>
+                        <entry>Prio</entry>
+                        <entry>Sort prio of the icon in the navbar.</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informtable>
     </sect1>
     <sect1 id="core-module">
         <title>Core Module</title>
         <para>
-            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer ist for the logical work. This modules are to handle system routines like "lock ticket" and "create ticket". This modules need always pod (Perl Documentation).
+            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer ist for
+            the logical work. This modules are to handle system routines like "lock ticket"
+            and "create ticket". This modules need always pod (Perl Documentation).
         </para>
         <para>
-            A few common core modules are: Log (Kernel::System::Log); Ticket (Kernel::System::Ticket), Auth (Kernel::System::Auth), User (Kernel::System::User), Email (Kernel::System::Email).
+            A few common core modules are: Log (Kernel::System::Log); Ticket
+            (Kernel::System::Ticket), Auth (Kernel::System::Auth), User (Kernel::System::User),
+            Email (Kernel::System::Email).
         </para>
+        <para>
+            For more info of this core modules see
+            <ulink url="http://dev.otrs.org/">http://dev.otrs.org</ulink>
+        </para>
+        <para>
+            Format:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/System/Backend.pm - a core module
+            # Copyright (C) 2005 Hans Mueller mail@example.com
+            # --
+            # $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+
+            package Kernel::System::Backend;
+            use strict;
+
+            =head1 NAME
+
+            Kernel::System::Log - global log interface
+
+            =head1 SYNOPSIS
+
+            All log functions.
+
+            =head1 PUBLIC INTERFACE
+
+            =over 4
+
+            =item new()
+
+            create a backend object
+
+            use Kernel::Config;
+            use Kernel::System::Backend;
+
+            my $ConfigObject = Kernel::Config->new();
+            my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
+
+            =cut
+
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+
+            =item SomeMethodeA()
+
+            some info about the methode
+
+            $BackendObject->SomeMethodeA(ParamA => 'error', ParamB => "Need something!");
+
+            =cut
+
+            sub SomeMethodeA{
+                my $Self = shift;
+                my %Param = @_;
+                [...]
+                return 1;
+            }
+            1;
+
+            =head1 TERMS AND CONDITIONS
+
+            This software is part of the OTRS project (http://otrs.org/).
+
+            This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            the enclosed file COPYING for license information (GPL). If you
+            did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+
+            =head1 VERSION
+
+            $Revision: 1.2 $ $Date: 2005-08-10 14:17:04 $
+
+            =cut
+        </programlisting>
     </sect1>
     <sect1 id="customer-auth-module">
         <title>Customer Auth Module</title>
         <para>
-            It's the same as "Agent Auth Modules" but the module location is Kernel/System/CustomerAuth/*.pm.
+            It's the same as "Agent Auth Modules" but the module location is
+            <filename>Kernel/System/CustomerAuth/*.pm</filename>.
         </para>
     </sect1>
     <sect1 id="customer-user-module">
         <title>Customer User Module</title>
         <para>
-            With this module layer you can have a bridge between your customer source system and OTRS. So it's possible to use your customer data directly for your data ware house (read only and read write).
+            With this module layer you can have a bridge between your customer source
+            system and OTRS. So it's possible to use your customer data directly for
+            your data ware house (read only and read write).
+        </para>
+        <para>
+            Format:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            # --
+            # Kernel/System/CustomerUser/ABC.pm - a customer data backend
+            # Copyright (C) 2005 Hans Mueller mail@example.com
+            # --
+            # $Id: module-format.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # --
+            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+            # the enclosed file COPYING for license information (GPL). If you
+            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+            # --
+
+            package Kernel::System::CustomerUser::ABD;
+            use strict;
+
+            # --
+            sub new {
+                my $Type = shift;
+                my %Param = @_;
+                [...]
+                return $Self;
+            }
+            # --
+            sub CustomerName {
+                [...]
+                return $Name;
+            }
+            # --
+            sub CustomerSearch {
+                [...]
+                return %Result;
+            }
+            # --
+            sub CustomerUserList {
+                [...]
+                return %List;
+            }
+            # --
+            sub CustomerIDs {
+                [...]
+                return @CustomerIDs;
+            }
+            # --
+            sub CustomerUserDataGet {
+                [...]
+                return %Data;
+            }
+            # --
+            sub CustomerUserAdd {
+                [...]
+                return 1
+            }
+            # --
+            sub CustomerUserUpdate {
+                [...]
+                return 1;
+            }
+            # --
+            sub SetPassword {
+                [...]
+                return 1;
+            }
+            1;
+        </programlisting>
+        <para>
+            To use this module, see the admin manual.
         </para>
     </sect1>
     <sect1 id="customer-navigation-module">
         <title>Customer Navigation Module</title>
         <para>
-            Over This module layer you can create dynamicaly navigation bar items with dynamic content (Name and Description).
+            Over This module layer you can create dynamicaly navigation bar items with
+            dynamic content (Name and Description).
         </para>
         <para>
             The Format is the same as the Navigation Module.
         </para>
+        <para>
+            Just the config setting key is different. To use this module, add the following
+            to the Kernel/Config.pm and restart your webserver (if you use mod_perl).
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            [Kernel/Config.pm]
+            # customer notifiacation module
+            $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
+                Module => 'Kernel::Output::HTML::NavBarABC',
+            };
+        </programlisting>
     </sect1>
     <sect1 id="stats-modul">
         <title>Stats Modul</title>
@@ -69,20 +592,60 @@
         <sect2 id="ticket-number-module">
             <title>Ticket Number Module</title>
             <para>
-                If you want to create a won ticket number format, just create a own ticket number module. The modules are located under "Kernel/System/Ticket/Number/*.pm". For default modules see the admin manual. You just need 2 functions, CreateTcketNr() and GetTNByString():
+                If you want to create a won ticket number format, just create a own ticket
+                number module. The modules are located under "Kernel/System/Ticket/Number/*.pm".
+                For default modules see the admin manual. You just need 2 functions,
+                CreateTicketNr() and GetTNByString():
             </para>
+            <para>
+                Format:
+            </para>
+            <programlisting format="linespecific" language="Perl">
+                # --
+                # Ticket/Number/Simple.pm - a ticket number auto increment generator
+                # Copyright (C) 2005 Hans Mueller mail@example.com
+                # --
+                # This software comes with ABSOLUTELY NO WARRANTY. For details, see
+                # the enclosed file COPYING for license information (GPL). If you
+                # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+                # --
+                # Generates auto increment ticket numbers like ss.... (e. g. 1010138, 1010139, ...)
+                # --
+
+                package Kernel::System::Ticket::Number::Simple;
+                use strict; use vars qw($VERSION);
+
+                $VERSION =  $Revision: 1.2 $ ;
+                $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+
+                sub CreateTicketNr {
+                    my $Self = shift;
+                    my $JumpCounter = shift || 0;
+                    # get needed config options
+                    [...]
+                    return $Tn;
+                }
+                # --
+                sub GetTNByString {
+                    my $Self = shift;
+                    my $String = shift || return;
+                    [...]
+                    return $Tn;
+                }
+                1;
+            </programlisting>
         </sect2>
         <sect2 id="agent-ticket-permission-modules">
-            <tilte>Agent Ticket Permission Modules</tilte>
+            <title>Agent Ticket Permission Modules</title>
         </sect2>
         <sect2 id="customer-ticket-permission-modules">
-            <tilte>Customer Ticket Permission Modules</tilte>
+            <title>Customer Ticket Permission Modules</title>
         </sect2>
         <sect2 id="articlecompose-module">
-            <tilte>ArticleCompose Module</tilte>
+            <title>ArticleCompose Module</title>
         </sect2>
         <sect2 id="articlecheck-module">
-            <tilte>ArticleCheck Module</tilte>
+            <title>ArticleCheck Module</title>
         </sect2>
-    </sect>
+    </sect1>
 </chapter>

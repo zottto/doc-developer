@@ -1,10 +1,63 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: layout.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
 
 <chapter>
     <title>Layout</title>
-    <para>
-    
-    </para>
+    <sect1 id="css-style">
+        <title>CSS Style</title>
+        <sect2 id="view">
+            <title>View</title>
+            <para>
+                <screenshot>
+                    <graphic fileref="pictures/view.png"></graphic>
+                </screenshot>
+            </para>
+        </sect2>
+        <sect2 id="edit-new-search">
+            <title>Edit/New/Search</title>
+                <screenshot>
+                    <graphic fileref="pictures/edit.png"></graphic>
+                </screenshot>
+        </sect2>
+        <sect2 id="overview-search-result">
+            <title>Overview/Search Result</title>
+                <screenshot>
+                    <graphic fileref="pictures/overview.png"></graphic>
+                </screenshot>
+        </sect2>
+        <sect2 id="delete">
+            <title>Delete</title>
+                <screenshot>
+                    <graphic fileref="pictures/delete.png"></graphic>
+                </screenshot>
+        </sect2>
+    </sect1>
+    <sect1 id="images">
+        <title>Images</title>
+        <para>
+            The image format is png. The image size for the navigation icons is 22x22 pixel.
+            All other icons are 16x16 pixel.
+        </para>
+        <para>
+            Images are named onthere function. For example new.png or search.png.
+        </para>
+        <para>
+            Default images are:
+        </para>
+        <itemizedlist mark="round" >
+            <listitem>
+                <para>new.png (for creating)</para>
+            </listitem>
+            <listitem>
+                <para>search.png (for searching)</para>
+            </listitem>
+            <listitem>
+                <para>overview.png (for a overview)</para>
+            </listitem>
+            <listitem>
+                <para>logout.png (logout)</para>
+            </listitem>
+        </itemizedlist>
+    </sect1>
 </chapter>

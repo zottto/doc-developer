@@ -1,31 +1,84 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-    
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: config-mechanism.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+
 <chapter>
     <title>Config Mechanism</title>
-    <para>
-        
-    </para>
     <sect1 id="default-config">
         <title>Default Config</title>
         <para>
-            There are different default config files. The main one which comes with the framework is:
+            There are different default config files. The main one which comes with the
+            framework is:
         </para>
         <para>
-            This tile ahould leave untouched because it gets updated on framework updates. There are also a sub directory where you can put your own default config files of our on modules. This files are used automatically.
+            <filename>Kernel/Config/Defaults.pm</filename>
         </para>
+        <para>
+            This tile ahould leave untouched because it gets updated on framework updates.
+            There are also a sub directory where you can put your own default config files
+            of our on modules. This files are used automatically.
+        </para>
+        <para>
+            This directory is located under:
+        </para>
+        <para>
+            <filename class="directory">$OTRS_HOME/Kernel/Config/Defaults/Files/*.pm</filename>
+        </para>
+        <para>And could look like the following:</para>
+        <filename>Kernel/config/Defaults/Files/Calendar.pm</filename>
+        <programlisting format="linespecific" language="Perl">
+            # module reg and nav bar
+            $Self->{'Frontend::Module'}->{'AgentCalendar'} = {
+                Description => 'Calendar',
+                NavBarName => 'Ticket',
+                NavBar => [
+                    {
+                        Description => 'Calendar',
+                        Name => 'Calendar',
+                        Image => 'calendar.png',
+                        Link => 'Action=AgentCalendar',
+                        NavBar => 'Ticket',
+                        Prio => 5000,
+                        AccessKey => 'c',
+                    },
+                ],
+            };
+
+            # show online customers
+            $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
+                Module => 'Kernel::Output::HTML::NotificationCalendar',
+            };
+        </programlisting>
     </sect1>
     <sect1 id="custom-config">
         <title>Custom Config</title>
+        <para>
+            If you need to change a config option, copy it to
+        </para>
+        <para>
+            <filename>Kernel/Config.pm</filename>
+        </para>
     </sect1>
-    <para>
-        If you need to change a config option, copy it to
-    </para>
     <sect1 id="accessing-config-options">
         <title>Accessing config options</title>
         <para>
-            You can access (read and write) config options via the core module "Kernel::Config". The config object is base object and so already available in each frontend modules.
+            You can access (read and write) config options via the core module "Kernel::Config".
+            The config object is base object and so already available in each frontend modules.
         </para>
+        <para>
+            If you want to get a config option:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            my $ConfigOption = $Self->{ConfigObject}->Get('Prefix::Option');
+        </programlisting>
+        <para>
+            If you want to change a config option at runtime and just for this one request/process:
+        </para>
+        <programlisting format="linespecific" language="Perl">
+            $Self->{ConfigObject}->Set(
+                Key => 'Prefix::Option'
+                Value => 'SomeNewValue',
+            );
+        </programlisting>
     </sect1>
 </chapter>

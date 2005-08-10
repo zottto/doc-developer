@@ -1,34 +1,88 @@
-<?xml version='1.0' encoding='ISO-8859-1'?> 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: architecture.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
 
 <chapter>
     <title>Architecture</title>
     <para>
-        The OTRS framework is modular. The following picture shows the OTRS basic layer architecture.
+        The OTRS framework is modular. The following picture shows the OTRS basic
+        layer architecture.
     </para>
+    <mediaobject>
+        <imageobject>
+            <imagedata align="center" fileref="pictures/architecture.png"></imagedata>
+        </imageobject>
+    </mediaobject>
     <sect1 id="core-module">
         <title>Core Module</title>
         <para>
-            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for the logical work. This modules are to handle system routines like "lock ticket" and "create ticket" A few main core modules are:
+            Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is
+            for the logical work. This modules are to handle system routines like "lock
+            ticket" and "create ticket" A few main core modules are:
+        </para>
+        <itemizedlist mark="round" >
+            <listitem>
+                <para>Kernel::System::Config (to access config options)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::Log (to log into OTRS log backend)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::DB (to access the database backend)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::Auth (to check a user authentication)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::User (to manage users)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::Group (to manage groups)</para>
+            </listitem>
+            <listitem>
+                <para>Kernel::System::email (for sending emails)</para>
+            </listitem>
+        </itemizedlist>
+        <para>
+            For more see: <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
     </sect1>
     <sect1 id="frontend-handle">
         <title>Frontend Handle</title>
         <para>
-            this is the interace between the browser, web server and the Frontend Modules. A Frontend Module can be used via the http-link.
+            this is the interace between the browser, web server and the Frontend Modules.
+            A Frontend Module can be used via the http-link.
+        </para>
+        <para>
+            <ulink url="">http://localhost/otrs/index.pl?Action=Modul</ulink>
         </para>
     </sect1>
-    <sect1 id="forntend-module">
+    <sect1 id="frontend-module">
         <title>Frontende Module</title>
         <para>
-            Frontend Modules are located under.......
+            Frontend Modules are located under "$OTRS_HOE/Kernel/Modules/*.pm". There are
+            two public functions in there. new() and Run() which are used from the Frontend
+            Handle (e.g. index.pl).
+        </para>
+        <para>
+            "new()" is used to create an Frontend Module object. The Frontend Handle gives
+            the basic framework objects to the used Frontend Module. For example ParamObject
+            (to get formular params), DBObject (to use existing databse connects), LayoutObject
+            (to use templates and other html layout functions), ConfigObject (to access config
+            settings), LogObject (to use the framework log system), UserObject (to get the user
+            functions from the current user), GroupObject (to get the group functions).
+        </para>
+        <para>
+            For more info of this core modules see
+            <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
     </sect1>
     <sect1 id="cmd-frontend">
         <title>CMD Frontend</title>
         <para>
-            The CMD Frontend is like the Web-Frontend-Handle and the Web-Frontend-Module in one (just without the LayoutObject) and is using the core modules to do some actions in the system.
+            The CMD Frontend is like the Web-Frontend-Handle and the Web-Frontend-Module in
+            one (just without the LayoutObject) and is using the core modules to do some
+            actions in the system.
         </para>
     </sect1>
     <sect1 id="database">
