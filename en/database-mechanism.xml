@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.3 2005-08-11 14:09:58 rk Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -49,7 +49,7 @@
             </programlisting>
             <note>
                 <para>
-                    Note: Take care that you use Limit as param and not in the SQL string because
+                    Take care that you use Limit as param and not in the SQL string because
                     not each database supports LIMIT in SQL string.
                 </para>
             </note>
@@ -71,47 +71,41 @@
                 INSERT:
             </para>
             <programlisting format="linespecific" language="Perl">
-
-                <Insert Table="some_table">
-                    <Data Key="id" Value="1"/>
-                    <Data Key="description" Value="exploit" Type="Quote"/>
-                </Insert>
-
+                &lt;Insert Table="some_table"&gt;
+                    &lt;Data Key="id" Value="1"/&gt;
+                    &lt;Data Key="description" Value="exploit" Type="Quote"/&gt;
+                &lt;/Insert>
             </programlisting>
             <para>
                 CREATE TABLE:
             </para>
             <programlisting format="linespecific" language="Perl">
-
-                <TableCreate Name="calendar_event">
-                  <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
-                  <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
-                  <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
-                  <Column Name="start_time" Required="true" Type="DATE"/>
-                  <Column Name="end_time" Required="true" Type="DATE"/>
-                  <Column Name="owner_id" Required="true" Type="INTEGER"/>
-                  <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
-                  <Index Name="title">
-                    <IndexColumn Name="title"/>
-                  </Index>
-                  <Unique>
-                    <UniqueColumn Name="title"/>
-                  </Unique>
-                  <ForeignKey ForeignTable="system_user">
-                    <Reference Local="owner_id" Foreign="id"/>
-                  </ForeignKey>
-                </TableCreate>
-
+                &lt;TableCreate Name="calendar_event"&gt;
+                  &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
+                  &lt;Column Name="title" Required="true" Size="250" Type="VARCHAR"/&gt;
+                  &lt;Column Name="content" Required="false" Size="250" Type="VARCHAR"/&gt;
+                  &lt;Column Name="start_time" Required="true" Type="DATE"/&gt;
+                  &lt;Column Name="end_time" Required="true" Type="DATE"/&gt;
+                  &lt;Column Name="owner_id" Required="true" Type="INTEGER"/&gt;
+                  &lt;Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/&gt;
+                  &lt;Index Name="title"&gt;
+                    &lt;IndexColumn Name="title"/&gt;
+                  &lt;/Index&gt;
+                  &lt;Unique&gt;
+                    &lt;UniqueColumn Name="title"/&gt;
+                  &lt;/Unique&gt;
+                  &lt;ForeignKey ForeignTable="system_user"&gt;
+                    &lt;Reference Local="owner_id" Foreign="id"/&gt;
+                  &lt;/ForeignKey&gt;
+                &lt;/TableCreate&gt;
             </programlisting>
             <para>
                 DROP TABLE:
             </para>
             <programlisting format="linespecific" language="Perl">
-
-                <DatabaseUninstall>
-                  <TableDrop Name="calendar_event"/>
-                </DatabaseUninstall>
-
+                &lt;DatabaseUninstall&gt;
+                  &lt;TableDrop Name="calendar_event"/&gt;
+                &lt;/DatabaseUninstall&gt;
             </programlisting>
             <para>
                 Code to process XML:

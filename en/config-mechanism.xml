@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.3 2005-08-11 14:09:58 rk Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -25,7 +25,9 @@
             <filename class="directory">$OTRS_HOME/Kernel/Config/Defaults/Files/*.pm</filename>
         </para>
         <para>And could look like the following:</para>
-        <filename>Kernel/config/Defaults/Files/Calendar.pm</filename>
+        <para>
+            <filename>Kernel/config/Files/Calendar.pm</filename>
+        </para>
         <programlisting format="linespecific" language="Perl">
             # module reg and nav bar
             $Self->{'Frontend::Module'}->{'AgentCalendar'} = {
@@ -57,6 +59,13 @@
         </para>
         <para>
             <filename>Kernel/Config.pm</filename>
+        </para>
+        <para>
+            and set the new option. This file will be used at least and so all default config
+            options are overwritten with your settings.
+        </para>
+        <para>
+            This way it's easy to handle updates, you just need the Kernel/Config.pm.
         </para>
     </sect1>
     <sect1 id="accessing-config-options">

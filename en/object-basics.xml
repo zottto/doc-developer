@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.3 2005-08-11 14:09:58 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -14,7 +14,7 @@
             A object (e.g. a ticket, faq, calendar, ...) should have min. this options or
             like this naming in the application and in the database.
         </para>
-        <informtable>
+        <informaltable>
             <tgroup cols="2">
                 <thead>
                     <row>
@@ -69,7 +69,7 @@
                     </row>
                 </tbody>
             </tgroup>
-        </informtable>
+        </informaltable>
     </sect1>
     <sect1 id="search-options">
         <title>Search Options</title>
@@ -224,7 +224,7 @@
         <para>
             Tabelle 2Menu functions - global, always used
         </para>
-                <informaltable>
+        <informaltable>
             <tgroup cols="4">
                 <thead>
                     <row>
@@ -242,10 +242,64 @@
                         <entry>ticket.png</entry>
                     </row>
                     <row>
-                        <entry>SIRIOS-Project</entry>
-                        <entry>2000-2999</entry>
-                        <entry>a,v,i,d,b</entry>
-                        <entry></entry>
+                        <entry>2000</entry>
+                        <entry>Incident (SIRIOS-Project)</entry>
+                        <entry>i</entry>
+                        <entry>incident.png</entry>
+                    </row>
+                    <row>
+                        <entry>2100</entry>
+                        <entry>Advisory (SIRIOS-Project)</entry>
+                        <entry>d</entry>
+                        <entry>advisory.png</entry>
+                    </row>
+                    <row>
+                        <entry>2150</entry>
+                        <entry>Advisory (Short)</entry>
+                        <entry>z</entry>
+                        <entry>advisory_short.png</entry>
+                    </row>
+                    <row>
+                        <entry>2300</entry>
+                        <entry>VirusWarning (SIRIOS-BSI-specific)</entry>
+                        <entry>x</entry>
+                        <entry>viruswarning.png</entry>
+                    </row>
+                    <row>
+                        <entry>2400</entry>
+                        <entry>FreeTextMessage (SIRIOS-BSI-specific)</entry>
+                        <entry>y</entry>
+                        <entry>freetextmessage.png</entry>
+                    </row>
+                    <row>
+                        <entry>2500</entry>
+                        <entry>Vulnerability (SIRIOS-Project)</entry>
+                        <entry>v</entry>
+                        <entry>vulnerability.png</entry>
+                    </row>
+                    <row>
+                        <entry>2600</entry>
+                        <entry>Artefact (SIRIOS-Project)</entry>
+                        <entry>r</entry>
+                        <entry>artefactdb.png</entry>
+                    </row>
+                    <row>
+                        <entry>2700</entry>
+                        <entry>WebWatcher (SIRIOS-Project)</entry>
+                        <entry>z</entry>
+                        <entry>webwatcher.png</entry>
+                    </row>
+                    <row>
+                        <entry>2800</entry>
+                        <entry>IDM-Management (SIRIOS-Project)</entry>
+                        <entry>-</entry>
+                        <entry>idmef.png</entry>
+                    </row>
+                    <row>
+                        <entry>7050</entry>
+                        <entry>ContentManager</entry>
+                        <entry>-</entry>
+                        <entry>folder_green.png</entry>
                     </row>
                     <row>
                         <entry>Calendar</entry>
@@ -264,6 +318,23 @@
                         <entry>8200</entry>
                         <entry>w</entry>
                         <entry>webmail.png</entry>
+                    </row>
+                    <row>
+                        <entry>8300</entry>
+                        <entry>FAQ</entry>
+                        <entry>q</entry>
+                        <entry>help.png</entry>
+                    </row>
+                    <row>
+                        <entry>8400</entry>
+                        <entry>Alarm</entry>
+                        <entry>-</entry>
+                        <entry>alarm.png</entry>
+                    </row><row>
+                        <entry>8500</entry>
+                        <entry>Statistic</entry>
+                        <entry>-</entry>
+                        <entry>statistic.png</entry>
                     </row>
                     <row>
                         <entry>Admin</entry>
