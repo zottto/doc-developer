@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.3 2005-08-17 08:28:04 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: codesyntax.xml,v 1.4 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -13,7 +13,7 @@
         <para>
             TAB: We use 4 spaces. Braces examples:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             if ($Condition) {
                 Foo();
             }
@@ -32,7 +32,7 @@
             Names and comments are written in English. Variables, Objects and Methods
             must be descriptive nouns or noun phrases with the first letter upper case.
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             e. g. @TicktIDs or $Output or BuildQueueView()
         </programlisting>
     </sect1>
@@ -42,12 +42,12 @@
             Attach the folowing header to each source file. Source files are saved in
             charset ISO-8859-1.
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # (file name) - a short description what it does.
             # Copyright (C) (year) (name of author) (email of author)
             # --
-            # $Id: codesyntax.xml,v 1.3 2005-08-17 08:28:04 rk Exp $
+            # $Id: codesyntax.xml,v 1.4 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you

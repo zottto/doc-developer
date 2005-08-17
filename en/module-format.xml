@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Module format</title>
@@ -16,7 +16,7 @@
             authentification is ok.
         </para>
         <para>Format:</para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/System/Auth/Simple.pm - provides the simple authentification
             # Copyright (C) 2001-2005 Martin Edenhofer martin+code at otrs.org
@@ -80,12 +80,12 @@
         <para>
             Format:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/Output/HTML/NotificationMotd.pm - message of the day
             # Copyright (C) 2005 Hans Mueller mail@example.com
             # --
-            # $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
+            # $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
@@ -115,7 +115,7 @@
             To use this module, add the following to the <filename>Kernel/Config.pm</filename>
             and restart your webserver (if you use mod_perl).
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # Frontend::NotifyModule - module name (50-Motd)
             $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
                 Module => 'Kernel::Output::HTML::NotificationMotd',
@@ -131,12 +131,12 @@
         <para>
             Format:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
             # Copyright (C) 2005 Hans Mueller mail@example.com
             # --
-            # $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
+            # $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
@@ -175,7 +175,7 @@
             To use this module, add the following to the Kernel/Config.pm and restart
             your webserver (if you use mod_perl)
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             [Kernel/Config.pm]
             # agent interface notification module
             $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
@@ -203,12 +203,12 @@
         <para>
             Format:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/Modules/AgentTest.pm - message of the day
             # Copyright (C) 2005 Hans Mueller mail@example.com
             # --
-            # $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
+            # $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
@@ -285,7 +285,7 @@
             table below for details). You also can definde navigation bar icons via the
             'NavBar' param (see table below for details).
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             [Kernel/Config.pm]
             $Self->{'Frontend::Module'}->{'AgentTest'} = {
                 Group => ['admin'],
@@ -401,12 +401,12 @@
         <para>
             Format:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/System/Backend.pm - a core module
             # Copyright (C) 2005 Hans Mueller mail@example.com
             # --
-            # $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
+            # $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
@@ -473,7 +473,7 @@
 
             =head1 VERSION
 
-            $Revision: 1.4 $ $Date: 2005-08-17 08:28:04 $
+            $Revision: 1.5 $ $Date: 2005-08-17 15:28:27 $
 
             =cut
         </programlisting>
@@ -495,12 +495,12 @@
         <para>
             Format:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # --
             # Kernel/System/CustomerUser/ABC.pm - a customer data backend
             # Copyright (C) 2005 Hans Mueller mail@example.com
             # --
-            # $Id: module-format.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
+            # $Id: module-format.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
@@ -576,7 +576,7 @@
             Just the config setting key is different. To use this module, add the following
             to the Kernel/Config.pm and restart your webserver (if you use mod_perl).
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             [Kernel/Config.pm]
             # customer notifiacation module
             $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
@@ -600,7 +600,7 @@
             <para>
                 Format:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 # --
                 # Ticket/Number/Simple.pm - a ticket number auto increment generator
                 # Copyright (C) 2005 Hans Mueller mail@example.com
@@ -615,7 +615,7 @@
                 package Kernel::System::Ticket::Number::Simple;
                 use strict; use vars qw($VERSION);
 
-                $VERSION =  $Revision: 1.4 $ ;
+                $VERSION =  $Revision: 1.5 $ ;
                 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
                 sub CreateTicketNr {

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.4 2005-08-17 08:28:05 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: templates.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -19,7 +19,7 @@
         <para>
             TAB: We use 2 spaces for every new open tag. Examples:
         </para>
-        <programlisting format="linespecific" language="html">
+        <programlisting format="linespecific">
             &lt;table&gt;
               &lt;tr&gt;
                 &lt;td&gt;Key&lt;/td&gt;
@@ -31,7 +31,7 @@
               &lt;/tr&gt;
             &lt;/table&gt;
         </programlisting>
-        <programlisting format="linespecific" language="html">
+        <programlisting format="linespecific">
             &lt;form action ="index.pl"&gt;
               &lt;input type="text" value=""&gt;
               &lt;input type="text" value=""&gt;
@@ -54,7 +54,7 @@
                 The dtl comment starts with a # at the begining of a line and will not be
                 shown in the html output.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 # this can be a comment in the dtl file
             </programlisting>
         </sect2>
@@ -64,7 +64,7 @@
                 If data params are given to the templates, the this params can be printed to
                 the template.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 There name of the author is $Data{"Name"}.
             </programlisting>
             <warning>
@@ -78,14 +78,14 @@
             <para>
                 The same $Data{""} but the value if the param Name is html quoted (safe).
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 There name of the author is $QData{"Name"}.
             </programlisting>
             <para>
                 It's also possible to cut the value. For example you just want to show 20
                 characters of a variable (result will be "SomeNam[..]"J), use the following.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 There first 20 characters of the authors name: $QData{"Name", "20"}.
             </programlisting>
         </sect2>
@@ -95,7 +95,7 @@
                 Env is a environment variable which is usable over more templates. $Data{""}
                 is just availabe for one template.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 There curent user name is: $Env{"Userfirstname"}
 
                 Some other common variables are:
@@ -115,14 +115,14 @@
             <para>
                 A tag to quote html strings.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 Show no html tags, quote this: $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;"}
             </programlisting>
             <para>
                 It's also possible to cut the value. For example you just want to show 20
                 characters of a variable (result will be "SomeMess[..]"), use the following.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 Show no html tags, quote this and show just 20 characters:
                   $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;","20"}
             </programlisting>
@@ -132,7 +132,7 @@
             <para>
                 This tag translates the string in there (based on the user selected language).
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 Translate this text: $Text{"Help"}
             </programlisting>
         </sect2>
@@ -142,7 +142,7 @@
                 With this tag you can use config variables in the template. For example the
                 Kernel/config.pm:
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 [Kernel/Config.pm]
                     # FQDN
                     # (Full qualified domain name of your system.)
@@ -155,7 +155,7 @@
             <para>
                 And the use in the dtl template:
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 The hostname is '$Config{"FQDN"}'
                 The admin email address is '$Config{"AdminEmail"}'
             </programlisting>
@@ -165,14 +165,14 @@
             <para>
                 If you want to include other dtl templates into a template, use the include tag.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 # include Copyright.dtl
                 $Include{"Copyright"}
             </programlisting>
             <para>
                 Or a other examlpe.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 &lt;html&gt;
                 &lt;head&gt;
                   &lt;tilte&gt;Some Title&lt;/tilte&gt;
@@ -187,7 +187,7 @@
                 The block tag can be used to define block. This blocks can be used from the
                 Frontend Module several times with different data params.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 &lt;table&gt;
                 &lt;!-- dtl:block:Row --&gt;
                     &lt;tr&gt;
@@ -209,7 +209,7 @@
                 For example you want to use this block to show email message html formated via
                 a table the Frontend Module code could look like this:
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 # get article
                 my %Article = $Self->{TicketObject}->ArticleGet(
                     ArticleID => $ArticleID,
@@ -242,7 +242,7 @@
             <para>
                 With the tag set you can set a variable in the dtl template.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 &lt;dtl set $Data{"Test"} = "Some Text"&gt;
             </programlisting>
         </sect2>
@@ -251,13 +251,13 @@
             <para>
                 It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 &lt;dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }&gt;
             </programlisting>
             <para>
                 Or with a regexp.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
             </programlisting>
         </sect2>
@@ -266,7 +266,7 @@
             <para>
                 If you want the output of a system call back to a dtl variable.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 # execute system call
                 &lt;dtl system-call $Data{"uptime"} = "uptime"&gt;
                 # print
@@ -275,7 +275,7 @@
             <para>
                 Or a other example.
             </para>
-            <programlisting format="linespecific" language="html">
+            <programlisting format="linespecific">
                 # execute system call
                 &lt;dtl system-call $Data{"procinfo"} = "procinfo | head -n1 "&gt;
                 # print
@@ -288,14 +288,14 @@
     </sect1>
     <sect1 id="dtl-example">
         <title>Example</title>
-        <programlisting format="linespecific" language="html">
+        <programlisting format="linespecific">
             # set variable
             &lt;dtl set $Data{"Test1"} = "English"&gt;
 
             # print variable
             Echo: $Data{"Test1"}
         </programlisting>
-        <programlisting format="linespecific" language="html">
+        <programlisting format="linespecific">
             # condition
             &lt;dtl if ($Text{"Lock"} ne "Lock") { $Data{"Test2"} = "Not English!"; }&gt;
 

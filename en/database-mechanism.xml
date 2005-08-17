@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.4 2005-08-17 08:28:04 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: database-mechanism.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -21,7 +21,7 @@
             <para>
                 INSERT/UPDATE/DELETE:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 $Self->{DBObject}->Do(
                     SQL=> "INSERT INTO table (name, id) VALUES ('someName', 123)",
                 );
@@ -37,7 +37,7 @@
             <para>
                 SELECT:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 my $SQL = "SELECT id FROM table " .
                     " WHERE " .
                     " tn = '123' ";
@@ -56,7 +56,7 @@
             <para>
                 QUOTE:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
             </programlisting>
         </sect2>
@@ -70,7 +70,7 @@
             <para>
                 INSERT:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 &lt;Insert Table="some_table"&gt;
                     &lt;Data Key="id" Value="1"/&gt;
                     &lt;Data Key="description" Value="exploit" Type="Quote"/&gt;
@@ -79,7 +79,7 @@
             <para>
                 CREATE TABLE:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 &lt;TableCreate Name="calendar_event"&gt;
                   &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
                   &lt;Column Name="title" Required="true" Size="250" Type="VARCHAR"/&gt;
@@ -102,7 +102,7 @@
             <para>
                 DROP TABLE:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 &lt;DatabaseUninstall&gt;
                   &lt;TableDrop Name="calendar_event"/&gt;
                 &lt;/DatabaseUninstall&gt;
@@ -110,7 +110,7 @@
             <para>
                 Code to process XML:
             </para>
-            <programlisting format="linespecific" language="Perl">
+            <programlisting format="linespecific">
                 my @XMLARRAY = @{$Self->ParseXML(String => $XML)};
 
                 my @SQL = $Self->{DBObject}->SQLProcessor(

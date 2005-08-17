@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.4 2005-08-17 08:28:04 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: config-mechanism.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -28,7 +28,7 @@
         <para>
             <filename>Kernel/config/Files/Calendar.pm</filename>
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             # module reg and nav bar
             $Self->{'Frontend::Module'}->{'AgentCalendar'} = {
                 Description => 'Calendar',
@@ -77,13 +77,13 @@
         <para>
             If you want to get a config option:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             my $ConfigOption = $Self->{ConfigObject}->Get('Prefix::Option');
         </programlisting>
         <para>
             If you want to change a config option at runtime and just for this one request/process:
         </para>
-        <programlisting format="linespecific" language="Perl">
+        <programlisting format="linespecific">
             $Self->{ConfigObject}->Set(
                 Key => 'Prefix::Option'
                 Value => 'SomeNewValue',

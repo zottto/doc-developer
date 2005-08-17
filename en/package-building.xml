@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.4 2005-08-17 08:28:05 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: package-building.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -21,49 +21,49 @@
                 <listitem>
                     <para>Name</para>
                     <para>The package name.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Name&gt;Calendar&lt;/Name&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>Version</para>
                     <para>The package version.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Version&gt;1.2&lt;/Version&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>Framework</para>
                     <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9).</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Framework&gt;2.0.x&lt;/Framework&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>Vendor</para>
                     <para>The package vendor.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>URL</para>
                     <para>The vendor URL.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>License</para>
                     <para>The license of the package.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>ChangeLog</para>
                     <para>The package change log.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
                         &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
                     </programlisting>
@@ -71,7 +71,7 @@
                 <listitem>
                     <para>Description</para>
                     <para>The package description in different languages.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
                         &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
                     </programlisting>
@@ -79,21 +79,21 @@
                 <listitem>
                     <para>BuildHost</para>
                     <para>This will be filled up automatically by OPM.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;BuildHost&gt;?&lt;/BuildHost&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>BuildDate</para>
                     <para>This will be filled up automatically by OPM.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;BuildDate&gt;?&lt;/BuildDate&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
                     <para>Required</para>
                     <para>Required modules needs to be installed before.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;Required&gt;SomeOtherPackage&lt;/Required&gt;
                         &lt;Required&gt;SomeotherPackage2&lt;/Required&gt;
                     </programlisting>
@@ -101,7 +101,7 @@
                 <listitem>
                     <para>OS (^M)</para>
                     <para>Required OS.</para>
-                    <programlisting format="linespecific" language="xml">
+                    <programlisting format="linespecific">
                         &lt;OS&gt;Linux&lt;/OS&gt;
                         &lt;OS&gt;MacOS&lt;/OS&gt;
                     </programlisting>
@@ -113,7 +113,7 @@
             <para>
                 This is a file of included file of the package.
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;Filelist&gt;
                     &lt;File Permission="644" Location="Kernel/Config/Files/Calendar.pm"&gt;&lt;/File&gt;
                     &lt;File Permission="644" Location="Kernel/System/CalendarEvent.pm"&gt;&lt;/File&gt;
@@ -127,7 +127,7 @@
             <para>
                 Install (if a package get installed)
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;DatabaseInstall&gt;
                     &lt;TableCreate Name="calendar_event"&gt;
                     &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
@@ -145,7 +145,7 @@
                 database actions, this means if the installed package version is below
                 1.3.4, then this database action will be preformed)
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;DatabaseUpgrade Version="1.3.4"&gt;
                     &lt;TableCreate Name="calendar_event_involved" Version="1.3.4"&gt;
                         &lt;Column Name="event_id" Required="true" Type="BIGINT"/&gt;
@@ -156,13 +156,13 @@
             <para>
                 Reinstall (if a package is installed and get reinstalled)
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
             </programlisting>
             <para>
                 Uninstall (if a package get uninstalled)
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;DatabaseUninstall&gt;
                     &lt;TableDrop Name="calendar_event" /&gt;
                 &lt;/DatabaseUninstall&gt;
@@ -173,7 +173,7 @@
             <para>
                 This is a whole example spec file.
             </para>
-            <programlisting format="linespecific" language="xml">
+            <programlisting format="linespecific">
                 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
                 &lt;otrs_package version="1.0"&gt;
                     &lt;Name&gt;Calendar&lt;/Name&gt;
