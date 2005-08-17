@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.3 2005-08-11 14:09:58 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: language-translations.xml,v 1.4 2005-08-17 08:28:04 rk Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -55,7 +55,7 @@
                 # Kernel/Language/de.pm - provides de language translation
                 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
                 # --
-                # $Id: language-translations.xml,v 1.3 2005-08-11 14:09:58 rk Exp $
+                # $Id: language-translations.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
                 # --
                 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
                 # the enclosed file COPYING for license information (GPL). If you
@@ -66,7 +66,7 @@
                 use strict;
 
                 use vars qw($VERSION);
-                $VERSION = '$Revision: 1.3 $';
+                $VERSION = '$Revision: 1.4 $';
                 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
                 # --
@@ -117,7 +117,7 @@
                 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
                 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
                 # --
-                # $Id: language-translations.xml,v 1.3 2005-08-11 14:09:58 rk Exp $
+                # $Id: language-translations.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
                 # --
                 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
                 # the enclosed file COPYING for license information (GPL). If you
@@ -160,7 +160,7 @@
                 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
                 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
                 # --
-                # $Id: language-translations.xml,v 1.3 2005-08-11 14:09:58 rk Exp $
+                # $Id: language-translations.xml,v 1.4 2005-08-17 08:28:04 rk Exp $
                 # --
                 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
                 # the enclosed file COPYING for license information (GPL). If you
@@ -171,7 +171,7 @@
                 use strict;
 
                 use vars qw($VERSION);
-                $VERSION = '$Revision: 1.3 $';
+                $VERSION = '$Revision: 1.4 $';
                 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
                 # --

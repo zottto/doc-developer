@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.2 2005-08-10 14:17:04 rk Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: codesyntax.xml,v 1.3 2005-08-17 08:28:04 rk Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -47,7 +47,7 @@
             # (file name) - a short description what it does.
             # Copyright (C) (year) (name of author) (email of author)
             # --
-            # $Id: codesyntax.xml,v 1.2 2005-08-10 14:17:04 rk Exp $
+            # $Id: codesyntax.xml,v 1.3 2005-08-17 08:28:04 rk Exp $
             # --
             # This software comes with ABSOLUTELY NO WARRANTY. For details, see
             # the enclosed file COPYING for license information (GPL). If you
