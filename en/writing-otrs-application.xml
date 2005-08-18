@@ -1,28 +1,36 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.6 2005-08-18 11:23:47 rk Exp $ -->
 
 <chapter>
     <title>Writing a OTRS application for a new Object</title>
+    <para></para>
     <sect1 id="what-we-want-to-write">
         <title>What we want to write</title>
+        <para></para>
     </sect1>
     <sect1 id="default-config-file">
         <title>Default Config File</title>
+        <para></para>
     </sect1>
     <sect1 id="writing-frontend-module">
         <title>Frontend Module</title>
+        <para></para>
     </sect1>
     <sect1 id="writing-core-module">
         <title>Core Module</title>
+        <para></para>
     </sect1>
     <sect1 id="dtl-template-file">
         <title>dtl Template File</title>
+        <para></para>
     </sect1>
     <sect1 id="language-file">
         <title>Language File</title>
+        <para></para>
     </sect1>
     <sect1 id="summery">
         <title>Summery</title>
+        <para></para>
     </sect1>
 </chapter>
