@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.4 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: package-management.xml,v 1.5 2005-09-05 11:11:43 rk Exp $ -->
 
 <chapter>
     <title>Package Management</title>
@@ -20,15 +20,15 @@
             where the location is. Then you will have a new select option in the admin interface.
         </para>
         <programlisting format="linespecific">
-            [Kernel/Config.pm]
+[Kernel/Config.pm]
 
-            # Package::RepositoryList
-            # (repository list)
-            $Self->{'Package::RepositoryList'} = {
-                'ftp://ftp.example.com/packages/' => '[Example-Repository]',
-            };
+# Package::RepositoryList
+# (repository list)
+$Self->{'Package::RepositoryList'} = {
+    'ftp://ftp.example.com/packages/' => '[Example-Repository]',
+};
 
-            [...]
+[...]
         </programlisting>
         <sect2 id="package-repositiory-index">
             <title>Package Repository Index</title>

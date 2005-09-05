@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.4 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.5 2005-09-05 11:11:43 rk Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -14,16 +14,16 @@
             TAB: We use 4 spaces. Braces examples:
         </para>
         <programlisting format="linespecific">
-            if ($Condition) {
-                Foo();
-            }
-            else {
-                Bar();
-            }
+if ($Condition) {
+    Foo();
+}
+else {
+    Bar();
+}
 
-            while ($Condition == 1) {
-                Foo();
-            }
+while ($Condition == 1) {
+    Foo();
+}
         </programlisting>
     </sect1>
     <sect1 id="naming">
@@ -33,7 +33,7 @@
             must be descriptive nouns or noun phrases with the first letter upper case.
         </para>
         <programlisting format="linespecific">
-            e. g. @TicktIDs or $Output or BuildQueueView()
+e. g. @TicktIDs or $Output or BuildQueueView()
         </programlisting>
     </sect1>
     <sect1 id="source-code-header">
@@ -43,16 +43,16 @@
             charset ISO-8859-1.
         </para>
         <programlisting format="linespecific">
-            # --
-            # (file name) - a short description what it does.
-            # Copyright (C) (year) (name of author) (email of author)
-            # --
-            # $Id: codesyntax.xml,v 1.4 2005-08-17 15:28:27 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# (file name) - a short description what it does.
+# Copyright (C) (year) (name of author) (email of author)
+# --
+# $Id: codesyntax.xml,v 1.5 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
         </programlisting>
     </sect1>
 </chapter>

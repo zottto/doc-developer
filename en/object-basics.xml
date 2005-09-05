@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -94,13 +94,13 @@
             Config naming should be with a leading prefix, the object name like this:
         </para>
         <programlisting format="linespecific">
-            $Self->{"Object::Option"} = 1234;
+$Self->{"Object::Option"} = 1234;
         </programlisting>
         <para>
             Config-Hashes should named with the same name like in the .dtl. For example:
         </para>
         <programlisting format="linespecific">
-            $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
+$Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
         </programlisting>
         <para>
             The config order should be by global setting and following by detail settings.
@@ -113,28 +113,28 @@
             $OTRS_HOME/Kernel/Config/Files/*.pm. For example:
         </para>
         <programlisting format="linespecific">
-            # module reg and nav bar
-            $Self->{'Frontend::Module'}->{'AgentFileManager'} = {
-                Description => 'Web File Manager',
-                NavBarName => 'FileManager',
-                NavBar => [
-                {
-                    Description => 'A web file manager',
-                    Name => 'File-Manager',
-                    Image => 'filemanager.png',
-                    Link => 'Action=AgentFileManager',
-                    NavBar => 'FileManager',
-                    Prio => 5000,
-                    AccessKey => 'f',
-                },
-                ],
-            };
+# module reg and nav bar
+$Self->{'Frontend::Module'}->{'AgentFileManager'} = {
+    Description => 'Web File Manager',
+    NavBarName => 'FileManager',
+    NavBar => [
+    {
+        Description => 'A web file manager',
+        Name => 'File-Manager',
+        Image => 'filemanager.png',
+        Link => 'Action=AgentFileManager',
+        NavBar => 'FileManager',
+        Prio => 5000,
+        AccessKey => 'f',
+    },
+    ],
+};
 
-            # browse/download root directory
-            $Self->{"FileManager::Root"} = '/home/';
+# browse/download root directory
+$Self->{"FileManager::Root"} = '/home/';
 
-            # trash directory
-            $Self->{"FileManager::Trash"} = "/home/Trash/";
+# trash directory
+$Self->{"FileManager::Trash"} = "/home/Trash/";
         </programlisting>
     </sect1>
     <sect1 id="navbar-setting">

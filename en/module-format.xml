@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $ -->
+<!-- $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $ -->
 
 <chapter>
     <title>Module format</title>
@@ -17,45 +17,45 @@
         </para>
         <para>Format:</para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/System/Auth/Simple.pm - provides the simple authentification
-            # Copyright (C) 2001-2005 Martin Edenhofer martin+code at otrs.org
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
-            # Note:
-            # available objects are: ConfigObject, LogObject and DBObject
-            # --
+# --
+# Kernel/System/Auth/Simple.pm - provides the simple authentification
+# Copyright (C) 2001-2005 Martin Edenhofer martin+code at otrs.org
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+# Note:
+# available objects are: ConfigObject, LogObject and DBObject
+# --
 
-            package Kernel::System::Auth::Simple;
+package Kernel::System::Auth::Simple;
 
-            use strict;
+use strict;
 
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
-            sub GetOption {
-                my $Self = shift;
-                my %Param = @_;
-                # return option
-                return (PreAuth => 0);
-            }
-            sub Auth {
-                my $Self = shift;
-                my %Param = @_;
-                [...]
-                if ($Autentication) {
-                    return $Param{User};
-                }
-                else {
-                    return;
-                }
-            }
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
+sub GetOption {
+    my $Self = shift;
+    my %Param = @_;
+    # return option
+    return (PreAuth => 0);
+}
+sub Auth {
+    my $Self = shift;
+    my %Param = @_;
+    [...]
+    if ($Autentication) {
+        return $Param{User};
+    }
+    else {
+        return;
+    }
+}
         </programlisting>
     </sect1>
     <sect1 id="notify-module">
@@ -81,45 +81,45 @@
             Format:
         </para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/Output/HTML/NotificationMotd.pm - message of the day
-            # Copyright (C) 2005 Hans Mueller mail@example.com
-            # --
-            # $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# Kernel/Output/HTML/NotificationMotd.pm - message of the day
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-            package Kernel::Output::HTML::NotificationMotd;
-            use strict;
+package Kernel::Output::HTML::NotificationMotd;
+use strict;
 
-            # --
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
-            # --
-            sub Run {
-                my $Self = shift;
-                my %Param = @_;
-                return $Self->{LayoutObject}->Notify(Info =>  Some daily news! );
-            }
-            # --
-            1;
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
+# --
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    return $Self->{LayoutObject}->Notify(Info =>  Some daily news! );
+}
+# --
+1;
         </programlisting>
         <para>
             To use this module, add the following to the <filename>Kernel/Config.pm</filename>
             and restart your webserver (if you use mod_perl).
         </para>
         <programlisting format="linespecific">
-            # Frontend::NotifyModule - module name (50-Motd)
-            $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
-                Module => 'Kernel::Output::HTML::NotificationMotd',
-            };
+# Frontend::NotifyModule - module name (50-Motd)
+$Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
+    Module => 'Kernel::Output::HTML::NotificationMotd',
+};
         </programlisting>
     </sect1>
     <sect1 id="navigation-module">
@@ -132,55 +132,55 @@
             Format:
         </para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
-            # Copyright (C) 2005 Hans Mueller mail@example.com
-            # --
-            # $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-            package Kernel::Output::HTML::NavBarABC;
-            use strict;
+package Kernel::Output::HTML::NavBarABC;
+use strict;
 
-            # --
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
-            # --
-            sub Run {
-                my $Self = shift;
-                my %Param = @_;
-                my %Return = ();
-                $Return{'0999989'} = {
-                        Block => 'ItemPersonal',
-                        Description => 'Some Desctipton',
-                        Name => 'Text',
-                        Image => 'new-message.png',
-                        Link => 'Action=AgentMailbox&amp;Subaction=New',
-                        AccessKey => 'j',
-                };
-                return %Return;
-            }
-            # --
-            1;
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
+# --
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    my %Return = ();
+    $Return{'0999989'} = {
+            Block => 'ItemPersonal',
+            Description => 'Some Desctipton',
+            Name => 'Text',
+            Image => 'new-message.png',
+            Link => 'Action=AgentMailbox&amp;Subaction=New',
+            AccessKey => 'j',
+    };
+    return %Return;
+}
+# --
+1;
         </programlisting>
         <para>
             To use this module, add the following to the Kernel/Config.pm and restart
             your webserver (if you use mod_perl)
         </para>
         <programlisting format="linespecific">
-            [Kernel/Config.pm]
-            # agent interface notification module
-            $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
-                Module => 'Kernel::Output::HTML::NavBarABC',
-            };
+[Kernel/Config.pm]
+# agent interface notification module
+$Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
+    Module => 'Kernel::Output::HTML::NavBarABC',
+};
         </programlisting>
     </sect1>
     <sect1 id="frontend-modules">
@@ -204,80 +204,80 @@
             Format:
         </para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/Modules/AgentTest.pm - message of the day
-            # Copyright (C) 2005 Hans Mueller mail@example.com
-            # --
-            # $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# Kernel/Modules/AgentTest.pm - message of the day
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-            package Kernel::Modules::AgentTest;
-            use strict;
+package Kernel::Modules::AgentTest;
+use strict;
 
-            # --
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
-            # --
-            sub Run {
-                my $Self = shift;
-                my %Param = @_;
-                [...]
-                # ---------------------------------------------------------- #
-                # add a new object (Note: dtl text 'New')
-                # ---------------------------------------------------------- #
-                if ($Self->{Subaction} eq 'Add') {
-                    my $Output   = '';
-                    my %Frontend = ();
-                    [...]
-                    # add add block
-                    $Self->{LayoutObject}->Block(
-                        Name => 'Add',
-                        Data => {%Param, %Frontend},
-                    );
-                    # build output
-                    $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
-                    $Output .= $Self->{LayoutObject}->NavigationBar();
-                    $Output .= $Self->{LayoutObject}->Output(
-                        Data => {%Param, %Frontend},
-                        TemplateFile => 'AgentTest',
-                    );
-                    $Output .= $Self->{LayoutObject}->Footer();
-                    return $Output;
-                }
-                # ---------------------------------------------------------- #
-                # show overview screen
-                # ---------------------------------------------------------- #
-                else {
-                    # add overview block
-                    $Self->{LayoutObject}->Block(
-                        Name => 'Overview',
-                        Data => {%Param, %Frontend},
-                    );
-                    # build output
-                    $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
-                    $Output .= $Self->{LayoutObject}->NavigationBar();
-                    $Output .= $Self->{LayoutObject}->Output(
-                        Data => {%Param, %Frontend},
-                        TemplateFile => 'AgentTest',
-                    );
-                    $Output .= $Self->{LayoutObject}->Footer();
-                    return $Output;
-                }
-                # ---------------------------------------------------------- #
-                # show error screen
-                # ---------------------------------------------------------- #
-                return $Self->{LayoutObject}->ErrorScreen(Message => "Invalid Subaction process!");
-            }
-            # --
-            1;
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
+# --
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    [...]
+    # ---------------------------------------------------------- #
+    # add a new object (Note: dtl text 'New')
+    # ---------------------------------------------------------- #
+    if ($Self->{Subaction} eq 'Add') {
+        my $Output   = '';
+        my %Frontend = ();
+        [...]
+        # add add block
+        $Self->{LayoutObject}->Block(
+            Name => 'Add',
+            Data => {%Param, %Frontend},
+        );
+        # build output
+        $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
+        $Output .= $Self->{LayoutObject}->NavigationBar();
+        $Output .= $Self->{LayoutObject}->Output(
+            Data => {%Param, %Frontend},
+            TemplateFile => 'AgentTest',
+        );
+        $Output .= $Self->{LayoutObject}->Footer();
+        return $Output;
+    }
+    # ---------------------------------------------------------- #
+    # show overview screen
+    # ---------------------------------------------------------- #
+    else {
+        # add overview block
+        $Self->{LayoutObject}->Block(
+            Name => 'Overview',
+            Data => {%Param, %Frontend},
+        );
+        # build output
+        $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
+        $Output .= $Self->{LayoutObject}->NavigationBar();
+        $Output .= $Self->{LayoutObject}->Output(
+            Data => {%Param, %Frontend},
+            TemplateFile => 'AgentTest',
+        );
+        $Output .= $Self->{LayoutObject}->Footer();
+        return $Output;
+    }
+    # ---------------------------------------------------------- #
+    # show error screen
+    # ---------------------------------------------------------- #
+    return $Self->{LayoutObject}->ErrorScreen(Message => "Invalid Subaction process!");
+}
+# --
+1;
         </programlisting>
         <para>
             You also need a module registration for Frontend Modules to use it. Define read
@@ -286,23 +286,23 @@
             'NavBar' param (see table below for details).
         </para>
         <programlisting format="linespecific">
-            [Kernel/Config.pm]
-            $Self->{'Frontend::Module'}->{'AgentTest'} = {
-                Group => ['admin'],
-                GroupRo => ['test', 'admin'],
-                Description => 'A test Module',
-                NavBarName => 'Ticket',
-                NavBar => [
-                    {
-                        Description => 'Test Module',
-                        Name => 'Test',
-                        Image => 'stats.png',
-                        Link => 'Action=AgentTest',
-                        NavBar => 'Ticket',
-                        Prio => 85,
-                    },
-                ],
-            };
+[Kernel/Config.pm]
+$Self->{'Frontend::Module'}->{'AgentTest'} = {
+    Group => ['admin'],
+    GroupRo => ['test', 'admin'],
+    Description => 'A test Module',
+    NavBarName => 'Ticket',
+    NavBar => [
+        {
+            Description => 'Test Module',
+            Name => 'Test',
+            Image => 'stats.png',
+            Link => 'Action=AgentTest',
+            NavBar => 'Ticket',
+            Prio => 85,
+        },
+    ],
+};
         </programlisting>
         <para>
             You can access this Frontend Modules via http (browse) with the Action
@@ -402,80 +402,80 @@
             Format:
         </para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/System/Backend.pm - a core module
-            # Copyright (C) 2005 Hans Mueller mail@example.com
-            # --
-            # $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# Kernel/System/Backend.pm - a core module
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-            package Kernel::System::Backend;
-            use strict;
+package Kernel::System::Backend;
+use strict;
 
-            =head1 NAME
+=head1 NAME
 
-            Kernel::System::Log - global log interface
+Kernel::System::Log - global log interface
 
-            =head1 SYNOPSIS
+=head1 SYNOPSIS
 
-            All log functions.
+All log functions.
 
-            =head1 PUBLIC INTERFACE
+=head1 PUBLIC INTERFACE
 
-            =over 4
+=over 4
 
-            =item new()
+=item new()
 
-            create a backend object
+create a backend object
 
-            use Kernel::Config;
-            use Kernel::System::Backend;
+use Kernel::Config;
+use Kernel::System::Backend;
 
-            my $ConfigObject = Kernel::Config->new();
-            my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
+my $ConfigObject = Kernel::Config->new();
+my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
 
-            =cut
+=cut
 
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
 
-            =item SomeMethodeA()
+=item SomeMethodeA()
 
-            some info about the methode
+some info about the methode
 
-            $BackendObject->SomeMethodeA(ParamA => 'error', ParamB => "Need something!");
+$BackendObject->SomeMethodeA(ParamA => 'error', ParamB => "Need something!");
 
-            =cut
+=cut
 
-            sub SomeMethodeA{
-                my $Self = shift;
-                my %Param = @_;
-                [...]
-                return 1;
-            }
-            1;
+sub SomeMethodeA{
+    my $Self = shift;
+    my %Param = @_;
+    [...]
+    return 1;
+}
+1;
 
-            =head1 TERMS AND CONDITIONS
+=head1 TERMS AND CONDITIONS
 
-            This software is part of the OTRS project (http://otrs.org/).
+This software is part of the OTRS project (http://otrs.org/).
 
-            This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            the enclosed file COPYING for license information (GPL). If you
-            did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
-            =head1 VERSION
+=head1 VERSION
 
-            $Revision: 1.6 $ $Date: 2005-08-18 11:23:47 $
+$Revision: 1.7 $ $Date: 2005-09-05 11:11:43 $
 
-            =cut
+=cut
         </programlisting>
     </sect1>
     <sect1 id="customer-auth-module">
@@ -496,68 +496,68 @@
             Format:
         </para>
         <programlisting format="linespecific">
-            # --
-            # Kernel/System/CustomerUser/ABC.pm - a customer data backend
-            # Copyright (C) 2005 Hans Mueller mail@example.com
-            # --
-            # $Id: module-format.xml,v 1.6 2005-08-18 11:23:47 rk Exp $
-            # --
-            # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-            # the enclosed file COPYING for license information (GPL). If you
-            # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-            # --
+# --
+# Kernel/System/CustomerUser/ABC.pm - a customer data backend
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-            package Kernel::System::CustomerUser::ABD;
-            use strict;
+package Kernel::System::CustomerUser::ABD;
+use strict;
 
-            # --
-            sub new {
-                my $Type = shift;
-                my %Param = @_;
-                [...]
-                return $Self;
-            }
-            # --
-            sub CustomerName {
-                [...]
-                return $Name;
-            }
-            # --
-            sub CustomerSearch {
-                [...]
-                return %Result;
-            }
-            # --
-            sub CustomerUserList {
-                [...]
-                return %List;
-            }
-            # --
-            sub CustomerIDs {
-                [...]
-                return @CustomerIDs;
-            }
-            # --
-            sub CustomerUserDataGet {
-                [...]
-                return %Data;
-            }
-            # --
-            sub CustomerUserAdd {
-                [...]
-                return 1
-            }
-            # --
-            sub CustomerUserUpdate {
-                [...]
-                return 1;
-            }
-            # --
-            sub SetPassword {
-                [...]
-                return 1;
-            }
-            1;
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+    [...]
+    return $Self;
+}
+# --
+sub CustomerName {
+    [...]
+    return $Name;
+}
+# --
+sub CustomerSearch {
+    [...]
+    return %Result;
+}
+# --
+sub CustomerUserList {
+    [...]
+    return %List;
+}
+# --
+sub CustomerIDs {
+    [...]
+    return @CustomerIDs;
+}
+# --
+sub CustomerUserDataGet {
+    [...]
+    return %Data;
+}
+# --
+sub CustomerUserAdd {
+    [...]
+    return 1
+}
+# --
+sub CustomerUserUpdate {
+    [...]
+    return 1;
+}
+# --
+sub SetPassword {
+    [...]
+    return 1;
+}
+1;
         </programlisting>
         <para>
             To use this module, see the admin manual.
@@ -577,11 +577,11 @@
             to the Kernel/Config.pm and restart your webserver (if you use mod_perl).
         </para>
         <programlisting format="linespecific">
-            [Kernel/Config.pm]
-            # customer notifiacation module
-            $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
-                Module => 'Kernel::Output::HTML::NavBarABC',
-            };
+[Kernel/Config.pm]
+# customer notifiacation module
+$Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
+    Module => 'Kernel::Output::HTML::NavBarABC',
+};
         </programlisting>
     </sect1>
     <sect1 id="stats-modul">
@@ -602,38 +602,38 @@
                 Format:
             </para>
             <programlisting format="linespecific">
-                # --
-                # Ticket/Number/Simple.pm - a ticket number auto increment generator
-                # Copyright (C) 2005 Hans Mueller mail@example.com
-                # --
-                # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-                # the enclosed file COPYING for license information (GPL). If you
-                # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-                # --
-                # Generates auto increment ticket numbers like ss.... (e. g. 1010138, 1010139, ...)
-                # --
+# --
+# Ticket/Number/Simple.pm - a ticket number auto increment generator
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+# Generates auto increment ticket numbers like ss.... (e. g. 1010138, 1010139, ...)
+# --
 
-                package Kernel::System::Ticket::Number::Simple;
-                use strict; use vars qw($VERSION);
+package Kernel::System::Ticket::Number::Simple;
+use strict; use vars qw($VERSION);
 
-                $VERSION =  $Revision: 1.6 $ ;
-                $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+$VERSION =  $Revision: 1.7 $ ;
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
-                sub CreateTicketNr {
-                    my $Self = shift;
-                    my $JumpCounter = shift || 0;
-                    # get needed config options
-                    [...]
-                    return $Tn;
-                }
-                # --
-                sub GetTNByString {
-                    my $Self = shift;
-                    my $String = shift || return;
-                    [...]
-                    return $Tn;
-                }
-                1;
+sub CreateTicketNr {
+    my $Self = shift;
+    my $JumpCounter = shift || 0;
+    # get needed config options
+    [...]
+    return $Tn;
+}
+# --
+sub GetTNByString {
+    my $Self = shift;
+    my $String = shift || return;
+    [...]
+    return $Tn;
+}
+1;
             </programlisting>
         </sect2>
         <sect2 id="agent-ticket-permission-modules">

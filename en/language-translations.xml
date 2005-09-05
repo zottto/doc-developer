@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -51,53 +51,53 @@
                 Format:
             </para>
             <programlisting format="linespecific">
-                # --
-                # Kernel/Language/de.pm - provides de language translation
-                # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
-                # --
-                # $Id: language-translations.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
-                # --
-                # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-                # the enclosed file COPYING for license information (GPL). If you
-                # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-                # --
-                package Kernel::Language::de;
+# --
+# Kernel/Language/de.pm - provides de language translation
+# Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+package Kernel::Language::de;
 
-                use strict;
+use strict;
 
-                use vars qw($VERSION);
-                $VERSION = '$Revision: 1.5 $';
-                $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw($VERSION);
+$VERSION = '$Revision: 1.6 $';
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
-                # --
-                sub Data {
-                    my $Self = shift;
-                    my %Param = @_;
+# --
+sub Data {
+    my $Self = shift;
+    my %Param = @_;
 
-                    # $$START$$
+    # $$START$$
 
-                    # possible charsets
-                    $Self->{Charset} = ['iso-8859-1', 'iso-8859-15', ];
-                    # date formats (%A=WeekDay;%B=LongMonth;%T=Time;%D=Day;%M=Month;%Y=Jear;)
-                    $Self->{DateFormat} = '%D.%M.%Y %T';
-                    $Self->{DateFormatLong} = '%A %D %B %T %Y';
-                    $Self->{DateFormatShort} = '%D.%M.%Y';
-                    $Self->{DateInputFormat} = '%D.%M.%Y';
-                    $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
+    # possible charsets
+    $Self->{Charset} = ['iso-8859-1', 'iso-8859-15', ];
+    # date formats (%A=WeekDay;%B=LongMonth;%T=Time;%D=Day;%M=Month;%Y=Jear;)
+    $Self->{DateFormat} = '%D.%M.%Y %T';
+    $Self->{DateFormatLong} = '%A %D %B %T %Y';
+    $Self->{DateFormatShort} = '%D.%M.%Y';
+    $Self->{DateInputFormat} = '%D.%M.%Y';
+    $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
 
-                    $Self->{Translation} = {
-                    # Template: AAABase
-                    'Yes' => 'Ja',
-                    'No' => 'Nein',
-                    'yes' => 'ja',
-                    'no' => 'kein',
-                    'Off' => 'Aus',
-                    'off' => 'aus',Kernel/Language/$Language_Custome.pm
-                    };
-                    # $$STOP$$
-                }
-                # --
-                1;
+    $Self->{Translation} = {
+    # Template: AAABase
+    'Yes' => 'Ja',
+    'No' => 'Nein',
+    'yes' => 'ja',
+    'no' => 'kein',
+    'Off' => 'Aus',
+    'off' => 'aus',Kernel/Language/$Language_Custome.pm
+    };
+    # $$STOP$$
+}
+# --
+1;
             </programlisting>
         </sect2>
         <sect2 id="frontend-translation-file">
@@ -113,36 +113,36 @@
                 Format:
             </para>
             <programlisting format="linespecific">
-                # --
-                # Kernel/Language/de_AgentCalendar.pm - provides de language translation
-                # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
-                # --
-                # $Id: language-translations.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
-                # --
-                # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-                # the enclosed file COPYING for license information (GPL). If you
-                # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-                # --
+# --
+# Kernel/Language/de_AgentCalendar.pm - provides de language translation
+# Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
 
-                package Kernel::Language::de_AgentCalendar;
+package Kernel::Language::de_AgentCalendar;
 
-                use strict;
+use strict;
 
-                sub Data {
-                    my $Self = shift;
+sub Data {
+    my $Self = shift;
 
-                    $Self->{Translation}->{'CW'} = 'KW';
-                    $Self->{Translation}->{'Today'} = 'heute';
-                    $Self->{Translation}->{'Tomorrow'} = 'Morgen';
-                    $Self->{Translation}->{'1 St. May'} = 'Erster Mai';
-                    $Self->{Translation}->{'Christmas'} = 'Weihnachten';
-                    $Self->{Translation}->{'Silvester'} = 'Silvester';
-                    $Self->{Translation}->{'New Year\'s Eve!'} = 'Neu Jahr!';
-                    $Self->{Translation}->{'January'} = 'Januar';
-                    $Self->{Translation}->{'February'} = 'Februar';
+    $Self->{Translation}->{'CW'} = 'KW';
+    $Self->{Translation}->{'Today'} = 'heute';
+    $Self->{Translation}->{'Tomorrow'} = 'Morgen';
+    $Self->{Translation}->{'1 St. May'} = 'Erster Mai';
+    $Self->{Translation}->{'Christmas'} = 'Weihnachten';
+    $Self->{Translation}->{'Silvester'} = 'Silvester';
+    $Self->{Translation}->{'New Year\'s Eve!'} = 'Neu Jahr!';
+    $Self->{Translation}->{'January'} = 'Januar';
+    $Self->{Translation}->{'February'} = 'Februar';
 
-                }
-                1;
+}
+1;
             </programlisting>
         </sect2>
         <sect2 id="custom-translation-file">
@@ -156,39 +156,39 @@
                 Format:
             </para>
             <programlisting format="linespecific">
-                # --
-                # Kernel/Language/xx_Custom.pm - provides xx custom language translation
-                # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
-                # --
-                # $Id: language-translations.xml,v 1.5 2005-08-17 15:28:27 rk Exp $
-                # --
-                # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-                # the enclosed file COPYING for license information (GPL). If you
-                # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
-                # --
-                package Kernel::Language::xx_Custom;
+# --
+# Kernel/Language/xx_Custom.pm - provides xx custom language translation
+# Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+package Kernel::Language::xx_Custom;
 
-                use strict;
+use strict;
 
-                use vars qw($VERSION);
-                $VERSION = '$Revision: 1.5 $';
-                $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw($VERSION);
+$VERSION = '$Revision: 1.6 $';
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
-                # --
-                sub Data {
-                    my $Self = shift;
-                    my %Param = @_;
+# --
+sub Data {
+    my $Self = shift;
+    my %Param = @_;
 
-                    # $$START$$
+    # $$START$$
 
-                    # own translations
-                    $Self->{Translation}->{'Lock'} = 'Lala';
-                    $Self->{Translation}->{'Unlock'} = 'Lulu';
+    # own translations
+    $Self->{Translation}->{'Lock'} = 'Lala';
+    $Self->{Translation}->{'Unlock'} = 'Lulu';
 
-                    # $$STOP$$
-                }
-                # --
-                1;
+    # $$STOP$$
+}
+# --
+1;
             </programlisting>
         </sect2>
     </sect1>
@@ -218,7 +218,7 @@
                     <filename>Kernel/Config.pm</filename>.
                 </para>
                 <programlisting format="linespecific">
-                    $Self->{DefaultUsedLanguages}->{fr} = 'French';
+$Self->{DefaultUsedLanguages}->{fr} = 'French';
                 </programlisting>
             </listitem>
             <listitem>
