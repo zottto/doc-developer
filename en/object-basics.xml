@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.7 2005-09-14 09:01:12 tr Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -177,6 +177,12 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                         <entry>d</entry>
                         <entry>delete.png</entry>
                     </row>
+                    <row>
+                        <entry>Import</entry>
+                        <entry>500</entry>
+                        <entry>-</entry>
+                        <entry>import.png</entry>
+                    </row>
                  </tbody>
             </tgroup>
         </informaltable>
@@ -242,62 +248,62 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                         <entry>ticket.png</entry>
                     </row>
                     <row>
-                        <entry>2000</entry>
                         <entry>Incident (SIRIOS-Project)</entry>
+                        <entry>2000</entry>
                         <entry>i</entry>
                         <entry>incident.png</entry>
                     </row>
                     <row>
-                        <entry>2100</entry>
                         <entry>Advisory (SIRIOS-Project)</entry>
+                        <entry>2100</entry>
                         <entry>d</entry>
                         <entry>advisory.png</entry>
                     </row>
                     <row>
+                        <entry>ShortAdvisory (SIRIOS-BSI-specific)</entry>
                         <entry>2150</entry>
-                        <entry>Advisory (Short)</entry>
                         <entry>z</entry>
                         <entry>advisory_short.png</entry>
                     </row>
                     <row>
-                        <entry>2300</entry>
                         <entry>VirusWarning (SIRIOS-BSI-specific)</entry>
+                        <entry>2300</entry>
                         <entry>x</entry>
                         <entry>viruswarning.png</entry>
                     </row>
                     <row>
-                        <entry>2400</entry>
                         <entry>FreeTextMessage (SIRIOS-BSI-specific)</entry>
+                        <entry>2400</entry>
                         <entry>y</entry>
                         <entry>freetextmessage.png</entry>
                     </row>
                     <row>
-                        <entry>2500</entry>
                         <entry>Vulnerability (SIRIOS-Project)</entry>
+                        <entry>2500</entry>
                         <entry>v</entry>
                         <entry>vulnerability.png</entry>
                     </row>
                     <row>
-                        <entry>2600</entry>
                         <entry>Artefact (SIRIOS-Project)</entry>
+                        <entry>2600</entry>
                         <entry>r</entry>
                         <entry>artefactdb.png</entry>
                     </row>
                     <row>
-                        <entry>2700</entry>
                         <entry>WebWatcher (SIRIOS-Project)</entry>
+                        <entry>2700</entry>
                         <entry>z</entry>
                         <entry>webwatcher.png</entry>
                     </row>
                     <row>
+                        <entry>IDMEFConsole (SIRIOS-Project)</entry>
                         <entry>2800</entry>
-                        <entry>IDM-Management (SIRIOS-Project)</entry>
                         <entry>-</entry>
-                        <entry>idmef.png</entry>
+                        <entry>idmef_console.png</entry>
                     </row>
                     <row>
-                        <entry>7050</entry>
                         <entry>ContentManager</entry>
+                        <entry>7050</entry>
                         <entry>-</entry>
                         <entry>folder_green.png</entry>
                     </row>
@@ -320,19 +326,19 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                         <entry>webmail.png</entry>
                     </row>
                     <row>
-                        <entry>8300</entry>
                         <entry>FAQ</entry>
+                        <entry>8300</entry>
                         <entry>q</entry>
                         <entry>help.png</entry>
                     </row>
                     <row>
-                        <entry>8400</entry>
                         <entry>Alarm</entry>
+                        <entry>8400</entry>
                         <entry>-</entry>
                         <entry>alarm.png</entry>
                     </row><row>
-                        <entry>8500</entry>
                         <entry>Statistic</entry>
+                        <entry>8500</entry>
                         <entry>-</entry>
                         <entry>statistic.png</entry>
                     </row>
