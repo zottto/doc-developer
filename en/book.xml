@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.5 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: book.xml,v 1.6 2005-09-14 21:26:41 martin Exp $ -->
 
 <book lang="en">
     <bookinfo>
@@ -31,7 +31,9 @@
                 MS-DOS, Windows, Windows 95, Windows 98, Windows NT, Windows 2000, Windows XP
                 and Windows 2003 are registered trademarks of Microsoft Corporation.
                 Other trademarks and registered trademarks are: SUSE and YaST of SUSE GmbH,
-                Redhat and Fedora of Red Hat, Inc.
+                Red Hat and Fedora are registered trademarks of Red Hat, Inc.
+                Mandrake is a registered trademark of MandrakeSoft, SA.
+                Debian is a registered trademark of Software in the Public Interest, Inc.
             </para>
             <para>
                 All trade names are used without the guarantee for their free use and are
