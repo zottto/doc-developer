@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: package-building.xml,v 1.7 2005-09-19 11:38:53 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -29,7 +29,7 @@
                     <para>Version</para>
                     <para>The package version.</para>
                     <programlisting format="linespecific">
-&lt;Version&gt;1.2&lt;/Version&gt;
+&lt;Version&gt;1.2.3&lt;/Version&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
@@ -177,7 +177,7 @@
 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;otrs_package version="1.0"&gt;
     &lt;Name&gt;Calendar&lt;/Name&gt;
-    &lt;Version&gt;1.2&lt;/Version&gt;
+    &lt;Version&gt;0.0.1&lt;/Version&gt;
     &lt;Framework&gt;2.0.x&lt;/Framework&gt;
     &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
     &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
