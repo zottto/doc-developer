@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $ -->
 
 <chapter>
     <title>Module format</title>
@@ -66,7 +66,7 @@ sub Auth {
         </para>
         <para>
             <screenshot>
-                <graphic fileref="pictures/notify-screen1.png"></graphic>
+                <graphic srccredit="" scale="60" fileref="pictures/notify-screen1.png"></graphic>
             </screenshot>
         </para>
         <para>
@@ -74,7 +74,7 @@ sub Auth {
         </para>
         <para>
             <screenshot>
-                <graphic fileref="pictures/notify-screen2.png"></graphic>
+                <graphic srccredit="" scale="60" fileref="pictures/notify-screen2.png"></graphic>
             </screenshot>
         </para>
         <para>
@@ -85,7 +85,7 @@ sub Auth {
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -136,7 +136,7 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -208,7 +208,7 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -406,7 +406,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -473,7 +473,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.7 $ $Date: 2005-09-05 11:11:43 $
+$Revision: 1.8 $ $Date: 2005-09-28 09:33:56 $
 
 =cut
         </programlisting>
@@ -500,7 +500,7 @@ $Revision: 1.7 $ $Date: 2005-09-05 11:11:43 $
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.7 2005-09-05 11:11:43 rk Exp $
+# $Id: module-format.xml,v 1.8 2005-09-28 09:33:56 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -593,7 +593,7 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
         <sect2 id="ticket-number-module">
             <title>Ticket Number Module</title>
             <para>
-                If you want to create a won ticket number format, just create a own ticket
+                If you want to create a own ticket number format, just create a own ticket
                 number module. The modules are located under "Kernel/System/Ticket/Number/*.pm".
                 For default modules see the admin manual. You just need 2 functions,
                 CreateTicketNr() and GetTNByString():
@@ -616,7 +616,7 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
 package Kernel::System::Ticket::Number::Simple;
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.7 $ ;
+$VERSION =  $Revision: 1.8 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -633,6 +633,132 @@ sub GetTNByString {
     [...]
     return $Tn;
 }
+1;
+            </programlisting>
+        </sect2>
+        <sect2 id="ticket-postmaster-module">
+            <title>Ticket PostMaster Module</title>
+            <para>
+PostMaster modules are use if an email arrives the PostMaster process.
+There are two kinds of PostMaster modules. PostMasterPre (used after parsing an email) and PostMasterPost (used after an email is processed and in the database) modules.
+            </para>
+            <para>
+If you want to create a own postmaster filter, just create a own module. The modules are located under "Kernel/System/PostMaster/Filter/*.pm".
+For default modules see the admin manual. You just need 2 functions,
+new() and Run():
+            </para>
+            <para>
+The following is an example module to match emails and set X-OTRS-Headers (see doc/X-OTRS-Headers.txt for more infos).
+            </para>
+            <para>
+                Kernel/Config.pm:
+            </para>
+            <programlisting format="linespecific">
+    # Job Name: 1-Match
+    # (block/ignore all spam email with From: noreply@)
+    $Self->{'PostMaster::PreFilterModule'}->{'1-Example'} = {
+        Module => 'Kernel::System::PostMaster::Filter::Example',
+        Match => {
+            From => 'noreply@',
+        },
+        Set => {
+            'X-OTRS-Ignore' => 'yes',
+        },
+    };
+            </programlisting>
+            <para>
+                Format:
+            </para>
+            <programlisting format="linespecific">
+# --
+# Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+package Kernel::System::PostMaster::Filter::Example;
+use strict; use vars qw($VERSION);
+
+$VERSION =  $Revision: 1.8 $ ;
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless ($Self, $Type);
+
+    $Self->{Debug} = $Param{Debug} || 0;
+
+    # get needed opbjects
+    foreach (qw(ConfigObject LogObject DBObject)) {
+        $Self->{$_} = $Param{$_} || die "Got no $_!";
+    }
+
+    return $Self;
+}
+
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    # get config options
+    my %Config = ();
+    my %Match = ();
+    my %Set = ();
+    if ($Param{JobConfig} &amp;&amp; ref($Param{JobConfig}) eq 'HASH') {
+        %Config = %{$Param{JobConfig}};
+        if ($Config{Match}) {
+            %Match = %{$Config{Match}};
+        }
+        if ($Config{Set}) {
+            %Set = %{$Config{Set}};
+        }
+    }
+    # match 'Match => ???' stuff
+    my $Matched = '';
+    my $MatchedNot = 0;
+    foreach (sort keys %Match) {
+        if ($Param{GetParam}->{$_} &amp;&amp; $Param{GetParam}->{$_} =~ /$Match{$_}/i) {
+            $Matched = $1 || '1';
+            if ($Self->{Debug} > 1) {
+                $Self->{LogObject}->Log(
+                    Priority => 'debug',
+                    Message => "'$Param{GetParam}->{$_}' =~ /$Match{$_}/i matched!",
+                );
+            }
+        }
+        else {
+            $MatchedNot = 1;
+            if ($Self->{Debug} > 1) {
+                $Self->{LogObject}->Log(
+                    Priority => 'debug',
+                    Message => "'$Param{GetParam}->{$_}' =~ /$Match{$_}/i matched NOT!",
+                );
+            }
+       }
+    }
+    # should I ignore the incoming mail?
+    if ($Matched &amp;&amp; !$MatchedNot) {
+       foreach (keys %Set) {
+           if ($Set{$_} =~ /\[\*\*\*\]/i) {
+               $Set{$_} = $Matched;
+           }
+           $Param{GetParam}->{$_} = $Set{$_};
+           $Self->{LogObject}->Log(
+               Priority => 'notice',
+               Message => "Set param '$_' to '$Set{$_}' (Message-ID: $Param{GetParam}->{'Message-ID'}) ",
+           );
+        }
+    }
+
+    return 1;
+}
+
 1;
             </programlisting>
         </sect2>
