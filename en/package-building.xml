@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.7 2005-09-19 11:38:53 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.8 2005-10-01 14:20:26 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -91,11 +91,11 @@
                     </programlisting>
                 </listitem>
                 <listitem>
-                    <para>Required</para>
-                    <para>Required modules needs to be installed before.</para>
+                    <para>PackageRequired</para>
+                    <para>Required packages needs to be installed before.</para>
                     <programlisting format="linespecific">
-&lt;Required&gt;SomeOtherPackage&lt;/Required&gt;
-&lt;Required&gt;SomeotherPackage2&lt;/Required&gt;
+&lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
+&lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
                     </programlisting>
                 </listitem>
                 <listitem>
@@ -220,7 +220,7 @@
         <title>Package Build</title>
         <screen>
             shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
-            writing .., /tmp/example-1.0.opm
+            writing .., /tmp/example-0.0.1.opm
             shell&gt;
         </screen>
     </sect1>
