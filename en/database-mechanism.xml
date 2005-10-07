@@ -1,26 +1,25 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.8 2005-10-07 16:04:37 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.9 2005-10-07 16:09:50 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
     <para>
-        OTRS comes with an database layer to support different databases.
+OTRS comes with an database layer to support different databases.
     </para>
-    <sect1 id="how-it-works">
+    <sect1 id="database-how-it-works">
         <title>How it works</title>
         <para>
-            The database layer (Kernel::System::DB) has two input options: SQL and XML.
+The database layer (Kernel::System::DB) has two input options: SQL and XML.
         </para>
-        <sect2 id="sql">
+        <sect2 id="database-sql">
             <title>SQL</title>
             <para>
-                The SQL interace should be used for normal database actions (SELECT, INSERT,
-                UPDATE, ...). It can be used like a normal Perl DBI interface.
+The SQL interace should be used for normal database actions (SELECT, INSERT,
+UPDATE, ...). It can be used like a normal Perl DBI interface.
             </para>
-            <para>
-                INSERT/UPDATE/DELETE:
-            </para>
+            <sect3 id="database-xml_insert">
+            <title>INSERT/UPDATE/DELETE</title>
             <programlisting format="linespecific">
 $Self->{DBObject}->Do(
     SQL=> "INSERT INTO table (name, id) VALUES ('someName', 123)",
@@ -34,9 +33,9 @@ $Self->{DBObject}->Do(
     SQL=> "DELETE FROM table WHERE id = 123",
 );
             </programlisting>
-            <para>
-                SELECT:
-            </para>
+            </sect3>
+            <sect3 id="database-xml_insert">
+            <title>SELECT</title>
             <programlisting format="linespecific">
 my $SQL = "SELECT id FROM table " .
     " WHERE " .
@@ -49,25 +48,26 @@ return $Id;
             </programlisting>
             <note>
                 <para>
-                    Take care that you use Limit as param and not in the SQL string because
-                    not each database supports LIMIT in SQL string.
+Take care that you use Limit as param and not in the SQL string because
+not each database supports LIMIT in SQL string.
                 </para>
             </note>
             <para>
-                QUOTE:
+QUOTE:
             </para>
             <programlisting format="linespecific">
 my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
             </programlisting>
+            </sect3>
         </sect2>
-        <sect2 id="xml">
+        <sect2 id="database-xml">
             <title>XML</title>
             <para>
 The XML interace should be used for INSERT, CREATE and DROP tables. This way you can
 write database independent applications because this syntax is different from
 database to database.
             </para>
-            <sect3 id="xml_insert">
+            <sect3 id="database-xml_insert">
             <title>INSERT</title>
             <programlisting format="linespecific">
 &lt;Insert Table="some_table"&gt;
@@ -76,7 +76,7 @@ database to database.
 &lt;/Insert>
             </programlisting>
             </sect3>
-            <sect3 id="xml_create">
+            <sect3 id="database-xml_create">
             <title>CREATE TABLE</title>
             <programlisting format="linespecific">
 &lt;TableCreate Name="calendar_event"&gt;
@@ -88,18 +88,18 @@ database to database.
     &lt;Column Name="owner_id" Required="true" Type="INTEGER"/&gt;
     &lt;Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/&gt;
     &lt;Index Name="title"&gt;
-    &lt;IndexColumn Name="title"/&gt;
+        &lt;IndexColumn Name="title"/&gt;
     &lt;/Index&gt;
     &lt;Unique&gt;
-    &lt;UniqueColumn Name="title"/&gt;
+        &lt;UniqueColumn Name="title"/&gt;
     &lt;/Unique&gt;
     &lt;ForeignKey ForeignTable="system_user"&gt;
-    &lt;Reference Local="owner_id" Foreign="id"/&gt;
+        &lt;Reference Local="owner_id" Foreign="id"/&gt;
     &lt;/ForeignKey&gt;
 &lt;/TableCreate&gt;
             </programlisting>
             </sect3>
-            <sect3 id="xml_drop">
+            <sect3 id="database-xml_drop">
             <title>DROP TABLE</title>
             <programlisting format="linespecific">
 &lt;DatabaseUninstall&gt;
@@ -130,7 +130,7 @@ foreach (@SQL) {
             The database driver are located under <filename>$OTRS_HOME/Kernel/System/DB/*.pm</filename>.
         </para>
     </sect1>
-    <sect1 id="supported-databases">
+    <sect1 id="database-supported">
         <title>Supported Databases</title>
         <itemizedlist mark="round" >
             <listitem>
