@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.7 2005-10-07 15:58:54 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -63,22 +63,21 @@ my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
         <sect2 id="xml">
             <title>XML</title>
             <para>
-                The XML interace should be used for CREATE and DROP tables. This way you can
-                write database independent applications because this syntax is different from
-                database to database.
+The XML interace should be used for INSERT, CREATE and DROP tables. This way you can
+write database independent applications because this syntax is different from
+database to database.
             </para>
-            <para>
-                INSERT:
-            </para>
+            <sect3 id="xml_insert">
+            <title>INSERT</title>
             <programlisting format="linespecific">
 &lt;Insert Table="some_table"&gt;
     &lt;Data Key="id" Value="1"/&gt;
     &lt;Data Key="description" Value="exploit" Type="Quote"/&gt;
 &lt;/Insert>
             </programlisting>
-            <para>
-                CREATE TABLE:
-            </para>
+            </sect3>
+            <sect3 id="xml_insert">
+            <title>CREATE TABLE</title>
             <programlisting format="linespecific">
 &lt;TableCreate Name="calendar_event"&gt;
     &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
@@ -99,9 +98,9 @@ my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
     &lt;/ForeignKey&gt;
 &lt;/TableCreate&gt;
             </programlisting>
-            <para>
-                DROP TABLE:
-            </para>
+            </sect3>
+            <sect3 id="xml_insert">
+            <title>DROP TABLE</title>
             <programlisting format="linespecific">
 &lt;DatabaseUninstall&gt;
     &lt;TableDrop Name="calendar_event"/&gt;
@@ -122,6 +121,7 @@ foreach (@SQL) {
     $Self->{DBObject}->Do(SQL => $_);
 }
             </programlisting>
+            </sect3>
         </sect2>
     </sect1>
     <sect1 id="database-driver">
@@ -140,7 +140,10 @@ foreach (@SQL) {
                 <para>PostgreSQL</para>
             </listitem>
             <listitem>
-                <para>Oracle (experimental)</para>
+                <para>Oracle</para>
+            </listitem>
+            <listitem>
+                <para>DB2 (experimental)</para>
             </listitem>
             <listitem>
                 <para>MaxDB/SAPDB (experimental)</para>
