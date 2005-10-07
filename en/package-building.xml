@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.9 2005-10-07 16:42:54 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.10 2005-10-07 16:45:42 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -180,7 +180,7 @@
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
-To execute perl code it the package gets installed.
+To execute perl code if the package gets installed.
             </para>
             <programlisting format="linespecific">
 &lt;CodeInstall&gt;
@@ -201,7 +201,7 @@ To execute perl code it the package gets installed.
         <sect2 id="package-code-uninstall">
             <title>CodeUninstall</title>
             <para>
-To execute perl code it the package gets uninstalled.
+To execute perl code if the package gets uninstalled.
             </para>
             <programlisting format="linespecific">
 &lt;CodeUninstall&gt;
@@ -215,7 +215,7 @@ To execute perl code it the package gets uninstalled.
         <sect2 id="package-code-reinstall">
             <title>CodeReinstall</title>
             <para>
-To execute perl code it the package gets reinstalled.
+To execute perl code if the package gets reinstalled.
             </para>
             <programlisting format="linespecific">
 &lt;CodeReinstall&gt;
@@ -229,7 +229,7 @@ To execute perl code it the package gets reinstalled.
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
-To execute perl code it the package gets upgraded.
+To execute perl code if the package gets upgraded.
             </para>
             <programlisting format="linespecific">
 &lt;CodeUpgrade&gt;
