@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.8 2005-10-01 14:20:26 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.9 2005-10-07 16:42:54 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -15,9 +15,9 @@
             The OPM package is XML based. So you can create/edit the .sopm via a text or xml
             editor. It contains meta data, a file list and database options.
         </para>
-        <sect2 id="meta-data">
+        <sect2 id="package-meta-data">
             <title>Meta Data</title>
-            <itemizedlist mark="round" >
+            <itemizedlist mark="round">
                 <listitem>
                     <para>Name</para>
                     <para>The package name.</para>
@@ -108,7 +108,7 @@
                 </listitem>
             </itemizedlist>
         </sect2>
-        <sect2 id="filelist">
+        <sect2 id="package-filelist">
             <title>Filelist</title>
             <para>
                 This is a file of included file of the package.
@@ -122,8 +122,8 @@
 &lt;/Filelist&gt;
             </programlisting>
         </sect2>
-        <sect2 id="database2">
-            <title>Database</title>
+        <sect2 id="package-database-install">
+            <title>DatabaseInstall</title>
             <para>
                 Install (if a package get installed)
             </para>
@@ -140,6 +140,9 @@
     &lt;/TableCreate&gt;
 &lt;/DatabaseInstall&gt;
             </programlisting>
+        </sect2>
+        <sect2 id="package-database-upgrade">
+            <title>DatabaseUpgrade</title>
             <para>
                 Upgrade (if a package get upgraded, take care of the Version Tag in the
                 database actions, this means if the installed package version is below
@@ -153,12 +156,18 @@
     &lt;/TableCreate&gt;
 &lt;/DatabaseUpgrade&gt;
             </programlisting>
+        </sect2>
+        <sect2 id="package-database-reinstall">
+            <title>DatabaseReinstall</title>
             <para>
                 Reinstall (if a package is installed and get reinstalled)
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
             </programlisting>
+        </sect2>
+        <sect2 id="package-database-uninstall">
+            <title>DatabaseUninstall</title>
             <para>
                 Uninstall (if a package get uninstalled)
             </para>
@@ -166,6 +175,69 @@
 &lt;DatabaseUninstall&gt;
     &lt;TableDrop Name="calendar_event" /&gt;
 &lt;/DatabaseUninstall&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="package-code-install">
+            <title>CodeInstall</title>
+            <para>
+To execute perl code it the package gets installed.
+            </para>
+            <programlisting format="linespecific">
+&lt;CodeInstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+    # log example
+    $Self-&gt;{LogObject}-&gt;Log(
+        Priority =&gt; 'notice',
+        Message =&gt; "Some Message!",
+    )
+    # database example
+    $Self-&gt;{DBObject}-&gt;Do(SQL =&gt; "SOME SQL");
+&lt;/CodeInstall&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="package-code-uninstall">
+            <title>CodeUninstall</title>
+            <para>
+To execute perl code it the package gets uninstalled.
+            </para>
+            <programlisting format="linespecific">
+&lt;CodeUninstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeUninstall&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="package-code-reinstall">
+            <title>CodeReinstall</title>
+            <para>
+To execute perl code it the package gets reinstalled.
+            </para>
+            <programlisting format="linespecific">
+&lt;CodeReinstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeReinstall&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="package-code-upgrade">
+            <title>CodeUpgrade</title>
+            <para>
+To execute perl code it the package gets upgraded.
+            </para>
+            <programlisting format="linespecific">
+&lt;CodeUpgrade&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeUpgrade&gt;
             </programlisting>
         </sect2>
         <sect2 id="example-sopm">
@@ -220,7 +292,7 @@
         <title>Package Build</title>
         <screen>
             shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
-            writing .., /tmp/example-0.0.1.opm
+            writing ... /tmp/example-0.0.1.opm
             shell&gt;
         </screen>
     </sect1>
