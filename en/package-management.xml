@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.6 2005-10-07 16:49:03 martin Exp $ -->
+<!-- $Id: package-management.xml,v 1.7 2005-10-07 16:50:23 martin Exp $ -->
 
 <chapter>
     <title>Package Management</title>
@@ -65,7 +65,7 @@ shell>
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-shell> bin/opm.pl -a install -p /path/to/package,opm
+shell> bin/opm.pl -a install -p /path/to/package.opm
                     </screen>
                 </listitem>
             </itemizedlist>
@@ -86,7 +86,7 @@ shell> bin/opm.pl -a install -p /path/to/package,opm
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-shell> bin/opm.pl -a uninstall -p /path/to/package,opm
+shell> bin/opm.pl -a uninstall -p /path/to/package.opm
                     </screen>
                 </listitem>
             </itemizedlist>
@@ -106,7 +106,7 @@ shell> bin/opm.pl -a uninstall -p /path/to/package,opm
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-shell> bin/opm.pl -a upgrade -p /path/to/package,opm
+shell> bin/opm.pl -a upgrade -p /path/to/package.opm
                     </screen>
                 </listitem>
             </itemizedlist>
