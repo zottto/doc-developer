@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.10 2005-10-07 16:12:17 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.11 2005-10-07 16:16:21 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -78,6 +78,9 @@ database to database.
             </sect3>
             <sect3 id="database-xml-create">
             <title>CREATE TABLE</title>
+            <para>
+Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DATE (Format: yyyy-mm-dd hh:mm:ss) and LONGBLOB.
+            </para>
             <programlisting format="linespecific">
 &lt;TableCreate Name="calendar_event"&gt;
     &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
