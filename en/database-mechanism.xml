@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.12 2005-10-07 16:21:50 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.13 2005-10-07 16:23:13 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -53,7 +53,7 @@ not each database supports LIMIT in SQL string.
                 </para>
             </note>
             </sect3>
-            <sect3 id="database-xml-code">
+            <sect3 id="database-sql-quote">
             <title>QUOTE</title>
             <programlisting format="linespecific">
 my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
