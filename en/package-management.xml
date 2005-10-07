@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.5 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: package-management.xml,v 1.6 2005-10-07 16:49:03 martin Exp $ -->
 
 <chapter>
     <title>Package Management</title>
@@ -37,9 +37,9 @@ $Self->{'Package::RepositoryList'} = {
                 OTRS just reads this index file an knows what packages are available.
             </para>
             <screen>
-                shell> bin/opm.pl - index -d /path/to/repository/ > \
-                  /path/to/repository/otrs.xml
-                shell>
+shell> bin/opm.pl - index -d /path/to/repository/ > \
+ /path/to/repository/otrs.xml
+shell>
             </screen>
         </sect2>
     </sect1>
@@ -65,7 +65,7 @@ $Self->{'Package::RepositoryList'} = {
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-                        shell> bin/opm.pl -a install -p /path/to/package,opm
+shell> bin/opm.pl -a install -p /path/to/package,opm
                     </screen>
                 </listitem>
             </itemizedlist>
@@ -86,7 +86,7 @@ $Self->{'Package::RepositoryList'} = {
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-                        shell> bin/opm.pl -a uninstall -p /path/to/package,opm
+shell> bin/opm.pl -a uninstall -p /path/to/package,opm
                     </screen>
                 </listitem>
             </itemizedlist>
@@ -100,14 +100,13 @@ $Self->{'Package::RepositoryList'} = {
                 <listitem>
                     <para>Web:</para>
                     <para>
-                        <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">
-                        http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
+<ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-                        shell> bin/opm.pl -a upgrade -p /path/to/package,opm
+shell> bin/opm.pl -a upgrade -p /path/to/package,opm
                     </screen>
                 </listitem>
             </itemizedlist>
@@ -128,7 +127,7 @@ $Self->{'Package::RepositoryList'} = {
                 <listitem>
                     <para>CMD:</para>
                     <screen>
-                        shell> bin/opm.pl -a list
+shell> bin/opm.pl -a list
                     </screen>
                 </listitem>
             </itemizedlist>
