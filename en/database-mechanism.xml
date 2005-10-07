@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.9 2005-10-07 16:09:50 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.10 2005-10-07 16:12:17 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -18,11 +18,11 @@ The database layer (Kernel::System::DB) has two input options: SQL and XML.
 The SQL interace should be used for normal database actions (SELECT, INSERT,
 UPDATE, ...). It can be used like a normal Perl DBI interface.
             </para>
-            <sect3 id="database-xml_insert">
+            <sect3 id="database-sql-do">
             <title>INSERT/UPDATE/DELETE</title>
             <programlisting format="linespecific">
 $Self->{DBObject}->Do(
-    SQL=> "INSERT INTO table (name, id) VALUES ('someName', 123)",
+    SQL=> "INSERT INTO table (name, id) VALUES ('SomeName', 123)",
 );
 
 $Self->{DBObject}->Do(
@@ -34,13 +34,13 @@ $Self->{DBObject}->Do(
 );
             </programlisting>
             </sect3>
-            <sect3 id="database-xml_insert">
+            <sect3 id="database-sql-select">
             <title>SELECT</title>
             <programlisting format="linespecific">
-my $SQL = "SELECT id FROM table " .
-    " WHERE " .
-    " tn = '123' ";
+my $SQL = "SELECT id FROM table WHERE tn = '123'";
+
 $Self->{DBObject}->Prepare(SQL => $SQL, Limit => 15);
+
 while (my @Row = $Self->{DBObject}->FetchrowArray()) {
     $Id = $Row[0];
 }
@@ -67,7 +67,7 @@ The XML interace should be used for INSERT, CREATE and DROP tables. This way you
 write database independent applications because this syntax is different from
 database to database.
             </para>
-            <sect3 id="database-xml_insert">
+            <sect3 id="database-xml-insert">
             <title>INSERT</title>
             <programlisting format="linespecific">
 &lt;Insert Table="some_table"&gt;
@@ -76,7 +76,7 @@ database to database.
 &lt;/Insert>
             </programlisting>
             </sect3>
-            <sect3 id="database-xml_create">
+            <sect3 id="database-xml-create">
             <title>CREATE TABLE</title>
             <programlisting format="linespecific">
 &lt;TableCreate Name="calendar_event"&gt;
@@ -99,7 +99,7 @@ database to database.
 &lt;/TableCreate&gt;
             </programlisting>
             </sect3>
-            <sect3 id="database-xml_drop">
+            <sect3 id="database-xml-drop">
             <title>DROP TABLE</title>
             <programlisting format="linespecific">
 &lt;DatabaseUninstall&gt;
