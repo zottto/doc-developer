@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.7 2005-10-15 11:29:18 ck Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>
@@ -10,7 +10,7 @@
     <sect1 id="use-and-syntax">
         <title>Use and Syntax</title>
         <para>
-            In all module layers is already an existing Log Object which can be use by
+            In all module layers is already an existing Log Object which can be used by
         </para>
         <programlisting format="linespecific">
 $Self->{LogObject}->Log(
@@ -22,7 +22,7 @@ $Self->{LogObject}->Log(
     <sect1 id="example">
         <title>Example</title>
         <para>
-            The following is a example to use the log mechanism without a module layer.
+            The following is an example to use the log mechanism without a module layer.
         </para>
         <programlisting format="linespecific">
 use Kernel::Config;

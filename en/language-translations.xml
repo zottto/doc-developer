@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -11,7 +11,7 @@
     <sect1 id="lt-how-it-works">
         <title>How it works</title>
         <para>
-            There are three different transliation file types which are used in the following
+            There are three different translation file types which are used in the following
             order. If a word/sentence is redefined in a translation file, the latest will
             be used.
         </para>
@@ -45,7 +45,7 @@
             <title>Default Framework Translation File</title>
             <para>
                 The Default Framework Translation File includes the basic translations. The
-                following is a example of a Default Framework Translation File.
+                following is an example of a Default Framework Translation File.
             </para>
             <para>
                 Format:
@@ -55,7 +55,7 @@
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -66,7 +66,7 @@ package Kernel::Language::de;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.6 $';
+$VERSION = '$Revision: 1.7 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -117,7 +117,7 @@ sub Data {
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -160,7 +160,7 @@ sub Data {
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.6 2005-09-05 11:11:43 rk Exp $
+# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -171,7 +171,7 @@ package Kernel::Language::xx_Custom;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.6 $';
+$VERSION = '$Revision: 1.7 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --

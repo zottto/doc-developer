@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.7 2005-09-14 09:01:12 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.8 2005-10-15 11:28:17 ck Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
     <para>
-        This chapter descrips what basics a new object (e. g. a ticket, faq, calendar, ...)
-        should have and how the environment should look.
+        This chapter describes what basics a new object (e. g. a ticket, faq, calendar, ...)
+        should have and how the environment should look like.
     </para>
     <sect1 id="object-options">
         <title>Object Options</title>
@@ -109,7 +109,7 @@ $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
     <sect1 id="config-file">
         <title>Config File</title>
         <para>
-            A object should have a own config file which should be located under
+            An object should have an own config file which should be located under
             $OTRS_HOME/Kernel/Config/Files/*.pm. For example:
         </para>
         <programlisting format="linespecific">
@@ -363,7 +363,7 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
     <sect1 id="screen-flow">
         <title>Screen flow</title>
         <para>
-            A object module should have this flow to use it.
+            An object module should have this flow to use it.
         </para>
          <mediaobject>
             <imageobject>

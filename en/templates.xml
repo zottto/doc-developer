@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: templates.xml,v 1.7 2005-10-15 11:28:47 ck Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -12,7 +12,7 @@
         <filename>$OTRS_HOME/Kernel/Output/HTML/Standard/*.dtl</filename>
     </para>
     <para>
-        The following descripes the usable dtl tags and syntax.
+        The following describes the usable dtl tags and syntax.
     </para>
     <sect1 id="template-formatting">
         <title>Formatting</title>
@@ -69,7 +69,7 @@ There name of the author is $Data{"Name"}.
             </programlisting>
             <warning>
                 <para>
-                    It the value of the param Name includes html tags, the this tags are also shown.
+                    If the value of the param Name includes html tags, the this tags are also shown.
                 </para>
             </warning>
         </sect2>
@@ -79,11 +79,11 @@ There name of the author is $Data{"Name"}.
                 The same $Data{""} but the value if the param Name is html quoted (safe).
             </para>
             <programlisting format="linespecific">
-There name of the author is $QData{"Name"}.
+The name of the author is $QData{"Name"}.
             </programlisting>
             <para>
                 It's also possible to cut the value. For example you just want to show 20
-                characters of a variable (result will be "SomeNam[..]"J), use the following.
+                characters of a variable (result will be "SomeName[..]"J), use the following.
             </para>
             <programlisting format="linespecific">
 There first 20 characters of the authors name: $QData{"Name", "20"}.
@@ -92,7 +92,7 @@ There first 20 characters of the authors name: $QData{"Name", "20"}.
         <sect2 id="env">
             <title>$Env{""}</title>
             <para>
-                Env is a environment variable which is usable over more templates. $Data{""}
+                Env is an environment variable which is usable over more templates. $Data{""}
                 is just availabe for one template.
             </para>
             <programlisting format="linespecific">

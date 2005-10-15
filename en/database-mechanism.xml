@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.13 2005-10-07 16:23:13 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.14 2005-10-15 11:29:35 ck Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -15,7 +15,7 @@ The database layer (Kernel::System::DB) has two input options: SQL and XML.
         <sect2 id="database-sql">
             <title>SQL</title>
             <para>
-The SQL interace should be used for normal database actions (SELECT, INSERT,
+The SQL interface should be used for normal database actions (SELECT, INSERT,
 UPDATE, ...). It can be used like a normal Perl DBI interface.
             </para>
             <sect3 id="database-sql-do">
@@ -63,7 +63,7 @@ my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
         <sect2 id="database-xml">
             <title>XML</title>
             <para>
-The XML interace should be used for INSERT, CREATE and DROP tables. This way you can
+The XML interface should be used for INSERT, CREATE and DROP tables. This way you can
 write database independent applications because this syntax is different from
 database to database.
             </para>
