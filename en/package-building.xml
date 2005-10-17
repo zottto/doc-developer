@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.11 2005-10-15 11:27:12 ck Exp $ -->
+<!-- $Id: package-building.xml,v 1.12 2005-10-17 19:40:46 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -15,98 +15,93 @@
             The OPM package is XML based. So you can create/edit the .sopm via a text or xml
             editor. It contains meta data, a file list and database options.
         </para>
-        <sect2 id="package-meta-data">
-            <title>Meta Data</title>
-            <itemizedlist mark="round">
-                <listitem>
-                    <para>Name</para>
-                    <para>The package name.</para>
-                    <programlisting format="linespecific">
+        <sect2 id="package-name">
+            <title>Name</title>
+            <para>The package name.</para>
+            <programlisting format="linespecific">
 &lt;Name&gt;Calendar&lt;/Name&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>Version</para>
-                    <para>The package version.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-version">
+            <title>Verion</title>
+            <para>The package version.</para>
+            <programlisting format="linespecific">
 &lt;Version&gt;1.2.3&lt;/Version&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>Framework</para>
-                    <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9).</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-framework">
+            <title>Framework</title>
+            <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9).</para>
+            <programlisting format="linespecific">
 &lt;Framework&gt;2.0.x&lt;/Framework&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>Vendor</para>
-                    <para>The package vendor.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-vendor">
+            <title>Vendor</title>
+            <para>The package vendor.</para>
+            <programlisting format="linespecific">
 &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>URL</para>
-                    <para>The vendor URL.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-url">
+            <title>URL</title>
+            <para>The vendor URL.</para>
+            <programlisting format="linespecific">
 &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>License</para>
-                    <para>The license of the package.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-license">
+            <title>License</title>
+            <para>The license of the package.</para>
+            <programlisting format="linespecific">
 &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>ChangeLog</para>
-                    <para>The package change log.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-changelog">
+            <title>ChangeLog</title>
+            <para>The package change log.</para>
+            <programlisting format="linespecific">
 &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
 &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>Description</para>
-                    <para>The package description in different languages.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-description">
+            <title>Description</title>
+            <para>The package description in different languages.</para>
+            <programlisting format="linespecific">
 &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
 &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>BuildHost</para>
-                    <para>This will be filled up automatically by OPM.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-buildhost">
+            <title>BuildHost</title>
+            <para>This will be filled up automatically by OPM.</para>
+            <programlisting format="linespecific">
 &lt;BuildHost&gt;?&lt;/BuildHost&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>BuildDate</para>
-                    <para>This will be filled up automatically by OPM.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-builddate">
+            <title>BuildDate</title>
+            <para>This will be filled up automatically by OPM.</para>
+            <programlisting format="linespecific">
 &lt;BuildDate&gt;?&lt;/BuildDate&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>PackageRequired</para>
-                    <para>Required packages needs to be installed before.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-package-required">
+            <title>PackageRequired</title>
+            <para>Required packages needs to be installed before.</para>
+            <programlisting format="linespecific">
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
-                    </programlisting>
-                </listitem>
-                <listitem>
-                    <para>OS (^M)</para>
-                    <para>Required OS.</para>
-                    <programlisting format="linespecific">
+            </programlisting>
+        </sect2>
+        <sect2 id="package-os">
+            <title>OS (^M)</title>
+            <para>Required OS.</para>
+            <programlisting format="linespecific">
 &lt;OS&gt;Linux&lt;/OS&gt;
 &lt;OS&gt;MacOS&lt;/OS&gt;
-                    </programlisting>
-                </listitem>
-            </itemizedlist>
+            </programlisting>
         </sect2>
         <sect2 id="package-filelist">
             <title>Filelist</title>
