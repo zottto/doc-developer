@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.12 2005-10-17 19:40:46 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.13 2005-10-17 19:47:08 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -235,12 +235,13 @@ To execute perl code if the package gets upgraded.
 &lt;/CodeUpgrade&gt;
             </programlisting>
         </sect2>
-        <sect2 id="example-sopm">
-            <title>Example .sopm</title>
-            <para>
-                This is a whole example spec file.
-            </para>
-            <programlisting format="linespecific">
+    </sect1>
+    <sect1 id="package-example-sopm">
+        <title>Example .sopm</title>
+        <para>
+This is a whole example spec file.
+        </para>
+        <programlisting format="linespecific">
 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;otrs_package version="1.0"&gt;
     &lt;Name&gt;Calendar&lt;/Name&gt;
@@ -280,14 +281,16 @@ To execute perl code if the package gets upgraded.
         &lt;TableDrop Name="calendar_event"/&gt;
     &lt;/DatabaseUninstall&gt;
 &lt;/otrs_package&gt;
-            </programlisting>
-        </sect2>
+        </programlisting>
     </sect1>
     <sect1 id="package-build">
         <title>Package Build</title>
+        <para>
+To package an own .opm package from the spec opm.
+        </para>
         <screen>
             shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
-            writing ... /tmp/example-0.0.1.opm
+            writing /tmp/example-0.0.1.opm
             shell&gt;
         </screen>
     </sect1>
