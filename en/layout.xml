@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: layout.xml,v 1.4 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: layout.xml,v 1.5 2005-10-17 19:32:15 martin Exp $ -->
 
 <chapter>
     <title>Layout</title>
@@ -10,26 +10,26 @@
             <title>View</title>
             <para>
                 <screenshot>
-                    <graphic fileref="pictures/view.png"></graphic>
+                    <graphic srccredit="" scale="60" fileref="pictures/view.png"></graphic>
                 </screenshot>
             </para>
         </sect2>
         <sect2 id="edit-new-search">
             <title>Edit/New/Search</title>
                 <screenshot>
-                    <graphic fileref="pictures/edit.png"></graphic>
+                    <graphic srccredit="" scale="60" fileref="pictures/edit.png"></graphic>
                 </screenshot>
         </sect2>
         <sect2 id="overview-search-result">
             <title>Overview/Search Result</title>
                 <screenshot>
-                    <graphic fileref="pictures/overview.png"></graphic>
+                    <graphic srccredit="" scale="60" fileref="pictures/overview.png"></graphic>
                 </screenshot>
         </sect2>
         <sect2 id="delete">
             <title>Delete</title>
                 <screenshot>
-                    <graphic fileref="pictures/delete.png"></graphic>
+                    <graphic srccredit="" scale="60" fileref="pictures/delete.png"></graphic>
                 </screenshot>
         </sect2>
     </sect1>
