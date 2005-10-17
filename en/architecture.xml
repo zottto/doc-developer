@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.4 2005-08-17 15:28:27 rk Exp $ -->
+<!-- $Id: architecture.xml,v 1.5 2005-10-17 19:29:47 martin Exp $ -->
 
 <chapter>
     <title>Architecture</title>
@@ -89,6 +89,9 @@
         <title>Database</title>
         <para>
             The database interface supports different databases.
+        </para>
+        <para>
+            For database relation pictures see otrs-database.png: <ulink url="ftp://ftp.otrs.org/pub/otrs/misc/">ftp://ftp.otrs.org/pub/otrs/misc/</ulink>
         </para>
     </sect1>
 </chapter>
