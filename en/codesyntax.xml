@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.5 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.6 2005-10-17 14:00:44 rk Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -40,14 +40,14 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         <title>Source Code Header and Charsetdmin</title>
         <para>
             Attach the folowing header to each source file. Source files are saved in
-            charset ISO-8859-1.
+            Charset ISO-8859-1.
         </para>
         <programlisting format="linespecific">
 # --
 # (file name) - a short description what it does.
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.5 2005-09-05 11:11:43 rk Exp $
+# $Id: codesyntax.xml,v 1.6 2005-10-17 14:00:44 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you

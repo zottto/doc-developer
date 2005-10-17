@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.14 2005-10-15 11:29:35 ck Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.15 2005-10-17 14:00:44 rk Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -49,7 +49,7 @@ return $Id;
             <note>
                 <para>
 Take care that you use Limit as param and not in the SQL string because
-not each database supports LIMIT in SQL string.
+not every database supports LIMIT in SQL string.
                 </para>
             </note>
             </sect3>
