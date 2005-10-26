@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.6 2005-10-17 14:00:44 rk Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.7 2005-10-26 12:21:04 tr Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -37,7 +37,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </programlisting>
     </sect1>
     <sect1 id="source-code-header">
-        <title>Source Code Header and Charsetdmin</title>
+        <title>Source Code Header and Charset</title>
         <para>
             Attach the folowing header to each source file. Source files are saved in
             Charset ISO-8859-1.
@@ -47,12 +47,26 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does.
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.6 2005-10-17 14:00:44 rk Exp $
+# $Id: codesyntax.xml,v 1.7 2005-10-26 12:21:04 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 # --
+        </programlisting>
+    </sect1>
+    <sect1 id="version-comments">
+        <title>Version Comments</title>
+        <para>
+            Often functions in the current framework version aren't available. So sometimes
+            settings have to changed, if a new module and framework version will be released.
+            If you use version comments you can grep after changes whitch have to do, when
+            a new version will be published. The keyword for version comments is 'FRAMEWORK'.
+            For perl use '#' and for xml use the xml comments.
+        </para>
+        <programlisting format="linespecific">
+e.g. for perl-code
+# FRAMEWORK-2.1 the function ID2UserName is primal available in OTRS 2.1
         </programlisting>
     </sect1>
 </chapter>
