@@ -1,58 +1,58 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.7 2005-10-15 11:28:47 ck Exp $ -->
+<!-- $Id: templates.xml,v 1.8 2005-11-09 22:59:21 martin Exp $ -->
 
 <chapter>
     <title>Templates</title>
     <para>
-        The .dtl files are to 70% plain html and just used from Frontend Modules
-        (Kernel/Modules/*.pm). The .dtl files are located under:.......
+The .dtl files are to 70% plain html and just used from Frontend Modules
+(Kernel/Modules/*.pm). The .dtl files are located under:
     </para>
     <para>
         <filename>$OTRS_HOME/Kernel/Output/HTML/Standard/*.dtl</filename>
     </para>
     <para>
-        The following describes the usable dtl tags and syntax.
+The following describes the usable dtl tags and syntax.
     </para>
     <sect1 id="template-formatting">
         <title>Formatting</title>
         <para>
-            TAB: We use 2 spaces for every new open tag. Examples:
+TAB: We use 2 spaces for every new open tag. Examples:
         </para>
         <programlisting format="linespecific">
 &lt;table&gt;
-    &lt;tr&gt;
+  &lt;tr&gt;
     &lt;td&gt;Key&lt;/td&gt;
     &lt;td&gt;Value&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
     &lt;td&gt;aaa&lt;/td&gt;
     &lt;td&gt;bbb&lt;/td&gt;
-    &lt;/tr&gt;
+  &lt;/tr&gt;
 &lt;/table&gt;
         </programlisting>
         <programlisting format="linespecific">
 &lt;form action ="index.pl"&gt;
-    &lt;input type="text" value=""&gt;
-    &lt;input type="text" value=""&gt;
-    &lt;table&gt;
+  &lt;input type="text" value=""&gt;
+  &lt;input type="text" value=""&gt;
+  &lt;table&gt;
     &lt;tr&gt;
-        &lt;td&gt;Key1&lt;/td&gt;
-        &lt;td&gt;Value1&lt;/td&gt;
+      &lt;td&gt;Key1&lt;/td&gt;
+      &lt;td&gt;Value1&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;td&gt;Key2&lt;/td&gt;
-        &lt;td&gt;Value2&lt;/td&gt;
+      &lt;td&gt;Key2&lt;/td&gt;
+      &lt;td&gt;Value2&lt;/td&gt;
     &lt;/tr&gt;
-    &lt;/table&gt;
-    &lt;input type="submit"&gt;
+  &lt;/table&gt;
+  &lt;input type="submit"&gt;
 &lt;/form&gt;
         </programlisting>
         <sect2 id="Comment">
             <title>Comment</title>
             <para>
-                The dtl comment starts with a # at the begining of a line and will not be
-                shown in the html output.
+The dtl comment starts with a # at the begining of a line and will not be
+shown in the html output.
             </para>
             <programlisting format="linespecific">
 # this can be a comment in the dtl file
@@ -61,29 +61,45 @@
         <sect2 id="data">
             <title>$Data{""}</title>
             <para>
-                If data params are given to the templates, the this params can be printed to
-                the template.
+If data params are given to the templates, the this params can be printed to
+the template.
             </para>
             <programlisting format="linespecific">
 There name of the author is $Data{"Name"}.
             </programlisting>
             <warning>
                 <para>
-                    If the value of the param Name includes html tags, the this tags are also shown.
+If the value of the param Name includes html tags, the this tags are also shown.
                 </para>
             </warning>
         </sect2>
         <sect2 id="qdata">
             <title>$QData{""}</title>
             <para>
-                The same $Data{""} but the value if the param Name is html quoted (safe).
+The same as $Data{""} but the value if the param Name is html quoted (safe).
             </para>
             <programlisting format="linespecific">
 The name of the author is $QData{"Name"}.
             </programlisting>
             <para>
-                It's also possible to cut the value. For example you just want to show 20
-                characters of a variable (result will be "SomeName[..]"J), use the following.
+It's also possible to cut the value. For example you just want to show 20
+characters of a variable (result will be "SomeName[..]"J), use the following.
+            </para>
+            <programlisting format="linespecific">
+There first 20 characters of the authors name: $QData{"Name", "20"}.
+            </programlisting>
+        </sect2>
+        <sect2 id="lqdata">
+            <title>$LQData{""}</title>
+            <para>
+The same as $QData{""} but with link encoding, this means for example as a space will be a + (e. g. for "a href").
+            </para>
+            <programlisting format="linespecific">
+&lt;a href="$Env{"Baselink"}Action=$Env{"Action"}&Location=$LQData{"File"}" title="$LQData{"Name"}"&gt;$QData{"File","110"}&lt;/a&gt;
+            </programlisting>
+            <para>
+It's also possible to cut the value. For example you just want to show 20
+characters of a variable (result will be "SomeName[..]"J), use the following.
             </para>
             <programlisting format="linespecific">
 There first 20 characters of the authors name: $QData{"Name", "20"}.
@@ -92,8 +108,8 @@ There first 20 characters of the authors name: $QData{"Name", "20"}.
         <sect2 id="env">
             <title>$Env{""}</title>
             <para>
-                Env is an environment variable which is usable over more templates. $Data{""}
-                is just availabe for one template.
+Env is an environment variable which is usable over more templates. $Data{""}
+is just availabe for one template.
             </para>
             <programlisting format="linespecific">
 There curent user name is: $Env{"Userfirstname"}
@@ -110,17 +126,26 @@ $Env{"UserIsGroup[users]"} = Yes --> user groups (useful for own links)
 $Env{"UserIsGroup[admin]"} = Yes $Env{"Action"} --> the current action
             </programlisting>
         </sect2>
+        <sect2 id="qenv">
+            <title>$QEnv{""}</title>
+            <para>
+QEnv is an quoted environment variable like Env but html quoted.
+            </para>
+            <programlisting format="linespecific">
+There curent user name is: $QEnv{"Userfirstname"}
+            </programlisting>
+        </sect2>
         <sect2 id="quote">
             <title>$Quote{""}</title>
             <para>
-                A tag to quote html strings.
+A tag to quote html strings.
             </para>
             <programlisting format="linespecific">
 Show no html tags, quote this: $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;"}
             </programlisting>
             <para>
-                It's also possible to cut the value. For example you just want to show 20
-                characters of a variable (result will be "SomeMess[..]"), use the following.
+It's also possible to cut the value. For example you just want to show 20
+characters of a variable (result will be "SomeMess[..]"), use the following.
             </para>
             <programlisting format="linespecific">
 Show no html tags, quote this and show just 20 characters:
@@ -130,7 +155,7 @@ Show no html tags, quote this and show just 20 characters:
         <sect2 id="text">
             <title>$Text{""}</title>
             <para>
-                This tag translates the string in there (based on the user selected language).
+This tag translates the string in there (based on the user selected language).
             </para>
             <programlisting format="linespecific">
 Translate this text: $Text{"Help"}
@@ -139,8 +164,8 @@ Translate this text: $Text{"Help"}
         <sect2 id="config">
             <title>$Config{""}</title>
             <para>
-                With this tag you can use config variables in the template. For example the
-                Kernel/config.pm:
+With this tag you can use config variables in the template. For example the
+Kernel/config.pm:
             </para>
             <programlisting format="linespecific">
 [Kernel/Config.pm]
@@ -163,14 +188,14 @@ The admin email address is '$Config{"AdminEmail"}'
         <sect2 id="include">
             <title>$Include{""}</title>
             <para>
-                If you want to include other dtl templates into a template, use the include tag.
+If you want to include other dtl templates into a template, use the include tag.
             </para>
             <programlisting format="linespecific">
 # include Copyright.dtl
 $Include{"Copyright"}
             </programlisting>
             <para>
-                Or a other examlpe.
+Or a other examlpe.
             </para>
             <programlisting format="linespecific">
 &lt;html&gt;
@@ -184,8 +209,8 @@ $Include{"css"}
         <sect2 id="block">
             <title>block</title>
             <para>
-                The block tag can be used to define block. This blocks can be used from the
-                Frontend Module several times with different data params.
+The block tag can be used to define block. This blocks can be used from the
+Frontend Module several times with different data params.
             </para>
             <programlisting format="linespecific">
 &lt;table&gt;
@@ -206,8 +231,8 @@ $Include{"css"}
 &gt;/table&gt;
             </programlisting>
             <para>
-                For example you want to use this block to show email message html formated via
-                a table the Frontend Module code could look like this:
+For example you want to use this block to show email message html formated via
+a table the Frontend Module code could look like this:
             </para>
             <programlisting format="linespecific">
 # get article
@@ -224,7 +249,7 @@ foreach (qw(From To Cc Subject)) {
                 Key => $_,
                 Value => $Article{$_},
             },
-    );
+        );
     }
 }
 
@@ -240,7 +265,7 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
         <sect2 id="set">
             <title>set</title>
             <para>
-                With the tag set you can set a variable in the dtl template.
+With the tag set you can set a variable in the dtl template.
             </para>
             <programlisting format="linespecific">
 &lt;dtl set $Data{"Test"} = "Some Text"&gt;
@@ -249,13 +274,13 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
         <sect2 id="if">
             <title>if</title>
             <para>
-                It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
+It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
             </para>
             <programlisting format="linespecific">
 &lt;dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }&gt;
             </programlisting>
             <para>
-                Or with a regexp.
+Or with a regexp.
             </para>
             <programlisting format="linespecific">
 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
@@ -264,7 +289,7 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
         <sect2 id="system-call">
             <title>system-call</title>
             <para>
-                If you want the output of a system call back to a dtl variable.
+If you want the output of a system call back to a dtl variable.
             </para>
             <programlisting format="linespecific">
 # execute system call
@@ -273,7 +298,7 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
 The output of 'uptime' is: $Data{"uptime"}
             </programlisting>
             <para>
-                Or a other example.
+Or a other example.
             </para>
             <programlisting format="linespecific">
 # execute system call
@@ -282,7 +307,7 @@ The output of 'uptime' is: $Data{"uptime"}
 The output of 'procinfo' is: $Data{"procinfo"}
             </programlisting>
             <para>
-                Usable to set: $Data{""}, $Env{""} and $Config{""}.
+Usable to set: $Data{""}, $Env{""} and $Config{""}.
             </para>
         </sect2>
     </sect1>
