@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.9 2005-11-09 23:03:17 martin Exp $ -->
+<!-- $Id: templates.xml,v 1.10 2005-11-09 23:06:39 martin Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -96,13 +96,6 @@ The same as $QData{""} but with link encoding, this means for example as a space
             </para>
             <programlisting format="linespecific">
 &lt;a href="$Env{"Baselink"}Action=$Env{"Action"}&amp;Location=$LQData{"File"}" title="$LQData{"Name"}"&gt;$QData{"File","110"}&lt;/a&gt;
-            </programlisting>
-            <para>
-It's also possible to cut the value. For example you just want to show 20
-characters of a variable (result will be "SomeName[..]"J), use the following.
-            </para>
-            <programlisting format="linespecific">
-There first 20 characters of the authors name: $QData{"Name", "20"}.
             </programlisting>
         </sect2>
         <sect2 id="env">
