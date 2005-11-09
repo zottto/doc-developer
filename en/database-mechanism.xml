@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.16 2005-11-09 23:00:34 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.17 2005-11-09 23:01:50 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -67,6 +67,7 @@ Integer:
 my $QuotedInteger = $Self->{DBObject}->Quote('123', 'Integer');
                 </programlisting>
               </para>
+              <para>
 Number:
                 <programlisting format="linespecific">
 my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
