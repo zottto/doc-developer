@@ -1,0 +1,22 @@
+# --
+# TODO - todo list of developer manual
+# Copyright (C) 2001-2006 OTRS GmbH, http://www.otrs.com/
+# --
+# $Id: TODO,v 1.1 2006-01-16 11:49:53 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+1.0
+- otrs directorys
+- DB-Structure
+- ...
+
+
+misc (not scheduled yet - nobody is working on it yet)
+-
+
+ideas (just ideas - nobody is working on it)
+-
