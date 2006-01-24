@@ -2,7 +2,7 @@
 # TODO - todo list of developer manual
 # Copyright (C) 2001-2006 OTRS GmbH, http://www.otrs.com/
 # --
-# $Id: TODO,v 1.2 2006-01-18 15:12:38 tr Exp $
+# $Id: TODO,v 1.3 2006-01-24 15:15:15 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -23,4 +23,5 @@ misc (not scheduled yet - nobody is working on it yet)
 -
 
 ideas (just ideas - nobody is working on it)
--
+- description of LastscreenView and LastscreenOverview functions
+- descriotion from date convert functions

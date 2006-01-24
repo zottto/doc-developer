@@ -1,36 +1,232 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.6 2005-08-18 11:23:47 rk Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.7 2006-01-24 15:15:15 rk Exp $ -->
 
 <chapter>
     <title>Writing a OTRS application for a new Object</title>
-    <para></para>
+    <para>
+        In diesem Kapitel wird anhand eines kleinen einfachen Programms erklärt, wie man
+        für OTRS ein Modul schreibt. Voraussetzung ist eine OTRS Entwicklungumgebung wie
+        Sie in dem Kapitel 'development environment' beschrieben ist.
+    </para>
     <sect1 id="what-we-want-to-write">
         <title>What we want to write</title>
-        <para></para>
+        <para>
+            Wir schreiben für OTRS ein kleines Modul das beim Aufruf den Text 'Hello World' ausgibt.
+            Als erstes müssen wir ein Verzeichnis für dieses Modul im Entwicklerverzeichnis anlegen: /HelloWorld
+            In diesem Verzeichnis können alle Verzeichnisse die es in OTRS gibt angelegt werden.
+            Jedes Modul sollte mindestens folgende Verzeichnisse beinhalten:
+
+            Kernel/
+            Kernel/System/
+            Kernel/Modules/
+            Kernel/Output/HTML/Standard/
+            Kernel/Config/
+            Kernel/Config/Files/
+            Kernel/Language/
+
+        </para>
     </sect1>
     <sect1 id="default-config-file">
         <title>Default Config File</title>
-        <para></para>
+        <para>
+            Damit das Modul auch in OTRS angezeigt wird, muss dafür eine Modulregistrierung erstellt werden.
+            Dazu legen wir die Datei '/Kernel/System/Config/Files/HelloWorld.xml' an.
+            In der Datei legen wir ein neues Config Element an. die Bedeutung der einzelnen
+            Einstellungen entnehmen Sie bitte aus dem Kapitel 'Config Mechanism':
+        </para>
+        <programlisting>
+&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+&lt;otrs_config version="1.0" init="Application"&gt;
+        &lt;ConfigItem Name="Frontend::Module###AgentHelloWorld" Required="1" Valid="1"&gt;
+        &lt;Description Lang="en"&gt;FrontendModulRegistration for HelloWorld modul.&lt;/Description&gt;
+        &lt;Description Lang="de"&gt;FrontendModulRegistration für das HelloWorld Modul.&lt;/Description&gt;
+        &lt;Group&gt;HelloWorld&lt;/Group&gt;
+        &lt;SubGroup&gt;AgentFrontendModulRegistration&lt;/SubGroup&gt;
+        &lt;Setting&gt;
+            &lt;FrontendModuleReg&gt;
+                &lt;Title&gt;HelloWorld&lt;/Title&gt;
+                &lt;Group&gt;users&lt;/Group&gt;
+                &lt;Description&gt;HelloWorld&lt;/Description&gt;
+                &lt;NavBarName&gt;HelloWorld&lt;/NavBarName&gt;
+                &lt;NavBar&gt;
+                    &lt;Description&gt;HelloWorld&lt;/Description&gt;
+                    &lt;Name&gt;HelloWorld&lt;/Name&gt;
+                    &lt;Image&gt;overview.png&lt;/Image&gt;
+                    &lt;Link&gt;Action=AgentHelloWorld&lt;/Link&gt;
+                    &lt;NavBar&gt;HelloWorld&lt;/NavBar&gt;
+                    &lt;Type&gt;Menu&lt;/Type&gt;
+                    &lt;Prio&gt;8400&lt;/Prio&gt;
+                    &lt;Block&gt;ItemArea&lt;/Block&gt;
+                &lt;/NavBar&gt;
+            &lt;/FrontendModuleReg&gt;
+        &lt;/Setting&gt;
+    &lt;/ConfigItem&gt;
+&lt;/otrs_config&gt;
+        </programlisting>
     </sect1>
     <sect1 id="writing-frontend-module">
         <title>Frontend Module</title>
-        <para></para>
+        <para>
+            Nachdem Verlinken und Ausführen der Sysconfig, erscheint jetzt bereits ein neues
+            Modul mit dem Namen 'HelloWorld'. Beim Aufruf kommt allerdings noch eine Fehlermeldung, da
+            OTRS das passende FrontendModul nicht findet. Als nächstes legen wir ein solches an. Dazu
+            erstellen wir die Datei: '/HelloWorld/Kernel/Modules/AgentHelloWorld.pm':
+        </para>
+        <programlisting>
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+package Kernel::Modules::AgentHelloWorld;
+
+use strict;
+use Kernel::System::HelloWorld;
+
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless ($Self, $Type);
+    # get common objects
+    foreach (keys %Param) {
+        $Self-&gt;{$_} = $Param{$_};
+    }
+    # check needed Opjects
+    foreach (qw(ParamObject DBObject ModuleReg LogObject ConfigObject)) {
+        $Self-&gt;{LayoutObject}-&gt;FatalError(Message =&gt; "Got no $_!") if (!$Self-&gt;{$_});
+    }
+    # create needed objects
+    $Self-&gt;{HelloWorldObject} = Kernel::System::HelloWorld-&gt;new(%Param);
+
+    return $Self;
+}
+# --
+sub Run {
+    my $Self        = shift;
+    my %Param       = @_;
+    my $Output      = '';
+    my %Data = ();
+
+    $Data{HelloWorldText} = $Self-&gt;{HelloWorldObject}-&gt;GetHelloWorldText();
+    # build output
+    $Output .= $Self-&gt;{LayoutObject}-&gt;Header(Title =&gt; "HelloWorld");
+    $Output .= $Self-&gt;{LayoutObject}-&gt;NavigationBar();
+    $Output .= $Self-&gt;{LayoutObject}-&gt;Output(
+        Data =&gt; \%Data,
+        TemplateFile =&gt; 'AgentHelloWorld',
+    );
+    $Output .= $Self-&gt;{LayoutObject}-&gt;Footer();
+    return $Output;
+}
+1;
+        </programlisting>
     </sect1>
     <sect1 id="writing-core-module">
         <title>Core Module</title>
-        <para></para>
+        <para>
+            Jetzt erstellen wir die Datei für das Core-Modul: '/HelloWorld/Kernel/System/HelloWorld.pm',
+            mit folgendem Inhalt:
+        </para>
+        <programlisting>
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+package Kernel::System::HelloWorld;
+
+use strict;
+
+sub new {
+    my $Type  = shift;
+    my %Param = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless ($Self, $Type);
+
+    return $Self;
+}
+
+sub GetHelloWorldText {
+    my $Self        = shift;
+    my %Param       = @_;
+
+    return 'Hello World';
+}
+
+1;
+        </programlisting>
     </sect1>
     <sect1 id="dtl-template-file">
         <title>dtl Template File</title>
-        <para></para>
+        <para>
+            Damit das Modul läuft fehlt jetzt nur noch das entsprechende Template.
+            Erstellen Sie folgende Datei: '/HelloWorld/Kernel/Output/HTML/Standard/AgentHelloWorld.dtl':
+        </para>
+        <programlisting>
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+&lt;!-- start form --&gt;
+&lt;table border="0" width="100%" cellspacing="0" cellpadding="3"&gt;
+  &lt;tr&gt;
+    &lt;td class="mainhead"&gt;
+       $Env{"Box0"}$Text{"Overview"}: $Text{"HelloWorld"}$Env{"Box1"}
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="mainbody"&gt;
+        &lt;br&gt;
+        $Text{"$QData{"HelloWorldText"}"}!&lt;br&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- end form --&gt;
+        </programlisting>
+        <para>
+            Jetzt funktioniert das Modul bereits und gibt beim Aufruf den Text 'Hello World' aus.
+        </para>
     </sect1>
     <sect1 id="language-file">
         <title>Language File</title>
-        <para></para>
+        <para>
+            Soll der Text 'Hello World' zum Beispiel ins deutsche übersetzt werden, so muss man eine Sprachdatei
+            für die jeweilige Sprache anlegen: '/HelloWorld/Kernel/Language/de_AgentHelloWorld.pm.
+            Hier ein Beispiel:
+        </para>
+        <programlisting>
+package Kernel::Language::de_AgentHelloWorld;
+
+use strict;
+
+sub Data {
+    my $Self = shift;
+
+    $Self-&gt;{Translation} = { %{$Self-&gt;{Translation}},
+        'Hello World'  =&gt; 'Hallo Welt',
+    };
+}
+1;
+        </programlisting>
     </sect1>
     <sect1 id="summery">
         <title>Summery</title>
-        <para></para>
+        <para>
+            Wie man an dem vorangegangen Beispielt sehen kann, ist es nicht so schwer ein neues Modul für OTRS
+            zu programmieren. Wichtig ist zu beachten, dass der Modulname und somit die Dateinamen einzigartig sind
+            und somit nicht mit dem Framework oder anderen Zusatzmodulen in Konfilikt geraten.
+            Ist ein Modul fertiggestellt, muss als nächstes ein opm Packet daraus generiert werden (siehe Kapitel 'Package Building').
+        </para>
     </sect1>
 </chapter>

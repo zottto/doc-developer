@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.6 2005-09-05 11:11:43 rk Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.7 2006-01-24 15:15:15 rk Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -89,5 +89,184 @@ $Self->{ConfigObject}->Set(
     Value => 'SomeNewValue',
 );
         </programlisting>
+    </sect1>
+        <sect1 id="xml-config">
+        <title>XML config options</title>
+        <para>
+            If you want to add a config option:
+        </para>
+        <programlisting format="linespecific">
+&lt;ConfigItem Name="Ticket::Hook" Required="1" Valid="1"&gt;
+    &lt;Description Lang="en"&gt;The identifyer for a ticket, e.g. Ticket#, Call#, MyTicket#. The default is Ticket#.&lt;/Description&gt;
+    &lt;Description Lang="de"&gt;Ticket-Identifikator, z.B. Ticket#,Call#, MyTicket#. Als Standard wird Ticket# verwendet.&lt;/Description&gt;
+    &lt;Group>Ticket&lt;/Group&gt;
+    &lt;SubGroup&gt;Core::Ticket&lt;/SubGroup&gt;
+    &lt;Setting&gt;
+        &lt;String Regex=""&gt;Ticket#&lt;/String&gt;
+    &lt;/Setting&gt;
+&lt;/ConfigItem&gt;
+        </programlisting>
+        <para>
+            Wenn Required auf '1' gesetzt ist, wird die Configvariable eingebunden und kann nicht deaktiviert werden.
+        </para>
+        <para>
+            Wenn Valid '1' ist, dann ist die Configvariable aktiv, mit '0' inaktiv.
+        </para>
+        <para>
+            Innerhalb des 'Setting' Elements wird die Configvariable angegeben.
+        </para>
+        <sect2 id="xml-config-variable">
+            <title>Types of XML config variables</title>
+            <para>
+                Die XML Configeinstellungen unterstützen verschiedene Arten von Variablen.
+            </para>
+        </sect2>
+        <sect2 id="xml-config-string">
+            <title>String</title>
+            <para>
+                Config Element für Zahlen und einzeilige Zeichenfolgen.
+                Ein Gültigkeitscheck mit Regex ist hier möglich.
+                Das Attribut Check überprüft Filesystemelemente. Zwei Angaben
+                sind möglich: 'file' oder 'direktory'.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;String Regex="" Check="File"&gt;&lt;/String&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-textarea">
+            <title>Textarea</title>
+            <para>
+                Config Element für mehrzeiligen Text.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;TextArea Regex=""&gt;&lt;/TextArea&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-option">
+            <title>Options</title>
+            <para>
+                Dieses Config Element bietet festeingestellte Werte als Pulldown Menü an.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;Option SelectedID="Key"&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+    &lt;/Option&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-array">
+            <title>Array</title>
+            <para>
+                Mit diesem Config Element kann man Arrays abbilden.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;Array&gt;
+        &lt;Item&gt;&lt;/Item&gt;
+        &lt;Item&gt;&lt;/Item&gt;
+    &lt;/Array&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-hash">
+            <title>Hash</title>
+            <para>
+                Mit diesem Config Element kann man Hashes abbilden.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;Hash&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+    &lt;/Hash&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-subhash">
+            <title>Hash with SubArray, SubOptions, SubHash</title>
+            <para>
+                In einem Hash können als Content Arrays, Hashes oder Pulldown Menüs beinhalten.
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;Hash&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+        &lt;Item Key=""&gt;
+            &lt;Hash&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+            &lt;/Hash&gt;
+        &lt;/Item&gt;
+        &lt;Item Key=""&gt;
+            &lt;Array&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+            &lt;/Array&gt;
+        &lt;/Item&gt;
+        &lt;Item Key=""&gt;
+            &lt;Option SelectedID="Key"&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+                &lt;Item Key=""&gt;&lt;/Item&gt;
+            &lt;/Hash&gt;
+        &lt;/Item&gt;
+        &lt;Item Key=""&gt;&lt;/Item&gt;
+    &lt;/Hash&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-navbar">
+            <title>FrontendModuleReg (NavBar)</title>
+            <para>
+                Modulregistrierung
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;FrontendModuleReg&gt;
+        &lt;Description&gt;Logout&lt;/Description&gt;
+        &lt;Title&gt;&lt;/Title&gt;
+        &lt;NavBarName&gt;&lt;/NavBarName&gt;
+        &lt;NavBar&gt;
+            &lt;Description&gt;Logout&lt;/Description&gt;
+            &lt;Name&gt;Logout&lt;/Name&gt;
+            &lt;Image&gt;exit.png&lt;/Image&gt;
+            &lt;Link&gt;Action=Logout&lt;/Link&gt;
+            &lt;NavBar&gt;&lt;/NavBar&gt;
+            &lt;Type&gt;&lt;/Type&gt;
+            &lt;Block&gt;ItemPre&lt;/Block&gt;
+            &lt;AccessKey&gt;l&lt;/AccessKey&gt;
+            &lt;Prio&gt;100&lt;/Prio&gt;
+        &lt;/NavBar&gt;
+    &lt;/FrontendModuleReg&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
+        <sect2 id="xml-config-navbarmodule">
+            <title>FrontendModuleReg (NavBarModule)</title>
+            <para>
+                Modulregistrierung
+            </para>
+            <programlisting format="linespecific">
+&lt;Setting&gt;
+    &lt;FrontendModuleReg&gt;
+        &lt;Group&gt;admin&lt;/Group&gt;
+        &lt;Description&gt;Admin&lt;/Description&gt;
+        &lt;Title&gt;User&lt;/Title&gt;
+        &lt;NavBarName&gt;Admin&lt;/NavBarName&gt;
+        &lt;NavBarModule&gt;
+            &lt;Module&gt;Kernel::Output::HTML::NavBarModuleAdmin&lt;/Module&gt;
+            &lt;Name&gt;Users&lt;/Name&gt;
+            &lt;Block&gt;Block1&lt;/Block&gt;
+            &lt;Prio&gt;100&lt;/Prio&gt;
+        &lt;/NavBarModule&gt;
+    &lt;/FrontendModuleReg&gt;
+&lt;/Setting&gt;
+            </programlisting>
+        </sect2>
     </sect1>
 </chapter>

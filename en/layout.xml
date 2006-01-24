@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: layout.xml,v 1.5 2005-10-17 19:32:15 martin Exp $ -->
+<!-- $Id: layout.xml,v 1.6 2006-01-24 15:15:15 rk Exp $ -->
 
 <chapter>
     <title>Layout</title>
@@ -59,5 +59,47 @@
                 <para>logout.png (logout)</para>
             </listitem>
         </itemizedlist>
+    </sect1>
+    <sect1 id="modulcss">
+        <title>Spezielle CSS Definitionen</title>
+        <para>
+            Alle html Seiten in OTRS benutzen eine fest definierte CSS Deklaration, die es in jedem Header gibt.
+            Reichen diese Stylesheets nicht aus, dann werden zusätzliche im html Quellcode als extra css block definiert
+            und nicht in einem html Element.
+        </para>
+        <para>
+            Examples from calendar modul:
+        </para>
+        <programlisting format="linespecific">
+[..]
+&lt;!-- dtl:block:Overview --&gt;
+&lt;style type="text/css"&gt;
+&lt;!--
+    .sunday {
+        font-family:Geneva,Helvetica,Arial,sans-serif;
+        font-size:10pt;
+        vertical-align:top;
+        background-color:#ffe0e0;
+        color:#000000;
+    }
+    .saturday {
+        font-family:Geneva,Helvetica,Arial,sans-serif;
+        font-size:10pt;
+        vertical-align:top;
+        background-color:#ffe0e0;
+        color:#000000;
+    }
+[..]
+//--&gt;
+&lt;/style&gt;
+
+&lt;table border="0" width="100%" cellspacing="0" cellpadding="3" cols="1"&gt;
+&lt;tr&gt;
+  &lt;td class="mainhead"&gt;
+    $Env{"Box0"}$Text{"Calendar"}$Env{"Box1"}
+  &lt;/td&gt;
+&lt;/tr&gt;
+[..]
+        </programlisting>
     </sect1>
 </chapter>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: test-mechanism.xml,v 1.1 2006-01-24 15:15:15 rk Exp $ -->
+
+<chapter>
+    <title>OTRS Testmechnism</title>
+    <para>
+        OTRS bietet die Möglichkeit automatischer Tests für Core-Module.
+    </para>
+    <sect1 id="testing">
+        <title>Erstellen einer Testroutine</title>
+        <para>
+            Die Testroutinen werden in .t Dateien unter /scripts/test abgespeichert.
+            Für jedes OTRS Modul gibt es eine Datei, Beispiel Kalender-Modul: /scripts/test/Calendar.t
+        </para>
+        <para>
+            Eine Testroutine besteht aus einem Funktionsaufruf der zu prüfenden Funktion und einer
+            Auswertung des Rückgabewertes.
+            Example (/scripts/test/Calendar.t):
+        </para>
+        <programlisting format="linespecific">
+# --
+# Calendar.t - Calendar
+# Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: test-mechanism.xml,v 1.1 2006-01-24 15:15:15 rk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+use Kernel::System::User;
+use Kernel::System::CalendarEvent;
+
+$Self->{UserObject} = Kernel::System::User-&gt;new(%{$Self});
+$Self->{EventObject} = Kernel::System::CalendarEvent-&gt;new(%{$Self}, UserID =&gt; 1);
+
+
+my $EventID = $Self-&gt;{EventObject}-&gt;EventAdd(
+    Title =&gt; 'Some Test',
+    StartTime =&gt; '1977-10-27 20:15',
+    EndTime =&gt; '1977-10-27 21:00',
+    State =&gt; 'public',
+    UserIDs =&gt; [1],
+);
+
+$Self-&gt;True(
+    $EventID,
+    'EventAdd()',
+);
+
+[..]
+        </programlisting>
+    </sect1>
+    <sect1>
+        <title>True()</title>
+        <programlisting>
+$Self-&gt;True(
+    $EventID,
+    'EventAdd()',
+);
+        </programlisting>
+        <para>
+            Diese Funktion prueft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf gültig.
+        </para>
+    </sect1>
+    <sect1>
+        <title>False()</title>
+        <programlisting>
+$Self-&gt;False(
+    $EventID,
+    'EventAdd()',
+);
+        </programlisting>
+        <para>
+            Diese Funktion prueft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf ungültig.
+        </para>
+    </sect1>
+    <sect1>
+        <title>Is()</title>
+        <programlisting>
+$Self-&gt;Is(
+    $A,
+    $B,
+    'Test Name',
+);
+        </programlisting>
+        <para>
+            Diese Funktion prueft auf Gleichheit der Variablen $A und $B.
+        </para>
+    </sect1>
+</chapter>
+

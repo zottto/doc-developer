@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: development-environment.xml,v 1.1 2006-01-24 15:15:15 rk Exp $ -->
+
+<chapter>
+    <title>Development environment</title>
+    <para>
+        Damit man für OTRS Erweiterungen programmieren kann, ist es nötig, das man sich eine bestimmte Entwicklungsumgebung
+        unter Linux einrichtet. Dies erleichtert die Entwicklungsarbeit erheblich.
+    </para>
+    <sect1 id="cvs-checkout">
+        <title>OTRS CVS checkout</title>
+        <para>
+            Als erstes muss ein Verzeichnis angelegt werden, in dem die Module abgelegt werden.
+            Auf der Commandozeile in das neue Verzeichnis wechseln und OTRS 2.0 mit folgendem Befehl
+            ausgecheckt (loginpassword: cvs):
+        </para>
+        <screen>
+            cvs -d :pserver:anonymous@cvs.otrs.org:/home/cvs login
+        </screen>
+        <screen>
+            cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r rel-2_0 otrs
+        </screen>
+        <para>
+            Nach dem gleichen Schema können die OTRS Zusatzmodule ausgecheckt werden. Für die Entwicklungsumgebung
+            muss noch das Verzeichnis module-tools ausgecheckt werden, das beinhaltet einige nützliche
+            Werkzeuge.
+        </para>
+        <para>
+            Damit das CVS-OTRS läuft, muss es noch im Apache Websrever konfiguriert werden und die
+            Config.pm angelegt werden. Danach kann die Installer.pl ausgeführt werden. Ab jetzt ist
+            das Grundsystem lauffähig.
+        </para>
+    </sect1>
+    <sect1 id="link-modules">
+        <title>Verlinken von Erweiterungsmodulen</title>
+        <para>
+            Für eine saubere Entwicklungsarbeit ist eine Trennung zwischen OTRS und den Modulen nötig.
+            Spätestens beim Einsatz eines CVS ist eine Trennung unumgänglich.
+            Damit OTRS auf die Dateien zugreifen kann, müssen Links erstellt werden. Dies erledigt
+            ein Script im Verzeichnis module-tools.
+            Beispiel Verlinken des Calendar Moduls:
+        </para>
+        <screen>
+            perl ~/src/module-tools/link.pl ~/src/Calendar/ ~/src/otrs/
+        </screen>
+        <para>
+            Werden neue Dateien hinzugefügt, dann müssen diese wie oben beschrieben neue hinzugelinkt werden.
+        </para>
+        <para>
+            Zum Entfernen der Links aus OTRS geben Sie folgenden Befehl ein:
+        </para>
+        <screen>
+            perl ~/src/module-tools/remove_links.pl ~/src/otrs/
+        </screen>
+    </sect1>
+    <sect1 id="after-link">
+        <title>Tätigkeiten nach dem Verlinken</title>
+        <para>
+             Nach dem Verlinken muss die Sysconfig ausgeführt werden, damit das Modul in OTRS registriert wird.
+             Desweiteren müssen benötigte User, Gruppen oder Rollen per Hand angelegt und Rechte zugewiesen werden.
+             Wird eine zusätzliche Datenbanktabelle benötigt, so muss diese auch erst noch erstellt werden.
+             Gibt es bereits ein opm Paket, so kann man die SQL Anweisungen zum anlegen der Tabellen auslesen.
+             Beispiel:
+        </para>
+        <screen>
+            cat Calendar.opm|bin/xml2sql.pl -t mysql
+        </screen>
+    </sect1>
+</chapter>

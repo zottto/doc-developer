@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.7 2005-10-15 11:29:18 ck Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.8 2006-01-24 15:15:15 rk Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>
@@ -37,6 +37,18 @@ $Self->{LogObject}->Log(
     Priority => 'error',
     Message => "Need something!",
 );
+        </programlisting>
+    </sect1>
+    <sect1 id="dumper">
+        <title>Dumper</title>
+        <para>
+            Mit diesem Konstrukt ist es möglich einen Dump von einem Hash oder Array zu erzeugen.
+            Als Log-Modul muss 'File' eingestellt sein. Der Inhalt wird in das otrs Logfile geschrieben (default: /tmp/otrs.log).
+            Die Function Dumper() in /Kernel/System/Log.pm hat standardmäßig 8000 Zeilen als Begrenzung eingestellt. Möchte man größere Dumps
+            erzeugen, muss man die Datei Editieren und den Wert entsprechend erhöhen.
+        </para>
+        <programlisting format="linespecific">
+$Self->{LogObject}->Dumper(Hash => %Hash);
         </programlisting>
     </sect1>
 </chapter>

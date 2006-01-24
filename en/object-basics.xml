@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.10 2005-11-09 16:17:57 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.11 2006-01-24 15:15:15 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -136,6 +136,53 @@ $Self->{"FileManager::Root"} = '/home/';
 # trash directory
 $Self->{"FileManager::Trash"} = "/home/Trash/";
         </programlisting>
+        <para>
+            Beschreibung der Configeinstellungen:
+        </para>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Element</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>NavBarName</entry>
+                        <entry>Modul name</entry>
+                    </row>
+                    <row>
+                        <entry>Group/GroupRo</entry>
+                        <entry>Gruppenzugriffsrechte</entry>
+                    </row>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>Bezeichner für den Linkbutton</entry>
+                    </row>
+                    <row>
+                        <entry>Image</entry>
+                        <entry>Bild für den Linkbutton</entry>
+                    </row>
+                    <row>
+                        <entry>Link</entry>
+                        <entry>URI</entry>
+                    </row>
+                    <row>
+                        <entry>NavBar</entry>
+                        <entry>Modul name (Zugehörigkeit)</entry>
+                    </row>
+                    <row>
+                        <entry>Prio</entry>
+                        <entry>Rang in der Auflistung der Buttons</entry>
+                    </row>
+                    <row>
+                        <entry>AccessKey</entry>
+                        <entry>Zeichen für den Schnellaufruf mit der Tastatur zusammen mit der ALT-Taste</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
     </sect1>
     <sect1 id="navbar-setting">
         <title>NavBar Setting</title>
