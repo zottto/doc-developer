@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.8 2005-11-09 23:00:34 martin Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.9 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -47,13 +47,20 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does.
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.8 2005-11-09 23:00:34 martin Exp $
+# $Id: codesyntax.xml,v 1.9 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 # --
         </programlisting>
+        <para>
+            Folgende Zeile wird vom CVS aktualisiert:
+        </para>
+        <programlisting format="linespecific">
+# $Id: codesyntax.xml,v 1.9 2006-01-25 13:59:49 rk Exp $
+        </programlisting>
+
     </sect1>
     <sect1 id="version-comments">
         <title>Version Comments</title>

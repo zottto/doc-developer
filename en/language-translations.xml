@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $ -->
+<!-- $Id: language-translations.xml,v 1.8 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -55,7 +55,7 @@
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
+# $Id: language-translations.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -66,7 +66,7 @@ package Kernel::Language::de;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.7 $';
+$VERSION = '$Revision: 1.8 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -105,8 +105,7 @@ sub Data {
             <para>
                 The Frontend Translation File is used for a specific Frontend Module. For
                 example, if the Frontend Modul "Kernel/Modules/AgentCalendar.pm" also
-                <ulink url="http://otrs.example.com/otrs/index.pl?Action=AgentCalendar">
-                "http://otrs.example.com/otrs/index.pl?Action=AgentCalendar"</ulink>
+                <ulink url="http://otrs.example.com/otrs/index.pl?Action=AgentCalendar">http://otrs.example.com/otrs/index.pl?Action=AgentCalendar</ulink>
                 is used, then the Frontend Translation File "Kernel/Language/de_Agentcalendar.pm" is used.
             </para>
             <para>
@@ -117,7 +116,7 @@ sub Data {
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
+# $Id: language-translations.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -160,7 +159,7 @@ sub Data {
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) 2001-2004 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: language-translations.xml,v 1.7 2005-10-15 11:28:31 ck Exp $
+# $Id: language-translations.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -171,7 +170,7 @@ package Kernel::Language::xx_Custom;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.7 $';
+$VERSION = '$Revision: 1.8 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --

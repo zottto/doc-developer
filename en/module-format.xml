@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Module format</title>
@@ -85,7 +85,7 @@ sub Auth {
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -136,7 +136,7 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -191,13 +191,13 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
             Frontend Handle (e. g. index.pl). "new()" is used to create an Frontend
             Module object. The Frontend Handle gives basic framework object to the
             Frontend Module. For example ParamObject (to get formular params), DBObject
-            (to use existiong database connects), LayoutObject (to use templates and other
+            (to use existing database connects), LayoutObject (to use templates and other
             html layout functions), ConfigObject (to access config settings), LogObject
             (to use the framework log system), UserObject (to get the user functions from
             the current user), GroupObject (to get the group functions).
         </para>
         <para>
-            For more info for core modules see
+            For more info about core modules see
             <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
         <para>
@@ -208,7 +208,7 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -255,7 +255,7 @@ sub Run {
     # ---------------------------------------------------------- #
     # show overview screen
     # ---------------------------------------------------------- #
-    else {
+    elsif ($Self->{Subaction} eq 'Overview') {
         # add overview block
         $Self->{LayoutObject}->Block(
             Name => 'Overview',
@@ -337,7 +337,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
                         in the user interface.</entry>
                     </row>
                     <row>
-                        <entry>NafBarName</entry>
+                        <entry>NavBarName</entry>
                         <entry>NavBar context name of this module.</entry>
                     </row>
                 </tbody>
@@ -406,7 +406,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -473,7 +473,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.11 $ $Date: 2005-10-17 19:58:34 $
+$Revision: 1.12 $ $Date: 2006-01-25 13:59:49 $
 
 =cut
         </programlisting>
@@ -500,7 +500,7 @@ $Revision: 1.11 $ $Date: 2005-10-17 19:58:34 $
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -566,7 +566,7 @@ sub SetPassword {
     <sect1 id="customer-navigation-module">
         <title>Customer Navigation Module</title>
         <para>
-            Over this module layer you can create dynamicaly navigation bar items with
+            Over this module layer you can create dynamically navigation bar items with
             dynamic content (Name and Description).
         </para>
         <para>
@@ -612,7 +612,7 @@ Kernel/System/Stats/SomeExampleStats.pm:
 # Kernel/System/Stats/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.11 2005-10-17 19:58:34 martin Exp $
+# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -741,7 +741,7 @@ sub Run {
 package Kernel::System::Ticket::Number::Simple;
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.11 $ ;
+$VERSION =  $Revision: 1.12 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -769,7 +769,7 @@ There are two kinds of PostMaster modules. PostMasterPre (used after parsing an 
             </para>
             <para>
 If you want to create an own postmaster filter, just create an own module. The modules are located under "Kernel/System/PostMaster/Filter/*.pm".
-For default modules see the admin manual. You just need 2 functions,
+For default modules see the admin manual. You just need two functions,
 new() and Run():
             </para>
             <para>
@@ -807,7 +807,7 @@ The following is an example module to match emails and set X-OTRS-Headers (see d
 package Kernel::System::PostMaster::Filter::Example;
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.11 $ ;
+$VERSION =  $Revision: 1.12 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -887,21 +887,20 @@ sub Run {
 1;
             </programlisting>
         </sect2>
-        <sect2 id="agent-ticket-permission-modules">
-            <title>Agent Ticket Permission Modules</title>
-            <para></para>
-        </sect2>
-        <sect2 id="customer-ticket-permission-modules">
-            <title>Customer Ticket Permission Modules</title>
-            <para></para>
-        </sect2>
-        <sect2 id="articlecompose-module">
-            <title>ArticleCompose Module</title>
-            <para></para>
-        </sect2>
-        <sect2 id="articlecheck-module">
-            <title>ArticleCheck Module</title>
-            <para></para>
+        <sect2 id="more-modules">
+            <title>Weitere Module</title>
+            <para>
+                Die Agent Ticket Permission Modules (Kernel/System/Ticket/Permission/) beinhalten Funktionen zum
+                Prüfen von Zugriffsberechtigungen eines Agent auf ein Ticket.
+            </para>
+            <para>
+                Die Customer Ticket Permission Modules (Kernel/System/Ticket/CustomerPermission/) beinhalten Funktionen
+                zum Prüfen von Zugriffsberechtigungen eines Kunden auf ein Ticket.
+            </para>
+            <para>Mit dem Article Modul (Kernel/System/Ticket/Article.pm) können Articel von Tickets ausgelesen und erstellt werden.</para>
+            <para>
+                Weitere Module mit Beschreibung finden Sie unter <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
+            </para>
         </sect2>
     </sect1>
 </chapter>

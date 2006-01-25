@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.8 2005-10-15 11:27:42 ck Exp $ -->
+<!-- $Id: package-management.xml,v 1.9 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Package Management</title>
@@ -58,8 +58,7 @@ shell>
                 <listitem>
                     <para>Web:</para>
                     <para>
-                        <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">
-                        http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
+<ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
@@ -79,8 +78,7 @@ shell> bin/opm.pl -a install -p /path/to/package.opm
                 <listitem>
                     <para>Web:</para>
                     <para>
-                        <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">
-                        http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
+<ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
@@ -120,8 +118,7 @@ shell> bin/opm.pl -a upgrade -p /path/to/package.opm
                 <listitem>
                     <para>Web:</para>
                     <para>
-                        <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">
-                        http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
+<ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>

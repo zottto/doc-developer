@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.1 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.2 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>OTRS Testmechnism</title>
@@ -23,7 +23,7 @@
 # Calendar.t - Calendar
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: test-mechanism.xml,v 1.1 2006-01-24 15:15:15 rk Exp $
+# $Id: test-mechanism.xml,v 1.2 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -62,7 +62,7 @@ $Self-&gt;True(
 );
         </programlisting>
         <para>
-            Diese Funktion prueft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf gültig.
+            Diese Funktion prüft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf gültig.
         </para>
     </sect1>
     <sect1>
@@ -74,7 +74,7 @@ $Self-&gt;False(
 );
         </programlisting>
         <para>
-            Diese Funktion prueft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf ungültig.
+            Diese Funktion prüft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf ungültig.
         </para>
     </sect1>
     <sect1>

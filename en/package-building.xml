@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.13 2005-10-17 19:47:08 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.14 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -17,49 +17,49 @@
         </para>
         <sect2 id="package-name">
             <title>Name</title>
-            <para>The package name.</para>
+            <para>The package name (required).</para>
             <programlisting format="linespecific">
 &lt;Name&gt;Calendar&lt;/Name&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-version">
             <title>Verion</title>
-            <para>The package version.</para>
+            <para>The package version (required).</para>
             <programlisting format="linespecific">
 &lt;Version&gt;1.2.3&lt;/Version&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-framework">
             <title>Framework</title>
-            <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9).</para>
+            <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9) (required).</para>
             <programlisting format="linespecific">
 &lt;Framework&gt;2.0.x&lt;/Framework&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-vendor">
             <title>Vendor</title>
-            <para>The package vendor.</para>
+            <para>The package vendor (requred).</para>
             <programlisting format="linespecific">
 &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-url">
             <title>URL</title>
-            <para>The vendor URL.</para>
+            <para>The vendor URL (required).</para>
             <programlisting format="linespecific">
 &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-license">
             <title>License</title>
-            <para>The license of the package.</para>
+            <para>The license of the package (required).</para>
             <programlisting format="linespecific">
 &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-changelog">
             <title>ChangeLog</title>
-            <para>The package change log.</para>
+            <para>The package change log (optional).</para>
             <programlisting format="linespecific">
 &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
 &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
@@ -67,7 +67,7 @@
         </sect2>
         <sect2 id="package-description">
             <title>Description</title>
-            <para>The package description in different languages.</para>
+            <para>The package description in different languages (required).</para>
             <programlisting format="linespecific">
 &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
 &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
@@ -75,21 +75,21 @@
         </sect2>
         <sect2 id="package-buildhost">
             <title>BuildHost</title>
-            <para>This will be filled up automatically by OPM.</para>
+            <para>This will be filled up automatically by OPM (auto).</para>
             <programlisting format="linespecific">
 &lt;BuildHost&gt;?&lt;/BuildHost&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-builddate">
             <title>BuildDate</title>
-            <para>This will be filled up automatically by OPM.</para>
+            <para>This will be filled up automatically by OPM (auto).</para>
             <programlisting format="linespecific">
 &lt;BuildDate&gt;?&lt;/BuildDate&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-package-required">
             <title>PackageRequired</title>
-            <para>Required packages needs to be installed before.</para>
+            <para>Required packages needs to be installed before (optional).</para>
             <programlisting format="linespecific">
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
@@ -97,7 +97,7 @@
         </sect2>
         <sect2 id="package-os">
             <title>OS (^M)</title>
-            <para>Required OS.</para>
+            <para>Required OS (optional).</para>
             <programlisting format="linespecific">
 &lt;OS&gt;Linux&lt;/OS&gt;
 &lt;OS&gt;MacOS&lt;/OS&gt;
@@ -106,7 +106,7 @@
         <sect2 id="package-filelist">
             <title>Filelist</title>
             <para>
-                This is a file of included file of the package.
+                This is a file of included file of the package (optional).
             </para>
             <programlisting format="linespecific">
 &lt;Filelist&gt;
@@ -120,7 +120,7 @@
         <sect2 id="package-database-install">
             <title>DatabaseInstall</title>
             <para>
-                Install (if a package get installed)
+                Install (if a package get installed), (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseInstall&gt;
@@ -141,7 +141,7 @@
             <para>
                 Upgrade (if a package gets upgraded, take care of the Version Tag in the
                 database actions, this means if the installed package version is below
-                1.3.4, then this database action will be performed)
+                1.3.4, then this database action will be performed), (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseUpgrade Version="1.3.4"&gt;
@@ -155,7 +155,7 @@
         <sect2 id="package-database-reinstall">
             <title>DatabaseReinstall</title>
             <para>
-                Reinstall (if a package is installed and gets reinstalled)
+                Reinstall (if a package is installed and gets reinstalled), (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
@@ -164,7 +164,7 @@
         <sect2 id="package-database-uninstall">
             <title>DatabaseUninstall</title>
             <para>
-                Uninstall (if a package gets uninstalled)
+                Uninstall (if a package gets uninstalled), (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseUninstall&gt;
@@ -175,7 +175,7 @@
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
-To execute perl code if the package gets installed.
+To execute perl code if the package gets installed (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeInstall&gt;
@@ -196,7 +196,7 @@ To execute perl code if the package gets installed.
         <sect2 id="package-code-uninstall">
             <title>CodeUninstall</title>
             <para>
-To execute perl code if the package gets uninstalled.
+To execute perl code if the package gets uninstalled (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeUninstall&gt;
@@ -210,7 +210,7 @@ To execute perl code if the package gets uninstalled.
         <sect2 id="package-code-reinstall">
             <title>CodeReinstall</title>
             <para>
-To execute perl code if the package gets reinstalled.
+To execute perl code if the package gets reinstalled (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeReinstall&gt;
@@ -224,7 +224,7 @@ To execute perl code if the package gets reinstalled.
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
-To execute perl code if the package gets upgraded.
+To execute perl code if the package gets upgraded (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeUpgrade&gt;

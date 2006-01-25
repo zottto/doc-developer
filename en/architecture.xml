@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.6 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: architecture.xml,v 1.7 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Architecture</title>
@@ -31,8 +31,20 @@
                         <entry>web handle</entry>
                     </row>
                     <row>
+                        <entry>bin/fcgi-bin/</entry>
+                        <entry>fast cgi web handle</entry>
+                    </row>
+                    <row>
                         <entry>Kernel</entry>
                         <entry>modules</entry>
+                    </row>
+                    <row>
+                        <entry>Kernel/Config/</entry>
+                        <entry>Config</entry>
+                    </row>
+                    <row>
+                        <entry>Kernel/Config/Files</entry>
+                        <entry>Config files</entry>
                     </row>
                     <row>
                         <entry>Kernel/Language</entry>
@@ -47,6 +59,10 @@
                         <entry>Frontend modules e.g. QueueView,...</entry>
                     </row>
                     <row>
+                        <entry>Kernel/Output/HTML/</entry>
+                        <entry>html templates</entry>
+                    </row>
+                    <row>
                         <entry>var/</entry>
                         <entry>variable data</entry>
                     </row>
@@ -59,12 +75,24 @@
                         <entry>Cron files</entry>
                     </row>
                     <row>
-                        <entry>Kernel/Output/HTML/</entry>
-                        <entry>html templates</entry>
+                        <entry>var/httpd/htdocs/</entry>
+                        <entry>htdocs directory with index.html</entry>
                     </row>
                     <row>
-                        <entry>Kernel/Config/files/</entry>
-                        <entry>Config files</entry>
+                        <entry>var/httpd/htdocs/images/Standard/</entry>
+                        <entry>Icons and pictures</entry>
+                    </row>
+                    <row>
+                        <entry>scripts/</entry>
+                        <entry>misc</entry>
+                    </row>
+                    <row>
+                        <entry>scripts/test/</entry>
+                        <entry>test files</entry>
+                    </row>
+                    <row>
+                        <entry>scripts/sample/</entry>
+                        <entry>sample files</entry>
                     </row>
                 </tbody>
             </tgroup>
@@ -114,7 +142,7 @@
     <sect1 id="frontend-handle">
         <title>Frontend Handle</title>
         <para>
-            this is the interace between the browser, web server and the Frontend Modules.
+            this is the interface between the browser, web server and the Frontend Modules.
             A Frontend Module can be used via the http-link.
         </para>
         <para>
@@ -144,7 +172,7 @@
     <sect1 id="cmd-frontend">
         <title>CMD Frontend</title>
         <para>
-            The CMD Frontend is like the Web-Frontend-Handle and the Web-Frontend-Module in
+            The CMD (Command) Frontend is like the Web-Frontend-Handle and the Web-Frontend-Module in
             one (just without the LayoutObject) and is using the core modules to do some
             actions in the system.
         </para>

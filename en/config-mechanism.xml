@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.7 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.8 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -14,8 +14,8 @@
             <filename>Kernel/Config/Defaults.pm</filename>
         </para>
         <para>
-            This tile ahould leave untouched because it gets updated on framework updates.
-            There are also a sub directory where you can put your own default config files
+            This file should leave untouched because it gets updated on framework updates.
+            There is also a sub directory where you can store your own default config files
             of our on modules. This files are used automatically.
         </para>
         <para>
@@ -61,7 +61,7 @@ $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
             <filename>Kernel/Config.pm</filename>
         </para>
         <para>
-            and set the new option. This file will be used at least and so all default config
+            and set the new option. This file will be used at last and so all default config
             options are overwritten with your settings.
         </para>
         <para>
@@ -71,7 +71,7 @@ $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
     <sect1 id="accessing-config-options">
         <title>Accessing config options</title>
         <para>
-            You can access (read and write) config options via the core module "Kernel::Config".
+            You can read and write (for one Request) the config options via the core module "Kernel::Config".
             The config object is base object and so already available in each frontend modules.
         </para>
         <para>
@@ -127,7 +127,7 @@ $Self->{ConfigObject}->Set(
                 Config Element für Zahlen und einzeilige Zeichenfolgen.
                 Ein Gültigkeitscheck mit Regex ist hier möglich.
                 Das Attribut Check überprüft Filesystemelemente. Zwei Angaben
-                sind möglich: 'file' oder 'direktory'.
+                sind möglich: 'file' oder 'directory'.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -223,7 +223,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-navbar">
             <title>FrontendModuleReg (NavBar)</title>
             <para>
-                Modulregistrierung
+                Modulregistrierung for Agent interface
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -249,7 +249,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-navbarmodule">
             <title>FrontendModuleReg (NavBarModule)</title>
             <para>
-                Modulregistrierung
+                Modulregistrierung for Admin interface
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;

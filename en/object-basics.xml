@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.11 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.12 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -19,7 +19,7 @@
                 <thead>
                     <row>
                         <entry>Application</entry>
-                        <entry>Description</entry>
+                        <entry>Database naming</entry>
                     </row>
                 </thead>
                 <tbody>
@@ -240,7 +240,7 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
             </tgroup>
         </informaltable>
         <para>
-            Tabelle 1Menu functions - generic, used by any application module
+            Menu functions - generic, used by any application module
         </para>
         <informaltable>
             <tgroup cols="4">
@@ -281,7 +281,7 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
             </tgroup>
         </informaltable>
         <para>
-            Tabelle 2Menu functions - global, always used
+            Menu functions - global, always used
         </para>
         <informaltable>
             <tgroup cols="4">

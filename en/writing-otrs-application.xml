@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.7 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.8 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Writing a OTRS application for a new Object</title>
@@ -16,23 +16,21 @@
             Als erstes müssen wir ein Verzeichnis für dieses Modul im Entwicklerverzeichnis anlegen: /HelloWorld
             In diesem Verzeichnis können alle Verzeichnisse die es in OTRS gibt angelegt werden.
             Jedes Modul sollte mindestens folgende Verzeichnisse beinhalten:
-
-            Kernel/
-            Kernel/System/
-            Kernel/Modules/
-            Kernel/Output/HTML/Standard/
-            Kernel/Config/
-            Kernel/Config/Files/
-            Kernel/Language/
-
         </para>
+        <para>Kernel/</para>
+        <para>Kernel/System/</para>
+        <para>Kernel/Modules/</para>
+        <para>Kernel/Output/HTML/Standard/</para>
+        <para>Kernel/Config/</para>
+        <para>Kernel/Config/Files/</para>
+        <para>Kernel/Language/</para>
     </sect1>
     <sect1 id="default-config-file">
         <title>Default Config File</title>
         <para>
             Damit das Modul auch in OTRS angezeigt wird, muss dafür eine Modulregistrierung erstellt werden.
             Dazu legen wir die Datei '/Kernel/System/Config/Files/HelloWorld.xml' an.
-            In der Datei legen wir ein neues Config Element an. die Bedeutung der einzelnen
+            In der Datei legen wir ein neues Config Element an. Die Bedeutung der einzelnen
             Einstellungen entnehmen Sie bitte aus dem Kapitel 'Config Mechanism':
         </para>
         <programlisting>
@@ -74,6 +72,11 @@
             erstellen wir die Datei: '/HelloWorld/Kernel/Modules/AgentHelloWorld.pm':
         </para>
         <programlisting>
+# --
+# Kernel/Modules/AgentHelloWorld.pm - frontend modul
+# Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: writing-otrs-application.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -134,6 +137,11 @@ sub Run {
         </para>
         <programlisting>
 # --
+# Kernel/System/HelloWorld.pm - core modul
+# Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: writing-otrs-application.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
+# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
@@ -171,6 +179,11 @@ sub GetHelloWorldText {
             Erstellen Sie folgende Datei: '/HelloWorld/Kernel/Output/HTML/Standard/AgentHelloWorld.dtl':
         </para>
         <programlisting>
+# --
+# Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
+# Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# --
+# $Id: writing-otrs-application.xml,v 1.8 2006-01-25 13:59:49 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you

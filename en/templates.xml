@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.10 2005-11-09 23:06:39 martin Exp $ -->
+<!-- $Id: templates.xml,v 1.11 2006-01-25 13:59:49 rk Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -17,7 +17,7 @@ The following describes the usable dtl tags and syntax.
     <sect1 id="template-formatting">
         <title>Formatting</title>
         <para>
-TAB: We use 2 spaces for every new open tag. Examples:
+TAB: We use two spaces for every new open tag. Examples:
         </para>
         <programlisting format="linespecific">
 &lt;table&gt;
@@ -278,6 +278,12 @@ Or with a regexp.
             <programlisting format="linespecific">
 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
             </programlisting>
+            <para>
+            Diese Template Funktion ist in den OTRS Template noch vereinzelt vorhanden,
+            wird aber in kommenden Versionen entfernt werden. Dies ist notwendig, da eine
+            Ablaufsteuerung in den Templates nicht erwünscht ist und sollte deshalb nicht
+            mehr verwendet werden.
+            </para>
         </sect2>
         <sect2 id="system-call">
             <title>system-call</title>
