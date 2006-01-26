@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.12 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.13 2006-01-26 10:19:54 tr Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -388,12 +388,12 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                         <entry>Call</entry>
                         <entry>8400</entry>
                         <entry>-</entry>
-                        <entry>Call.png</entry>
+                        <entry>call.png</entry>
                     </row><row>
-                        <entry>Statistic</entry>
+                        <entry>Stats</entry>
                         <entry>8500</entry>
                         <entry>-</entry>
-                        <entry>statistic.png</entry>
+                        <entry>stats.png</entry>
                     </row>
                     <row>
                         <entry>Admin</entry>
