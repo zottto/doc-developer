@@ -1,30 +1,30 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.8 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.9 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
     <sect1 id="default-config">
         <title>Default Config</title>
         <para>
-            There are different default config files. The main one which comes with the
-            framework is:
+            There are different default config files. The main one, which comes with the
+            framework, is:
         </para>
         <para>
             <filename>Kernel/Config/Defaults.pm</filename>
         </para>
         <para>
-            This file should leave untouched because it gets updated on framework updates.
-            There is also a sub directory where you can store your own default config files
-            of our on modules. This files are used automatically.
+            This file should be left untouched as it is automatically updated on framework updates.
+            There is also a sub directory where you can store the default config files
+            of your own modules. These files are used automatically.
         </para>
         <para>
-            This directory is located under:
+            The directory is located under:
         </para>
         <para>
             <filename class="directory">$OTRS_HOME/Kernel/Config/Defaults/Files/*.pm</filename>
         </para>
-        <para>And could look like the following:</para>
+        <para>And could look as follows:</para>
         <para>
             <filename>Kernel/config/Files/Calendar.pm</filename>
         </para>
@@ -55,27 +55,27 @@ $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
     <sect1 id="custom-config">
         <title>Custom Config</title>
         <para>
-            If you need to change a config option, copy it to
+            If you want to change a config option, copy it to
         </para>
         <para>
             <filename>Kernel/Config.pm</filename>
         </para>
         <para>
-            and set the new option. This file will be used at last and so all default config
+            and set the new option. This file will be read out last and so all default config
             options are overwritten with your settings.
         </para>
         <para>
-            This way it's easy to handle updates, you just need the Kernel/Config.pm.
+            This way it is easy to handle updates -  you just need the Kernel/Config.pm.
         </para>
     </sect1>
     <sect1 id="accessing-config-options">
-        <title>Accessing config options</title>
+        <title>Accessing Config Options</title>
         <para>
-            You can read and write (for one Request) the config options via the core module "Kernel::Config".
-            The config object is base object and so already available in each frontend modules.
+            You can read and write (for one request) the config options via the core module "Kernel::Config".
+            The config object is a base object and thus available in each Frontend Module.
         </para>
         <para>
-            If you want to get a config option:
+            If you want to access a config option:
         </para>
         <programlisting format="linespecific">
 my $ConfigOption = $Self->{ConfigObject}->Get('Prefix::Option');
@@ -91,7 +91,7 @@ $Self->{ConfigObject}->Set(
         </programlisting>
     </sect1>
         <sect1 id="xml-config">
-        <title>XML config options</title>
+        <title>XML Config Options</title>
         <para>
             If you want to add a config option:
         </para>
@@ -107,27 +107,27 @@ $Self->{ConfigObject}->Set(
 &lt;/ConfigItem&gt;
         </programlisting>
         <para>
-            Wenn Required auf '1' gesetzt ist, wird die Configvariable eingebunden und kann nicht deaktiviert werden.
+            If "required" is set to "1", the config variable is included and cannot be disabled.
         </para>
         <para>
-            Wenn Valid '1' ist, dann ist die Configvariable aktiv, mit '0' inaktiv.
+            If "valid" is set to "1", the config variable is active. If it is set to "0", the config variable is inactive.
         </para>
         <para>
-            Innerhalb des 'Setting' Elements wird die Configvariable angegeben.
+            The config variable is defined in the "setting" element.
         </para>
         <sect2 id="xml-config-variable">
-            <title>Types of XML config variables</title>
+            <title>Types of XML Config Variables</title>
             <para>
-                Die XML Configeinstellungen unterstützen verschiedene Arten von Variablen.
+                The XML config settings support various types of variables.
             </para>
         </sect2>
         <sect2 id="xml-config-string">
             <title>String</title>
             <para>
-                Config Element für Zahlen und einzeilige Zeichenfolgen.
-                Ein Gültigkeitscheck mit Regex ist hier möglich.
-                Das Attribut Check überprüft Filesystemelemente. Zwei Angaben
-                sind möglich: 'file' oder 'directory'.
+                A config element for numbers and single-line strings.
+                Checking the validity with regex is possible.
+                The check attribute checks elements of the file system.
+                This contains files and directories.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -138,7 +138,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-textarea">
             <title>Textarea</title>
             <para>
-                Config Element für mehrzeiligen Text.
+                A config element for multiline text.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -149,7 +149,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-option">
             <title>Options</title>
             <para>
-                Dieses Config Element bietet festeingestellte Werte als Pulldown Menü an.
+                This config element offers preset values as a pull-down menu.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -163,7 +163,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-array">
             <title>Array</title>
             <para>
-                Mit diesem Config Element kann man Arrays abbilden.
+                With this config element arrays can be displayed.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -177,7 +177,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-hash">
             <title>Hash</title>
             <para>
-                Mit diesem Config Element kann man Hashes abbilden.
+                With this config element hashes can be displayed.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -191,7 +191,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-subhash">
             <title>Hash with SubArray, SubOptions, SubHash</title>
             <para>
-                In einem Hash können als Content Arrays, Hashes oder Pulldown Menüs beinhalten.
+                A hash can contain content arrays, hashes or pull-down menus.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -223,7 +223,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-navbar">
             <title>FrontendModuleReg (NavBar)</title>
             <para>
-                Modulregistrierung for Agent interface
+                Module registration for Agent Interface.
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;
@@ -249,7 +249,7 @@ $Self->{ConfigObject}->Set(
         <sect2 id="xml-config-navbarmodule">
             <title>FrontendModuleReg (NavBarModule)</title>
             <para>
-                Modulregistrierung for Admin interface
+                Module registration for Admin Interface
             </para>
             <programlisting format="linespecific">
 &lt;Setting&gt;

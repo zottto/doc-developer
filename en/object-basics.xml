@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.13 2006-01-26 10:19:54 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.14 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
     <para>
-        This chapter describes what basics a new object (e. g. a ticket, faq, calendar, ...)
-        should have and how the environment should look like.
+        This chapter describes the basics of a new object (e. g. a ticket, faq, calendar, ...)
+        and how the environment should look like.
     </para>
     <sect1 id="object-options">
         <title>Object Options</title>
         <para>
-            A object (e.g. a ticket, faq, calendar, ...) should have min. this options or
-            like this naming in the application and in the database.
+            An object (e.g. a ticket, faq, calendar, ...) should  at least have the following options
+            (named after their function) in the application and in the database.
         </para>
         <informaltable>
             <tgroup cols="2">
                 <thead>
                     <row>
                         <entry>Application</entry>
-                        <entry>Database naming</entry>
+                        <entry>database naming</entry>
                     </row>
                 </thead>
                 <tbody>
@@ -97,19 +97,19 @@
 $Self->{"Object::Option"} = 1234;
         </programlisting>
         <para>
-            Config-Hashes should named with the same name like in the .dtl. For example:
+            Config-Hashes should be named with the same name as in the .dtl. For example:
         </para>
         <programlisting format="linespecific">
 $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
         </programlisting>
         <para>
-            The config order should be by global setting and following by detail settings.
+            The config order should be global setting followed by detail settings.
         </para>
     </sect1>
     <sect1 id="config-file">
         <title>Config File</title>
         <para>
-            An object should have an own config file which should be located under
+            An object should have a unique config file which should be located under
             $OTRS_HOME/Kernel/Config/Files/*.pm. For example:
         </para>
         <programlisting format="linespecific">
@@ -137,32 +137,32 @@ $Self->{"FileManager::Root"} = '/home/';
 $Self->{"FileManager::Trash"} = "/home/Trash/";
         </programlisting>
         <para>
-            Beschreibung der Configeinstellungen:
+            Description of the Config Preferences:
         </para>
         <informaltable>
             <tgroup cols="2">
                 <thead>
                     <row>
                         <entry>Element</entry>
-                        <entry>Description</entry>
+                        <entry>description</entry>
                     </row>
                 </thead>
                 <tbody>
                     <row>
                         <entry>NavBarName</entry>
-                        <entry>Modul name</entry>
+                        <entry>module name</entry>
                     </row>
                     <row>
                         <entry>Group/GroupRo</entry>
-                        <entry>Gruppenzugriffsrechte</entry>
+                        <entry>group access authorization</entry>
                     </row>
                     <row>
                         <entry>Name</entry>
-                        <entry>Bezeichner für den Linkbutton</entry>
+                        <entry>name of the link button</entry>
                     </row>
                     <row>
                         <entry>Image</entry>
-                        <entry>Bild für den Linkbutton</entry>
+                        <entry>image for the link button</entry>
                     </row>
                     <row>
                         <entry>Link</entry>
@@ -170,15 +170,15 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                     </row>
                     <row>
                         <entry>NavBar</entry>
-                        <entry>Modul name (Zugehörigkeit)</entry>
+                        <entry>module name (correlation)</entry>
                     </row>
                     <row>
                         <entry>Prio</entry>
-                        <entry>Rang in der Auflistung der Buttons</entry>
+                        <entry>prio in the button list</entry>
                     </row>
                     <row>
                         <entry>AccessKey</entry>
-                        <entry>Zeichen für den Schnellaufruf mit der Tastatur zusammen mit der ALT-Taste</entry>
+                        <entry>short key (key + ALT) for quick access over the keyboard. </entry>
                     </row>
                 </tbody>
             </tgroup>
@@ -187,7 +187,7 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
     <sect1 id="navbar-setting">
         <title>NavBar Setting</title>
         <para>
-            The NavBar item should be like the following:
+            A NavBar item should look like the following example:
         </para>
         <informaltable>
             <tgroup cols="4">
@@ -405,18 +405,18 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
             </tgroup>
         </informaltable>
         <para>
-            Tabelle 3Menu Applications -default application modules
+            Table 3: Menu Applications -default application modules
         </para>
         <note>
             <para>
-                AccessKey "g" is also reserved for formular submit.
+                AccessKey "g" is also reserved for the submission of forms.
             </para>
         </note>
     </sect1>
     <sect1 id="screen-flow">
         <title>Screen flow</title>
         <para>
-            An object module should have this flow to use it.
+            An object module should have the following process flow:
         </para>
          <mediaobject>
             <imageobject>

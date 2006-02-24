@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.7 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: book.xml,v 1.8 2006-02-24 08:53:10 rk Exp $ -->
 
 <book lang="en">
     <bookinfo>
-        <title>OTRS 2.0 - Developer-Manual</title>
+        <title>OTRS 2.0 - Developer Manual</title>
         <edition>Klong Jark Beach</edition>
         <copyright>
             <year>2005</year>
@@ -17,11 +17,10 @@
                 Burchard Steinbild, Andre Mindermann, Martin Edenhofer
             </para>
             <para>
-                This work is copyrighted by OTRS GmbH.
+                This work is copyrighted by the OTRS GmbH.
             </para>
             <para>
-                You may copy it in whole or in part as long as the copies retain this
-                copyright statement.
+                It may be copied - completely or in parts - as long as this copyright statement is kept on the copies.
             </para>
             <para>
                 UNIX is a registered trademark of X/Open Company Limited.
@@ -30,17 +29,18 @@
             <para>
                 MS-DOS, Windows, Windows 95, Windows 98, Windows NT, Windows 2000, Windows XP
                 and Windows 2003 are registered trademarks of Microsoft Corporation.
-                Other trademarks and registered trademarks are: SUSE and YaST of SUSE GmbH,
+                Other trademarks and registered trademarks are:
+                SUSE and YaST are registered trademarks of SUSE GmbH
                 Red Hat and Fedora are registered trademarks of Red Hat, Inc.
                 Mandrake is a registered trademark of MandrakeSoft, SA.
                 Debian is a registered trademark of Software in the Public Interest, Inc.
             </para>
             <para>
-                All trade names are used without the guarantee for their free use and are
-                possibly registered trade marks.
+                All trade names are used without the guarantee for their free use and might be
+                registered trade marks.
             </para>
             <para>
-                OTRS GmbH essentially follows the notations of the manufacturers.
+                The OTRS GmbH essentially follows the notations of the manufacturers.
                 Other products mentioned in this manual may be trademarks of the respective
                 manufacturer.
             </para>

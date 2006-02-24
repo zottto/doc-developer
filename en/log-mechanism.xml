@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.8 2006-01-24 15:15:15 rk Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.9 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>
     <para>
-        OTRS comes with an log backend which can be used for application logging and debugging.
+        OTRS comes with a log backend that can be used for application logging and debugging.
     </para>
     <sect1 id="use-and-syntax">
         <title>Use and Syntax</title>
         <para>
-            In all module layers is already an existing Log Object which can be used by
+            All module layers have ready-made Log Objects which can be used by
         </para>
         <programlisting format="linespecific">
 $Self->{LogObject}->Log(
@@ -22,7 +22,7 @@ $Self->{LogObject}->Log(
     <sect1 id="example">
         <title>Example</title>
         <para>
-            The following is an example to use the log mechanism without a module layer.
+            The following example shows how to use the log mechanism without a module layer.
         </para>
         <programlisting format="linespecific">
 use Kernel::Config;
@@ -42,10 +42,11 @@ $Self->{LogObject}->Log(
     <sect1 id="dumper">
         <title>Dumper</title>
         <para>
-            Mit diesem Konstrukt ist es möglich einen Dump von einem Hash oder Array zu erzeugen.
-            Als Log-Modul muss 'File' eingestellt sein. Der Inhalt wird in das otrs Logfile geschrieben (default: /tmp/otrs.log).
-            Die Function Dumper() in /Kernel/System/Log.pm hat standardmäßig 8000 Zeilen als Begrenzung eingestellt. Möchte man größere Dumps
-            erzeugen, muss man die Datei Editieren und den Wert entsprechend erhöhen.
+            This construct facilitates the creation of a dump of a hash or array.
+            'File' must be set as log module.
+            The content will be written into the OTRS log file (default: /tmp/otrs.log).
+            The Dumper() function in /Kernel/System/Log.pm is preset to a maximum of 8,000 lines.
+            If you want to create a bigger dump, edit the file and change the value according to your needs.
         </para>
         <programlisting format="linespecific">
 $Self->{LogObject}->Dumper(Hash => %Hash);

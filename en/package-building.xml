@@ -1,18 +1,17 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.14 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: package-building.xml,v 1.15 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Package Building</title>
     <para>
-        If you want to create an own OPM package (.opm) you need to create a spec file (.sopm)
-        which includes necessary properties of the package. After that you need to build it
-        to get a OPM package.
+        If you want to create an OPM package (.opm) you need to create a spec file (.sopm)
+        which includes the properties of the package.
     </para>
     <sect1 id="package-spec-file">
         <title>Package Spec File</title>
         <para>
-            The OPM package is XML based. So you can create/edit the .sopm via a text or xml
+            The OPM package is XML based. You can create/edit the .sopm via a text or xml
             editor. It contains meta data, a file list and database options.
         </para>
         <sect2 id="package-name">
@@ -23,7 +22,7 @@
             </programlisting>
         </sect2>
         <sect2 id="package-version">
-            <title>Verion</title>
+            <title>Version</title>
             <para>The package version (required).</para>
             <programlisting format="linespecific">
 &lt;Version&gt;1.2.3&lt;/Version&gt;
@@ -38,7 +37,7 @@
         </sect2>
         <sect2 id="package-vendor">
             <title>Vendor</title>
-            <para>The package vendor (requred).</para>
+            <para>The package vendor (required).</para>
             <programlisting format="linespecific">
 &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
             </programlisting>
@@ -75,21 +74,21 @@
         </sect2>
         <sect2 id="package-buildhost">
             <title>BuildHost</title>
-            <para>This will be filled up automatically by OPM (auto).</para>
+            <para>This will be filled in automatically by OPM (auto).</para>
             <programlisting format="linespecific">
 &lt;BuildHost&gt;?&lt;/BuildHost&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-builddate">
             <title>BuildDate</title>
-            <para>This will be filled up automatically by OPM (auto).</para>
+            <para>This will be filled in automatically by OPM (auto).</para>
             <programlisting format="linespecific">
 &lt;BuildDate&gt;?&lt;/BuildDate&gt;
             </programlisting>
         </sect2>
         <sect2 id="package-package-required">
             <title>PackageRequired</title>
-            <para>Required packages needs to be installed before (optional).</para>
+            <para>Packages that must be installed beforehand (optional).</para>
             <programlisting format="linespecific">
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
@@ -106,7 +105,7 @@
         <sect2 id="package-filelist">
             <title>Filelist</title>
             <para>
-                This is a file of included file of the package (optional).
+                This is a list of files included in the package (optional).
             </para>
             <programlisting format="linespecific">
 &lt;Filelist&gt;
@@ -120,7 +119,7 @@
         <sect2 id="package-database-install">
             <title>DatabaseInstall</title>
             <para>
-                Install (if a package get installed), (optional).
+               Databases that must be created when the package is installed (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseInstall&gt;
@@ -139,9 +138,8 @@
         <sect2 id="package-database-upgrade">
             <title>DatabaseUpgrade</title>
             <para>
-                Upgrade (if a package gets upgraded, take care of the Version Tag in the
-                database actions, this means if the installed package version is below
-                1.3.4, then this database action will be performed), (optional).
+                Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
+                Example (if installed package version is below 1.3.4, defined action will be performed):
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseUpgrade Version="1.3.4"&gt;
@@ -155,7 +153,7 @@
         <sect2 id="package-database-reinstall">
             <title>DatabaseReinstall</title>
             <para>
-                Reinstall (if a package is installed and gets reinstalled), (optional).
+                Information on what actions have to be performed if  the package is reinstalled, (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
@@ -175,7 +173,7 @@
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
-To execute perl code if the package gets installed (optional).
+To execute perl code if the package is installed (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeInstall&gt;
@@ -196,7 +194,7 @@ To execute perl code if the package gets installed (optional).
         <sect2 id="package-code-uninstall">
             <title>CodeUninstall</title>
             <para>
-To execute perl code if the package gets uninstalled (optional).
+To execute perl code if the package is uninstalled (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeUninstall&gt;
@@ -210,7 +208,7 @@ To execute perl code if the package gets uninstalled (optional).
         <sect2 id="package-code-reinstall">
             <title>CodeReinstall</title>
             <para>
-To execute perl code if the package gets reinstalled (optional).
+To execute perl code if the package is reinstalled (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeReinstall&gt;
@@ -224,7 +222,7 @@ To execute perl code if the package gets reinstalled (optional).
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
-To execute perl code if the package gets upgraded (optional).
+To execute perl code if the package is upgraded (optional).
             </para>
             <programlisting format="linespecific">
 &lt;CodeUpgrade&gt;
@@ -286,7 +284,7 @@ This is a whole example spec file.
     <sect1 id="package-build">
         <title>Package Build</title>
         <para>
-To package an own .opm package from the spec opm.
+To build an .opm package from the spec opm.
         </para>
         <screen>
             shell&gt; bin/opm.pl -a build -p /path/to/example.sopm

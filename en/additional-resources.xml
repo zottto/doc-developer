@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: additional-resources.xml,v 1.7 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: additional-resources.xml,v 1.8 2006-02-24 08:53:10 rk Exp $ -->
 
 <appendix id="additional-resources">
-    <title>Additional Resources</title>
+    <title>Additional Ressources</title>
     <sect1 id="additional-resources-hompepage">
         <title>OTRS.org</title>
         <para>
-            The OTRS projekt web site with source code, documentation and news is available at:
+            The OTRS project website with source code, documentation and news is available at:
         </para>
         <para>
             <ulink url="http://otrs.org/">http://otrs.org/</ulink>
@@ -16,14 +16,14 @@
     <sect1 id="additional-resources-online-library">
         <title>Online API Library</title>
         <para>
-            The OTRS developer API documentation is available at;
+            The OTRS developer API documentation is available at:
         </para>
         <para>
             <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
     </sect1>
     <sect1 id="additional-resources-developer-mailing-list">
-        <title>Developer Mailing list</title>
+        <title>Developer Mailing List</title>
         <para>
             The OTRS developer mailing list is available at:
         </para>
@@ -33,7 +33,7 @@
     </sect1>
     <sect1 id="additional-resources-commercial-support">
         <title>Commercial Support</title>
-        <para>For business assistance (support, consulting and training) you can contact the commercial part of OTRS, the OTRS GmbH.</para>
+        <para>For business assistance (support, consulting and training) please contact the commercial part of OTRS, the OTRS GmbH.</para>
         <para>OTRS GmbH</para>
         <para>Norsk-Data-Straße 1</para>
         <para>61352 Bad Homburg (Germany)</para>

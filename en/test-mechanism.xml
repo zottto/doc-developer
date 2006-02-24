@@ -1,21 +1,20 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.2 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.3 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
-    <title>OTRS Testmechnism</title>
+    <title>OTRS Test Mechanism</title>
     <para>
-        OTRS bietet die Möglichkeit automatischer Tests für Core-Module.
+        OTRS provides automated tests for core modules.
     </para>
     <sect1 id="testing">
-        <title>Erstellen einer Testroutine</title>
+        <title>Creating a Test Routine</title>
         <para>
-            Die Testroutinen werden in .t Dateien unter /scripts/test abgespeichert.
-            Für jedes OTRS Modul gibt es eine Datei, Beispiel Kalender-Modul: /scripts/test/Calendar.t
+            The test routines are stored in .t files in /scripts/test. There is a file for each and every OTRS module.
+            For example the file /scripts/test/Calendar.t for the Calendar Module.
         </para>
         <para>
-            Eine Testroutine besteht aus einem Funktionsaufruf der zu prüfenden Funktion und einer
-            Auswertung des Rückgabewertes.
+            A test routine consists of the function call of the function to be tested and the analysis of the return value.
             Example (/scripts/test/Calendar.t):
         </para>
         <programlisting format="linespecific">
@@ -23,7 +22,7 @@
 # Calendar.t - Calendar
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: test-mechanism.xml,v 1.2 2006-01-25 13:59:49 rk Exp $
+# $Id: test-mechanism.xml,v 1.3 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -62,7 +61,7 @@ $Self-&gt;True(
 );
         </programlisting>
         <para>
-            Diese Funktion prüft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf gültig.
+            This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
         </para>
     </sect1>
     <sect1>
@@ -74,7 +73,7 @@ $Self-&gt;False(
 );
         </programlisting>
         <para>
-            Diese Funktion prüft den Rueckgabewert der Funktion 'EventAdd()' in der Variable $EventID auf ungültig.
+            This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
         </para>
     </sect1>
     <sect1>
@@ -87,7 +86,7 @@ $Self-&gt;Is(
 );
         </programlisting>
         <para>
-            Diese Funktion prueft auf Gleichheit der Variablen $A und $B.
+            This function tests whether the variables $A and $B are equal.
         </para>
     </sect1>
 </chapter>

@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.9 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: package-management.xml,v 1.10 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Package Management</title>
     <para>
-        The OPM (OTRS Package Manager) is a mechanism to distribute software package for
+        The OPM (OTRS Package Manager) is a mechanism to distribute software packages for
         the OTRS framework via http, ftp or file upload.
     </para>
     <para>
-        For Example, the OTRS project offers OTRS applications like a calendar, a file manager
-        or web mail via OTRS packages over online repositories on our ftp servers.
-        This package can be managed (install/upgrade/uninstall) via the admin interface.
+        For example, the OTRS project offers OTRS modules like a calendar, a file manager
+        or web mail in OTRS packages via online repositories on our ftp servers.
+        The packages can be managed (install/upgrade/uninstall) via the admin interface.
     </para>
     <sect1 id="package-distribution">
         <title>Package Distribution</title>
         <para>
-            If you want to create an own OPM online repositiory, just tell the OTRS framework
+            If you want to create an OPM online repositiory, just tell the OTRS framework
             where the location is. Then you will have a new select option in the admin interface.
         </para>
         <programlisting format="linespecific">
@@ -33,7 +33,7 @@ $Self->{'Package::RepositoryList'} = {
         <sect2 id="package-repositiory-index">
             <title>Package Repository Index</title>
             <para>
-                You need to create an index file for your OPM packages in your repository. So
+                In your repository, create an index file for your OPM packages.
                 OTRS just reads this index file and knows what packages are available.
             </para>
             <screen>

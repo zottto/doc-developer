@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: layout.xml,v 1.7 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: layout.xml,v 1.8 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Layout</title>
@@ -20,8 +20,7 @@
                     <graphic srccredit="" scale="60" fileref="pictures/edit.png"></graphic>
                 </screenshot>
                 <para>
-                    Die Standardbreite für Tabelle mit dem Content ist 700px und sollte auf
-                    allen Seiten eingehalten werden.
+                    The default width for the content tables is 700px and should be maintained on all pages.
                 </para>
         </sect2>
         <sect2 id="overview-search-result">
@@ -40,11 +39,11 @@
     <sect1 id="images">
         <title>Images</title>
         <para>
-            The image format is png. The image size for the navigation icons is 22x22 pixel.
-            All other icons are 16x16 pixel.
+            The image format is png. The image size for the navigation icons is 22x22 pixels.
+            All other icons are 16x16 pixels.
         </para>
         <para>
-            Images are named onthere function. For example new.png or search.png.
+            Images are named after their function. For example new.png or search.png.
         </para>
         <para>
             Default images are:
@@ -57,7 +56,7 @@
                 <para>search.png (for searching)</para>
             </listitem>
             <listitem>
-                <para>overview.png (for a overview)</para>
+                <para>overview.png (for an overview)</para>
             </listitem>
             <listitem>
                 <para>logout.png (logout)</para>
@@ -65,14 +64,14 @@
         </itemizedlist>
     </sect1>
     <sect1 id="modulcss">
-        <title>Spezielle CSS Definitionen</title>
+        <title>Special CSS Definitions</title>
         <para>
-            Alle html Seiten in OTRS benutzen eine fest definierte CSS Deklaration, die es in jedem Header gibt.
-            Reichen diese Stylesheets nicht aus, dann werden zusätzliche im html Quellcode als extra css block definiert
-            und nicht in einem html Element.
+            All html pages in OTRS use a readymade CSS declaration that is part of every header.
+            Should the style sheets not contain the needed declaration, additional sheets must be defined
+            as an extra css block in the html source code instead of in an html element.
         </para>
         <para>
-            Examples from calendar modul:
+            Examples from the Calendar Module:
         </para>
         <programlisting format="linespecific">
 [..]

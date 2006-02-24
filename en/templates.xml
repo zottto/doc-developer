@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.11 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: templates.xml,v 1.12 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Templates</title>
     <para>
-The .dtl files are to 70% plain html and just used from Frontend Modules
+The .dtl files are to 70% plain html and just used from frontend modules
 (Kernel/Modules/*.pm). The .dtl files are located under:
     </para>
     <para>
         <filename>$OTRS_HOME/Kernel/Output/HTML/Standard/*.dtl</filename>
     </para>
     <para>
-The following describes the usable dtl tags and syntax.
+The usable dtl tags and syntax are described below.
     </para>
     <sect1 id="template-formatting">
         <title>Formatting</title>
@@ -51,7 +51,7 @@ TAB: We use two spaces for every new open tag. Examples:
         <sect2 id="Comment">
             <title>Comment</title>
             <para>
-The dtl comment starts with a # at the begining of a line and will not be
+The dtl comment starts with a # at the beginning of a line and will not be
 shown in the html output.
             </para>
             <programlisting format="linespecific">
@@ -61,15 +61,15 @@ shown in the html output.
         <sect2 id="data">
             <title>$Data{""}</title>
             <para>
-If data params are given to the templates, the this params can be printed to
+If data params are given to the templates, these params can be printed to
 the template.
             </para>
             <programlisting format="linespecific">
-There name of the author is $Data{"Name"}.
+The name of the author is $Data{"Name"}.
             </programlisting>
             <warning>
                 <para>
-If the value of the param Name includes html tags, the this tags are also shown.
+If the value of the param Name includes html tags, these tags are also shown.
                 </para>
             </warning>
         </sect2>
@@ -82,17 +82,17 @@ The same as $Data{""} but the value if the param Name is html quoted (safe).
 The name of the author is $QData{"Name"}.
             </programlisting>
             <para>
-It's also possible to cut the value. For example you just want to show 20
-characters of a variable (result will be "SomeName[..]"J), use the following.
+It's also possible to cut the value. If, for example, you just want to show 20
+characters of a variable (result will be "SomeName[..]"J), use the following:
             </para>
             <programlisting format="linespecific">
-There first 20 characters of the authors name: $QData{"Name", "20"}.
+The first 20 characters of the author's name: $QData{"Name", "20"}.
             </programlisting>
         </sect2>
         <sect2 id="lqdata">
             <title>$LQData{""}</title>
             <para>
-The same as $QData{""} but with link encoding, this means for example as a space will be a + (e. g. for "a href").
+The same as $QData{""} but with link encoding. This means for example that a space will be a + (e. g. for "a href").
             </para>
             <programlisting format="linespecific">
 &lt;a href="$Env{"Baselink"}Action=$Env{"Action"}&amp;Location=$LQData{"File"}" title="$LQData{"Name"}"&gt;$QData{"File","110"}&lt;/a&gt;
@@ -101,11 +101,11 @@ The same as $QData{""} but with link encoding, this means for example as a space
         <sect2 id="env">
             <title>$Env{""}</title>
             <para>
-Env is an environment variable which is usable over more templates. $Data{""}
+Env is an environment variable which is usable in more templates at a time. $Data{""}
 is just availabe for one template.
             </para>
             <programlisting format="linespecific">
-There curent user name is: $Env{"Userfirstname"}
+The current user name is: $Env{"Userfirstname"}
 
 Some other common variables are:
 $Env{"SessionID"} --> the current session id
@@ -122,10 +122,10 @@ $Env{"UserIsGroup[admin]"} = Yes $Env{"Action"} --> the current action
         <sect2 id="qenv">
             <title>$QEnv{""}</title>
             <para>
-QEnv is an quoted environment variable like Env but html quoted.
+QEnv is an html quoted environment variable (like Env but quoted).
             </para>
             <programlisting format="linespecific">
-There curent user name is: $QEnv{"Userfirstname"}
+The current user name is: $QEnv{"Userfirstname"}
             </programlisting>
         </sect2>
         <sect2 id="quote">
@@ -137,8 +137,8 @@ A tag to quote html strings.
 Show no html tags, quote this: $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;"}
             </programlisting>
             <para>
-It's also possible to cut the value. For example you just want to show 20
-characters of a variable (result will be "SomeMess[..]"), use the following.
+It's also possible to cut the value. If, for example, you just want to show 20
+characters of a variable (result will be "SomeMess[..]"), use the following:
             </para>
             <programlisting format="linespecific">
 Show no html tags, quote this and show just 20 characters:
@@ -148,7 +148,7 @@ Show no html tags, quote this and show just 20 characters:
         <sect2 id="text">
             <title>$Text{""}</title>
             <para>
-This tag translates the string in there (based on the user selected language).
+This tag translates the string (based on the user selected language).
             </para>
             <programlisting format="linespecific">
 Translate this text: $Text{"Help"}
@@ -181,14 +181,14 @@ The admin email address is '$Config{"AdminEmail"}'
         <sect2 id="include">
             <title>$Include{""}</title>
             <para>
-If you want to include other dtl templates into a template, use the include tag.
+If you want to include other dtl templates into a template, use the include tag:
             </para>
             <programlisting format="linespecific">
 # include Copyright.dtl
 $Include{"Copyright"}
             </programlisting>
             <para>
-Or a other examlpe.
+Yet another examlpe:
             </para>
             <programlisting format="linespecific">
 &lt;html&gt;
@@ -202,8 +202,8 @@ $Include{"css"}
         <sect2 id="block">
             <title>block</title>
             <para>
-The block tag can be used to define block. This blocks can be used from the
-Frontend Module several times with different data params.
+                        The block tag can be used to define blocks. These blocks can be used several times by the
+frontend module with different data params.
             </para>
             <programlisting format="linespecific">
 &lt;table&gt;
@@ -224,8 +224,7 @@ Frontend Module several times with different data params.
 &gt;/table&gt;
             </programlisting>
             <para>
-For example you want to use this block to show email message html formated via
-a table the Frontend Module code could look like this:
+                        The html code can be displayed in template blocks in the frontend:
             </para>
             <programlisting format="linespecific">
 # get article
@@ -258,7 +257,7 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
         <sect2 id="set">
             <title>set</title>
             <para>
-With the tag set you can set a variable in the dtl template.
+With this tag you can set a variable in the dtl template.
             </para>
             <programlisting format="linespecific">
 &lt;dtl set $Data{"Test"} = "Some Text"&gt;
@@ -279,10 +278,9 @@ Or with a regexp.
 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
             </programlisting>
             <para>
-            Diese Template Funktion ist in den OTRS Template noch vereinzelt vorhanden,
-            wird aber in kommenden Versionen entfernt werden. Dies ist notwendig, da eine
-            Ablaufsteuerung in den Templates nicht erwünscht ist und sollte deshalb nicht
-            mehr verwendet werden.
+           This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
+           The removal is necessary as a sequence control in the templates is not desired.
+           The function should thus not be used any more.
             </para>
         </sect2>
         <sect2 id="system-call">
@@ -297,7 +295,7 @@ If you want the output of a system call back to a dtl variable.
 The output of 'uptime' is: $Data{"uptime"}
             </programlisting>
             <para>
-Or a other example.
+Yet another example:
             </para>
             <programlisting format="linespecific">
 # execute system call

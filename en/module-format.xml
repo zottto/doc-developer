@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $ -->
+<!-- $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
-    <title>Module format</title>
+    <title>Module Format</title>
     <sect1 id="auth-module">
         <title>Auth Module</title>
         <para>
             There are several agent authentication modules (DB, LDAP and HTTPBasicAuth)
-            which comes with the OTRS framework. It's also possible to develop your own
+            which come with the OTRS framework. It is also possible to develop your own
             authentication modules. The agent authentication modules are located under
-            Kernel/System/Auth/*.pm. To configure it see the admin manual. An example of
-            a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm. You
-            just need 3 functions, new(), GetOption() and Auth() return the uid, then the
+            Kernel/System/Auth/*.pm. For more information about their configuration see the admin manual.
+            Following, there is an example of a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm.
+            You just need 3 functions: new(), GetOption() and Auth(). Return the uid, then the
             authentication is ok.
         </para>
         <para>Format:</para>
@@ -61,7 +61,7 @@ sub Auth {
     <sect1 id="notify-module">
         <title>Notify Module</title>
         <para>
-            With agent notification modules you can inform agents about new infos. A
+            With agent notification modules you can inform agents about new information. A
             normal navigation looks like the following screen shot.
         </para>
         <para>
@@ -70,7 +70,7 @@ sub Auth {
             </screenshot>
         </para>
         <para>
-            With the following example module you can do something like the following.
+            With this examplary module you can do something like the following.
         </para>
         <para>
             <screenshot>
@@ -85,7 +85,7 @@ sub Auth {
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -112,7 +112,7 @@ sub Run {
 1;
         </programlisting>
         <para>
-            To use this module, add the following to the <filename>Kernel/Config.pm</filename>
+            To use this module add the following to the <filename>Kernel/Config.pm</filename>
             and restart your webserver (if you use mod_perl).
         </para>
         <programlisting format="linespecific">
@@ -125,7 +125,7 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
     <sect1 id="navigation-module">
         <title>Navigation Module</title>
         <para>
-            Over this module layer you can create dynamicaly navigation bar items with
+            In this module layer you can create dynamic navigation bar items with
             dynamic content (Name and Description).
         </para>
         <para>
@@ -136,7 +136,7 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -172,8 +172,8 @@ sub Run {
 1;
         </programlisting>
         <para>
-            To use this module, add the following to the Kernel/Config.pm and restart
-            your webserver (if you use mod_perl)
+            To use this module add the following to the Kernel/Config.pm and restart
+            your webserver (if you use mod_perl).
         </para>
         <programlisting format="linespecific">
 [Kernel/Config.pm]
@@ -184,20 +184,20 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
         </programlisting>
     </sect1>
     <sect1 id="frontend-modules">
-        <title>Frontend Module</title>
+        <title>Frontend Modules</title>
         <para>
-            Frontend Modules are located under "$OTRS_HOME/Kernel/Modules/*.pm". There
-            are two public functions in there. new() and Run() which are used from the
-            Frontend Handle (e. g. index.pl). "new()" is used to create an Frontend
-            Module object. The Frontend Handle gives basic framework object to the
-            Frontend Module. For example ParamObject (to get formular params), DBObject
+            Frontend Modules are located under  "$OTRS_HOME/Kernel/Modules/*.pm". There
+            are two public functions in there - new() and run() - which are accessed from the
+            Frontend Handle (e. g. index.pl). "new()" is used to create a frontend
+            module object. The Frontend Handle provides the used frontend module with the basic framework object.
+            These are, for example: ParamObject (to get formular params), DBObject
             (to use existing database connects), LayoutObject (to use templates and other
             html layout functions), ConfigObject (to access config settings), LogObject
             (to use the framework log system), UserObject (to get the user functions from
             the current user), GroupObject (to get the group functions).
         </para>
         <para>
-            For more info about core modules see
+            For more information on core modules see
             <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
         <para>
@@ -208,7 +208,7 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -280,10 +280,10 @@ sub Run {
 1;
         </programlisting>
         <para>
-            You also need a module registration for Frontend Modules to use it. Define read
-            only groups with the 'GroupRo' and read write groups with 'Group' param (see
-            table below for details). You also can define navigation bar icons via the
-            'NavBar' param (see table below for details).
+            You also need a module registration for frontend modules. Define read
+            only groups with the "GroupRo" and read/write groups with the 'Group' param (see
+            table below for details). You can define navigation bar icons via the
+            "NavBar'"param, too (see table below for details).
         </para>
         <programlisting format="linespecific">
 [Kernel/Config.pm]
@@ -305,7 +305,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
 };
         </programlisting>
         <para>
-            You can access this Frontend Module via http (browse) with the Action
+            You can access this frontend module via http (browse) with the Action
             param = Module or over the navigation bar.
         </para>
         <para>
@@ -333,7 +333,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
                     </row>
                     <row>
                         <entry>Description</entry>
-                        <entry>Modul description, just for internal, not shown
+                        <entry>Module description, just for internal use -  not shown
                         in the user interface.</entry>
                     </row>
                     <row>
@@ -356,7 +356,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
                     <row>
                         <entry>Description</entry>
                         <entry>The description of the icon which is shown in the navbar
-                        after leaving the mouse over.</entry>
+                        after the curser is pointed on it.</entry>
                     </row>
                     <row>
                         <entry>Name</entry>
@@ -368,11 +368,11 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
                     </row>
                     <row>
                         <entry>Link</entry>
-                        <entry>The Link behind the icon in the navbar.</entry>
+                        <entry>The link behind the icon in the navbar.</entry>
                     </row>
                     <row>
                         <entry>NavBar</entry>
-                        <entry>Just shown this icon in this NavBar context.</entry>
+                        <entry>Only shown this icon in this NavBar context.</entry>
                     </row>
                     <row>
                         <entry>Prio</entry>
@@ -383,11 +383,11 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
         </informaltable>
     </sect1>
     <sect1 id="core-modules">
-        <title>Core Module</title>
+        <title>Core Modules</title>
         <para>
             Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for
-            the logical work. These modules are to handle system routines like "lock ticket"
-            and "create ticket". These modules need always pod (Perl Documentation).
+            the logical work. The modules are used to handle system routines like "lock ticket"
+            and "create ticket". These modules  always need pod (Perl Documentation).
         </para>
         <para>
             A few common core modules are: Log (Kernel::System::Log); Ticket
@@ -395,7 +395,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
             Email (Kernel::System::Email).
         </para>
         <para>
-            For more info of this core modules see
+            For more information on the core modules see
             <ulink url="http://dev.otrs.org/">http://dev.otrs.org</ulink>
         </para>
         <para>
@@ -406,7 +406,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -473,7 +473,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.12 $ $Date: 2006-01-25 13:59:49 $
+$Revision: 1.13 $ $Date: 2006-02-24 08:53:10 $
 
 =cut
         </programlisting>
@@ -481,16 +481,16 @@ $Revision: 1.12 $ $Date: 2006-01-25 13:59:49 $
     <sect1 id="customer-auth-module">
         <title>Customer Auth Module</title>
         <para>
-            It's the same as "Agent Auth Modules" but the module location is
+            The same as "Agent Auth Modules" but the module location is
             <filename>Kernel/System/CustomerAuth/*.pm</filename>.
         </para>
     </sect1>
     <sect1 id="customer-user-module">
         <title>Customer User Module</title>
         <para>
-            With this module layer you can have a bridge between your customer source
-            system and OTRS. So it's possible to use your customer data directly for
-            your data ware house (read only and read write).
+            This module layer can be used as a bridge between your customer source
+            system and OTRS. Thus it is possible to use your customer data directly for
+            your data ware house (read only and read/write).
         </para>
         <para>
             Format:
@@ -500,7 +500,7 @@ $Revision: 1.12 $ $Date: 2006-01-25 13:59:49 $
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -566,11 +566,11 @@ sub SetPassword {
     <sect1 id="customer-navigation-module">
         <title>Customer Navigation Module</title>
         <para>
-            Over this module layer you can create dynamically navigation bar items with
+            In this module layer you can create dynamic navigation bar items with
             dynamic content (Name and Description).
         </para>
         <para>
-            The Format is the same as the Navigation Module.
+            The format is the same as in the Navigation Module.
         </para>
         <para>
             Just the config setting key is different. To use this module, add the following
@@ -587,7 +587,8 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
     <sect1 id="stats-modul">
         <title>Stats Modul</title>
         <para>
-A stats module is easy, you just need two functions. Param() to get all useable params for the stats and Run() to return the stats result.
+A stats module is easy - you just need two functions.
+Param() to get all usable params for the stats and Run() to return the stats result.
         </para>
         <para>
 Kernel/Config.pm:
@@ -612,7 +613,7 @@ Kernel/System/Stats/SomeExampleStats.pm:
 # Kernel/System/Stats/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.12 2006-01-25 13:59:49 rk Exp $
+# $Id: module-format.xml,v 1.13 2006-02-24 08:53:10 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -718,9 +719,9 @@ sub Run {
         <sect2 id="ticket-number-module">
             <title>Ticket Number Module</title>
             <para>
-                If you want to create a own ticket number format, just create a own ticket
-                number module. The modules are located under "Kernel/System/Ticket/Number/*.pm".
-                For default modules see the admin manual. You just need 2 functions,
+                If you want to create your own ticket number format, just create your own ticket
+                number module. These modules are located under "Kernel/System/Ticket/Number/*.pm".
+                For default modules see the admin manual. You just need 2 functions:
                 CreateTicketNr() and GetTNByString():
             </para>
             <para>
@@ -741,7 +742,7 @@ sub Run {
 package Kernel::System::Ticket::Number::Simple;
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.12 $ ;
+$VERSION =  $Revision: 1.13 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -764,16 +765,19 @@ sub GetTNByString {
         <sect2 id="ticket-postmaster-module">
             <title>Ticket PostMaster Module</title>
             <para>
-PostMaster modules are used if an email arrives the PostMaster process.
-There are two kinds of PostMaster modules. PostMasterPre (used after parsing an email) and PostMasterPost (used after an email is processed and in the database) modules.
+PostMaster modules are used during the PostMaster process.
+There are two kinds of PostMaster modules. PostMasterPre (used after parsing an email)
+and PostMasterPost (used after an email is processed and in the database) modules.
             </para>
             <para>
-If you want to create an own postmaster filter, just create an own module. The modules are located under "Kernel/System/PostMaster/Filter/*.pm".
-For default modules see the admin manual. You just need two functions,
+If you want to create your own postmaster filter, just create your own module.
+These modules are located under "Kernel/System/PostMaster/Filter/*.pm".
+For default modules see the admin manual. You just need two functions:
 new() and Run():
             </para>
             <para>
-The following is an example module to match emails and set X-OTRS-Headers (see doc/X-OTRS-Headers.txt for more infos).
+The following is an examplary module to match emails and set X-OTRS-Headers
+(see doc/X-OTRS-Headers.txt for more info).
             </para>
             <para>
                 Kernel/Config.pm:
@@ -807,7 +811,7 @@ The following is an example module to match emails and set X-OTRS-Headers (see d
 package Kernel::System::PostMaster::Filter::Example;
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.12 $ ;
+$VERSION =  $Revision: 1.13 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -888,18 +892,18 @@ sub Run {
             </programlisting>
         </sect2>
         <sect2 id="more-modules">
-            <title>Weitere Module</title>
+            <title>More Modules</title>
             <para>
-                Die Agent Ticket Permission Modules (Kernel/System/Ticket/Permission/) beinhalten Funktionen zum
-                Prüfen von Zugriffsberechtigungen eines Agent auf ein Ticket.
+                The Agent Ticket Permission Modules (Kernel/System/Ticket/Permission/) contain functions to verify
+                an agent's authorisation to access a ticket.
             </para>
             <para>
-                Die Customer Ticket Permission Modules (Kernel/System/Ticket/CustomerPermission/) beinhalten Funktionen
-                zum Prüfen von Zugriffsberechtigungen eines Kunden auf ein Ticket.
+                The Customer Ticket Permission Modules (Kernel/System/Ticket/CustomerPermission/) contain functions
+                to verify a customer's authorisation to access a ticket.
             </para>
-            <para>Mit dem Article Modul (Kernel/System/Ticket/Article.pm) können Articel von Tickets ausgelesen und erstellt werden.</para>
+            <para>The Article Module (Kernel/System/Ticket/Article.pm) facilitates the readout and generating of ticket articles. </para>
             <para>
-                Weitere Module mit Beschreibung finden Sie unter <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
+                More modules and their descriptions are listed under <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
             </para>
         </sect2>
     </sect1>

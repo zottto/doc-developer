@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.18 2005-12-29 02:22:31 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.19 2006-02-24 08:53:10 rk Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
     <para>
-OTRS comes with an database layer to support different databases.
+OTRS comes with a database layer that supports different databases.
     </para>
     <sect1 id="database-how-it-works">
         <title>How it works</title>
@@ -48,8 +48,8 @@ return $Id;
             </programlisting>
             <note>
                 <para>
-Take care that you use Limit as param and not in the SQL string because
-not every database supports LIMIT in SQL string.
+Take care to use Limit as param and not in the SQL string because
+not all databases support LIMIT in SQL strings.
                 </para>
             </note>
             </sect3>
@@ -78,9 +78,9 @@ my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
         <sect2 id="database-xml">
             <title>XML</title>
             <para>
-The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER TABLE (>= OTRS 2.1). This way you can
-write database independent applications because this syntax is different from
-database to database.
+The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER TABLE (>= OTRS 2.1).
+As this syntax is different from database to database, using it makes sure that
+you write applications that can be used in all of them.
             </para>
             <sect3 id="database-xml-insert">
             <title>INSERT</title>
@@ -152,9 +152,9 @@ foreach (@SQL) {
         </sect2>
     </sect1>
     <sect1 id="database-driver">
-        <title>Database Driver</title>
+        <title>Database Drivers</title>
         <para>
-            The database driver are located under <filename>$OTRS_HOME/Kernel/System/DB/*.pm</filename>.
+            The database drivers are located under <filename>$OTRS_HOME/Kernel/System/DB/*.pm</filename>.
         </para>
     </sect1>
     <sect1 id="database-supported">

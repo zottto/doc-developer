@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: introduction.xml,v 1.5 2005-11-09 23:00:34 martin Exp $ -->
+<!-- $Id: introduction.xml,v 1.6 2006-02-24 08:53:42 rk Exp $ -->
 
 <chapter>
   <title>Introduction</title>
   <abstract>
     <para>
-      OTRS is a multi platform web application framework which was original developed for
+      OTRS is a multi-platform web application framework which was originally developed for
       a trouble ticket system. It supports different web servers and databases.
     </para>
     <para>
-      This manual shows you how to develop own OTRS modules and applications based on the OTRS style guides.
+      This manual shows how to develop your own OTRS modules and applications based on the OTRS styleguides.
     </para>
   </abstract>
 </chapter>
