@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.14 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.15 2006-03-02 12:07:09 rk Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -418,10 +418,10 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
         <para>
             An object module should have the following process flow:
         </para>
-         <mediaobject>
-            <imageobject>
-                <imagedata align="center" fileref="pictures/screen-flow.png"></imagedata>
-            </imageobject>
-        </mediaobject>
+         <para>
+            <screenshot>
+                <graphic srccredit="" fileref="pictures/screen-flow.png"></graphic>
+            </screenshot>
+        </para>
     </sect1>
 </chapter>
