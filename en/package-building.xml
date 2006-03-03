@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.16 2006-03-02 12:07:09 rk Exp $ -->
+<!-- $Id: package-building.xml,v 1.17 2006-03-03 09:04:27 rk Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -119,7 +119,7 @@
         <sect2 id="package-database-install">
             <title>DatabaseInstall</title>
             <para>
-               Datenbankeinträge welche erstellt werden müssen, wenn ein Paket installiert wird. (optional).
+                Database entries that have to be created when a package is installed (optional).
             </para>
             <programlisting format="linespecific">
 &lt;DatabaseInstall&gt;
