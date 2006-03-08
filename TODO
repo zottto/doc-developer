@@ -2,7 +2,7 @@
 # TODO - todo list of developer manual
 # Copyright (C) 2001-2006 OTRS GmbH, http://www.otrs.com/
 # --
-# $Id: TODO,v 1.5 2006-02-01 08:37:19 tr Exp $
+# $Id: TODO,v 1.6 2006-03-08 12:46:43 rk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@
 # scripts/tools/csv2customerdb.pl - insert csv data into the customerdb - constructed for CERT-Bund
 # Copyright (C) 2001-2006 OTRS GmbH, http://www.otrs.com/
 # --
-# $Id: TODO,v 1.5 2006-02-01 08:37:19 tr Exp $
+# $Id: TODO,v 1.6 2006-03-08 12:46:43 rk Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -56,3 +56,5 @@ misc (not scheduled yet - nobody is working on it yet)
 ideas (just ideas - nobody is working on it)
 - description of LastscreenView and LastscreenOverview functions
 - descriotion from date convert functions
+- Themes
+- Translation
