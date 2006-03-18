@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.12 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: templates.xml,v 1.13 2006-03-18 11:19:15 martin Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -83,10 +83,10 @@ The name of the author is $QData{"Name"}.
             </programlisting>
             <para>
 It's also possible to cut the value. If, for example, you just want to show 20
-characters of a variable (result will be "SomeName[..]"J), use the following:
+characters of a variable (result will be "SomeName[..]"), use the following:
             </para>
             <programlisting format="linespecific">
-The first 20 characters of the author's name: $QData{"Name", "20"}.
+The first 20 characters of the author's name: $QData{"Name","20"}.
             </programlisting>
         </sect2>
         <sect2 id="lqdata">
