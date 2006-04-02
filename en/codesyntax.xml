@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.10 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -13,6 +13,7 @@
         <para>
             TAB: We use 4 spaces. Examples for braces:
         </para>
+        <para>
         <programlisting format="linespecific">
 if ($Condition) {
     Foo();
@@ -25,6 +26,7 @@ while ($Condition == 1) {
     Foo();
 }
         </programlisting>
+        </para>
     </sect1>
     <sect1 id="naming">
         <title>Naming</title>
@@ -32,9 +34,11 @@ while ($Condition == 1) {
             Names and comments are written in English. Variables, Objects and Methods
             must be descriptive nouns or noun phrases with the first letter set upper case.
         </para>
+        <para>
         <programlisting format="linespecific">
 e. g. @TicktIDs or $Output or BuildQueueView()
         </programlisting>
+        </para>
     </sect1>
     <sect1 id="source-code-header">
         <title>Source Code Header and Charset</title>
@@ -42,25 +46,28 @@ e. g. @TicktIDs or $Output or BuildQueueView()
             Attach the following header to each and every source file.
             Source files are saved in Charset ISO-8859-1.
         </para>
+        <para>
         <programlisting format="linespecific">
 # --
-# (file name) - a short description what it does.
+# (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.10 2006-02-24 08:53:10 rk Exp $
+# $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 # --
         </programlisting>
+        </para>
         <para>
             The following line is updated by the CVS:
         </para>
+        <para>
         <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.10 2006-02-24 08:53:10 rk Exp $
+# $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $
         </programlisting>
-
+        </para>
     </sect1>
     <sect1 id="version-comments">
         <title>Version Comments</title>
@@ -71,9 +78,11 @@ e. g. @TicktIDs or $Output or BuildQueueView()
             a new version is published. The keyword for version comments is 'FRAMEWORK'
             For perl use '#' and for xml use the xml comments.
         </para>
+        <para>
         <programlisting format="linespecific">
 e.g. for perl-code
 # FRAMEWORK-2.1: the function ID2UserName is first available in OTRS 2.1
         </programlisting>
+        </para>
     </sect1>
 </chapter>

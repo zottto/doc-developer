@@ -1,30 +1,29 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.9 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.10 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>
     <para>
-        OTRS comes with a log backend that can be used for application logging and debugging.
+OTRS comes with a log backend that can be used for application logging and debugging.
     </para>
     <sect1 id="use-and-syntax">
         <title>Use and Syntax</title>
         <para>
-            All module layers have ready-made Log Objects which can be used by
-        </para>
-        <programlisting format="linespecific">
+All module layers have ready-made Log Objects which can be used by
+        <programlisting>
 $Self->{LogObject}->Log(
     Priority => 'error',
     Message => "Nee something!",
 );
         </programlisting>
+        </para>
     </sect1>
     <sect1 id="example">
         <title>Example</title>
         <para>
-            The following example shows how to use the log mechanism without a module layer.
-        </para>
-        <programlisting format="linespecific">
+The following example shows how to use the log mechanism without a module layer.
+        <programlisting>
 use Kernel::Config;
 use Kernel::System::Log;
 
@@ -38,18 +37,6 @@ $Self->{LogObject}->Log(
     Message => "Need something!",
 );
         </programlisting>
-    </sect1>
-    <sect1 id="dumper">
-        <title>Dumper</title>
-        <para>
-            This construct facilitates the creation of a dump of a hash or array.
-            'File' must be set as log module.
-            The content will be written into the OTRS log file (default: /tmp/otrs.log).
-            The Dumper() function in /Kernel/System/Log.pm is preset to a maximum of 8,000 lines.
-            If you want to create a bigger dump, edit the file and change the value according to your needs.
         </para>
-        <programlisting format="linespecific">
-$Self->{LogObject}->Dumper(Hash => %Hash);
-        </programlisting>
     </sect1>
 </chapter>

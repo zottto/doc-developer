@@ -1,113 +1,136 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.17 2006-03-03 09:04:27 rk Exp $ -->
+<!-- $Id: package-building.xml,v 1.18 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
     <para>
-        If you want to create an OPM package (.opm) you need to create a spec file (.sopm)
-        which includes the properties of the package.
+If you want to create an OPM package (.opm) you need to create a spec file (.sopm)
+which includes the properties of the package.
     </para>
     <sect1 id="package-spec-file">
         <title>Package Spec File</title>
         <para>
-            The OPM package is XML based. You can create/edit the .sopm via a text or xml
-            editor. It contains meta data, a file list and database options.
+The OPM package is XML based. You can create/edit the .sopm via a text or xml
+editor. It contains meta data, a file list and database options.
         </para>
         <sect2 id="package-name">
             <title>Name</title>
-            <para>The package name (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The package name (required).
+            <programlisting>
 &lt;Name&gt;Calendar&lt;/Name&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-version">
             <title>Version</title>
-            <para>The package version (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The package version (required).
+            <programlisting>
 &lt;Version&gt;1.2.3&lt;/Version&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-framework">
             <title>Framework</title>
-            <para>The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9) (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9) (required).
+            <programlisting>
 &lt;Framework&gt;2.0.x&lt;/Framework&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-vendor">
             <title>Vendor</title>
-            <para>The package vendor (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The package vendor (required).
+            <programlisting>
 &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-url">
             <title>URL</title>
-            <para>The vendor URL (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The vendor URL (required).
+            <programlisting>
 &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-license">
             <title>License</title>
-            <para>The license of the package (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The license of the package (required).
+            <programlisting>
 &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-changelog">
             <title>ChangeLog</title>
-            <para>The package change log (optional).</para>
-            <programlisting format="linespecific">
+            <para>
+The package change log (optional).
+            <programlisting>
 &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
 &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-description">
             <title>Description</title>
-            <para>The package description in different languages (required).</para>
-            <programlisting format="linespecific">
+            <para>
+The package description in different languages (required).
+            <programlisting>
 &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
 &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-buildhost">
             <title>BuildHost</title>
-            <para>This will be filled in automatically by OPM (auto).</para>
-            <programlisting format="linespecific">
+            <para>
+This will be filled in automatically by OPM (auto).
+            <programlisting>
 &lt;BuildHost&gt;?&lt;/BuildHost&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-builddate">
             <title>BuildDate</title>
-            <para>This will be filled in automatically by OPM (auto).</para>
-            <programlisting format="linespecific">
+            <para>
+This will be filled in automatically by OPM (auto).
+            <programlisting>
 &lt;BuildDate&gt;?&lt;/BuildDate&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-package-required">
             <title>PackageRequired</title>
-            <para>Packages that must be installed beforehand (optional).</para>
-            <programlisting format="linespecific">
+            <para>
+Packages that must be installed beforehand (optional).
+            <programlisting>
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-os">
             <title>OS (^M)</title>
-            <para>Required OS (optional).</para>
-            <programlisting format="linespecific">
+            <para>
+Required OS (optional).
+            <programlisting>
 &lt;OS&gt;Linux&lt;/OS&gt;
 &lt;OS&gt;MacOS&lt;/OS&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-filelist">
             <title>Filelist</title>
             <para>
-                This is a list of files included in the package (optional).
-            </para>
-            <programlisting format="linespecific">
+This is a list of files included in the package (optional).
+            <programlisting>
 &lt;Filelist&gt;
     &lt;File Permission="644" Location="Kernel/Config/Files/Calendar.pm"&gt;&lt;/File&gt;
     &lt;File Permission="644" Location="Kernel/System/CalendarEvent.pm"&gt;&lt;/File&gt;
@@ -115,13 +138,13 @@
     &lt;File Permission="644" Location="Kernel/Language/de_AgentCalendar.pm"&gt;&lt;/File&gt;
 &lt;/Filelist&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-database-install">
             <title>DatabaseInstall</title>
             <para>
-                Database entries that have to be created when a package is installed (optional).
-            </para>
-            <programlisting format="linespecific">
+Database entries that have to be created when a package is installed (optional).
+            <programlisting>
 &lt;DatabaseInstall&gt;
     &lt;TableCreate Name="calendar_event"&gt;
     &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
@@ -134,14 +157,14 @@
     &lt;/TableCreate&gt;
 &lt;/DatabaseInstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-database-upgrade">
             <title>DatabaseUpgrade</title>
             <para>
-                Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
-                Example (if installed package version is below 1.3.4, defined action will be performed):
-            </para>
-            <programlisting format="linespecific">
+Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
+Example (if installed package version is below 1.3.4, defined action will be performed):
+            <programlisting>
 &lt;DatabaseUpgrade Version="1.3.4"&gt;
     &lt;TableCreate Name="calendar_event_involved" Version="1.3.4"&gt;
         &lt;Column Name="event_id" Required="true" Type="BIGINT"/&gt;
@@ -149,33 +172,33 @@
     &lt;/TableCreate&gt;
 &lt;/DatabaseUpgrade&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-database-reinstall">
             <title>DatabaseReinstall</title>
             <para>
-                Information on what actions have to be performed if  the package is reinstalled, (optional).
-            </para>
-            <programlisting format="linespecific">
+Information on what actions have to be performed if  the package is reinstalled, (optional).
+            <programlisting>
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-database-uninstall">
             <title>DatabaseUninstall</title>
             <para>
-                Uninstall (if a package gets uninstalled), (optional).
-            </para>
-            <programlisting format="linespecific">
+Uninstall (if a package gets uninstalled), (optional).
+            <programlisting>
 &lt;DatabaseUninstall&gt;
     &lt;TableDrop Name="calendar_event" /&gt;
 &lt;/DatabaseUninstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
 To execute perl code if the package is installed (optional).
-            </para>
-            <programlisting format="linespecific">
+            <programlisting>
 &lt;CodeInstall&gt;
     # example
     if (1) {
@@ -190,13 +213,13 @@ To execute perl code if the package is installed (optional).
     $Self-&gt;{DBObject}-&gt;Do(SQL =&gt; "SOME SQL");
 &lt;/CodeInstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-code-uninstall">
             <title>CodeUninstall</title>
             <para>
 To execute perl code if the package is uninstalled (optional).
-            </para>
-            <programlisting format="linespecific">
+            <programlisting>
 &lt;CodeUninstall&gt;
     # example
     if (1) {
@@ -204,13 +227,13 @@ To execute perl code if the package is uninstalled (optional).
     }
 &lt;/CodeUninstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-code-reinstall">
             <title>CodeReinstall</title>
             <para>
 To execute perl code if the package is reinstalled (optional).
-            </para>
-            <programlisting format="linespecific">
+            <programlisting>
 &lt;CodeReinstall&gt;
     # example
     if (1) {
@@ -218,13 +241,13 @@ To execute perl code if the package is reinstalled (optional).
     }
 &lt;/CodeReinstall&gt;
             </programlisting>
+            </para>
         </sect2>
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
 To execute perl code if the package is upgraded (optional).
-            </para>
-            <programlisting format="linespecific">
+            <programlisting>
 &lt;CodeUpgrade&gt;
     # example
     if (1) {
@@ -232,14 +255,14 @@ To execute perl code if the package is upgraded (optional).
     }
 &lt;/CodeUpgrade&gt;
             </programlisting>
+            </para>
         </sect2>
     </sect1>
     <sect1 id="package-example-sopm">
         <title>Example .sopm</title>
         <para>
 This is a whole example spec file.
-        </para>
-        <programlisting format="linespecific">
+        <programlisting>
 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;otrs_package version="1.0"&gt;
     &lt;Name&gt;Calendar&lt;/Name&gt;
@@ -280,16 +303,17 @@ This is a whole example spec file.
     &lt;/DatabaseUninstall&gt;
 &lt;/otrs_package&gt;
         </programlisting>
+        </para>
     </sect1>
     <sect1 id="package-build">
         <title>Package Build</title>
         <para>
 To build an .opm package from the spec opm.
-        </para>
         <screen>
-            shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
-            writing /tmp/example-0.0.1.opm
-            shell&gt;
+shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
+writing /tmp/example-0.0.1.opm
+shell&gt;
         </screen>
+        </para>
     </sect1>
 </chapter>

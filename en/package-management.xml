@@ -1,25 +1,24 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.10 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: package-management.xml,v 1.11 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Package Management</title>
     <para>
-        The OPM (OTRS Package Manager) is a mechanism to distribute software packages for
-        the OTRS framework via http, ftp or file upload.
+The OPM (OTRS Package Manager) is a mechanism to distribute software packages for
+the OTRS framework via http, ftp or file upload.
     </para>
     <para>
-        For example, the OTRS project offers OTRS modules like a calendar, a file manager
-        or web mail in OTRS packages via online repositories on our ftp servers.
-        The packages can be managed (install/upgrade/uninstall) via the admin interface.
+For example, the OTRS project offers OTRS modules like a calendar, a file manager
+or web mail in OTRS packages via online repositories on our ftp servers.
+The packages can be managed (install/upgrade/uninstall) via the admin interface.
     </para>
     <sect1 id="package-distribution">
         <title>Package Distribution</title>
         <para>
-            If you want to create an OPM online repositiory, just tell the OTRS framework
-            where the location is. Then you will have a new select option in the admin interface.
-        </para>
-        <programlisting format="linespecific">
+If you want to create an OPM online repositiory, just tell the OTRS framework
+where the location is. Then you will have a new select option in the admin interface.
+        <programlisting>
 [Kernel/Config.pm]
 
 # Package::RepositoryList
@@ -30,104 +29,104 @@ $Self->{'Package::RepositoryList'} = {
 
 [...]
         </programlisting>
+        </para>
         <sect2 id="package-repositiory-index">
             <title>Package Repository Index</title>
             <para>
-                In your repository, create an index file for your OPM packages.
-                OTRS just reads this index file and knows what packages are available.
-            </para>
+In your repository, create an index file for your OPM packages.
+OTRS just reads this index file and knows what packages are available.
             <screen>
-shell> bin/opm.pl - index -d /path/to/repository/ > \
- /path/to/repository/otrs.xml
+shell> bin/opm.pl -a index -d /path/to/repository/ > /path/to/repository/otrs.xml
 shell>
             </screen>
+            </para>
         </sect2>
     </sect1>
     <sect1 id="package-commands">
         <title>Package Commands</title>
         <para>
-            You can use the following OPM commands over the admin interface or over bin/opm.pl
-            to manage admin jobs for OPM packages.
+You can use the following OPM commands over the admin interface or over bin/opm.pl
+to manage admin jobs for OPM packages.
         </para>
         <sect2 id="install">
             <title>Install</title>
             <para>
-                Install OPM packages.
-            </para>
+Install OPM packages.
             <itemizedlist mark="round" >
                 <listitem>
-                    <para>Web:</para>
-                    <para>
+                    <para>Web:
 <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
-                    <para>CMD:</para>
+                    <para>CMD:
                     <screen>
 shell> bin/opm.pl -a install -p /path/to/package.opm
                     </screen>
+                    </para>
                 </listitem>
             </itemizedlist>
+            </para>
         </sect2>
         <sect2 id="uninstall">
             <title>Uninstall</title>
             <para>
-                Uninstall OPM packages.
-            </para>
+Uninstall OPM packages.
             <itemizedlist mark="round" >
                 <listitem>
-                    <para>Web:</para>
-                    <para>
+                    <para>Web:
 <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
-                    <para>CMD:</para>
+                    <para>CMD:
                     <screen>
 shell> bin/opm.pl -a uninstall -p /path/to/package.opm
                     </screen>
+                    </para>
                 </listitem>
             </itemizedlist>
+            </para>
         </sect2>
         <sect2 id="upgrade">
             <title>Upgrade</title>
             <para>
                 Upgrade OPM packages.
-            </para>
             <itemizedlist mark="round" >
                 <listitem>
-                    <para>Web:</para>
-                    <para>
+                    <para>Web:
 <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
-                    <para>CMD:</para>
+                    <para>CMD:
                     <screen>
 shell> bin/opm.pl -a upgrade -p /path/to/package.opm
                     </screen>
+                    </para>
                 </listitem>
             </itemizedlist>
+            </para>
         </sect2>
         <sect2 id="list">
             <title>List</title>
             <para>
-                List all OPM packages.
-            </para>
-            <itemizedlist mark="round" >
+List all OPM packages.
+            <itemizedlist mark="round">
                 <listitem>
-                    <para>Web:</para>
-                    <para>
+                    <para>Web:
 <ulink url="http://localhost/otrs/index.pl?Action=AdminPackage">http://localhost/otrs/index.pl?Action=AdminPackage</ulink>
                     </para>
                 </listitem>
                 <listitem>
-                    <para>CMD:</para>
+                    <para>CMD:
                     <screen>
 shell> bin/opm.pl -a list
                     </screen>
+                    </para>
                 </listitem>
             </itemizedlist>
+            </para>
         </sect2>
     </sect1>
 </chapter>

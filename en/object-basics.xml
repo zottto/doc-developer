@@ -1,19 +1,20 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.15 2006-03-02 12:07:09 rk Exp $ -->
+<!-- $Id: object-basics.xml,v 1.16 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
     <para>
-        This chapter describes the basics of a new object (e. g. a ticket, faq, calendar, ...)
-        and how the environment should look like.
+This chapter describes the basics of a new object (e. g. a ticket, faq, calendar, ...)
+and how the environment should look like.
     </para>
     <sect1 id="object-options">
         <title>Object Options</title>
         <para>
-            An object (e.g. a ticket, faq, calendar, ...) should  at least have the following options
-            (named after their function) in the application and in the database.
+An object (e.g. a ticket, faq, calendar, ...) should  at least have the following options
+(named after their function) in the application and in the database.
         </para>
+        <para>
         <informaltable>
             <tgroup cols="2">
                 <thead>
@@ -70,12 +71,14 @@
                 </tbody>
             </tgroup>
         </informaltable>
+        </para>
     </sect1>
     <sect1 id="search-options">
         <title>Search Options</title>
         <para>
-            A search over free text fields should support:
+A search over free text fields should support:
         </para>
+        <para>
         <itemizedlist mark="round" >
             <listitem>
                 <para>a normal search "thomas" (always)</para>
@@ -87,32 +90,38 @@
                 <para>an or condition like "thomas||raith" (if possible)</para>
             </listitem>
         </itemizedlist>
+        </para>
     </sect1>
     <sect1 id="config-naming">
         <title>Config Naming</title>
         <para>
-            Config naming should be with a leading prefix, the object name like this:
+Config naming should be with a leading prefix, the object name like this:
         </para>
-        <programlisting format="linespecific">
+        <para>
+        <programlisting>
 $Self->{"Object::Option"} = 1234;
         </programlisting>
-        <para>
-            Config-Hashes should be named with the same name as in the .dtl. For example:
         </para>
-        <programlisting format="linespecific">
+        <para>
+Config-Hashes should be named with the same name as in the .dtl. For example:
+        </para>
+        <para>
+        <programlisting>
 $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
         </programlisting>
+        </para>
         <para>
-            The config order should be global setting followed by detail settings.
+The config order should be global setting followed by detail settings.
         </para>
     </sect1>
     <sect1 id="config-file">
         <title>Config File</title>
         <para>
-            An object should have a unique config file which should be located under
-            $OTRS_HOME/Kernel/Config/Files/*.pm. For example:
+An object should have a unique config file which should be located under
+$OTRS_HOME/Kernel/Config/Files/*.pm. For example:
         </para>
-        <programlisting format="linespecific">
+        <para>
+        <programlisting>
 # module reg and nav bar
 $Self->{'Frontend::Module'}->{'AgentFileManager'} = {
     Description => 'Web File Manager',
@@ -136,9 +145,11 @@ $Self->{"FileManager::Root"} = '/home/';
 # trash directory
 $Self->{"FileManager::Trash"} = "/home/Trash/";
         </programlisting>
-        <para>
-            Description of the Config Preferences:
         </para>
+        <para>
+Description of the Config Preferences:
+        </para>
+        <para>
         <informaltable>
             <tgroup cols="2">
                 <thead>
@@ -183,12 +194,14 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                 </tbody>
             </tgroup>
         </informaltable>
+        </para>
     </sect1>
     <sect1 id="navbar-setting">
         <title>NavBar Setting</title>
         <para>
-            A NavBar item should look like the following example:
+A NavBar item should look like the following example:
         </para>
+        <para>
         <informaltable>
             <tgroup cols="4">
                 <thead>
@@ -239,9 +252,11 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                  </tbody>
             </tgroup>
         </informaltable>
-        <para>
-            Menu functions - generic, used by any application module
         </para>
+        <para>
+Menu functions - generic, used by any application module
+        </para>
+        <para>
         <informaltable>
             <tgroup cols="4">
                 <thead>
@@ -280,9 +295,11 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                  </tbody>
             </tgroup>
         </informaltable>
-        <para>
-            Menu functions - global, always used
         </para>
+        <para>
+Menu functions - global, always used
+        </para>
+        <para>
         <informaltable>
             <tgroup cols="4">
                 <thead>
@@ -404,19 +421,22 @@ $Self->{"FileManager::Trash"} = "/home/Trash/";
                  </tbody>
             </tgroup>
         </informaltable>
-        <para>
-            Table 3: Menu Applications -default application modules
         </para>
+        <para>
+Table 3: Menu Applications -default application modules
+        </para>
+        <para>
         <note>
             <para>
-                AccessKey "g" is also reserved for the submission of forms.
+AccessKey "g" is also reserved for the submission of forms.
             </para>
         </note>
+        </para>
     </sect1>
     <sect1 id="screen-flow">
         <title>Screen flow</title>
         <para>
-            An object module should have the following process flow:
+An object module should have the following process flow:
         </para>
          <para>
             <screenshot>

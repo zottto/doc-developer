@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.20 2006-03-18 11:19:15 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.21 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -159,7 +159,8 @@ foreach (@SQL) {
     </sect1>
     <sect1 id="database-supported">
         <title>Supported Databases</title>
-        <itemizedlist mark="round" >
+        <para>
+        <itemizedlist mark="round">
             <listitem>
                 <para>MySQL</para>
             </listitem>
@@ -176,5 +177,6 @@ foreach (@SQL) {
                 <para>MaxDB/SAPDB (experimental)</para>
             </listitem>
         </itemizedlist>
+        </para>
     </sect1>
 </chapter>

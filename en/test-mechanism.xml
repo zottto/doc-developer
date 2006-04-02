@@ -1,28 +1,27 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.3 2006-02-24 08:53:10 rk Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.4 2006-04-02 23:25:09 martin Exp $ -->
 
 <chapter>
-    <title>OTRS Test Mechanism</title>
+    <title>Unit Tests</title>
     <para>
-        OTRS provides automated tests for core modules.
+OTRS provides unit tests for core modules.
     </para>
     <sect1 id="testing">
-        <title>Creating a Test Routine</title>
+        <title>Creating a test file</title>
         <para>
-            The test routines are stored in .t files in /scripts/test. There is a file for each and every OTRS module.
-            For example the file /scripts/test/Calendar.t for the Calendar Module.
+The test files are stored in .t files under /scripts/test/*.t.
+For example the file /scripts/test/Calendar.t for the Calendar Module.
         </para>
         <para>
-            A test routine consists of the function call of the function to be tested and the analysis of the return value.
-            Example (/scripts/test/Calendar.t):
-        </para>
-        <programlisting format="linespecific">
+A test file consists of the function call of the function to be tested and the analysis of the return value.
+Example (/scripts/test/Calendar.t):
+        <programlisting>
 # --
 # Calendar.t - Calendar
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: test-mechanism.xml,v 1.3 2006-02-24 08:53:10 rk Exp $
+# $Id: test-mechanism.xml,v 1.4 2006-04-02 23:25:09 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -51,33 +50,60 @@ $Self-&gt;True(
 
 [..]
         </programlisting>
+        </para>
+    </sect1>
+    <sect1>
+        <title>Testing</title>
+        <para>
+To check your tests, just use "bin/UnitTest.pl -n Calendar" to use /scripts/test/Calendar.t.
+        <programlisting>
+shell:/opt/otrs&gt; bin/UnitTest.pl -n Calendar
++-------------------------------------------------------------------+
+/opt/otrs/scripts/test/Calendar.t:
++-------------------------------------------------------------------+
+ ok 1 - EventAdd()
+=====================================================================
+ Product:   OTRS 2.0.x CVS
+ Test Time: 0 s
+ Time:      2006-04-02 12:58:37
+ Host:      yourhost.example.com
+ Perl:      5.8.7
+ OS:        linux
+ TestOk:    1
+ TestNotOk: 0
+=====================================================================
+shell:/opt/otrs&gt;
+        </programlisting>
+        </para>
     </sect1>
     <sect1>
         <title>True()</title>
+        <para>
+This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
         <programlisting>
 $Self-&gt;True(
     $EventID,
     'EventAdd()',
 );
         </programlisting>
-        <para>
-            This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
         </para>
     </sect1>
     <sect1>
         <title>False()</title>
+        <para>
+This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
         <programlisting>
 $Self-&gt;False(
     $EventID,
     'EventAdd()',
 );
         </programlisting>
-        <para>
-            This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
         </para>
     </sect1>
     <sect1>
         <title>Is()</title>
+        <para>
+This function tests whether the variables $A and $B are equal.
         <programlisting>
 $Self-&gt;Is(
     $A,
@@ -85,8 +111,6 @@ $Self-&gt;Is(
     'Test Name',
 );
         </programlisting>
-        <para>
-            This function tests whether the variables $A and $B are equal.
         </para>
     </sect1>
 </chapter>
