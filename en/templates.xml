@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.14 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: templates.xml,v 1.15 2006-04-02 23:34:55 martin Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -200,7 +200,7 @@ $Include{"css"}
             </para>
         </sect2>
         <sect2 id="block">
-            <title>block</title>
+            <title>Block</title>
             <para>
 The block tag can be used to define blocks. These blocks can be used several times by the
 frontend module with different data params.
