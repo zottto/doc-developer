@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: development-environment.xml,v 1.3 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: development-environment.xml,v 1.4 2006-04-06 19:45:04 martin Exp $ -->
 
 <chapter>
     <title>Development Environment</title>
     <para>
 To facilitate the writing of OTRS expansion modules, the creation of a development environment in Linux is necessary.
     </para>
-    <sect1 id="cvs-checkout">
-        <title>OTRS CVS checkout</title>
+    <sect1 id="environment-cvs-checkout">
+        <title>Framework checkout (CVS)</title>
         <para>
 First of all a directory must be created in which the modules can be stored.
 Then switch to the new directory using the command line and check them out of OTRS 2.0
@@ -33,7 +33,7 @@ To enable the CVS-OTRS it is necessary to configure it on the Apache web server 
 Then the Installer.pl can be executed. The basic system is ready to run now.
         </para>
     </sect1>
-    <sect1 id="link-modules">
+    <sect1 id="environment-link-modules">
         <title>Linking Expansion Modules</title>
         <para>
 A clear separation between OTRS and the modules is necessary for proper developing.
@@ -59,7 +59,7 @@ shell> ~/src/module-tools/remove_links.pl ~/src/otrs/
         </screen>
         </para>
     </sect1>
-    <sect1 id="after-link">
+    <sect1 id="environment-after-link">
         <title>Necessary Actions after Linking</title>
         <para>
 As soon as the linking is completed, the Sysconfig must be run to register the module in OTRS.
