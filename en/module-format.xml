@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $ -->
 
 <chapter>
     <title>Module Format</title>
-    <sect1 id="auth-module">
+    <sect1 id="module-auth">
         <title>Auth Module</title>
         <para>
 There are several agent authentication modules (DB, LDAP and HTTPBasicAuth)
@@ -59,7 +59,7 @@ sub Auth {
         </programlisting>
         </para>
     </sect1>
-    <sect1 id="notify-module">
+    <sect1 id="module-notify">
         <title>Notify Module</title>
         <para>
 With agent notification modules you can inform agents about new information. A
@@ -85,7 +85,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -93,6 +93,7 @@ Format:
 # --
 
 package Kernel::Output::HTML::NotificationMotd;
+
 use strict;
 
 # --
@@ -123,11 +124,11 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
         </programlisting>
         </para>
     </sect1>
-    <sect1 id="navigation-module">
+    <sect1 id="module-navigation">
         <title>Navigation Module</title>
         <para>
-            In this module layer you can create dynamic navigation bar items with
-            dynamic content (Name and Description).
+In this module layer you can create dynamic navigation bar items with
+dynamic content (Name and Description). Navigation Module are located under Kernel/Output/HTML/NavBar*.pm.
         </para>
         <para>
 Format:
@@ -136,7 +137,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -144,6 +145,7 @@ Format:
 # --
 
 package Kernel::Output::HTML::NavBarABC;
+
 use strict;
 
 # --
@@ -208,7 +210,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -216,6 +218,7 @@ Format:
 # --
 
 package Kernel::Modules::AgentTest;
+
 use strict;
 
 # --
@@ -387,7 +390,7 @@ Description of NavBar (icon points) options:
         </informaltable>
         </para>
     </sect1>
-    <sect1 id="core-modules">
+    <sect1 id="module-core">
         <title>Core Modules</title>
         <para>
 Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for
@@ -412,7 +415,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -420,6 +423,7 @@ Format:
 # --
 
 package Kernel::System::Backend;
+
 use strict;
 
 =head1 NAME
@@ -479,20 +483,20 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.15 $ $Date: 2006-04-02 23:25:09 $
+$Revision: 1.16 $ $Date: 2006-04-06 19:08:21 $
 
 =cut
         </programlisting>
         </para>
     </sect1>
-    <sect1 id="customer-auth-module">
+    <sect1 id="module-customer-auth">
         <title>Customer Auth Module</title>
         <para>
 The same as "Agent Auth Modules" but the module location is
 <filename>Kernel/System/CustomerAuth/*.pm</filename>.
         </para>
     </sect1>
-    <sect1 id="customer-user-module">
+    <sect1 id="module-customer-user">
         <title>Customer User Module</title>
         <para>
 This module layer can be used as a bridge between your customer source
@@ -508,7 +512,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -516,6 +520,7 @@ Format:
 # --
 
 package Kernel::System::CustomerUser::ABD;
+
 use strict;
 
 # --
@@ -572,7 +577,7 @@ sub SetPassword {
 To use this module, see the admin manual.
         </para>
     </sect1>
-    <sect1 id="customer-navigation-module">
+    <sect1 id="module-customer-navigation">
         <title>Customer Navigation Module</title>
         <para>
 In this module layer you can create dynamic navigation bar items with
@@ -595,8 +600,8 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
         </programlisting>
         </para>
     </sect1>
-    <sect1 id="stats-modul">
-        <title>Stats Modul</title>
+    <sect1 id="module-stats">
+        <title>Stats Module</title>
         <para>
 A stats module is easy - you just need two functions.
 Param() to get all usable params for the stats and Run() to return the stats result.
@@ -627,7 +632,7 @@ Kernel/System/Stats/SomeExampleStats.pm:
 # Kernel/System/Stats/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.15 2006-04-02 23:25:09 martin Exp $
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -756,9 +761,10 @@ Format:
 # --
 
 package Kernel::System::Ticket::Number::Simple;
+
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.15 $ ;
+$VERSION =  $Revision: 1.16 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -801,17 +807,17 @@ Kernel/Config.pm:
             </para>
             <para>
             <programlisting>
-    # Job Name: 1-Match
-    # (block/ignore all spam email with From: noreply@)
-    $Self->{'PostMaster::PreFilterModule'}->{'1-Example'} = {
-        Module => 'Kernel::System::PostMaster::Filter::Example',
-        Match => {
-            From => 'noreply@',
-        },
-        Set => {
-            'X-OTRS-Ignore' => 'yes',
-        },
-    };
+# Job Name: 1-Match
+# (block/ignore all spam email with From: noreply@)
+$Self->{'PostMaster::PreFilterModule'}->{'1-Example'} = {
+    Module => 'Kernel::System::PostMaster::Filter::Example',
+    Match => {
+        From => 'noreply@',
+    },
+    Set => {
+        'X-OTRS-Ignore' => 'yes',
+    },
+};
             </programlisting>
             </para>
             <para>
@@ -829,9 +835,10 @@ Format:
 # --
 
 package Kernel::System::PostMaster::Filter::Example;
+
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.15 $ ;
+$VERSION =  $Revision: 1.16 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -908,6 +915,144 @@ sub Run {
     return 1;
 }
 
+1;
+            </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="ticket-module-menu">
+            <title>Ticket Menu Module</title>
+            <para>
+To add links in the ticket menu, just use ticket menu modules.
+            </para>
+            <para>
+If you want to create your own ticket menu link, just create your own module.
+These modules are located under "Kernel/Output/HTML/TicketMenu*.pm".
+For default modules see the admin manual. You just need two functions:
+new() and Run():
+            </para>
+            <para>
+The following example shows you how to show a lock or a unlock ticket link.
+            </para>
+            <para>
+Kernel/Config.pm:
+            </para>
+            <para>
+            <programlisting>
+# for ticket zoom menu
+$Self->{'Ticket::Frontend::MenuModule'}->{'100-Lock'} =  {
+    'Action' => 'AgentTicketLock',
+    'Module' => 'Kernel::Output::HTML::TicketMenuLock',
+    'Name' => 'Lock'
+};
+
+# for ticket preview menu
+$Self->{'Ticket::Frontend::PreMenuModule'}->{'100-Lock'} =  {
+    'Action' => 'AgentTicketLock',
+    'Module' => 'Kernel::Output::HTML::TicketMenuLock',
+    'Name' => 'Lock'
+};
+            </programlisting>
+            </para>
+            <para>
+Format:
+            </para>
+            <para>
+            <programlisting>
+# --
+# Kernel/Output/HTML/TicketMenuLock.pm
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+package Kernel::Output::HTML::TicketMenuLock;
+
+use strict;
+
+use vars qw($VERSION);
+$VERSION = '$Revision: 1.16 $';
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless ($Self, $Type);
+
+    # get needed objects
+    foreach (qw(ConfigObject LogObject DBObject LayoutObject UserID TicketObject)) {
+        $Self->{$_} = $Param{$_} || die "Got no $_!";
+    }
+
+    return $Self;
+}
+# --
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    # check needed stuff
+    if (!$Param{Ticket}) {
+        $Self->{LogObject}->Log(Priority => 'error', Message => "Need Ticket!");
+        return;
+    }
+
+    # check permission
+    if ($Self->{TicketObject}->LockIsTicketLocked(TicketID => $Param{TicketID})) {
+        my $AccessOk = $Self->{TicketObject}->OwnerCheck(
+            TicketID => $Param{TicketID},
+            OwnerID => $Self->{UserID},
+        );
+        if (!$AccessOk) {
+            return $Param{Counter};
+        }
+    }
+
+    $Self->{LayoutObject}->Block(
+        Name => 'Menu',
+        Data => { },
+    );
+    if ($Param{Counter}) {
+        $Self->{LayoutObject}->Block(
+            Name => 'MenuItemSplit',
+            Data => {  },
+        );
+    }
+    if ($Param{Ticket}->{Lock} eq 'lock') {
+        $Self->{LayoutObject}->Block(
+            Name => 'MenuItem',
+            Data => {
+                %{$Param{Config}},
+                %{$Param{Ticket}},
+                %Param,
+                Name => 'Unlock',
+                Description => 'Unlock to give it back to the queue!',
+                Link => 'Action=AgentTicketLock&amp;Subaction=Unlock&amp;TicketID=$QData{"TicketID"}',
+            },
+        );
+    }
+    else {
+        $Self->{LayoutObject}->Block(
+            Name => 'MenuItem',
+            Data => {
+                %{$Param{Config}},
+                %Param,
+                Name => 'Lock',
+                Description => 'Lock it to work on it!',
+                Link => 'Action=AgentTicketLock&amp;Subaction=Lock&amp;TicketID=$QData{"TicketID"}',
+            },
+        );
+    }
+    $Param{Counter}++;
+    return $Param{Counter};
+}
+# --
 1;
             </programlisting>
             </para>
