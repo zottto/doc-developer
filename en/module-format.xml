@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -85,7 +85,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -137,7 +137,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -210,7 +210,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -415,7 +415,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -483,7 +483,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.16 $ $Date: 2006-04-06 19:08:21 $
+$Revision: 1.17 $ $Date: 2006-04-06 19:33:07 $
 
 =cut
         </programlisting>
@@ -512,7 +512,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -632,7 +632,7 @@ Kernel/System/Stats/SomeExampleStats.pm:
 # Kernel/System/Stats/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -764,7 +764,7 @@ package Kernel::System::Ticket::Number::Simple;
 
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.16 $ ;
+$VERSION =  $Revision: 1.17 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -838,7 +838,7 @@ package Kernel::System::PostMaster::Filter::Example;
 
 use strict; use vars qw($VERSION);
 
-$VERSION =  $Revision: 1.16 $ ;
+$VERSION =  $Revision: 1.17 $ ;
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -947,9 +947,9 @@ $Self->{'Ticket::Frontend::MenuModule'}->{'100-Lock'} =  {
 
 # for ticket preview menu
 $Self->{'Ticket::Frontend::PreMenuModule'}->{'100-Lock'} =  {
-    'Action' => 'AgentTicketLock',
-    'Module' => 'Kernel::Output::HTML::TicketMenuLock',
-    'Name' => 'Lock'
+    Action => 'AgentTicketLock',
+    Module => 'Kernel::Output::HTML::TicketMenuLock',
+    Name => 'Lock'
 };
             </programlisting>
             </para>
@@ -962,7 +962,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.16 2006-04-06 19:08:21 martin Exp $
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -974,7 +974,7 @@ package Kernel::Output::HTML::TicketMenuLock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.16 $';
+$VERSION = '$Revision: 1.17 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1055,6 +1055,123 @@ sub Run {
 # --
 1;
             </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="ticket-module-event">
+            <title>Ticket Event Module</title>
+            <para>
+Do do some actions on ticket events, just write your own ticket event module.
+            </para>
+            <para>
+These modules are located under "Kernel/System/Ticket/Event/*.pm".
+For default modules see the admin manual. You just need two functions:
+new() and Run():
+            </para>
+            <para>
+The following example shows you how to unlock a ticket after a move action.
+            </para>
+            <para>
+Kernel/Config.pm:
+            </para>
+            <para>
+            <programlisting>
+$Self->{'Ticket::EventModulePost'}->{'99-ForceUnlockOnMove'} =  {
+    Module => 'Kernel::System::Ticket::Event::ForceUnlock'
+};
+            </programlisting>
+            </para>
+            <para>
+Format:
+            </para>
+            <para>
+            <programlisting>
+# --
+# Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
+# Copyright (C) 2005 Hans Mueller mail@example.com
+# --
+# $Id: module-format.xml,v 1.17 2006-04-06 19:33:07 martin Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (GPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# --
+
+package Kernel::System::Ticket::Event::ForceUnlock;
+
+use strict;
+
+use vars qw($VERSION);
+$VERSION = '$Revision: 1.17 $';
+$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+
+# --
+sub new {
+    my $Type = shift;
+    my %Param = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless ($Self, $Type);
+
+    # get needed objects
+    foreach (qw(ConfigObject TicketObject LogObject)) {
+        $Self->{$_} = $Param{$_} || die "Got no $_!";
+    }
+
+    return $Self;
+}
+# --
+sub Run {
+    my $Self = shift;
+    my %Param = @_;
+    # check needed stuff
+    foreach (qw(TicketID Event Config)) {
+      if (!$Param{$_}) {
+        $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
+        return;
+      }
+    }
+    if ($Param{Event} eq 'MoveTicket') {
+        $Self->{TicketObject}->LockSet(
+            TicketID => $Param{TicketID},
+            Lock => 'unlock',
+            SendNoNotification => 1,
+            UserID => 1,
+        );
+    }
+    return 1;
+}
+# --
+1;
+            </programlisting>
+            </para>
+            <para>
+Ticket Events for OTRS 2.0:
+TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
+TicketEscalationStartUpdate, MoveTicket,
+SetCustomerData, TicketFreeTextSet, TicketFreeTimeSet,
+TicketPendingTimeSet, LockSet,
+StateSet, OwnerSet,
+TicketResponsibleUpdate, PrioritySet, HistoryAdd,
+HistoryDelete, TicketAccountTime, TicketMerge, ArticleCreate,
+ArticleFreeTextSet, ArticleUpdate, ArticleSend,
+ArticleBounce, SendAgentNotification,
+SendCustomerNotification, SendAutoResponse, ArticleFlagSet;
+            </para>
+            <para>
+Ticket Events for OTRS 2.1:
+TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
+TicketEscalationStartUpdate, TicketQueueUpdate (MoveTicket),
+TicketCustomerUpdate (SetCustomerData), TicketFreeTextUpdate
+(TicketFreeTextSet), TicketFreeTimeUpdate (TicketFreeTimeSet),
+TicketPendingTimeUpdate (TicketPendingTimeSet), TicketLockUpdate (LockSet),
+TicketStateUpdate (StateSet), TicketOwnerUpdate (OwnerSet),
+TicketResponsibleUpdate, TicketPriorityUpdate (PrioritySet), HistoryAdd,
+HistoryDelete, TicketAccountTime, TicketMerge, ArticleCreate,
+ArticleFreeTextUpdate (ArticleFreeTextSet), ArticleUpdate, ArticleSend,
+ArticleBounce, ArticleAgentNotification, (SendAgentNotification),
+ArticleCustomerNotification (SendCustomerNotification), ArticleAutoResponse
+(SendAutoResponse), ArticleFlagSet;
             </para>
         </sect2>
         <sect2 id="more-modules">
