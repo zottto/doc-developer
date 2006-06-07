@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.10 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.11 2006-06-07 14:10:34 tr Exp $ -->
 
 <chapter>
     <title>Writing an OTRS module for a new object</title>
@@ -37,10 +37,10 @@ The impact of the various settings is described in the chapter 'Config Mechanism
 &lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
 &lt;otrs_config version="1.0" init="Application"&gt;
         &lt;ConfigItem Name="Frontend::Module###AgentHelloWorld" Required="1" Valid="1"&gt;
-        &lt;Description Lang="en"&gt;FrontendModulRegistration for HelloWorld modul.&lt;/Description&gt;
+        &lt;Description Lang="en"&gt;FrontendModuleRegistration for HelloWorld modul.&lt;/Description&gt;
         &lt;Description Lang="de"&gt;FrontendModulRegistration für das HelloWorld Modul.&lt;/Description&gt;
         &lt;Group&gt;HelloWorld&lt;/Group&gt;
-        &lt;SubGroup&gt;AgentFrontendModulRegistration&lt;/SubGroup&gt;
+        &lt;SubGroup&gt;AgentFrontendModuleRegistration&lt;/SubGroup&gt;
         &lt;Setting&gt;
             &lt;FrontendModuleReg&gt;
                 &lt;Title&gt;HelloWorld&lt;/Title&gt;
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: writing-otrs-application.xml,v 1.10 2006-04-02 23:25:09 martin Exp $
+# $Id: writing-otrs-application.xml,v 1.11 2006-06-07 14:10:34 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -142,7 +142,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: writing-otrs-application.xml,v 1.10 2006-04-02 23:25:09 martin Exp $
+# $Id: writing-otrs-application.xml,v 1.11 2006-06-07 14:10:34 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -187,7 +187,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
 # --
-# $Id: writing-otrs-application.xml,v 1.10 2006-04-02 23:25:09 martin Exp $
+# $Id: writing-otrs-application.xml,v 1.11 2006-06-07 14:10:34 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
