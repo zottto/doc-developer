@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.9 2006-04-02 23:45:56 martin Exp $ -->
+<!-- $Id: book.xml,v 1.10 2007-02-13 12:30:04 martin Exp $ -->
 
 <book lang="en">
     <bookinfo>
@@ -33,6 +33,7 @@ Other trademarks and registered trademarks are: SUSE and YaST of SUSE GmbH,
 Red Hat and Fedora are registered trademarks of Red Hat, Inc.
 Mandrake is a registered trademark of MandrakeSoft, SA.
 Debian is a registered trademark of Software in the Public Interest, Inc.
+MySQL and the MySQL Logo are registered trademarks of MySQL AB.
             </para>
             <para>
 All trade names are used without the guarantee for their free use and are
