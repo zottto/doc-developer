@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.18 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.19 2007-03-07 15:37:40 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -257,6 +257,50 @@ To execute perl code if the package is upgraded (optional).
             </programlisting>
             </para>
         </sect2>
+        <sect2 id="package-intro-install">
+            <title>IntroInstall(Pre|Post)</title>
+            <para>
+To show a pre or post install introdution in installation dialog.
+            <programlisting>
+&lt;IntroInstallPre Title="Some Title" Lang="en"&gt;
+Some Info formated in dtl....
+&lt;/IntroInstallPre&gt;
+            </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="package-intro-uninstall">
+            <title>IntroUninstall(Pre|Post)</title>
+            <para>
+To show a pre or post uninstall introdution in uninstallation dialog.
+            <programlisting>
+&lt;IntroUninstallPre Title="Some Title" Lang="en"&gt;
+Some Info formated in dtl....
+&lt;/IntroUninstallPre&gt;
+            </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="package-intro-reinstall">
+            <title>IntroReinstall(Pre|Post)</title>
+            <para>
+To show a pre or post reinstall introdution in reinstallation dialog.
+            <programlisting>
+&lt;IntroReinstallPre Title="Some Title" Lang="en"&gt;
+Some Info formated in dtl....
+&lt;/IntroReinstallPre&gt;
+            </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="package-intro-upgrade">
+            <title>IntroUpgrade(Pre|Post)</title>
+            <para>
+To show a pre or post upgrade introdution in upgrading dialog.
+            <programlisting>
+&lt;IntroUpgradePre Title="Some Title" Lang="en"&gt;
+Some Info formated in dtl....
+&lt;/IntroUpgradePre&gt;
+            </programlisting>
+            </para>
+        </sect2>
     </sect1>
     <sect1 id="package-example-sopm">
         <title>Example .sopm</title>
@@ -275,6 +319,8 @@ This is a whole example spec file.
     &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
     &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
     &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
+    &lt;IntroInstallPre Title="Thank you!" Lang="en"&gt;Thank you for choosing the Calendar module.&lt;/IntroInstallPre&gt;
+    &lt;IntroInstallPre Title="Vielen Dank!" Lang="en"&gt;Vielen Dank fuer die Auswahl des Kalender Modules.&lt;/IntroInstallPre&gt;
     &lt;BuildDate&gt;?&lt;/BuildDate&gt;
     &lt;BuildHost&gt;?&lt;/BuildHost&gt;
     &lt;Filelist&gt;
