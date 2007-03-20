@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.21 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.22 2007-03-20 00:17:48 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -78,16 +78,19 @@ my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
         <sect2 id="database-xml">
             <title>XML</title>
             <para>
-The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER TABLE (>= OTRS 2.1).
+The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER TABLE.
 As this syntax is different from database to database, using it makes sure that
 you write applications that can be used in all of them.
+            </para>
+            <para>
+Note: The &lt;Insert&gt; has chnaged in >=2.2. Values are now used in content area (not longer in attribut Value).
             </para>
             <sect3 id="database-xml-insert">
             <title>INSERT</title>
             <programlisting format="linespecific">
 &lt;Insert Table="some_table"&gt;
-    &lt;Data Key="id" Value="1"/&gt;
-    &lt;Data Key="description" Value="exploit" Type="Quote"/&gt;
+    &lt;Data Key="id"&gt;1&lt;/Data&gt;
+    &lt;Data Key="description" Type="Quote"&gt;exploit&lt;/Data&gt;
 &lt;/Insert>
             </programlisting>
             </sect3>
@@ -124,7 +127,7 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
             </programlisting>
             </sect3>
             <sect3 id="database-xml-alter">
-            <title>ALTER TABLE (>= OTRS 2.1)</title>
+            <title>ALTER TABLE</title>
             <programlisting format="linespecific">
 &lt;TableAlter Name="calendar_event"&gt;
     &lt;ColumnAdd Name="test_name" Type="varchar" Size="20" Required="1"/&gt;
@@ -169,6 +172,9 @@ foreach (@SQL) {
             </listitem>
             <listitem>
                 <para>Oracle</para>
+            </listitem>
+            <listitem>
+                <para>MSSQL (experimental)</para>
             </listitem>
             <listitem>
                 <para>DB2 (experimental)</para>
