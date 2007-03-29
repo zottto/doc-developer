@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.18 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.18.4.1 2007-03-29 10:23:54 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -73,8 +73,8 @@ The license of the package (required).
             <para>
 The package change log (optional).
             <programlisting>
-&lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
-&lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
+&lt;ChangeLog Version="1.1.2" Date="2007-02-15 18:45:21"&gt;Added some feature.&lt;/ChangeLog&gt;
+&lt;ChangeLog Version="1.1.1" Date="2007-02-15 16:17:51"&gt;New package.&lt;/ChangeLog&gt;
             </programlisting>
             </para>
         </sect2>
@@ -271,8 +271,8 @@ This is a whole example spec file.
     &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
     &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
     &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
-    &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
-    &lt;ChangeLog&gt;2005-12-02 v1.1 New package&lt;/ChangeLog&gt;
+    &lt;ChangeLog Version="1.1.2" Date="2007-02-15 18:45:21"&gt;Added some feature.&lt;/ChangeLog&gt;
+    &lt;ChangeLog Version="1.1.1" Date="2007-02-15 16:17:51"&gt;New package.&lt;/ChangeLog&gt;
     &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
     &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
     &lt;BuildDate&gt;?&lt;/BuildDate&gt;
