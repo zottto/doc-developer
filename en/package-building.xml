@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.21 2007-05-07 07:38:31 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.22 2007-05-09 13:16:37 mh Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -132,10 +132,10 @@ Required OS (optional).
 This is a list of files included in the package (optional).
             <programlisting>
 &lt;Filelist&gt;
-    &lt;File Permission="644" Location="Kernel/Config/Files/Calendar.pm"&gt;&lt;/File&gt;
-    &lt;File Permission="644" Location="Kernel/System/CalendarEvent.pm"&gt;&lt;/File&gt;
-    &lt;File Permission="644" Location="Kernel/Modules/AgentCalendar.pm"&gt;&lt;/File&gt;
-    &lt;File Permission="644" Location="Kernel/Language/de_AgentCalendar.pm"&gt;&lt;/File&gt;
+    &lt;File Permission="644" Location="Kernel/Config/Files/Calendar.pm"/&gt;
+    &lt;File Permission="644" Location="Kernel/System/CalendarEvent.pm"/&gt;
+    &lt;File Permission="644" Location="Kernel/Modules/AgentCalendar.pm"/&gt;
+    &lt;File Permission="644" Location="Kernel/Language/de_AgentCalendar.pm"/&gt;
 &lt;/Filelist&gt;
             </programlisting>
             </para>
