@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.12 2007-06-05 07:51:55 tr Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -52,7 +52,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $
+# $Id: codesyntax.xml,v 1.12 2007-06-05 07:51:55 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -65,7 +65,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.11 2006-04-02 23:25:09 martin Exp $
+# $Id: codesyntax.xml,v 1.12 2007-06-05 07:51:55 tr Exp $
         </programlisting>
         </para>
     </sect1>
@@ -82,6 +82,135 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         <programlisting format="linespecific">
 e.g. for perl-code
 # FRAMEWORK-2.1: the function ID2UserName is first available in OTRS 2.1
+        </programlisting>
+        </para>
+    </sect1>
+    <sect1 id="objects-allocation">
+        <title>Objects and their allocation</title>
+        <para>
+    In OTRS many object are available. But it is not allowed to use every object in each script.
+    Please note the following definitions
+        </para>
+        <para>
+        <itemizedlist mark="round">
+            <listitem>
+                <para>don't use the LayoutObject in core modules</para>
+            </listitem>
+            <listitem>
+                <para>don't use the ParamObject in core modules</para>
+            </listitem>
+            <listitem>
+                <para>don't use the DBObject in frontend modules</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+    </sect1>
+    <sect1 id="special-comments">
+        <title>Special comments</title>
+        <para>
+    The only ways to create special comments are the following ways.
+
+    Example 1 - especially for subactions of frontend modules
+
+        </para>
+        <para>
+            <programlisting format="linespecific">
+    # -----------------------------#
+    # here starts a special area
+    # -----------------------------#
+            </programlisting>
+        </para>
+        <para>
+    Example 2 - especially for customizing standard OTRS files
+        </para>
+        <para>
+            <programlisting format="linespecific">
+    # --- customizing for bsi
+            </programlisting>
+        </para>
+    </sect1>
+    <sect1 id="function-restrictions">
+        <title>Restrictions for some functions</title>
+        <para>
+    Some functions are not useful in every script. Please pay attention
+    to the following restrictions.
+        </para>
+        <para>
+        <itemizedlist mark="round">
+            <listitem>
+                <para>don't use "die" and "exit" in .pm-files</para>
+            </listitem>
+            <listitem>
+                <para>don't use the "Dumper" function in released files</para>
+            </listitem>
+            <listitem>
+                <para>don't use "print" in .pm files</para>
+            </listitem>
+            <listitem>
+                <para>use OTRS specific function "SystemTime2Date" instead of "localtime"</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+    </sect1>
+    <sect1 id="mainobject-using">
+        <title>Using of the MainObject</title>
+        <para>
+    Information about the MainObject
+        </para>
+        <para>
+        <itemizedlist mark="round">
+            <listitem>
+                <para>initialize the MainObject in the basic .pl-file</para>
+            </listitem>
+            <listitem>
+                <para>in .pm files only pass it to the next Object you initialize</para>
+            </listitem>
+            <listitem>
+                <para>don't use the Perl "require" function any more</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+    </sect1>
+    <sect1 id="perldoc">
+        <title>Perldoc</title>
+        <para>
+    Every function which could be used outside of its package must have a
+    perldoc. It should look like the following example.
+        </para>
+        <para>
+            <programlisting format="linespecific">
+    =item SystemTime2TimeStamp()
+
+    returns a time stamp in "yyyy-mm-dd 23:59:59" format.
+
+        my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
+            SystemTime => $SystemTime,
+        );
+
+    If you need the short format "23:59:59" if the date is today (if needed).
+
+        my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
+            SystemTime => $SystemTime,
+            Type => 'Short',
+        );
+    =cut
+            </programlisting>
+        </para>
+    </sect1>
+    <sect1 id="line-length">
+        <title>Length of lines</title>
+        <para>
+    Please see that a line of code is not langer then 80 charactars.
+        </para>
+    </sect1>
+    <sect1 id="objects">
+        <title>Objects and there allocation</title>
+        <para>
+            In OTRS are many object available. But it is not allowed to use every Object
+        </para>
+        <para>
+        <programlisting format="linespecific">
+e. g. @TicktIDs or $Output or BuildQueueView()
         </programlisting>
         </para>
     </sect1>
