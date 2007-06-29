@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.17 2006-04-06 19:45:04 martin Exp $ -->
+<!-- $Id: object-basics.xml,v 1.18 2007-06-29 10:48:50 tr Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -370,6 +370,12 @@ Menu functions - global, always used
                         <entry>2800</entry>
                         <entry>-</entry>
                         <entry>idmef_console.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Authoring (SIRIOS-Project)</entry>
+                        <entry>2900</entry>
+                        <entry>-</entry>
+                        <entry>wid_authoring.png</entry>
                     </row>
                     <row>
                         <entry>ContentManager</entry>
