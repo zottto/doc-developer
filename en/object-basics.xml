@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.18 2007-06-29 10:48:50 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.19 2007-07-26 17:25:21 martin Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -446,7 +446,7 @@ An object module should have the following process flow:
         </para>
          <para>
             <screenshot>
-                <graphic srccredit="" fileref="pictures/screen-flow.png"></graphic>
+                <graphic srccredit="" fileref="screenshots/screen-flow.png"></graphic>
             </screenshot>
         </para>
     </sect1>
