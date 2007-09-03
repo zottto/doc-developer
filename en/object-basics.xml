@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.20 2007-09-03 13:24:52 mh Exp $ -->
+<!-- $Id: object-basics.xml,v 1.21 2007-09-03 13:34:21 tr Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -372,10 +372,22 @@ Menu functions - global, always used
                         <entry>idmef_console.png</entry>
                     </row>
                     <row>
-                        <entry>WID-Authoring (SIRIOS-Project)</entry>
+                        <entry>WID-Authoring (WID-Project)</entry>
                         <entry>2900</entry>
                         <entry>-</entry>
                         <entry>wid_authoring.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Portal-Admin-User (WID-Project)</entry>
+                        <entry>2910</entry>
+                        <entry>-</entry>
+                        <entry>wid_portal_admin_user.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Portal-Admin-Group (WID-Project)</entry>
+                        <entry>2920</entry>
+                        <entry>-</entry>
+                        <entry>wid_portal_admin_group.png</entry>
                     </row>
                     <row>
                         <entry>ITSMService (OTRS::ITSM)</entry>
@@ -435,6 +447,17 @@ Menu functions - global, always used
                         <entry>8500</entry>
                         <entry>-</entry>
                         <entry>stats.png</entry>
+                    </row>
+                    <row>
+                        <entry>CustomerDB</entry>
+                        <entry>9000</entry>
+                        <entry>-</entry>
+                        <entry>folder_yellow.png</entry>
+                    </row><row>
+                        <entry>CustomerCompanyDB</entry>
+                        <entry>9100</entry>
+                        <entry>-</entry>
+                        <entry>folder_yellow.png</entry>
                     </row>
                     <row>
                         <entry>Admin</entry>
