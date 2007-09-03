@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.19 2007-07-26 17:25:21 martin Exp $ -->
+<!-- $Id: object-basics.xml,v 1.20 2007-09-03 13:24:52 mh Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -376,6 +376,24 @@ Menu functions - global, always used
                         <entry>2900</entry>
                         <entry>-</entry>
                         <entry>wid_authoring.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMService (OTRS::ITSM)</entry>
+                        <entry>3100</entry>
+                        <entry>-</entry>
+                        <entry>itsm_service.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMConfigItem (OTRS::ITSM)</entry>
+                        <entry>3200</entry>
+                        <entry>-</entry>
+                        <entry>itsm_configitem.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMLocation (OTRS::ITSM)</entry>
+                        <entry>3300</entry>
+                        <entry>-</entry>
+                        <entry>itsm_location.png</entry>
                     </row>
                     <row>
                         <entry>ContentManager</entry>
