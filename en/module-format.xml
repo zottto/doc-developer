@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -85,7 +85,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -137,7 +137,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -210,7 +210,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -415,7 +415,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -483,7 +483,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.20 $ $Date: 2007-07-26 17:25:21 $
+$Revision: 1.21 $ $Date: 2007-09-12 08:40:44 $
 
 =cut
         </programlisting>
@@ -512,7 +512,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -632,7 +632,7 @@ Kernel/System/Stats/SomeExampleStats.pm:
 # Kernel/System/Stats/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -764,7 +764,7 @@ package Kernel::System::Ticket::Number::Simple;
 
 use strict; use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.20 $';
+$VERSION = '$Revision: 1.21 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -839,7 +839,7 @@ package Kernel::System::PostMaster::Filter::Example;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.20 $';
+$VERSION = '$Revision: 1.21 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -963,7 +963,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -975,7 +975,7 @@ package Kernel::Output::HTML::TicketMenuLock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.20 $';
+$VERSION = '$Revision: 1.21 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1090,7 +1090,7 @@ Format:
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.20 2007-07-26 17:25:21 martin Exp $
+# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1102,7 +1102,7 @@ package Kernel::System::Ticket::Event::ForceUnlock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.20 $';
+$VERSION = '$Revision: 1.21 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1160,7 +1160,7 @@ ArticleBounce, SendAgentNotification,
 SendCustomerNotification, SendAutoResponse, ArticleFlagSet;
             </para>
             <para>
-Ticket Events for OTRS 2.1:
+Ticket Events for OTRS 2.1 and higher:
 TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
 TicketEscalationStartUpdate, TicketQueueUpdate (MoveTicket),
 TicketCustomerUpdate (SetCustomerData), TicketFreeTextUpdate
