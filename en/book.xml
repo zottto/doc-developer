@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.11 2007-03-08 12:09:34 martin Exp $ -->
+<!-- $Id: book.xml,v 1.12 2007-09-17 12:16:04 martin Exp $ -->
 
 <book lang="en">
     <bookinfo>
-        <title>OTRS CVS - Developer Manual</title>
+        <title>OTRS 2.2 - Developer Manual</title>
         <edition>Playground</edition>
         <copyright>
             <year>2003-2007</year>
