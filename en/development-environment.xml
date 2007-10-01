@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: development-environment.xml,v 1.4 2006-04-06 19:45:04 martin Exp $ -->
+<!-- $Id: development-environment.xml,v 1.5 2007-10-01 09:33:57 martin Exp $ -->
 
 <chapter>
     <title>Development Environment</title>
@@ -11,8 +11,7 @@ To facilitate the writing of OTRS expansion modules, the creation of a developme
         <title>Framework checkout (CVS)</title>
         <para>
 First of all a directory must be created in which the modules can be stored.
-Then switch to the new directory using the command line and check them out of OTRS 2.0
-using the following command (loginpassword: cvs):
+Then switch to the new directory using the command line and check them out of OTRS 2.3 or the CVS head by using the following command (loginpassword: cvs):
         </para>
         <para>
         <screen>
@@ -21,12 +20,17 @@ shell> cvs -d :pserver:anonymous@cvs.otrs.org:/home/cvs login
         </para>
         <para>
         <screen>
-shell> cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r rel-2_0 otrs
+shell> cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r otrs
+        </screen>
+        </para>
+        <para>
+        <screen>
+shell> cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r rel-2_3 otrs
         </screen>
         </para>
         <para>
 OTRS expansion modules can be checked out following the same routine.
-Check out the "module tools" directory, too for your development environment. It contains a number of useful tools.
+Check out the "module-tools" module, too for your development environment. It contains a number of useful tools.
         </para>
         <para>
 To enable the CVS-OTRS it is necessary to configure it on the Apache web server and to create the Config.pm.
@@ -39,7 +43,7 @@ Then the Installer.pl can be executed. The basic system is ready to run now.
 A clear separation between OTRS and the modules is necessary for proper developing.
 Particularly when using a CVS, a clear separation is crucial.
 In order to facilitate the OTRS access to the files, links must be created.
-This is done by a script in the directory module tools.
+This is done by a script in the directory module tools (to get this tools, check out the CVS module "module-tools").
 Example: Linking the Calendar Module:
         </para>
         <para>
