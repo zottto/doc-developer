@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.22 2007-05-09 13:16:37 mh Exp $ -->
+<!-- $Id: package-building.xml,v 1.23 2007-10-01 16:28:41 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -113,6 +113,16 @@ Packages that must be installed beforehand (optional).
             <programlisting>
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
+            </programlisting>
+            </para>
+        </sect2>
+        <sect2 id="package-module-required">
+            <title>ModuleRequired</title>
+            <para>
+Perl modules that must be installed beforehand (optional).
+            <programlisting>
+&lt;ModuleRequired Version="1.03"&gt;Encode&lt;/ModuleRequired&gt;
+&lt;ModuleRequired Version="5.32"&gt;MIME::Tools&lt;/ModuleRequired&gt;
             </programlisting>
             </para>
         </sect2>
