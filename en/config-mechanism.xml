@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.10 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.11 2007-10-01 09:29:33 martin Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -22,7 +22,7 @@ of your own modules. These files are used automatically.
 The directory is located under:
         </para>
         <para>
-            <filename>$OTRS_HOME/Kernel/Config/Defaults/Files/*.pm</filename>
+            <filename>$OTRS_HOME/Kernel/Config/Files/*.pm</filename>
         </para>
         <para>
 And could look as follows:
