@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.24 2007-10-10 09:28:03 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.25 2007-10-10 09:29:39 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -330,7 +330,7 @@ This is a whole example spec file.
     &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
     &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
     &lt;IntroInstallPre Title="Thank you!" Lang="en"&gt;Thank you for choosing the Calendar module.&lt;/IntroInstallPre&gt;
-    &lt;IntroInstallPre Title="Vielen Dank!" Lang="en"&gt;Vielen Dank fuer die Auswahl des Kalender Modules.&lt;/IntroInstallPre&gt;
+    &lt;IntroInstallPre Title="Vielen Dank!" Lang="de"&gt;Vielen Dank fuer die Auswahl des Kalender Modules.&lt;/IntroInstallPre&gt;
     &lt;BuildDate&gt;?&lt;/BuildDate&gt;
     &lt;BuildHost&gt;?&lt;/BuildHost&gt;
     &lt;Filelist&gt;
