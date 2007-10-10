@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.22 2007-05-09 13:16:37 mh Exp $ -->
+<!-- $Id: package-building.xml,v 1.22.2.1 2007-10-10 09:28:14 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -263,7 +263,7 @@ To execute perl code if the package is upgraded (optional).
 To show a pre or post install introdution in installation dialog.
             <programlisting>
 &lt;IntroInstallPre Title="Some Title" Lang="en"&gt;
-Some Info formated in dtl....
+Some Info formated in dtl/html....
 &lt;/IntroInstallPre&gt;
             </programlisting>
             </para>
@@ -274,7 +274,7 @@ Some Info formated in dtl....
 To show a pre or post uninstall introdution in uninstallation dialog.
             <programlisting>
 &lt;IntroUninstallPre Title="Some Title" Lang="en"&gt;
-Some Info formated in dtl....
+Some Info formated in dtl/html....
 &lt;/IntroUninstallPre&gt;
             </programlisting>
             </para>
@@ -285,7 +285,7 @@ Some Info formated in dtl....
 To show a pre or post reinstall introdution in reinstallation dialog.
             <programlisting>
 &lt;IntroReinstallPre Title="Some Title" Lang="en"&gt;
-Some Info formated in dtl....
+Some Info formated in dtl/html....
 &lt;/IntroReinstallPre&gt;
             </programlisting>
             </para>
@@ -296,7 +296,7 @@ Some Info formated in dtl....
 To show a pre or post upgrade introdution in upgrading dialog.
             <programlisting>
 &lt;IntroUpgradePre Title="Some Title" Lang="en"&gt;
-Some Info formated in dtl....
+Some Info formated in dtl/html....
 &lt;/IntroUpgradePre&gt;
             </programlisting>
             </para>
