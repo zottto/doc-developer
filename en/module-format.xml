@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -85,7 +85,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -137,7 +137,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -210,7 +210,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -415,7 +415,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -483,7 +483,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.21 $ $Date: 2007-09-12 08:40:44 $
+$Revision: 1.22 $ $Date: 2007-10-12 06:34:42 $
 
 =cut
         </programlisting>
@@ -512,7 +512,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -603,69 +603,99 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
     <sect1 id="module-stats">
         <title>Stats Module</title>
         <para>
-A stats module is easy - you just need two functions.
+There are two different types of internal stats modules - dynamic and static
+        </para>
+        <sect2 id="dynamic-stats">
+            <title>Dynamic stats</title>
+            <para>
+If you create a dynamic stats file, you can configurate your own statistic via
+the web frontend.
+            </para>
+        <para>
+The following functions are required to get a functional script.
+        <itemizedlist mark="round" >
+            <listitem>
+                <para>sub new</para>
+                <para>to generate a new object</para>
+            </listitem>
+            <listitem>
+                <para>sub GetObjectName</para>
+                <para>give the name of this dynamic stats module to the web frontend.</para>
+            </listitem>
+            <listitem>
+                <para>sub GetObjectAttributes</para>
+                <para>generats an array with all possible elements of this dynamic stats module.</para>
+            </listitem>
+            <listitem>
+                <para>sub GetStatElement</para>
+                <para>generats the count of a cell.</para>
+            </listitem>
+            <listitem>
+                <para>sub ExportWrapper</para>
+                <para>wrap the internal stats xml to an common usable format. For example queue id to queue name.</para>
+            </listitem>
+            <listitem>
+                <para>sub ImportWrapper</para>
+                <para>undo the changes of the ExportWrapper while stats import.</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+        <para>
+As an example have a look at
+Kernel/System/Stats/Dynamic/Ticket.pm:
+        </para>
+        </sect2>
+        <sect2 id="static-stats">
+            <title>Static stats</title>
+        <para>
+A static stats module is easy - you just need two functions.
 Param() to get all usable params for the stats and Run() to return the stats result.
         </para>
         <para>
-Kernel/Config.pm:
-        </para>
-        <para>
-        <programlisting>
-$Self->{SystemStatsMap}->{"Ticket::SomeExampleStats1"} = {
-    Name => 'Some Example Stats',
-    Module => 'Kernel::System::Stats::SomeExampleStats',
-    Desc => 'New created tickets for each queue in selected month.',
-    SumCol => 1,
-    SumRow => 1,
-    UseResultCache => 0,
-    Output => ['Print', 'CSV', 'Graph'],
-    OutputDefault => 'Print',
-};
-        </programlisting>
-        </para>
-        <para>
-Kernel/System/Stats/SomeExampleStats.pm:
+Kernel/System/Stats/Static/SomeExampleStats.pm:
         </para>
         <para>
         <programlisting>
 # --
-# Kernel/System/Stats/SomeExampleStats.pm - stats module
+# Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 # --
 
-package Kernel::System::Stats::SomeExampleStats;
+package Kernel::System::Stats::Static::SomeExampleStats;
 
 use strict;
+use warnings;
 
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
     my $Self = {};
-    bless ($Self, $Type);
+    bless( $Self, $Type );
 
-    # get common opjects
-    foreach (keys %Param) {
+    # get common objects
+    for ( keys %Param ) {
         $Self->{$_} = $Param{$_};
     }
 
     # check all needed objects
-    foreach (qw(DBObject ConfigObject LogObject)) {
-        die "Got no $_" if (!$Self->{$_});
+    for (qw(DBObject ConfigObject LogObject)) {
+        die "Got no $_" if ( !$Self->{$_} );
     }
+
     return $Self;
 }
-# --
+
 sub Param {
     my $Self = shift;
     my @Params = ();
+
     # get current time
     my ($s,$m,$h, $D,$M,$Y) = $Self->{TimeObject}->SystemTime2Date(
         SystemTime => $Self->{TimeObject}->SystemTime(),
@@ -712,10 +742,9 @@ sub Param {
     );
     return @Params;
 }
-# --
+
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
 
     my $Title = "$Param{Year}-$Param{Month}";
 
@@ -729,10 +758,45 @@ sub Run {
 
     return ([$Title],[@HeadData], @Data);
 }
-# --
+
 1;
         </programlisting>
         </para>
+
+
+        </sect2>
+        <sect2 id="stats-using-old-stats" >
+            <title>Using old static stats</title>
+
+            <para>
+Standard OTRS versions 1.3 and 2.0 already facilitated the generation of stats.
+Various stats for OTRS versions 1.3 and 2.0 which have been specially
+developed to meet customers' requirements can be used in more recent versions too.
+            </para>
+
+            <para>
+The files must merely be moved from the
+<filename>Kernel/System/Stats/</filename> path to
+<filename>Kernel/System/Stats/Static/</filename>. Additionally
+the package name of the respective script must be amended by
+"::Static".
+            </para>
+
+            <para>
+The following example shows how the first path is amended.
+            </para>
+
+            <para>
+                <programlisting>
+    package Kernel::System::Stats::AccountedTime;
+                </programlisting>
+            </para>
+            <para>
+                <programlisting>
+    package Kernel::System::Stats::Static::AccountedTime;
+                </programlisting>
+            </para>
+        </sect2>
     </sect1>
     <sect1 id="ticket-modules">
         <title>Ticket Modules</title>
@@ -764,7 +828,7 @@ package Kernel::System::Ticket::Number::Simple;
 
 use strict; use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.21 $';
+$VERSION = '$Revision: 1.22 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -839,7 +903,7 @@ package Kernel::System::PostMaster::Filter::Example;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.21 $';
+$VERSION = '$Revision: 1.22 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -963,7 +1027,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -975,7 +1039,7 @@ package Kernel::Output::HTML::TicketMenuLock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.21 $';
+$VERSION = '$Revision: 1.22 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1090,7 +1154,7 @@ Format:
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.21 2007-09-12 08:40:44 martin Exp $
+# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1102,7 +1166,7 @@ package Kernel::System::Ticket::Event::ForceUnlock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.21 $';
+$VERSION = '$Revision: 1.22 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
