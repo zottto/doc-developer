@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $ -->
+<!-- $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -85,7 +85,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -137,7 +137,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -210,7 +210,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -415,7 +415,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -483,7 +483,7 @@ did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.22 $ $Date: 2007-10-12 06:34:42 $
+$Revision: 1.23 $ $Date: 2007-10-16 16:24:02 $
 
 =cut
         </programlisting>
@@ -512,7 +512,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -608,7 +608,7 @@ There are two different types of internal stats modules - dynamic and static
         <sect2 id="dynamic-stats">
             <title>Dynamic stats</title>
             <para>
-If you create a dynamic stats file, you can configurate your own statistic via
+If you create a dynamic stats file, you can configurate your own statistics via
 the web frontend.
             </para>
         <para>
@@ -616,39 +616,39 @@ The following functions are required to get a functional script.
         <itemizedlist mark="round" >
             <listitem>
                 <para>sub new</para>
-                <para>to generate a new object</para>
+                <para>to generate a new instance</para>
             </listitem>
             <listitem>
                 <para>sub GetObjectName</para>
-                <para>give the name of this dynamic stats module to the web frontend.</para>
+                <para>gives the name of this dynamic stats module to the web frontend.</para>
             </listitem>
             <listitem>
                 <para>sub GetObjectAttributes</para>
-                <para>generats an array with all possible elements of this dynamic stats module.</para>
+                <para>generates an array with all possible elements of this dynamic stats module.</para>
             </listitem>
             <listitem>
                 <para>sub GetStatElement</para>
-                <para>generats the count of a cell.</para>
+                <para>provides the content of a cell.</para>
             </listitem>
             <listitem>
                 <para>sub ExportWrapper</para>
-                <para>wrap the internal stats xml to an common usable format. For example queue id to queue name.</para>
+                <para>converts the internal stats xml into a commonly usable format. For example 'queue id' into 'queue name'.</para>
             </listitem>
             <listitem>
                 <para>sub ImportWrapper</para>
-                <para>undo the changes of the ExportWrapper while stats import.</para>
+                <para>undoes the changes of the ExportWrapper during stats import.</para>
             </listitem>
         </itemizedlist>
         </para>
         <para>
-As an example have a look at
+For example, have a look at this;
 Kernel/System/Stats/Dynamic/Ticket.pm:
         </para>
         </sect2>
         <sect2 id="static-stats">
             <title>Static stats</title>
         <para>
-A static stats module is easy - you just need two functions.
+A static stats module is easy to make - you just need two functions.
 Param() to get all usable params for the stats and Run() to return the stats result.
         </para>
         <para>
@@ -660,7 +660,7 @@ Kernel/System/Stats/Static/SomeExampleStats.pm:
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -828,7 +828,7 @@ package Kernel::System::Ticket::Number::Simple;
 
 use strict; use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.22 $';
+$VERSION = '$Revision: 1.23 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -903,7 +903,7 @@ package Kernel::System::PostMaster::Filter::Example;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.22 $';
+$VERSION = '$Revision: 1.23 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -1027,7 +1027,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1039,7 +1039,7 @@ package Kernel::Output::HTML::TicketMenuLock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.22 $';
+$VERSION = '$Revision: 1.23 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1154,7 +1154,7 @@ Format:
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) 2005 Hans Mueller mail@example.com
 # --
-# $Id: module-format.xml,v 1.22 2007-10-12 06:34:42 tr Exp $
+# $Id: module-format.xml,v 1.23 2007-10-16 16:24:02 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1166,7 +1166,7 @@ package Kernel::System::Ticket::Event::ForceUnlock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.22 $';
+$VERSION = '$Revision: 1.23 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
