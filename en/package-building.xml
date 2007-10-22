@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.25 2007-10-10 09:29:39 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.26 2007-10-22 16:18:08 sb Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -110,6 +110,7 @@ This will be filled in automatically by OPM (auto).
             <title>PackageRequired</title>
             <para>
 Packages that must be installed beforehand (optional).
+If PackageRequired is used, a version of the required package must be specified.
             <programlisting>
 &lt;PackageRequired Version="1.0.3"&gt;SomeOtherPackage&lt;/PackageRequired&gt;
 &lt;PackageRequired Version="5.3.2"&gt;SomeotherPackage2&lt;/PackageRequired&gt;
