@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.18.2.1 2007-10-22 16:21:27 sb Exp $ -->
+<!-- $Id: package-building.xml,v 1.18.2.2 2007-10-24 18:39:55 cs Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -46,7 +46,7 @@ The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9) (required).
             <para>
 The package vendor (required).
             <programlisting>
-&lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
+&lt;Vendor&gt;OTRS AG&lt;/Vendor&gt;
             </programlisting>
             </para>
         </sect2>
@@ -269,7 +269,7 @@ This is a whole example spec file.
     &lt;Name&gt;Calendar&lt;/Name&gt;
     &lt;Version&gt;0.0.1&lt;/Version&gt;
     &lt;Framework&gt;2.0.x&lt;/Framework&gt;
-    &lt;Vendor&gt;OTRS GmbH&lt;/Vendor&gt;
+    &lt;Vendor&gt;OTRS AG&lt;/Vendor&gt;
     &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
     &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
     &lt;ChangeLog&gt;2005-12-02 added change log&lt;/ChangeLog&gt;
