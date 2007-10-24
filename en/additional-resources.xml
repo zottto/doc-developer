@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: additional-resources.xml,v 1.9 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: additional-resources.xml,v 1.9.6.1 2007-10-24 18:36:36 cs Exp $ -->
 
 <appendix id="additional-ressources">
     <title>Additional Ressources</title>
@@ -34,11 +34,11 @@ The OTRS developer mailing list is available at:
     <sect1 id="additional-resources-commercial-support">
         <title>Commercial Support</title>
         <para>
-For business assistance (support, consulting and training) please contact the commercial part of OTRS, the OTRS GmbH.
+For business assistance (support, consulting and training) please contact the commercial part of OTRS, the OTRS AG.
         </para>
         <para>
         <screen>
-OTRS GmbH
+OTRS AG
 Europaring 4
 94315 Straubing (Germany)
 Phone: +49 (0)9421 1862 760
