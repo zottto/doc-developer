@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.15 2006-04-02 23:34:55 martin Exp $ -->
+<!-- $Id: templates.xml,v 1.16 2007-12-10 11:08:22 tr Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -151,6 +151,7 @@ $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;","20"}
 This tag translates the string (based on the user selected language).
             <programlisting>
 Translate this text: $Text{"Help"}
+Translate this text and insert the given data: $Text{"Change %s settings", "$Data{"Type"}"}
             </programlisting>
             </para>
         </sect2>
