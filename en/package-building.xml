@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.30 2008-04-14 15:54:33 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.31 2008-04-14 16:02:33 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -35,9 +35,17 @@ The package version (required).
         <sect2 id="package-framework">
             <title>Framework</title>
             <para>
-The required framework version (2.0.x means e.g. 2.0.1 or 2.0.9) (required).
+The required framework version (2.3.x means e.g. 2.3.1 or 2.3.9) (required).
             <programlisting>
-&lt;Framework&gt;2.0.x&lt;/Framework&gt;
+&lt;Framework&gt;2.3.x&lt;/Framework&gt;
+            </programlisting>
+            </para>
+            <para>
+Can also be used several times.
+            <programlisting>
+&lt;Framework&gt;2.3.x&lt;/Framework&gt;
+&lt;Framework&gt;2.2.x&lt;/Framework&gt;
+&lt;Framework&gt;2.1.x&lt;/Framework&gt;
             </programlisting>
             </para>
         </sect2>
@@ -132,8 +140,9 @@ Perl modules that must be installed beforehand (optional).
             <para>
 Required OS (optional).
             <programlisting>
-&lt;OS&gt;Linux&lt;/OS&gt;
-&lt;OS&gt;MacOS&lt;/OS&gt;
+&lt;OS&gt;linux&lt;/OS&gt;
+&lt;OS&gt;darwin&lt;/OS&gt;
+&lt;OS&gt;mswin32&lt;/OS&gt;
             </programlisting>
             </para>
         </sect2>
@@ -332,7 +341,7 @@ For more info see chapter "Package Life Cycle".
             <para>
 To execute perl code if the package is upgraded (optional).
             <programlisting>
-&lt;CodeUpgrade Type="post"&gt;
+&lt;CodeUpgrade&gt;
     # example
     if (1) {
         print STDERR "Some info to STDERR\n";
