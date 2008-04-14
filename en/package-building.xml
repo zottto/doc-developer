@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.32 2008-04-14 16:06:23 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.33 2008-04-14 17:42:00 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -414,7 +414,7 @@ shell&gt;
         </para>
     </sect1>
     <sect1 id="package-life-cycle">
-        <title>Package Life Cycle - Install/Upgrade/Unintsall</title>
+        <title>Package Life Cycle - Install/Upgrade/Uninstall</title>
         <para>
 The following image shows you how the life cycle of a package instalation/upgrade/uninstallation works in the backend step by step.
         <screenshot>
