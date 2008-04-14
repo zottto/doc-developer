@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.28 2008-04-14 15:15:59 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.29 2008-04-14 15:51:24 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -155,7 +155,6 @@ This is a list of files included in the package (optional).
             <title>DatabaseInstall</title>
             <para>
 Database entries that have to be created when a package is installed (optional).
-On "pre" or "post" time of package installation.
             <programlisting>
 &lt;DatabaseInstall&gt;
     &lt;TableCreate Name="calendar_event"&gt;
@@ -172,6 +171,7 @@ On "pre" or "post" time of package installation.
             </para>
             <para>
 You also can choose &lt;DatabaseInstall Type="post"&gt; or &lt;DatabaseInstall Type="pre"&gt; to define the time of execution separately  (post is default).
+For more info see chapter "Package Life Cycle".
             </para>
         </sect2>
         <sect2 id="package-database-upgrade">
@@ -179,7 +179,6 @@ You also can choose &lt;DatabaseInstall Type="post"&gt; or &lt;DatabaseInstall T
             <para>
 Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
 Example (if installed package version is below 1.3.4, defined action will be performed):
-On "pre" or "post" time of package upgrading.
             <programlisting>
 &lt;DatabaseUpgrade&gt;
     &lt;TableCreate Name="calendar_event_involved" Version="1.3.4"&gt;
@@ -191,26 +190,26 @@ On "pre" or "post" time of package upgrading.
             </para>
             <para>
 You also can choose &lt;DatabaseUpgrade Type="post"&gt; or &lt;DatabaseUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
             </para>
         </sect2>
         <sect2 id="package-database-reinstall">
             <title>DatabaseReinstall</title>
             <para>
 Information on what actions have to be performed if  the package is reinstalled, (optional).
-On "pre" or "post" time of package reinstalling.
             <programlisting>
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
             </programlisting>
             </para>
             <para>
 You also can choose &lt;DatabaseReinstall Type="post"&gt; or &lt;DatabaseReinstall Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
             </para>
         </sect2>
         <sect2 id="package-database-uninstall">
             <title>DatabaseUninstall</title>
             <para>
 Uninstall (if a package gets uninstalled), (optional).
-On "pre" or "post" time of package uninstalling.
             <programlisting>
 &lt;DatabaseUninstall&gt;
     &lt;TableDrop Name="calendar_event" /&gt;
@@ -219,85 +218,7 @@ On "pre" or "post" time of package uninstalling.
             </para>
             <para>
 You also can choose &lt;DatabaseUninstall Type="post"&gt; or &lt;DatabaseUninstall Type="pre"&gt; to define the time of execution separately (post is default).
-            </para>
-        </sect2>
-        <sect2 id="package-code-install">
-            <title>CodeInstall</title>
-            <para>
-To execute perl code if the package is installed (optional).
-On "pre" or "post" time of package installation.
-            <programlisting>
-&lt;CodeInstall&gt;
-    # example
-    if (1) {
-        print STDERR "Some info to STDERR\n";
-    }
-    # log example
-    $Self-&gt;{LogObject}-&gt;Log(
-        Priority =&gt; 'notice',
-        Message =&gt; "Some Message!",
-    )
-    # database example
-    $Self-&gt;{DBObject}-&gt;Do(SQL =&gt; "SOME SQL");
-&lt;/CodeInstall&gt;
-            </programlisting>
-            </para>
-            <para>
-You also can choose &lt;CodeInstall Type="post"&gt; or &lt;CodeInstall Type="pre"&gt; to define the time of execution separately (post is default).
-            </para>
-        </sect2>
-        <sect2 id="package-code-uninstall">
-            <title>CodeUninstall</title>
-            <para>
-To execute perl code if the package is uninstalled (optional).
-On "pre" or "post" time of package uninstallation.
-            <programlisting>
-&lt;CodeUninstall&gt;
-    # example
-    if (1) {
-        print STDERR "Some info to STDERR\n";
-    }
-&lt;/CodeUninstall&gt;
-            </programlisting>
-            </para>
-            <para>
-You also can choose &lt;CodeUninstall Type="post"&gt; or &lt;CodeUninstall Type="pre"&gt; to define the time of execution separately (post is default).
-            </para>
-        </sect2>
-        <sect2 id="package-code-reinstall">
-            <title>CodeReinstall</title>
-            <para>
-To execute perl code if the package is reinstalled (optional).
-On "pre" or "post" time of package reinstallation.
-            <programlisting>
-&lt;CodeReinstall&gt;
-    # example
-    if (1) {
-        print STDERR "Some info to STDERR\n";
-    }
-&lt;/CodeReinstall&gt;
-            </programlisting>
-            </para>
-            <para>
-You also can choose &lt;CodeIninstall Type="post"&gt; or &lt;CodeIninstall Type="pre"&gt; to define the time of execution separately (post is default).
-            </para>
-        </sect2>
-        <sect2 id="package-code-upgrade">
-            <title>CodeUpgrade</title>
-            <para>
-To execute perl code if the package is upgraded (optional).
-On "pre" or "post" time of package upgrading.
-            <programlisting>
-&lt;CodeUpgrade Type="post"&gt;
-    # example
-    if (1) {
-        print STDERR "Some info to STDERR\n";
-    }
-&lt;/CodeUpgrade&gt;
-            </programlisting>
-            </para>
-            <para>
-You also can choose &lt;CodeUpgrade Type="post"&gt; or &lt;CodeUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
             </para>
         </sect2>
         <sect2 id="package-intro-install">
@@ -345,6 +266,85 @@ Some Info formated in dtl/html....
             </para>
         </sect2>
     </sect1>
+        <sect2 id="package-code-install">
+            <title>CodeInstall</title>
+            <para>
+To execute perl code if the package is installed (optional).
+            <programlisting>
+&lt;CodeInstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+    # log example
+    $Self-&gt;{LogObject}-&gt;Log(
+        Priority =&gt; 'notice',
+        Message =&gt; "Some Message!",
+    )
+    # database example
+    $Self-&gt;{DBObject}-&gt;Do(SQL =&gt; "SOME SQL");
+&lt;/CodeInstall&gt;
+            </programlisting>
+            </para>
+            <para>
+You also can choose &lt;CodeInstall Type="post"&gt; or &lt;CodeInstall Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
+            </para>
+        </sect2>
+        <sect2 id="package-code-uninstall">
+            <title>CodeUninstall</title>
+            <para>
+To execute perl code if the package is uninstalled (optional).
+On "pre" or "post" time of package uninstallation.
+            <programlisting>
+&lt;CodeUninstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeUninstall&gt;
+            </programlisting>
+            </para>
+            <para>
+You also can choose &lt;CodeUninstall Type="post"&gt; or &lt;CodeUninstall Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
+            </para>
+        </sect2>
+        <sect2 id="package-code-reinstall">
+            <title>CodeReinstall</title>
+            <para>
+To execute perl code if the package is reinstalled (optional).
+            <programlisting>
+&lt;CodeReinstall&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeReinstall&gt;
+            </programlisting>
+            </para>
+            <para>
+You also can choose &lt;CodeReinstall Type="post"&gt; or &lt;CodeReinstall Type="pre"&gt; to define the time of execution separately (post is default).
+For more info see chapter "Package Life Cycle".
+            </para>
+        </sect2>
+        <sect2 id="package-code-upgrade">
+            <title>CodeUpgrade</title>
+            <para>
+To execute perl code if the package is upgraded (optional).
+            <programlisting>
+&lt;CodeUpgrade Type="post"&gt;
+    # example
+    if (1) {
+        print STDERR "Some info to STDERR\n";
+    }
+&lt;/CodeUpgrade&gt;
+            </programlisting>
+            </para>
+            <para>
+You also can choose &lt;CodeUpgrade Type="post"&gt; or &lt;CodeUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
+        </sect2>
     <sect1 id="package-example-sopm">
         <title>Example .sopm</title>
         <para>
