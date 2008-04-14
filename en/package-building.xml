@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.27 2007-10-24 18:33:06 cs Exp $ -->
+<!-- $Id: package-building.xml,v 1.28 2008-04-14 15:15:59 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -155,6 +155,7 @@ This is a list of files included in the package (optional).
             <title>DatabaseInstall</title>
             <para>
 Database entries that have to be created when a package is installed (optional).
+On "pre" or "post" time of package installation.
             <programlisting>
 &lt;DatabaseInstall&gt;
     &lt;TableCreate Name="calendar_event"&gt;
@@ -169,12 +170,16 @@ Database entries that have to be created when a package is installed (optional).
 &lt;/DatabaseInstall&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;DatabaseInstall Type="post"&gt; or &lt;DatabaseInstall Type="pre"&gt; to define the time of execution separately  (post is default).
+            </para>
         </sect2>
         <sect2 id="package-database-upgrade">
             <title>DatabaseUpgrade</title>
             <para>
 Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
 Example (if installed package version is below 1.3.4, defined action will be performed):
+On "pre" or "post" time of package upgrading.
             <programlisting>
 &lt;DatabaseUpgrade&gt;
     &lt;TableCreate Name="calendar_event_involved" Version="1.3.4"&gt;
@@ -184,31 +189,43 @@ Example (if installed package version is below 1.3.4, defined action will be per
 &lt;/DatabaseUpgrade&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;DatabaseUpgrade Type="post"&gt; or &lt;DatabaseUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-database-reinstall">
             <title>DatabaseReinstall</title>
             <para>
 Information on what actions have to be performed if  the package is reinstalled, (optional).
+On "pre" or "post" time of package reinstalling.
             <programlisting>
 &lt;DatabaseReinstall&gt;&lt;/DatabaseReinstall&gt;
             </programlisting>
+            </para>
+            <para>
+You also can choose &lt;DatabaseReinstall Type="post"&gt; or &lt;DatabaseReinstall Type="pre"&gt; to define the time of execution separately (post is default).
             </para>
         </sect2>
         <sect2 id="package-database-uninstall">
             <title>DatabaseUninstall</title>
             <para>
 Uninstall (if a package gets uninstalled), (optional).
+On "pre" or "post" time of package uninstalling.
             <programlisting>
 &lt;DatabaseUninstall&gt;
     &lt;TableDrop Name="calendar_event" /&gt;
 &lt;/DatabaseUninstall&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;DatabaseUninstall Type="post"&gt; or &lt;DatabaseUninstall Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
 To execute perl code if the package is installed (optional).
+On "pre" or "post" time of package installation.
             <programlisting>
 &lt;CodeInstall&gt;
     # example
@@ -225,11 +242,15 @@ To execute perl code if the package is installed (optional).
 &lt;/CodeInstall&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;CodeInstall Type="post"&gt; or &lt;CodeInstall Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-code-uninstall">
             <title>CodeUninstall</title>
             <para>
 To execute perl code if the package is uninstalled (optional).
+On "pre" or "post" time of package uninstallation.
             <programlisting>
 &lt;CodeUninstall&gt;
     # example
@@ -239,11 +260,15 @@ To execute perl code if the package is uninstalled (optional).
 &lt;/CodeUninstall&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;CodeUninstall Type="post"&gt; or &lt;CodeUninstall Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-code-reinstall">
             <title>CodeReinstall</title>
             <para>
 To execute perl code if the package is reinstalled (optional).
+On "pre" or "post" time of package reinstallation.
             <programlisting>
 &lt;CodeReinstall&gt;
     # example
@@ -253,13 +278,17 @@ To execute perl code if the package is reinstalled (optional).
 &lt;/CodeReinstall&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;CodeIninstall Type="post"&gt; or &lt;CodeIninstall Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
 To execute perl code if the package is upgraded (optional).
+On "pre" or "post" time of package upgrading.
             <programlisting>
-&lt;CodeUpgrade&gt;
+&lt;CodeUpgrade Type="post"&gt;
     # example
     if (1) {
         print STDERR "Some info to STDERR\n";
@@ -267,48 +296,51 @@ To execute perl code if the package is upgraded (optional).
 &lt;/CodeUpgrade&gt;
             </programlisting>
             </para>
+            <para>
+You also can choose &lt;CodeUpgrade Type="post"&gt; or &lt;CodeUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
+            </para>
         </sect2>
         <sect2 id="package-intro-install">
-            <title>IntroInstall(Pre|Post)</title>
+            <title>IntroInstall</title>
             <para>
-To show a pre or post install introdution in installation dialog.
+To show a "pre" or "post" install introdution in installation dialog.
             <programlisting>
-&lt;IntroInstallPre Title="Some Title" Lang="en"&gt;
+&lt;IntroInstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
-&lt;/IntroInstallPre&gt;
+&lt;/IntroInstall&gt;
             </programlisting>
             </para>
         </sect2>
         <sect2 id="package-intro-uninstall">
-            <title>IntroUninstall(Pre|Post)</title>
+            <title>IntroUninstall</title>
             <para>
-To show a pre or post uninstall introdution in uninstallation dialog.
+To show a "pre" or "post" uninstall introdution in uninstallation dialog.
             <programlisting>
-&lt;IntroUninstallPre Title="Some Title" Lang="en"&gt;
+&lt;IntroUninstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
-&lt;/IntroUninstallPre&gt;
+&lt;/IntroUninstall&gt;
             </programlisting>
             </para>
         </sect2>
         <sect2 id="package-intro-reinstall">
-            <title>IntroReinstall(Pre|Post)</title>
+            <title>IntroReinstall</title>
             <para>
-To show a pre or post reinstall introdution in reinstallation dialog.
+To show a "pre" or "post" reinstall introdution in reinstallation dialog.
             <programlisting>
-&lt;IntroReinstallPre Title="Some Title" Lang="en"&gt;
+&lt;IntroReinstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
-&lt;/IntroReinstallPre&gt;
+&lt;/IntroReinstall&gt;
             </programlisting>
             </para>
         </sect2>
         <sect2 id="package-intro-upgrade">
-            <title>IntroUpgrade(Pre|Post)</title>
+            <title>IntroUpgrade</title>
             <para>
-To show a pre or post upgrade introdution in upgrading dialog.
+To show a "pre" or "post" upgrade introdution in upgrading dialog.
             <programlisting>
-&lt;IntroUpgradePre Title="Some Title" Lang="en"&gt;
+&lt;IntroUpgrade Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
-&lt;/IntroUpgradePre&gt;
+&lt;/IntroUpgrade&gt;
             </programlisting>
             </para>
         </sect2>
@@ -330,8 +362,8 @@ This is a whole example spec file.
     &lt;ChangeLog Version="1.1.1" Date="2007-02-15 16:17:51"&gt;New package.&lt;/ChangeLog&gt;
     &lt;Description Lang="en"&gt;A web calendar.&lt;/Description&gt;
     &lt;Description Lang="de"&gt;Ein Web Kalender.&lt;/Description&gt;
-    &lt;IntroInstallPre Title="Thank you!" Lang="en"&gt;Thank you for choosing the Calendar module.&lt;/IntroInstallPre&gt;
-    &lt;IntroInstallPre Title="Vielen Dank!" Lang="de"&gt;Vielen Dank fuer die Auswahl des Kalender Modules.&lt;/IntroInstallPre&gt;
+    &lt;IntroInstall Type="post" Lang="en" Title="Thank you!"&gt;Thank you for choosing the Calendar module.&lt;/IntroInstallPre&gt;
+    &lt;IntroInstall Type="post" Lang="de" Title="Vielen Dank!"&gt;Vielen Dank fuer die Auswahl des Kalender Modules.&lt;/IntroInstallPre&gt;
     &lt;BuildDate&gt;?&lt;/BuildDate&gt;
     &lt;BuildHost&gt;?&lt;/BuildHost&gt;
     &lt;Filelist&gt;
@@ -371,6 +403,15 @@ shell&gt; bin/opm.pl -a build -p /path/to/example.sopm
 writing /tmp/example-0.0.1.opm
 shell&gt;
         </screen>
+        </para>
+    </sect1>
+    <sect1 id="package-life-cycle">
+        <title>Package Life Cycle - Install/Upgrade/Unintsall</title>
+        <para>
+The following image shows you how the life cycle of a package instalation/upgrade/uninstallation works in the backend step by step.
+        <screenshot>
+            <graphic srccredit="" scale="60" fileref="screenshots/package-life-cycle.png"></graphic>
+        </screenshot>
         </para>
     </sect1>
 </chapter>
