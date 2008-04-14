@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.29 2008-04-14 15:51:24 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.30 2008-04-14 15:54:33 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -265,7 +265,6 @@ Some Info formated in dtl/html....
             </programlisting>
             </para>
         </sect2>
-    </sect1>
         <sect2 id="package-code-install">
             <title>CodeInstall</title>
             <para>
@@ -345,6 +344,7 @@ To execute perl code if the package is upgraded (optional).
 You also can choose &lt;CodeUpgrade Type="post"&gt; or &lt;CodeUpgrade Type="pre"&gt; to define the time of execution separately (post is default).
             </para>
         </sect2>
+    </sect1>
     <sect1 id="package-example-sopm">
         <title>Example .sopm</title>
         <para>
@@ -354,7 +354,7 @@ This is a whole example spec file.
 &lt;otrs_package version="1.0"&gt;
     &lt;Name&gt;Calendar&lt;/Name&gt;
     &lt;Version&gt;0.0.1&lt;/Version&gt;
-    &lt;Framework&gt;2.0.x&lt;/Framework&gt;
+    &lt;Framework&gt;2.3.x&lt;/Framework&gt;
     &lt;Vendor&gt;OTRS AG&lt;/Vendor&gt;
     &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
     &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
