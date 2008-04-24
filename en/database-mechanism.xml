@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.23 2008-03-26 20:05:36 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.24 2008-04-24 22:13:06 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -134,9 +134,24 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
             <programlisting format="linespecific">
 &lt;TableAlter Name="calendar_event"&gt;
     &lt;ColumnAdd Name="test_name" Type="varchar" Size="20" Required="1"/&gt;
+
     &lt;ColumnChange NameOld="test_name" NameNew="test_title" Type="varchar" Size="30" Required="1"/&gt;
+
     &lt;ColumnChange NameOld="test_title" NameNew="test_title" Type="varchar" Size="100" Required="0"/&gt;
+
     &lt;ColumnDrop Name="test_title"/&gt;
+
+    &lt;IndexCreate Name="index_test3"&gt;
+        &lt;IndexColumn Name="test3"/&gt;
+    &lt;/IndexCreate&gt;
+
+    &lt;IndexDrop Name="index_test3"/&gt;
+
+    &lt;UniqueCreate Name="uniq_test3"&gt;
+        &lt;UniqueColumn Name="test3"/&gt;
+    &lt;/UniqueCreate&gt;
+
+    &lt;UniqueDrop Name="uniq_test3"/&gt;
 &lt;/TableAlter&gt;
             </programlisting>
             <para>
