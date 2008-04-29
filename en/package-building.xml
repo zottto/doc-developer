@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.33 2008-04-14 17:42:00 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.34 2008-04-29 21:58:46 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -234,44 +234,64 @@ For more info see chapter "Package Life Cycle".
             <title>IntroInstall</title>
             <para>
 To show a "pre" or "post" install introdution in installation dialog.
+            </para>
+            <para>
             <programlisting>
 &lt;IntroInstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
 &lt;/IntroInstall&gt;
             </programlisting>
             </para>
+            <para>
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+            </para>
         </sect2>
         <sect2 id="package-intro-uninstall">
             <title>IntroUninstall</title>
             <para>
 To show a "pre" or "post" uninstall introdution in uninstallation dialog.
+            </para>
+            <para>
             <programlisting>
 &lt;IntroUninstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
 &lt;/IntroUninstall&gt;
             </programlisting>
             </para>
+            <para>
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+            </para>
         </sect2>
         <sect2 id="package-intro-reinstall">
             <title>IntroReinstall</title>
             <para>
 To show a "pre" or "post" reinstall introdution in reinstallation dialog.
+            </para>
+            <para>
             <programlisting>
 &lt;IntroReinstall Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
 &lt;/IntroReinstall&gt;
             </programlisting>
             </para>
+            <para>
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+            </para>
         </sect2>
         <sect2 id="package-intro-upgrade">
             <title>IntroUpgrade</title>
             <para>
 To show a "pre" or "post" upgrade introdution in upgrading dialog.
+            </para>
+            <para>
             <programlisting>
 &lt;IntroUpgrade Type="post" Lang="en" Title="Some Title"&gt;
 Some Info formated in dtl/html....
 &lt;/IntroUpgrade&gt;
             </programlisting>
+            </para>
+            <para>
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
             </para>
         </sect2>
         <sect2 id="package-code-install">
