@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.24 2008-04-24 22:13:06 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.25 2008-05-07 08:42:09 martin Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -108,10 +108,10 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
     &lt;Column Name="end_time" Required="true" Type="DATE"/&gt;
     &lt;Column Name="owner_id" Required="true" Type="INTEGER"/&gt;
     &lt;Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/&gt;
-    &lt;Index Name="title"&gt;
+    &lt;Index Name="calendar_event_title"&gt;
         &lt;IndexColumn Name="title"/&gt;
     &lt;/Index&gt;
-    &lt;Unique&gt;
+    &lt;Unique Name="calendar_event_title"&gt;
         &lt;UniqueColumn Name="title"/&gt;
     &lt;/Unique&gt;
     &lt;ForeignKey ForeignTable="system_user"&gt;
