@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.34 2008-04-29 21:58:46 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.35 2008-07-03 17:32:34 martin Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -187,7 +187,7 @@ For more info see chapter "Package Life Cycle".
             <title>DatabaseUpgrade</title>
             <para>
 Information on which actions have to be performed in case of an upgrade (subject to version tag), (optional).
-Example (if installed package version is below 1.3.4, defined action will be performed):
+Example (if already installed package version is below 1.3.4 (e. g. 1.2.6), defined action will be performed):
             <programlisting>
 &lt;DatabaseUpgrade&gt;
     &lt;TableCreate Name="calendar_event_involved" Version="1.3.4"&gt;
@@ -359,9 +359,10 @@ For more info see chapter "Package Life Cycle".
         <sect2 id="package-code-upgrade">
             <title>CodeUpgrade</title>
             <para>
-To execute perl code if the package is upgraded (optional).
+To execute perl code if the package is upgraded (subject to version tag), (optional).
+Example (if already installed package version is below 1.3.4 (e. g. 1.2.6), defined action will be performed):
             <programlisting>
-&lt;CodeUpgrade&gt;
+&lt;CodeUpgrade Version="1.3.4"&gt;
     # example
     if (1) {
         print STDERR "Some info to STDERR\n";
