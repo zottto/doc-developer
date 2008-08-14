@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: incident-problem.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+<!-- $Id: incident-problem.xml,v 1.2 2008-08-14 17:06:36 ub Exp $ -->
 
 <chapter>
 
@@ -29,19 +29,19 @@
         <para>
         <itemizedlist>
             <listitem>
-                <para>der Tickettyp,</para>
+                <para>der Tickettyp</para>
             </listitem>
 
             <listitem>
-                <para>relevanter Service,</para>
+                <para>relevanter Service</para>
             </listitem>
 
             <listitem>
-                <para>SLA,</para>
+                <para>SLA</para>
             </listitem>
 
             <listitem>
-                <para>Auswirkung (Impact) und</para>
+                <para>Auswirkung (Impact)</para>
             </listitem>
 
             <listitem>
@@ -93,9 +93,9 @@
 
         <para>Queues sind in OTRS::ITSM flexibel an die eigenen organisatorischen Strukturen anpassbar. Sie können dem im IT Service Support häufig genutzten vertikalen Schema Service Desk, First, Second und Third Level Support folgen oder Prozess orientiert, d. h. gemäß dem Ticket Lebenszyklus von Öffnung über Bearbeitung und Abschluss bis zur Nachbearbeitung konfiguriert werden.</para>
 
-        <para>Im Gegensatz zu OTRS bis inklusive Version 2.1 erfolgt die Eskalation von Tickets in OTRS::ITSM zunächst über die SLAs, präzise über die dort hinterlegten Zeiten Response, Update und Recovery Time. Sind dort keine Werte hinterlegt, erfolgt die Eskalation mittels Queues und der dort hinterlegten Zeitwerte.</para>
+        <para>Im Gegensatz zu OTRS bis einschließlich Version 2.1 erfolgt die Eskalation von Tickets in OTRS::ITSM zunächst über die SLAs, präzise über die dort hinterlegten Zeiten Response, Update und Recovery Time. Sind dort keine Werte hinterlegt, erfolgt die Eskalation mittels Queues und der dort hinterlegten Zeitwerte.</para>
 
-        <para>Tickets werden durch Auswahl der gewünschten Queue (rechst unten in der Ticketansicht) verschoben.</para>
+        <para>Tickets werden durch Auswahl der gewünschten Queue (rechts unten in der Ticketansicht) verschoben.</para>
 
         <para>
             <screenshot>

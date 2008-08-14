@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.2 2008-08-14 14:57:14 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.3 2008-08-14 17:06:36 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -65,11 +65,11 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
 
                 <itemizedlist>
                     <listitem>
-                        <para>Incident Management,</para>
+                        <para>Incident Management</para>
                     </listitem>
 
                     <listitem>
-                        <para>Problem Management und</para>
+                        <para>Problem Management</para>
                     </listitem>
 
                     <listitem>
@@ -84,7 +84,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
             </listitem>
 
             <listitem>
-                <para>ITIL konformes Wording, auch bisheriger OTRS-Funktionen</para>
+                <para>ITIL konformes Wording</para>
             </listitem>
 
             <listitem>

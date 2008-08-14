@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+<!-- $Id: installation.xml,v 1.2 2008-08-14 17:06:36 ub Exp $ -->
 
 
 
@@ -9,7 +9,7 @@
 
     <title>Installation von OTRS::ITSM</title>
 
-    <para>Zur Nutzung von OTRS::ITSM muss das OTRS Framework ab Version 2.2 installiert sein. Alle dazu  notwendigen Informationen, Optionen und Installationsschritte sind im "OTRS Admin Manual" beschrieben.</para>
+    <para>Zur Nutzung von OTRS::ITSM muss das OTRS Framework 2.2 installiert sein. Alle dazu  notwendigen Informationen, Optionen und Installationsschritte sind im "OTRS Admin Manual" beschrieben.</para>
 
     <warning>
 
@@ -17,7 +17,7 @@
 
     </warning>
 
-    <para>Nachdem OTRS ab Version 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von http://ftp.otrs.org/pub/otrs/itsm/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
+    <para>Nachdem OTRS 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von ftp://ftp.otrs.org/pub/otrs/itsm/packages10/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
 
     <itemizedlist>
 
@@ -36,7 +36,7 @@
     </itemizedlist>
 
     <para>Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
-    [--OTRS::ITSM Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete per Paket-Manager zu installieren:</para>
+    [--OTRS::ITSM 1.0 Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren:</para>
 
     <itemizedlist>
 

@@ -1,42 +1,62 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: admin-area.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
+<!-- $Id: admin-area.xml,v 1.2 2008-08-14 17:06:36 ub Exp $ --><chapter>
     <title>The admin area of OTRS::ITSM</title>
     <para>The admin area is the central interface for the ticket system administrator. All important settings of the system configuration can be checked and/or changed here, and the system can be adapted to individual needs. </para>
     <para>The admin area can be accessed via the "admin" link in the agent interface navigation bar. The link is only shown to users logged on to the system as OTRS::ITSM administrators or having administrator permissions in the system. After a default installation you can log on to the system as OTRS admin using the user name &quot;root@localhost&quot; and the password &quot;root&quot;.</para>
     <warning>
         <para>Make sure to change the password of root@localhost in the user preferences as quickly as possible after the installation as it is the default password and commonly known. </para>
     </warning>
-    <para>Compared to older OTRS versions, the following new configuration links can be found in the admin area of OTRS 2.2 and OTRS::ITSM 1.0:</para>
+
+    <para>
     <itemizedlist>
-    <listitem>
-        <para>OTRS::ITSM [ General Catalog ]</para>
-    </listitem>
-    <listitem>
-        <para>OTRS::ITSM     [ Criticality - Impact - Priority ]</para>
-    </listitem>
-    <listitem>
-        <para>OTRS::ITSM     [ ConfigItem ]</para>
-    </listitem>
-    <listitem>
-        <para>from OTRS 2.2 on   [ Type ]</para>
-    </listitem>
-    <listitem>
-        <para>from OTRS 2.2 on   [ Status ]</para>
-    </listitem>
-    <listitem>
-        <para>from OTRS 2.2 on   [ Service ]</para>
-    </listitem>
-    <listitem>
-        <para>from OTRS 2.2 on   [ SLA ]</para>
-    </listitem>
-    <listitem>
-        <para>OTRS::ITSM    [ Location ]</para>
-    </listitem>
-    <listitem>
-        <para>OTRS::ITSM    [ Priority ]</para>
-    </listitem>
+
+
+        <listitem>
+          <para>ab OTRS::ITSM 1.0</para>
+          <itemizedlist>
+              <listitem>
+                <para>[ General Catalog ]</para>
+              </listitem>
+              <listitem>
+                <para>[ Criticality - Impact - Priority </para>
+              </listitem>
+              <listitem>
+                <para>[ ConfigItem ]</para>
+              </listitem>
+                <listitem>
+                    <para>OTRS::ITSM    [ Location ]</para>
+                </listitem>
+
+                <listitem>
+                    <para>OTRS::ITSM    [ Priority ]</para>
+                </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+            <para>ab OTRS 2.2</para>
+            <itemizedlist>
+                <listitem>
+                  <para>[ Type ]</para>
+                </listitem>
+                <listitem>
+                    <para>[ Status ]</para>
+                </listitem>
+                <listitem>
+                    <para>[ Service ]</para>
+                </listitem>
+                <listitem>
+                    <para>[ SLA ]</para>
+                </listitem>
+            </itemizedlist>
+        </listitem>
+
+
+
     </itemizedlist>
+    </para>
+
     <para>
     <screenshot>
         <screeninfo>index.pl - Admin Area</screeninfo>
@@ -94,7 +114,7 @@
     <para>Please find below a part of the self-explaining default configuration for the "computer" CI class:</para>
     <para>
         <screen>
-        [
+[
     {
         Key => 'Description',
         Name => 'Description',
@@ -170,7 +190,7 @@
         CountMax => 16,
         CountDefault => 1,
     },
-    ];
+];
 
     </screen>
     </para>
@@ -196,7 +216,7 @@
     </para>
     </sect1>
     <sect1>
-    <title>Adjustment of ticket state and ticket state types</title>
+    <title>Adjustment of ticket state</title>
     <para>In ITIL compliant incident management, incidents are either resolved successfully or closed with a workaround. For such cases, OTRS::ITSM standard provides the ticket state &quot;closed with workaround&quot;.</para>
     <para>
         <screenshot>
@@ -205,7 +225,7 @@
         </screenshot>
     </para>
     <para>With OTRS::ITSM you can change ticket states or add new ones. There are two important options: the name of the state &quot;state-name&quot; and the type of it &quot;state-type&quot;. All states and types available by default are pictured above.</para>
-    <para>State names can be chosen freely, while state types must be changed directly in the database. In the "state" settings within the admin interface new states can be added or changed for existing state types.</para>
+    <para>State names can be chosen freely. In the "state" settings within the admin interface new states can be added or changed for existing state types.</para>
     <para>Please consider that changes to the "new" state require changes in the configuration file kernel/config.pm or in the graphical configuration front-end. </para>
     <para>
         <screen>
@@ -236,99 +256,14 @@
     [...]
     </screen>
     </para>
-    <para>Before a new state type can be added, the ticket state type table in the OTRS::ITSM database has to be adjusted with an adequate database client. </para>
-    <para>
-        <screen>
 
-    linux:~# mysql -p
-    Enter password:
-    Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 23 to server version: 5.0.16-Debian_1-log
-
-    Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-
-    mysql> use otrs;
-    Reading table information for completion of table and column names
-    You can turn off this feature to get a quicker startup with -A
-
-    Database changed
-    mysql> insert into ticket_state_type (name,comments) values ('own','Own
-    state type');
-    Query OK, 1 row affected (0.00 sec)
-
-    mysql> quit
-    Bye
-    linux:~#
-
-    </screen>
-    </para>
-    <para>New ticket states, which contain the state type "own" can now be added in the "state" settings in the admin interface. Afterwards you can use kernel/config.pm or the graphical configuration frontend to define where in the system the new state is to be used:</para>
-    <para>
-        <screen>
-
-    [...]
-    # Ticket::DefaultNextMoveStateType
-    # default move next state
-    $Self->{'Ticket::DefaultNextMoveStateType'} = ['open', 'closed'];
-
-    # next possible states after phone
-    $Self->{'Ticket::PhoneDefaultNextStateType'} = ['open', 'pending auto', 'pending reminder', 'closed'];
-
-    # default next state
-    $Self->{'Ticket::Frontend::PhoneNextState'} = 'closed successful';
-
-    # default next state [default: open]
-    $Self->{'Ticket::Frontend::PhoneNewNextState'} = 'open';
-
-    # next possible states after email
-    $Self->{'Ticket::EmailDefaultNextStateType'} = ['own-state', 'open', 'pending auto', 'pending reminder', 'closed'];
-
-    # default next state
-    $Self->{'Ticket::Frontend::EmailNewNextState'} = 'open';
-
-    # (default note next state)
-    $Self->{'Ticket::DefaultNextNoteStateType'} = ['new', 'open', 'closed'];
-
-    # Ticket::DefaultNextOwnerStateType
-    # (default note next state)
-    $Self->{'Ticket::DefaultNextOwnerStateType'} = ['open', 'closed'];
-
-    # default compose next state
-    $Self->{'Ticket::DefaultNextComposeType'} = 'open';
-
-    # next possible states for compose message
-    $Self->{'Ticket::DefaultNextComposeStateType'} = ['open', 'closed', 'pending auto', 'pending reminder'];
-
-    # default bounce next state
-    $Self->{'Ticket::Frontend::BounceState'} = 'closed successful';
-
-    # next possible states for bounce message
-    $Self->{'Ticket::DefaultNextBounceStateType'} = ['open', 'closed'];
-
-    # next possible states for forward message
-    $Self->{'Ticket::DefaultNextForwardStateType'} = ['open', 'closed'];
-
-    # Ticket::ViewableStateType
-    # (see http://yourhost/otrs/index.pl?Action=AdminState -> StateType)
-    $Self->{'Ticket::ViewableStateType'} = ['new', 'open', 'pending reminder', 'pending auto'];
-
-    # Ticket::UnlockStateType
-    # (Tickets which can be unlocked by bin/UnlockTickets.pl
-    # (see http://yourhost/otrs/index.pl?Action=AdminState -> StateType)
-    $Self->{'Ticket::UnlockStateType'} = ['open', 'new'];
-    [...]
-
-    </screen>
-    </para>
-    <para>Add your new state type to the configuration parameters which it is to be listed with.</para>
-    <para>Note: system functionality (workflow) for the state types added can be developed flexibly by yourself or by OTRS AG.</para>
     <warning>
         <para>In order to assure the consistency of the data managed in OTRS::ITSM, information created in the admin area of the system cannot be deleted as a general rule. If you want to deactivate such information, change the value in the respective listbox settings from "valid" to "invalid" or "invalid-temporarily". </para>
     </warning>
     </sect1>
     <sect1>
     <title>The criticality impact priority matrix</title>
-    <para>OTRS::ITSM standard provides five ticket priority levels:</para>
+    <para>OTRS::ITSM provides five ticket priority levels:</para>
     <itemizedlist>
         <listitem>
         <para>[ Criticality ]</para>

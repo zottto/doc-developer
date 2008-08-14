@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: calendar.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
+<!-- $Id: calendar.xml,v 1.2 2008-08-14 17:06:36 ub Exp $ --><chapter>
     <title>Additional OTRS applications - calendar</title>
-    <para>In the OTRS framework (Core), 9 calendars can directly be configurated graphically by default. This number can be extended to 99. Calendar configuration is effected in the admin interface using the SysConfig framework calendar 1 etc. links:</para>
+    <para>In OTRS 2.2, 9 calendars can directly be configurated graphically by default. This number can be extended to 99. Calendar configuration is effected in the admin interface using the SysConfig framework calendar 1 etc. links:</para>
     <para>
     <screenshot>
         <screeninfo>admin-sys-config</screeninfo>

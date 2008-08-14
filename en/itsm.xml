@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.2 2008-08-14 14:57:14 ub Exp $ --><chapter>
+<!-- $Id: itsm.xml,v 1.3 2008-08-14 17:06:36 ub Exp $ --><chapter>
     <title>OTRS::ITSM - The OTRS for IT service management</title>
     <para>IT is expected to deliver consistently high service quality in an increasingly complex field. In this context, effective and efficient incident and problem management are indispensable. However, IT service management remains a task almost impossible if there is no consistent and up-to-date database with information about the state and configuration of the IT infrastructure. </para>
     <para>The IT Infrastructure Library®, short ITIL®, is a series of books published by the United Kingdom's Office of Government Commerce (OGC), which generically combine best practice approaches to designing, providing, operating and managing IT services. ITIL does not center the technology but the services provided by the IT and comprises information on processes, roles, responsibilities, potential problem fields/resolutions and definitions of terms.</para>
@@ -40,10 +40,10 @@
             <para>ITIL compliant representation of &quot;service support&quot; processes</para>
             <itemizedlist>
             <listitem>
-                <para>incident management,</para>
+                <para>incident management</para>
             </listitem>
             <listitem>
-                <para>problem management and</para>
+                <para>problem management</para>
             </listitem>
             <listitem>
                 <para>configuration management</para>
@@ -54,7 +54,7 @@
             <para>an integrated, individually extensible configuration management database (CMDB)</para>
         </listitem>
         <listitem>
-            <para>ITIL compliant names for new functions and functions contained in previous OTRS versions</para>
+            <para>ITIL compliant names for new functions</para>
         </listitem>
         <listitem>
             <para>ITIL compliant role, responsibility and permission model</para>

@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: commercial-services.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
+<!-- $Id: commercial-services.xml,v 1.2 2008-08-14 17:06:36 ub Exp $ --><chapter>
     <title>Commercial services for OTRS::ITSM</title>
     <para>OTRS AG is manufacturer and source code owner of OTRS and all modules based upon it (e.g. OTRS::ITSM) and a professional service provider. Unlike those of proprietary software providers, OTRS AG's business model is not based on license fees: OTRS and OTRS::ITSM are available free of cost and we offer commercial services associated with the software applications instead. </para>
     <para>As your capable partner, we provide optimal support in all phases of your OTRS project design, realization and operation. We believe in deploying the most modern methods and our staff are highly skilled experts. This philosophy guarantees credit for powerful business applications and happy customers lauding our service quality (http://www.otrs.com/en/references/). </para>
@@ -69,7 +69,7 @@
     </sect1>
     <sect1>
     <title>Managed application services (ASP/SaaS)</title>
-    <para>You do not have to operate OTRS and/or OTRS::ITSM yourself. The products can be rented via the so called &quot;ASP&quot; (application service provisioning) resp. &quot;SaaS&quot; (software as a service) model from specialized companies, e.g. Enterprise Consulting GmbH.</para>
+    <para>You do not have to operate OTRS and/or OTRS::ITSM yourself. The products can be rented via the so called &quot;ASP&quot; (application service provisioning) resp. &quot;SaaS&quot; (software as a service) model from specialized companies.</para>
     <para>The customers (software users) are admitted internet access to exclusively rented OTRS systems and, where required, functional application support (see section above) at a fixed monthly price and can employ the application in their business to the contracted extent. No additional license fees apply as only open-source products are used.</para>
     <para>The application service provider operates IT infrastructure, systems and software ITIL compliantly and guarantees service quality according to the agreed service levels. The provider maintains the application system, (e.g. patches, backup, monitoring), and supports the customer with incidents and/or service requests such as consultation requests, software extensions or configuration requests. </para>
     </sect1>
