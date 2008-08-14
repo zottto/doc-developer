@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: api.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+
+<chapter>
+
+    <title>OTRS::ITSM Schnittstellen</title>
+
+    <para>Zum Datenaustausch zwischen OTRS::ITSM und anderen (ITSM-)Softwareprodukten existieren folgende, zum Teil generische, Schnittstellen:</para>
+
+    <para>
+        <itemizedlist>
+
+        <listitem>
+            <para>Nagios</para>
+        </listitem>
+
+        <listitem>
+            <para>SOAP</para>
+        </listitem>
+
+        <listitem>
+            <para>LDAP</para>
+        </listitem>
+
+        <listitem>
+            <para>Email (POP3, IMAP, SMTP)</para>
+        </listitem>
+
+        </itemizedlist>
+    </para>
+
+    <para>Weitere werden gerne auf Anfrage durch die OTRS AG erstellt bzw. können von Mitgliedern der Community entwickelt werden.</para>
+
+</chapter>

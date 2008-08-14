@@ -1,0 +1,378 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: admin-area.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
+    <title>The admin area of OTRS::ITSM</title>
+    <para>The admin area is the central interface for the ticket system administrator. All important settings of the system configuration can be checked and/or changed here, and the system can be adapted to individual needs. </para>
+    <para>The admin area can be accessed via the "admin" link in the agent interface navigation bar. The link is only shown to users logged on to the system as OTRS::ITSM administrators or having administrator permissions in the system. After a default installation you can log on to the system as OTRS admin using the user name &quot;root@localhost&quot; and the password &quot;root&quot;.</para>
+    <warning>
+        <para>Make sure to change the password of root@localhost in the user preferences as quickly as possible after the installation as it is the default password and commonly known. </para>
+    </warning>
+    <para>Compared to older OTRS versions, the following new configuration links can be found in the admin area of OTRS 2.2 and OTRS::ITSM 1.0:</para>
+    <itemizedlist>
+    <listitem>
+        <para>OTRS::ITSM [ General Catalog ]</para>
+    </listitem>
+    <listitem>
+        <para>OTRS::ITSM     [ Criticality - Impact - Priority ]</para>
+    </listitem>
+    <listitem>
+        <para>OTRS::ITSM     [ ConfigItem ]</para>
+    </listitem>
+    <listitem>
+        <para>from OTRS 2.2 on   [ Type ]</para>
+    </listitem>
+    <listitem>
+        <para>from OTRS 2.2 on   [ Status ]</para>
+    </listitem>
+    <listitem>
+        <para>from OTRS 2.2 on   [ Service ]</para>
+    </listitem>
+    <listitem>
+        <para>from OTRS 2.2 on   [ SLA ]</para>
+    </listitem>
+    <listitem>
+        <para>OTRS::ITSM    [ Location ]</para>
+    </listitem>
+    <listitem>
+        <para>OTRS::ITSM    [ Priority ]</para>
+    </listitem>
+    </itemizedlist>
+    <para>
+    <screenshot>
+        <screeninfo>index.pl - Admin Area</screeninfo>
+        <graphic fileref="screenshots/admin-area.png" scale="50" srccredit="Admin Area - screenshot" />
+    </screenshot>
+    </para>
+    <sect1>
+    <title>The general catalog</title>
+    <para>As the name indicates, the general catalog serves for basic ITSM relevant configurations in OTRS::ITSM.</para>
+    <para>
+        <screenshot>
+        <screeninfo>index.pl - Admin General Catalog</screeninfo>
+        <graphic fileref="screenshots/admin-general-catalog-management.png" scale="50" srccredit="Admin General Catalog - screenshot" />
+        </screenshot>
+    </para>
+    <para>For example the editing of reference chart entries for drop-down fields: </para>
+    <para>
+        <screenshot>
+        <screeninfo>index.pl - Admin General Catalog</screeninfo>
+        <graphic fileref="screenshots/admin-general-catalog-management-edit.png" scale="50" srccredit="Admin General Catalog - screenshot" />
+        </screenshot>
+    </para>
+    </sect1>
+    <sect1>
+    <title>Configurating configuration item classes</title>
+    <para>By default OTRS::ITSM provides four CI classes to represent all relevant IT elements:</para>
+    <itemizedlist>
+        <listitem>
+        <para>[ Computer ]</para>
+        <para>All CIs, which are classically referred to as computers, e.g. desktop PCs or laptops, and all intelligent, configurable and non-peripheral appliances such as switches, routers or other active network components.</para>
+        </listitem>
+        <listitem>
+        <para>[ Hardware ]</para>
+        <para>All hardware components not being considered as computers, ranging from "blade center" chassis, to printers and USB sticks depending on the level of detailedness of the listing.</para>
+        </listitem>
+        <listitem>
+        <para>[ Network ]</para>
+        <para>Logical nets (LAN, WLAN, WAN etc.), which span IP address spaces.</para>
+        </listitem>
+        <listitem>
+        <para>[ Software ]</para>
+        <para>All software products and licenses.</para>
+        </listitem>
+    </itemizedlist>
+    <para>If the four classes do not suffice to describe your IT environment, further classes can be added via the "general catalog" link in the OTRS::ITSM admin area. After creating a new CI class in the general catalog, a definition must be entered in ConfigItem&quot;.</para>
+    <para>
+        <screenshot>
+        <screeninfo>index.pl - Admin General Catalog</screeninfo>
+        <graphic fileref="screenshots/admin-general-catalog-management-class.png" scale="50" srccredit="Admin General Catalog - screenshot" />
+        </screenshot>
+    </para>
+    <warning>
+        <para>The design of a CMDB data model and the CIs to be managed in it is a task which should not be underestimated. Our experience shows that it is highly recommendable to validate conceptual thoughts in a dry run against the existing IT infrastructure before changing the OTRS::ITSM standard data model and/or CI classes. It has proven of value to resort to external assistance, e.g. of ITIL practice experts for the CMDB design. </para>
+    </warning>
+    <para>Please find below a part of the self-explaining default configuration for the "computer" CI class:</para>
+    <para>
+        <screen>
+        [
+    {
+        Key => 'Description',
+        Name => 'Description',
+        Searchable => 1,
+        Input => {
+            Type => 'TextArea',
+        },
+    },
+    {
+        Key => 'Type',
+        Name => 'Type',
+        Searchable => 1,
+        Input => {
+            Type => 'GeneralCatalog',
+            Class => 'ITSM::ConfigItem::Computer::Type',
+        },
+    },
+    {
+        Key => 'Owner',
+        Name => 'Owner',
+        Searchable => 1,
+        Input => {
+            Type => 'Customer',
+        },
+    },
+    {
+        Key => 'AssetTag',
+        Name => 'Asset Tag',
+        Searchable => 1,
+        Input => {
+            Type => 'Text',
+            Size => 50,
+            MaxLength => 100,
+            Required => 1,
+        },
+        CountMin => 0,
+        CountMax => 1,
+        CountDefault => 0,
+    },
+
+            :
+            :
+            :
+
+    {
+        Key => 'Model',
+        Name => 'Model',
+        Searchable => 1,
+        Input => {
+            Type => 'Text',
+            Size => 50,
+            MaxLength => 50,
+        },
+    },
+    {
+        Key => 'OperatingSystem',
+        Name => 'Operating System',
+        Input => {
+            Type => 'Text',
+            Size => 50,
+            MaxLength => 100,
+        },
+    },
+    {
+        Key => 'CPU',
+        Name => 'CPU',
+        Input => {
+            Type => 'Text',
+            Size => 50,
+            MaxLength => 100,
+        },
+        CountMin => 1,
+        CountMax => 16,
+        CountDefault => 1,
+    },
+    ];
+
+    </screen>
+    </para>
+    <para>Attribute changes and amendments can be effected in the graphical configuration area selecting "change definition":</para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-configitem-management-change</screeninfo>
+        <graphic fileref="screenshots/admin-configitem-management-change.png" scale="50" srccredit="admin-configitem-management-change - screenshot" />
+        </screenshot>
+    </para>
+    <warning>
+        <para>In order to assure the consistency of the data managed in OTRS::ITSM, information created in the admin area of the system cannot be deleted as a general rule. If you want to deactivate such information, change the value in the respective listbox settings from "valid" to "invalid" or "invalid-temporarily". </para>
+    </warning>
+    </sect1>
+    <sect1>
+    <title>Version management of CI classes</title>
+    <para>Version management for all CI classes is integrated into the system. The latest versions are used for the processes represented in OTRS::ITSM. </para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-configitem-management</screeninfo>
+        <graphic fileref="screenshots/admin-configitem-management.png" scale="50" srccredit="admin-configitem-management - screenshot" />
+        </screenshot>
+    </para>
+    </sect1>
+    <sect1>
+    <title>Adjustment of ticket state and ticket state types</title>
+    <para>In ITIL compliant incident management, incidents are either resolved successfully or closed with a workaround. For such cases, OTRS::ITSM standard provides the ticket state &quot;closed with workaround&quot;.</para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-state-management</screeninfo>
+        <graphic fileref="screenshots/admin-state-management.png" scale="50" srccredit="admin-state-management - screenshot" />
+        </screenshot>
+    </para>
+    <para>With OTRS::ITSM you can change ticket states or add new ones. There are two important options: the name of the state &quot;state-name&quot; and the type of it &quot;state-type&quot;. All states and types available by default are pictured above.</para>
+    <para>State names can be chosen freely, while state types must be changed directly in the database. In the "state" settings within the admin interface new states can be added or changed for existing state types.</para>
+    <para>Please consider that changes to the "new" state require changes in the configuration file kernel/config.pm or in the graphical configuration front-end. </para>
+    <para>
+        <screen>
+    [...]
+    # PostmasterDefaultState
+    # (The default state of new tickets.) [default: new]
+    $Self->{PostmasterDefaultState} = 'new';
+
+    # CustomerDefaultState
+    # (default state of new customer tickets)
+    $Self->{CustomerDefaultState} = 'new';
+    [...]
+
+    </screen>
+    </para>
+    <para>The same applies to changes to the "open" state: changes in the kernel/Config.pm or in the graphical configuration frontend are necessary.</para>
+    <para>
+        <screen>
+    [...]
+    # default phone new state
+    $Self->{'Ticket::Frontend::PhoneNextState'} = 'open';
+
+
+    # PostmasterFollowUpState
+    # (The state if a ticket got a follow up.) [default: open]
+
+    $Self->{PostmasterFollowUpState} = 'open';
+    [...]
+    </screen>
+    </para>
+    <para>Before a new state type can be added, the ticket state type table in the OTRS::ITSM database has to be adjusted with an adequate database client. </para>
+    <para>
+        <screen>
+
+    linux:~# mysql -p
+    Enter password:
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 23 to server version: 5.0.16-Debian_1-log
+
+    Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+    mysql> use otrs;
+    Reading table information for completion of table and column names
+    You can turn off this feature to get a quicker startup with -A
+
+    Database changed
+    mysql> insert into ticket_state_type (name,comments) values ('own','Own
+    state type');
+    Query OK, 1 row affected (0.00 sec)
+
+    mysql> quit
+    Bye
+    linux:~#
+
+    </screen>
+    </para>
+    <para>New ticket states, which contain the state type "own" can now be added in the "state" settings in the admin interface. Afterwards you can use kernel/config.pm or the graphical configuration frontend to define where in the system the new state is to be used:</para>
+    <para>
+        <screen>
+
+    [...]
+    # Ticket::DefaultNextMoveStateType
+    # default move next state
+    $Self->{'Ticket::DefaultNextMoveStateType'} = ['open', 'closed'];
+
+    # next possible states after phone
+    $Self->{'Ticket::PhoneDefaultNextStateType'} = ['open', 'pending auto', 'pending reminder', 'closed'];
+
+    # default next state
+    $Self->{'Ticket::Frontend::PhoneNextState'} = 'closed successful';
+
+    # default next state [default: open]
+    $Self->{'Ticket::Frontend::PhoneNewNextState'} = 'open';
+
+    # next possible states after email
+    $Self->{'Ticket::EmailDefaultNextStateType'} = ['own-state', 'open', 'pending auto', 'pending reminder', 'closed'];
+
+    # default next state
+    $Self->{'Ticket::Frontend::EmailNewNextState'} = 'open';
+
+    # (default note next state)
+    $Self->{'Ticket::DefaultNextNoteStateType'} = ['new', 'open', 'closed'];
+
+    # Ticket::DefaultNextOwnerStateType
+    # (default note next state)
+    $Self->{'Ticket::DefaultNextOwnerStateType'} = ['open', 'closed'];
+
+    # default compose next state
+    $Self->{'Ticket::DefaultNextComposeType'} = 'open';
+
+    # next possible states for compose message
+    $Self->{'Ticket::DefaultNextComposeStateType'} = ['open', 'closed', 'pending auto', 'pending reminder'];
+
+    # default bounce next state
+    $Self->{'Ticket::Frontend::BounceState'} = 'closed successful';
+
+    # next possible states for bounce message
+    $Self->{'Ticket::DefaultNextBounceStateType'} = ['open', 'closed'];
+
+    # next possible states for forward message
+    $Self->{'Ticket::DefaultNextForwardStateType'} = ['open', 'closed'];
+
+    # Ticket::ViewableStateType
+    # (see http://yourhost/otrs/index.pl?Action=AdminState -> StateType)
+    $Self->{'Ticket::ViewableStateType'} = ['new', 'open', 'pending reminder', 'pending auto'];
+
+    # Ticket::UnlockStateType
+    # (Tickets which can be unlocked by bin/UnlockTickets.pl
+    # (see http://yourhost/otrs/index.pl?Action=AdminState -> StateType)
+    $Self->{'Ticket::UnlockStateType'} = ['open', 'new'];
+    [...]
+
+    </screen>
+    </para>
+    <para>Add your new state type to the configuration parameters which it is to be listed with.</para>
+    <para>Note: system functionality (workflow) for the state types added can be developed flexibly by yourself or by OTRS AG.</para>
+    <warning>
+        <para>In order to assure the consistency of the data managed in OTRS::ITSM, information created in the admin area of the system cannot be deleted as a general rule. If you want to deactivate such information, change the value in the respective listbox settings from "valid" to "invalid" or "invalid-temporarily". </para>
+    </warning>
+    </sect1>
+    <sect1>
+    <title>The criticality impact priority matrix</title>
+    <para>OTRS::ITSM standard provides five ticket priority levels:</para>
+    <itemizedlist>
+        <listitem>
+        <para>[ Criticality ]</para>
+        <para>Significance ("criticality") of the service for the IT user(s)/customer(s)</para>
+        </listitem>
+        <listitem>
+        <para>[ Impact ]</para>
+        <para>Impact of failures of the concerned service on the user(s)/customer(s)</para>
+        </listitem>
+        <listitem>
+        <para>[ Priority ]</para>
+        <para>Priority within OTRS::ITSM as resulting from criticality and impact</para>
+        </listitem>
+    </itemizedlist>
+    <para>The OTRS::ITSM ticket priority is determined with the matrix shown below and the prioritized ticket is integrated in the queue views.</para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-priority-allocation</screeninfo>
+        <graphic fileref="screenshots/admin-priority-allocation.png" scale="50" srccredit="admin-priority-allocation - screenshot" />
+        </screenshot>
+    </para>
+    <para>The level number, descriptions and validity can be accessed and changed in the admin interface via the "general catalog" link: </para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-general-catalog-management-priority</screeninfo>
+        <graphic fileref="screenshots/admin-general-catalog-management-priority.png" scale="50" srccredit="admin-general-catalog-management-priority - screenshot" />
+        </screenshot>
+    </para>
+    </sect1>
+    <sect1>
+    <title>Adjustment of ticket priorities</title>
+    <para>Tickets are arranged within OTRS::ITSM on the basis of ticket priorities, i.e. tickets with a higher priority are displayed further up in the queue views and lower priority ones in lower positions. Priorities can be adjusted, re-named and amended in the graphical admin frontend. </para>
+    <para>
+        <screenshot>
+        <screeninfo>admin-priority-management</screeninfo>
+        <graphic fileref="screenshots/admin-priority-management.png" scale="50" srccredit="admin-priority-management" />
+        </screenshot>
+    </para>
+    <para>More detailed information can be found in the OTRS Admin Manual.</para>
+    <warning>
+        <para>The &quot;id&quot; attribute decides the OTRS::ITSM internal sequence of priorities. => 1 corresponds to the minimum and 5 (or higher) to the maximum. The number in the priority name is used to implement the correct sequence within the  priorities. </para>
+    </warning>
+    <warning>
+        <para>In order to assure the consistency of the data managed in OTRS::ITSM, information created in the admin area of the system cannot be deleted as a general rule. If you want to deactivate such information, change the value in the respective listbox settings from "valid" to "invalid" or "invalid-temporarily". </para>
+    </warning>
+    </sect1>
+</chapter>

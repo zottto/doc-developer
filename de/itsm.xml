@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: itsm.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+
+<chapter>
+    <title>OTRS::ITSM - das OTRS für IT Service Management</title>
+
+    <para>Die IT ist heute zunehmend gefragt, in einem Umfeld steigender Komplexität gleich bleibend hohe IT Service Qualität zu liefern. Ein effektives und effizientes Incident- und Problem Management sind hierfür notwendige Voraussetzungen. Trotzdem bleibt das IT Service Management eine schier unlösbare Aufgabe, sofern eine konsistente und aktuelle Datenbasis mit Informationen zum Status und zur Konfiguration der IT Infrastruktur fehlt.</para>
+
+    <para>Die IT Infrastructure Library ®, kurz ITIL ®, ist eine von der OGC (eine Stabsstelle der britischen Regierung) heraus gegebene Dokumentationsreihe, welche Best-practice Empfehlungen für Planung, Bereitstellung, Betrieb und Management von IT Services generisch zusammenfasst. Sie orientiert sich dabei nicht an der Technik, sondern an durch die IT erbrachten Services. In ITIL sind unter anderem Prozesse, Rollen, Verantwortlichkeiten, Begriffsdefinitionen und mögliche Problemfelder/Lösungen niedergelegt.</para>
+
+    <para>In den letzten Jahren hat sich die ITIL als De-facto Standard etabliert und mit ihrer Verbreitung in IT Organisationen wesentlich dazu beigetragen, dass sich unter IT Verantwortlichen gemeinsames Bewusstsein und einheitliche Terminologie für IT Service Management herausgebildet haben.
+Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werden sollte. Auf das "wie" wird nicht bzw. rudimentär eingegangen, um einen möglichst breiten Anwenderkreis zu erfassen. So gibt es weder umsetzungsfähige Branchen-, Unternehmens- oder Hersteller-spezifische Informationen.</para>
+
+    <para>Auf Basis der ITIL wurde Ende 2005 der ISO/IEC 20000 Industriestandard für IT Service Management veröffentlicht, nach dem IT Organisationen zertifiziert werden können, um Ihre Konformität nachzuweisen.</para>
+
+    <para>Durch den anhaltenden Boom entstand der Bedarf nach IT Service Management Tools, in denen die, an ITIL ausgerichteten, Prozesse abgebildet werden können. Dieser Bedarf wurde bislang durch proprietäre Lösungen gedeckt. Aufgrund ihrer hohen Komplexität sind sie zumeist nur für große Unternehmen erschwinglich bzw. für große IT Abteilungen effektiv.</para>
+
+    <para>Die Entwicklung von OTRS::ITSM wurde sozusagen als logische Konsequenz des großen Erfolgs des Open Ticket Request Systems OTRS initiiert, um die weltweit anerkannten, öffentlichen ITIL-Empfehlungen mit den Vorzügen quelloffener Software zu verbinden.</para>
+
+    <para>Mit OTRS::ITSM 1.0 steht nun erstmalig eine praxistaugliche ITIL konforme IT Service Management Lösung auf Open Source Basis zur Verfügung, die auf dem soliden Fundament von über 45.000 bekannten OTRS Installationen und der sich so entwickelten, aktiven Community basiert (Stand: 04/2007).</para>
+
+    <para>Oberstes Ziel bei der (Weiter-)Entwicklung von OTRS::ITSM ist der hohe Praxisbezug. Dieser Forderung wird durch die enge Entwicklungspartnerschaft mit der in der praktischen ITIL-Anwendung sehr erfahrenen Enterprise Consulting GmbH aus Bad Homburg, Rechnung getragen. Neben ITSM-Beratung und -Lösungen betreibt Enterprise für renommierte Kunden komplette IT Organisationen gemäß ITIL.</para>
+
+    <para>Zeitgleich mit OTRS::ITSM 1.0 beta wurde die OTRS 2.2.0 Betaversion veröffentlicht. OTRS 2.2. bildet als neues Release der Service Desk- und Ticket-System-Lösung OTRS die Basis für den Betrieb der ITIL konformen IT Service Management Lösung OTRS::ITSM und seiner Module Incident Management, Problem Management und Configuration Management inklusive der integrierten CMDB.</para>
+
+    <para>OTRS::ITSM sowie OTRS sind ohne Lizenzgebühren erhältlich und unterliegen der GNU General Public License (GPL).</para>
+    <sect1>
+        <title>Features</title>
+        <para>Basis von OTRS::ITSM 1.0 ist das Open Ticket Request System OTRS ab dem Release-Stand 2.2, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
+
+    <para>Im Zuge der Entwicklung von OTRS::ITSM wurden im Kernprodukt OTRS diverse Ergänzungen vorgenommen.</para>
+
+    <sect2>
+        <title>Neue Features im OTRS Framework 2.2</title>
+
+        <para>Die für OTRS::ITSM relevanten Features im OTRS Framework sind:</para>
+        <para>
+            <itemizedlist>
+
+            <listitem>
+                <para>Services und SLAs: Auf dem Weg hin zu einem IT Service Management-Werkzeug, wurden in OTRS 2.2 die neuen Attribute 'Service' und 'Service Level Agreements (SLA)' integriert. Bei der Erstellung eines neuen Tickets kann der Anfragesteller einen Service (z. B. Email-Service) und ein zugehöriges SLA auswählen. SLA Attribute sind "response time" (Antwortzeit), "update time" (Updatezeit) und "solution time" (Lösungszeit). Diese Attribute können vom IT Service für Benachrichtigungen oder für dieEskalation von Tickets herangezogen werden, um bestehende SLAs einzuhalten. Service- und SLA-spezifische Informationen innerhalb der Header neuer Emails können weiterhin mit Hilfe des PostMasterFilter-Moduls ausgewertet werden.</para>
+            </listitem>
+
+            <listitem>
+                <para>Unterstützung nativer Tickettypen: Verschiedene Tickettypen können nun über das Admin-Interface verwaltet werden. Die Benutzung von Freitext-Feldern für die Spezifikation von Tickettypen ist somit nicht mehr notwendig. Installationen, die Freitextfelder für die Klassifikation von Tickettypen verwenden, müssen nicht migriert werden. Dieses neue Feature wird ebenfalls im Ticketinhalt und auch in der Druckansicht für Agenten und Kunden angezeigt und kann über das Agenten-Interface angepasst werden</para>
+            </listitem>
+
+            <listitem>
+                <para>Änderung der OTRS-internen Struktur zur Speicherung der Kundendaten: Die Speicherung derKundendaten wurde restrukturiert und in die Objekte "CustomerCompany" und "CustomerUser" aufgeteilt. Firmenspezifische Daten (Company) wie z. B. der Firmenname, die Firmenadresse, usw. werden nun gegenüber den personenspezifischen Daten (Vor- und Nachname, Anrede, etc.) gesondert gepflegt.</para>
+            </listitem>
+
+            </itemizedlist>
+        </para>
+
+    </sect2>
+    <sect2>
+        <title>Features in OTRS::ITSM 1.0</title>
+        <para>OTRS::ITSM 1.0 bietet:</para>
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>ITIL konforme Abbildung der "Service Support" Prozesse</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para>Incident Management,</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Problem Management und</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Configuration Management</para>
+                    </listitem>
+                </itemizedlist>
+
+            </listitem>
+
+            <listitem>
+                <para>Integrierte, individuell erweiterbare Configuration Management Data Base (CMDB)</para>
+            </listitem>
+
+            <listitem>
+                <para>ITIL konformes Wording, auch bisheriger OTRS-Funktionen</para>
+            </listitem>
+
+            <listitem>
+                <para>ITIL konformes Rollen-, Verantwortlichkeits-, Berechtigungsmodell</para>
+            </listitem>
+
+            <listitem>
+                <para>Prozess übergreifende Kommunikationssteuerung: innerhalb der IT Serviceorganisation, mit Kunden/Anwendern/Management und Lieferanten/Providern</para>
+            </listitem>
+
+            <listitem>
+                <para>Flexible Statistik-Funktionen für (Trend-)Analysen, Kennzahlen basiertes Reporting, Planung und Controlling</para>
+            </listitem>
+
+            <listitem>
+                <para>Flexible Konfigurationsmöglichkeiten, Anpassbarkeit und Erweiterbarkeit an individuelle Anforderungen</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Configuration Management &amp; Integrierte CMDB:</para>
+
+        <para>OTRS::ITSM basiert auf einer integrierten Configuration Management Data Base (CMDB), die das Fundament für die durchgängige Steuerung der Service Management Prozesse darstellt. Sie bildet neben den Configuration Items (CI) vor allem deren komplexe Beziehungen und Abhängigkeiten untereinander bzw. innerhalb der Service-Kette ab.</para>
+
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>Umfangreiche Erfassung und Management von ITSM relevanten Configuration Items (CIs), z. B. Computer, Hardware, Software, Netze, Dokumente sowie Services, SLAs und Organisationsstrukturen</para>
+            </listitem>
+
+            <listitem>
+                <para>Abbildung des IT Service-Katalogs und geltender Vereinbarungen (SLA, OLA, UC)</para>
+            </listitem>
+
+            <listitem>
+                <para>Erfassung, Verwaltung und Darstellung der technischen und Service bezogenen Beziehungen und Abhängigkeiten zwischen CMDB-Daten, z. B. Service mit allen erforderlichen, alternativen oder relevanten CIs </para>
+            </listitem>
+
+            <listitem>
+                <para>Management historischer, aktueller und zukünftiger CI-Status, z. B. bei Problem-Diagnose, Server-Wartung oder geplanten Changes</para>
+            </listitem>
+
+            <listitem>
+                <para>Analyse möglicher Auswirkungen (Impact) von Serviceausfällen bzw. vor Konfigurationsänderungen</para>
+            </listitem>
+
+            <listitem>
+                <para>Abbildung virtualisierter IT Infrastrukturen, z. B. Server-/Speicher-Virtualisierung </para>
+            </listitem>
+
+            <listitem>
+                <para>Software-Lizenzmanagement, z. B. verfügbare/genutzte Lizenzen (Drittprodukte erforderlich)</para>
+            </listitem>
+
+            <listitem>
+                <para>Chronologisches Life-Cycle-Management für CIs, von Eingang bis Entsorgung</para>
+            </listitem>
+
+            <listitem>
+                <para>Protokollierung aller Konfigurations Änderungen an CMDB-Daten</para>
+            </listitem>
+
+            <listitem>
+                <para>Anbindung an Unternehmens-Verzeichnisse (z. B. LDAP)</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Incident Management:</para>
+
+        <para>
+        <itemizedlist>
+
+            <listitem>
+                <para>Durchgängige Prozess-Unterstützung der IT Service-Support-Organisation bei Incident-Erfassung, Klassifizierung, Priorisierung, Direkthilfe (1st Level Support), Diagnose, Koordination (2nd/3rd-Level-Support, Externe Partner etc.), Service-Wiederherstellung, Lösung, Abschluss und Dokumentation</para>
+            </listitem>
+
+            <listitem>
+                <para>Schnelle und intuitive Erfassung von Incidents und Service Requests, sowohl für Mitarbeiter am ServiceDesk als auch für Anwender (Web Self-Service)</para>
+            </listitem>
+
+            <listitem>
+                <para>Regelbasierte Ticketerzeugung und/oder Benachrichtigung, z. B. im Zusammenspiel mit IT Monitoring-Systemen</para>
+            </listitem>
+
+            <listitem>
+                <para>Klassifizierungs- und Priorisierungsoptionen (Priorität, Auswirkung, Dringlichkeit)</para>
+            </listitem>
+
+            <listitem>
+                <para>Volle CMDB-Unterstützung, z. B. vom Incident betroffene Services, beteiligte Configuration Items, FAQ-Datenbank, Verknüpfung zw. Tickets und CIs für Analysen und Reporting</para>
+            </listitem>
+
+            <listitem>
+                <para>(Automatische) Erfassung von "Artikeln" zu Tickets (Aktivitätenprotokoll)</para>
+            </listitem>
+
+            <listitem>
+                <para>Stetige Überwachung und Auswertung des Bearbeitungsfortschritts von Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Bereitstellung und Speicherung relevanter Zeitdaten, z. B. für Service-Level-Management</para>
+            </listitem>
+
+            <listitem>
+                <para>Praktisches Tickethandling (Merge, Split), z. B. zur Zusammenfassung gleichartiger Incidents bzw. Aufteilen komplexerer Vorfälle</para>
+            </listitem>
+
+            <listitem>
+                <para>Planung, proaktive Steuerung und Überwachung der Service-Request-Aktivitäten (Arbeitspakete, Arbeitspläne, Service Lead Times, Fälligkeiten)</para>
+            </listitem>
+
+            <listitem>
+                <para>Erzeugung und Verfolgung von Problem-Tickets aus Incidents</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Problem Management:</para>
+
+        <para>
+        <itemizedlist>
+
+            <listitem>
+                <para>Durchgängige Prozess-Unterstützung der IT Organisation bei Problem-Identifizierung, Erfassung, Klassifizierung, Priorisierung, Problem-Ursprungsdiagnose, Lösungs-Koordination, z. B. Workaround oder Request for Change, Abschluss und Dokumentation</para>
+            </listitem>
+
+            <listitem>
+                <para>Bereitstellung relevanter Informationen für die Teil-Prozesse</para>
+                <itemizedlist>
+
+                    <listitem>
+                        <para>Problem Control (Problembehandlung),</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Error Control (Fehlerbehandlung),</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Proaktives Problem Management (z. B. Ticket-Trendanalysen) und</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Management Information (zu Incidents, Problemen und Known Errors)</para>
+                    </listitem>
+
+                </itemizedlist>
+
+            </listitem>
+
+            <listitem>
+                <para>Stetiger Blick auf aktuelle/historische Incidents, Wissensbasis (FAQs) und CMDB</para>
+            </listitem>
+
+            <listitem>
+                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Gezielte, automatische, Benachrichtigung über den Problemlösungsfortschritt an betroffene Anwender(-Gruppen) oder an das Management</para>
+            </listitem>
+
+            <listitem>
+                <para>Rückmeldung gelöster Probleme an das Incident Management</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Tickets sind die zentralen Informationscontainer für das Management von IT Service-Prozessen. Sie "transportieren" eine Vielzahl möglicher Basisdaten, z. B.:</para>
+
+
+        <para>
+        <itemizedlist>
+
+            <listitem>
+                <para>Personen, Organisationen</para>
+            </listitem>
+
+            <listitem>
+                <para>Zeitstempel</para>
+            </listitem>
+
+            <listitem>
+                <para>Priorität, Impact, Severity</para>
+            </listitem>
+
+            <listitem>
+                <para>Assoziationen zum IT Service-Katalog und zu Projekten</para>
+            </listitem>
+
+            <listitem>
+                <para>Aktivitäten, z. B. die Notiz zu einem Anruf mit Zeitaufschreibung</para>
+            </listitem>
+
+            <listitem>
+                <para>Objekte, z. B. CIs, inkl. der Relationen</para>
+            </listitem>
+
+            <listitem>
+                <para>(Sub-)Tickets, z. B. ein Problem mit den zugrunde liegenden Incidents</para>
+            </listitem>
+
+            <listitem>
+                <para>Notizen und Anhänge, z. B. gescannte Service-Request Formulare</para>
+            </listitem>
+
+            <listitem>
+                <para>Arbeitspakete, d.h. geplante, zugewiesene Aufgaben</para>
+            </listitem>
+
+            <listitem>
+                <para>SLA Informationen</para>
+            </listitem>
+
+            <listitem>
+                <para>Schwellwerte und Eskalationsdaten</para>
+            </listitem>
+
+            <listitem>
+                <para>Ticket History (aller Änderungen)</para>
+            </listitem>
+
+            <listitem>
+                <para>Accounting-Informationen (Zeitaufschreibung)</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        </sect2>
+    </sect1>
+
+    <sect1>
+        <title>Hard- und Software-Anforderungen</title>
+
+        <para>Die Anforderungen für OTRS::ITSM unterscheiden sich nicht von denen für OTRS. Entsprechende Informationen sind im OTRS Admin-Handbuch zu finden.</para>
+    </sect1>
+
+    <sect1>
+        <title>Community</title>
+
+        <para>Um OTRS hat sich in den letzten Jahren eine große Community gebildet. Über Mailinglisten tauschen sich Anwender und Entwickler zu den verschiedensten Themen rund um das Trouble Ticket System aus. Behandelt werden Fragen rund um die Installation, Konfiguration, Benutzung, Lokalisation und Entwicklung. Fehler können über ein Bug-Tracking-System gemeldet werden (<ulink url="http://bugs.otrs.org/"><citetitle>http://bugs.otrs.org</citetitle></ulink>). Sie erreichen direkt die zuständigen Entwickler, so dass schnell Fixes bereitgestellt werden können.</para>
+
+        <para>Auch für OTRS::ITSM sind diese Community-Kanäle nutzbar, um die Qualität des Produktes fortlaufend zu verbessern. Die Community ist über die Homepage <ulink url="http://otrs.org/"><citetitle>http://otrs.org</citetitle></ulink> zu erreichen.</para>
+
+        <para>
+            <screenshot>
+            <screeninfo>OTRS.org</screeninfo>
+            <graphic srccredit="OTRS.org - screenshot" scale="50" fileref="screenshots/otrs-org.png"></graphic>
+            </screenshot>
+        </para>
+
+    </sect1>
+
+    <sect1>
+
+        <title>Mailing Listen</title>
+
+        <para>Für OTRS::ITSM sind eigene Mailinglisten eingerichtet. Diese sind unter <ulink url="http://lists.otrs.org/"><citetitle>http://lists.otrs.org</citetitle></ulink> zu finden:</para>
+
+        <para>
+            <screenshot>
+            <screeninfo>lists.OTRS.org</screeninfo>
+            <graphic srccredit="lists.OTRS.org - screenshot" scale="50" fileref="screenshots/lists-otrs-org.png"></graphic>
+            </screenshot>
+        </para>
+
+    </sect1>
+
+</chapter>

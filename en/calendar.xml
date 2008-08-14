@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: calendar.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
+    <title>Additional OTRS applications - calendar</title>
+    <para>In the OTRS framework (Core), 9 calendars can directly be configurated graphically by default. This number can be extended to 99. Calendar configuration is effected in the admin interface using the SysConfig framework calendar 1 etc. links:</para>
+    <para>
+    <screenshot>
+        <screeninfo>admin-sys-config</screeninfo>
+        <graphic fileref="screenshots/admin-sys-config.png" scale="50" srccredit="admin-sys-config - screenshot" />
+    </screenshot>
+    </para>
+    <para>&quot;TimeWorkingHours&quot; can be used in OTRS::ITSM to define so-called &quot;service level windows&quot; time frames in which certain service levels are guaranteed, if applicable monitored and/or evaluated to secure service level compliance.
+</para>
+    <para>
+    <screenshot>
+        <screeninfo>admin-sysconfig-timeworkinghours</screeninfo>
+        <graphic fileref="screenshots/admin-sysconfig-timeworkinghours.png" scale="50" srccredit="admin-sysconfig-timeworkinghours - screenshot" />
+    </screenshot>
+    </para>
+</chapter>
