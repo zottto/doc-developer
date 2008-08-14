@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: book.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+<!-- $Id: book.xml,v 1.2 2008-08-14 14:57:14 ub Exp $ -->
 
 <book lang='de'>
 
@@ -10,7 +10,7 @@
 <edition>Whitehaven Beach</edition>
 
 <copyright>
-<year>2003-2007</year>
+<year>2003-2008</year>
 <holder>OTRS AG</holder>
 </copyright>
 

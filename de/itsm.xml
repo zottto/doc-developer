@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ -->
+<!-- $Id: itsm.xml,v 1.2 2008-08-14 14:57:14 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -19,16 +19,16 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
 
     <para>Die Entwicklung von OTRS::ITSM wurde sozusagen als logische Konsequenz des großen Erfolgs des Open Ticket Request Systems OTRS initiiert, um die weltweit anerkannten, öffentlichen ITIL-Empfehlungen mit den Vorzügen quelloffener Software zu verbinden.</para>
 
-    <para>Mit OTRS::ITSM 1.0 steht nun erstmalig eine praxistaugliche ITIL konforme IT Service Management Lösung auf Open Source Basis zur Verfügung, die auf dem soliden Fundament von über 45.000 bekannten OTRS Installationen und der sich so entwickelten, aktiven Community basiert (Stand: 04/2007).</para>
+    <para>Mit OTRS::ITSM 1.0 steht nun erstmalig eine praxistaugliche ITIL konforme IT Service Management Lösung auf Open Source Basis zur Verfügung, die auf dem soliden Fundament von über 55.000 bekannten OTRS Installationen und der sich so entwickelten, aktiven Community basiert (Stand: 04/2007).</para>
 
     <para>Oberstes Ziel bei der (Weiter-)Entwicklung von OTRS::ITSM ist der hohe Praxisbezug. Dieser Forderung wird durch die enge Entwicklungspartnerschaft mit der in der praktischen ITIL-Anwendung sehr erfahrenen Enterprise Consulting GmbH aus Bad Homburg, Rechnung getragen. Neben ITSM-Beratung und -Lösungen betreibt Enterprise für renommierte Kunden komplette IT Organisationen gemäß ITIL.</para>
 
-    <para>Zeitgleich mit OTRS::ITSM 1.0 beta wurde die OTRS 2.2.0 Betaversion veröffentlicht. OTRS 2.2. bildet als neues Release der Service Desk- und Ticket-System-Lösung OTRS die Basis für den Betrieb der ITIL konformen IT Service Management Lösung OTRS::ITSM und seiner Module Incident Management, Problem Management und Configuration Management inklusive der integrierten CMDB.</para>
+    <para>Die Service Desk- und Ticket-System-Lösung OTRS bildet die Basis für den Betrieb der ITIL konformen IT Service Management Lösung OTRS::ITSM und seiner Module Incident Management, Problem Management und Configuration Management inklusive der integrierten CMDB.</para>
 
     <para>OTRS::ITSM sowie OTRS sind ohne Lizenzgebühren erhältlich und unterliegen der GNU General Public License (GPL).</para>
     <sect1>
         <title>Features</title>
-        <para>Basis von OTRS::ITSM 1.0 ist das Open Ticket Request System OTRS ab dem Release-Stand 2.2, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
+        <para>Basis von OTRS::ITSM 1.0 ist das Open Ticket Request System OTRS 2.2, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
 
     <para>Im Zuge der Entwicklung von OTRS::ITSM wurden im Kernprodukt OTRS diverse Ergänzungen vorgenommen.</para>
 
@@ -40,7 +40,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
             <itemizedlist>
 
             <listitem>
-                <para>Services und SLAs: Auf dem Weg hin zu einem IT Service Management-Werkzeug, wurden in OTRS 2.2 die neuen Attribute 'Service' und 'Service Level Agreements (SLA)' integriert. Bei der Erstellung eines neuen Tickets kann der Anfragesteller einen Service (z. B. Email-Service) und ein zugehöriges SLA auswählen. SLA Attribute sind "response time" (Antwortzeit), "update time" (Updatezeit) und "solution time" (Lösungszeit). Diese Attribute können vom IT Service für Benachrichtigungen oder für dieEskalation von Tickets herangezogen werden, um bestehende SLAs einzuhalten. Service- und SLA-spezifische Informationen innerhalb der Header neuer Emails können weiterhin mit Hilfe des PostMasterFilter-Moduls ausgewertet werden.</para>
+                <para>Services und SLAs: Auf dem Weg hin zu einem IT Service Management-Werkzeug, wurden in OTRS 2.2 die neuen Attribute 'Service' und 'Service Level Agreements (SLA)' integriert. Bei der Erstellung eines neuen Tickets kann der Anfragesteller einen Service (z. B. Email-Service) und ein zugehöriges SLA auswählen. SLA Attribute sind "response time" (Antwortzeit), "update time" (Updatezeit) und "solution time" (Lösungszeit). Diese Attribute können vom IT Service für Benachrichtigungen oder für die Eskalation von Tickets herangezogen werden, um bestehende SLAs einzuhalten. Service- und SLA-spezifische Informationen innerhalb der Header neuer Emails können weiterhin mit Hilfe des PostMasterFilter-Moduls ausgewertet werden.</para>
             </listitem>
 
             <listitem>
