@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.3 2008-08-14 17:06:36 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.4 2008-08-15 12:03:05 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -48,7 +48,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
             </listitem>
 
             <listitem>
-                <para>Änderung der OTRS-internen Struktur zur Speicherung der Kundendaten: Die Speicherung derKundendaten wurde restrukturiert und in die Objekte "CustomerCompany" und "CustomerUser" aufgeteilt. Firmenspezifische Daten (Company) wie z. B. der Firmenname, die Firmenadresse, usw. werden nun gegenüber den personenspezifischen Daten (Vor- und Nachname, Anrede, etc.) gesondert gepflegt.</para>
+                <para>Änderung der OTRS-internen Struktur zur Speicherung der Kundendaten: Die Speicherung der Kundendaten wurde restrukturiert und in die Objekte "CustomerCompany" und "CustomerUser" aufgeteilt. Firmenspezifische Daten (Company) wie z. B. der Firmenname, die Firmenadresse, usw. werden nun gegenüber den personenspezifischen Daten (Vor- und Nachname, Anrede, etc.) gesondert gepflegt.</para>
             </listitem>
 
             </itemizedlist>
