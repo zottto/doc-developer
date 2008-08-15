@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.3 2008-08-15 13:09:14 ub Exp $ -->
+<!-- $Id: installation.xml,v 1.4 2008-08-15 13:27:48 ub Exp $ -->
 
 
 
@@ -57,7 +57,7 @@
         </listitem>
 
     </itemizedlist>
-    <para>Weitere Informationen zur Installation finden Sie hier: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.0.ITSM</para>
+    <para>Weitere Informationen zur Installation können Sie hier finden: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.0.ITSM</para>
     <para>
         <screenshot>
         <screeninfo>index.pl - Admin Paket Manager</screeninfo>
