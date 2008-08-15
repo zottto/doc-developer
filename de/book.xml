@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: book.xml,v 1.3 2008-08-15 11:26:23 ub Exp $ -->
+<!-- $Id: book.xml,v 1.4 2008-08-15 11:33:38 ub Exp $ -->
 
 <book lang='de'>
 
 <bookinfo>
 <title>OTRS::ITSM 1.0 - Grundlagen</title>
-<issuenum>Version 1.0.2, Stand: 18.08.2008</issuenum>
 <edition>Whitehaven Beach</edition>
 
 <copyright>
