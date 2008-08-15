@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: book.xml,v 1.2 2008-08-14 14:57:14 ub Exp $ -->
+<!-- $Id: book.xml,v 1.3 2008-08-15 11:26:23 ub Exp $ -->
 
 <book lang='en'>
 
@@ -51,6 +51,17 @@ Other products mentioned in this manual may be trademarks of the respective
 manufacturer.
             </para>
 </legalnotice>
+
+<revhistory>
+  <revision>
+    <revnumber>1.0.2</revnumber>
+    <date>2008-08-15</date>
+  </revision>
+  <revision>
+    <revnumber>1.0.1</revnumber>
+    <date>2007-04-04</date>
+  </revision>
+</revhistory>
 
 </bookinfo>
 
