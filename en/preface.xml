@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: preface.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><preface id="preface" >
+<!-- $Id: preface.xml,v 1.2 2008-08-15 11:35:30 ub Exp $ --><preface id="preface" >
     <title>Preface</title>
     <para>The document at hand addresses OTRS::ITSM users and administrators and provides information on the basic use of OTRS::ITSM by IT service managers, IT service staff (agent) and end users (customer).
 Information regarding installation, configuration and administration is only provided if there are differences to the OTRS core product or for functions, which only exist in OTRS::ITSM.</para>
@@ -14,7 +14,6 @@ Please tell us if you miss information, find it difficult to understand certain 
     <para>André Mindermann,
         Managing Partner
         OTRS AG</para>
-    <para>Bad Homburg im Mai 2007
-Bad Homburg, May 2007</para>
+    <para>Bad Homburg, May 2007</para>
     <para>((enjoy))</para>
 </preface>
