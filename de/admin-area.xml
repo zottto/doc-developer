@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: admin-area.xml,v 1.3 2008-08-14 17:15:12 ub Exp $ -->
+<!-- $Id: admin-area.xml,v 1.4 2008-08-16 17:00:05 ub Exp $ -->
 
 <chapter>
 
@@ -38,10 +38,18 @@
                 <listitem>
                     <para>[ Location ]</para>
                 </listitem>
-
                 <listitem>
                     <para>[ Priority ]</para>
                 </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>ab OTRS::ITSM 1.1</para>
+          <itemizedlist>
+              <listitem>
+                <para>[ Import/Export ]</para>
+              </listitem>
           </itemizedlist>
         </listitem>
 

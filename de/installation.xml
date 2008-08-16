@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.4 2008-08-15 13:27:48 ub Exp $ -->
+<!-- $Id: installation.xml,v 1.5 2008-08-16 17:00:05 ub Exp $ -->
 
 
 
@@ -17,7 +17,7 @@
 
     </warning>
 
-    <para>Nachdem OTRS 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von ftp://ftp.otrs.org/pub/otrs/itsm/packages10/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
+    <para>Nachdem OTRS 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von ftp://ftp.otrs.org/pub/otrs/itsm/packages11/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
 
     <itemizedlist>
 
@@ -36,7 +36,7 @@
     </itemizedlist>
 
     <para>Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
-    [--OTRS::ITSM 1.0 Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren:</para>
+    [--OTRS::ITSM 1.1 Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren:</para>
 
     <itemizedlist>
 
@@ -56,8 +56,16 @@
             <para>ITSMLocation</para>
         </listitem>
 
+        <listitem>
+            <para>ITSMStats</para>
+        </listitem>
+
+        <listitem>
+            <para>ImportExport</para>
+        </listitem>
+
     </itemizedlist>
-    <para>Weitere Informationen zur Installation können Sie hier finden: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.0.ITSM</para>
+    <para>Weitere Informationen zur Installation können Sie hier finden: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.1.ITSM</para>
     <para>
         <screenshot>
         <screeninfo>index.pl - Admin Paket Manager</screeninfo>

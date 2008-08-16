@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.3 2008-08-14 17:06:36 ub Exp $ --><chapter>
+<!-- $Id: itsm.xml,v 1.4 2008-08-16 17:00:05 ub Exp $ --><chapter>
     <title>OTRS::ITSM - The OTRS for IT service management</title>
     <para>IT is expected to deliver consistently high service quality in an increasingly complex field. In this context, effective and efficient incident and problem management are indispensable. However, IT service management remains a task almost impossible if there is no consistent and up-to-date database with information about the state and configuration of the IT infrastructure. </para>
     <para>The IT Infrastructure Library®, short ITIL®, is a series of books published by the United Kingdom's Office of Government Commerce (OGC), which generically combine best practice approaches to designing, providing, operating and managing IT services. ITIL does not center the technology but the services provided by the IT and comprises information on processes, roles, responsibilities, potential problem fields/resolutions and definitions of terms.</para>
@@ -8,13 +8,13 @@
     <para>In December 2005, the ITIL based ISO/IEC 20000 industry standard for IT service management was published. IT organizations can apply for ISO/IEC 20000 certification and prove their conformity. </para>
     <para>The continuing boom caused demand for IT service management tools, which could represent the ITIL-based processes. So far, only proprietary solutions existed. Because of their considerable complexity, most of these tools are only affordable for large companies and effective in large IT departments.</para>
     <para>The development of OTRS::ITSM was initiated as a logical consequence of the great success of the Open Ticket Request System OTRS in order to combine the globally accepted, public ITIL recommendations with the benefits of open-source software. </para>
-    <para>OTRS::ITSM 1.0 is the first real-world ITIL compliant IT service management solution on open-source basis, built on the solid fundament of over 55,000 known OTRS installations and the related active community (information dating from April 2007).</para>
+    <para>OTRS::ITSM 1.0 was the first real-world ITIL compliant IT service management solution on open-source basis, built on the solid fundament of over 55,000 known OTRS installations and the related active community (information dating from April 2007). OTRS::ITSM is under permanent development and new ITIL topics are added continously.</para>
     <para>Core objective of the development of OTRS::ITSM is a strong praxis orientation. This aim can be accomplished by the close development collaboration with Enterprise Consulting GmbH from Bad Homburg, which is very experienced in the practical application of ITIL. Additionally to providing ITSM consulting services and solutions, Enterprise operates complete ITIL compliant IT organizations for renowned customers. </para>
-    <para>The service-desk and ticket system solution OTRS forms the basis for the operation of the ITIL compliant IT service management solution OTRS::ITSM, its incident management, problem management and configuration management modules and the integrated CMDB.</para>
+    <para>The service-desk and ticket system solution OTRS forms the basis for the operation of the ITIL compliant IT service management solution OTRS::ITSM, its incident management, problem management, service level management and configuration management modules and the integrated CMDB.</para>
     <para>OTRS::ITSM and OTRS are freely available (no license fees apply) and are subject to GNU General Public License (GPL).</para>
     <sect1>
     <title>Features</title>
-    <para>OTRS::ITSM 1.0 is based on the Open Ticket Request System OTRS 2.2. All functionalities known from OTRS continue to be available and the functionalities representing ITIL processes can be installed as packages.
+    <para>OTRS::ITSM 1.1 is based on the Open Ticket Request System OTRS 2.2. All functionalities known from OTRS continue to be available and the functionalities representing ITIL processes can be installed as packages.
 </para>
     <para>Several improvements were effected on the core product OTRS in the course of the OTRS::ITSM development. </para>
     <sect2>

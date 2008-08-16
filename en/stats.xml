@@ -1,8 +1,10 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: stats.xml,v 1.1.1.1 2008-08-14 13:17:47 mh Exp $ --><chapter>
-    <title>Stats and reporting</title>
-    <para>The OTRS stats framework has been completely revised for version 2.1 and nearly every type of ticket report can be created in the web interface. Generation and view of stats and charts can be activated for users, groups and/or roles. It is possible to import or export existing or new stats and further use can be made of stats modules from previous OTRS versions. </para>
+<!-- $Id: stats.xml,v 1.2 2008-08-16 17:00:05 ub Exp $ --><chapter>
+    <title>Service Level Management</title>
+    <para>The OTRS stats framework has been completely revised for version 2.1 and nearly every type of ticket report can be created in the web interface. Generation and view of stats and charts can be activated for users, groups and/or roles. It is possible to import or export existing or new stats and further use can be made of stats modules from previous OTRS versions.
+          With the installation of the ITSMStats module, additional ITSM relevant statistics are available.
+    </para>
     <para>Example of a report overview:</para>
     <para>
     <screenshot>
