@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.4 2008-08-16 17:00:05 ub Exp $ --><chapter>
+<!-- $Id: itsm.xml,v 1.5 2008-08-19 11:50:49 ub Exp $ --><chapter>
     <title>OTRS::ITSM - The OTRS for IT service management</title>
     <para>IT is expected to deliver consistently high service quality in an increasingly complex field. In this context, effective and efficient incident and problem management are indispensable. However, IT service management remains a task almost impossible if there is no consistent and up-to-date database with information about the state and configuration of the IT infrastructure. </para>
     <para>The IT Infrastructure Library®, short ITIL®, is a series of books published by the United Kingdom's Office of Government Commerce (OGC), which generically combine best practice approaches to designing, providing, operating and managing IT services. ITIL does not center the technology but the services provided by the IT and comprises information on processes, roles, responsibilities, potential problem fields/resolutions and definitions of terms.</para>
@@ -34,8 +34,8 @@
     </sect2>
     <sect2>
         <title>OTRS::ITSM 1.0 features</title>
+        <para>OTRS::ITSM 1.0 offers:</para>
         <itemizedlist>
-        <title>OTRS::ITSM 1.0 offers:</title>
         <listitem>
             <para>ITIL compliant representation of &quot;service support&quot; processes</para>
             <itemizedlist>
@@ -219,6 +219,228 @@
             <para>accounting information (time accounting).</para>
         </listitem>
         </itemizedlist>
+    </sect2>
+    <sect2>
+        <title>OTRS::ITSM 1.1 features</title>
+        <para>OTRS::ITSM 1.1 offers:</para>
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>Authorization concept</para>
+                <para>
+                      Each object like Service/SLA, Location, CI, Linkobject now creates an own group,
+                      so the agents rights can be assigned more granulary.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Allocation of services to customers</para>
+                <para>
+                    Services can be assigned to authorized customers. Further more,
+                    services may be assigned as general 'default services' which are
+                    valid to use for each customer.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Structured Service/CI view</para>
+                <para>
+                    A structured tree view on services and CIs including information
+                    on each objects current state allows to analyse an incident
+                    and calculate the incidents impact on affected services and
+                    customers.
+
+                    As an enhancement of the service view, now SLAs and linked CIs are displayed too.
+                    For each CI the current incident state is shown. Also, the incident state
+                    will be propagated for dependent SLAs and CIs.
+
+                    If a service is selected, the service details will be shown, now with the additional
+                    'current incident state', which is calculated from the incident states of dependent
+                    services and CIs.
+                </para>
+                <para>
+                    CIs are now enhanced with a 'current incident state', which includes two state types:
+                </para>
+                <itemizedlist>
+                    <listitem><para>Operational</para></listitem>
+                    <listitem><para>Incident</para></listitem>
+                </itemizedlist>
+
+                <para>
+                    For each state type any number of states can be registered.
+                    The state of a CI affects the service state, which will be dynamically calculated, and can
+                    have one of the following three values:
+                </para>
+                <itemizedlist>
+                    <listitem><para>Operational (green)</para></listitem>
+                    <listitem><para>Warning (yellow)</para></listitem>
+                    <listitem><para>Incident (red)</para></listitem>
+                </itemizedlist>
+                <para>
+                    The propagation of the incident state will be carried out if CIs are linked with the link type 'depend on'.
+                    Here the following rules apply:
+                </para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            If a CI is dependent from another CI, which is in the state 'Incident', the dependent CI gets the state 'Warning'.
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            If a service is dependent from CIs, and one of these CIs has a state 'Incident', the service will also get the state 'Incident'.
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            If a service is dependent from CIs, and one of these CIs has the state 'Warning', the service will also get the state 'Warning'.
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            If a service has sub-services, and one of these services has the state 'Incident', the parent service will get the state 'Warning'.
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            If a service has sub-services, and one of these services has the state 'Warning', the parent service will get the state 'Warning'.
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                <para>
+                    The states of the respective services, sub-services and CIs will be shown in the view.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>CI search and linking from agent interface</para>
+                <para>
+                    A service agent may search, select and assign any of a customers
+                    configuration items (CIs) or existing tickets while recording a new incident ticket.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    CMDB Import/Export (CSV and API)
+                </para>
+                <para>
+                    This feature offers the possibility to import or update data from CSV files into the CMBD of OTRS::ITSM, and to export data from the CMDB to CSV files.
+                    Each line of the CSV file describes one CI, with the data of the CI in the columns.
+                </para>
+                <para>
+                    The import and export is controlled with ImEx definitions. These definitions map the columns of the CSV file to the fields in the CMDB. You can create an ImEx definition via the admin interface in OTRS. For each available field in the CMDB, the corresponding column in the CSV file needs to be defined. This is done in a form, which represents the current CI definition. Also, a filter can be applied, to limit the number of the exported CIs.
+                    Any number of ImEx definitions can be stored in the system, and each definition can be used for import and for export.
+                </para>
+                <para>
+                    To start an import (exports work the same way), two possibilities exist: interactive with the web interface, or automatically with a script.
+                    Using the interactive way, the desired ImEx definition is selected, and then the CSV fiele is uploaded to the system. During the interactive export, the CSV file will be offered for download respectively.
+                </para>
+                <para>
+                    The automatic import is carried out via a script, which needs the name of the ImEx definition and the name of the CSV file as arguments. During the script based export, the CIs that were given the script as arguments, will be saved in a CSV file.
+                    Before the execution of the import or export, the selected ImEx definition will be compared with the current CI definition. If inconsistencies were found, the process will be cancelled. Also, during import, restrictions in the CI definition (e.g. mandatory fields) will be checked. If applicable, the data record is rejected, but the import process continues. An import protocol can be found in the syslog.
+                    Via the API the CSV based import/export can be replaced or enhanced by other formats/transports, like direct database access or XML. The implementation of the CSV interface can be used as a reference.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    A huge variety of additional reports have been created, e.g.:
+                </para>
+                <para>
+                    Basic reports for tickets and configuration items (CIs):
+                </para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            Total of all ever created tickets per ticket-type and priority (state, queue, service).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Monthly overview of all ever created tickets of a previous month per ticket-type (priority, state, queue, service).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Total of created tickets in a defined period per ticket-type and priority (state, queue, service).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Total of all open tickets per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Total of all configuration items (CIs) created per class (per state).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Total of all configuration items (CIs) created in a previous month per class (per state).
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Total of all configuration items (CIs) created in a defined period per class (per state).
+                        </para>
+                    </listitem>
+                </itemizedlist>
+
+                <para>
+                    Much more reports have been added providing specific data regarding first time solution rate and average resolution time:
+                </para>
+                <itemizedlist>
+
+                    <listitem>
+                        <para>
+                        First time solution rate of all ever created tickets per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            First time solution rate in a previous month per ticket-type (priority, queue, service).
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            First time solution rate in a defined period per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            Average resolution time of all ever created tickets per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            Average resolution time in a previous month per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+
+                    <listitem>
+                        <para>
+                            Average resolution time in a defined period per ticket-type and priority (queue, service).
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+            <listitem>
+                <para>
+                    Added print function for CIs, Services, SLAs, Locations.
+                </para>
+            </listitem>
+        </itemizedlist>
+        </para>
     </sect2>
     </sect1>
     <sect1>

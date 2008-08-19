@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.5 2008-08-16 17:00:05 ub Exp $ -->
+<!-- $Id: installation.xml,v 1.6 2008-08-19 11:50:49 ub Exp $ -->
 
 
 
 <chapter>
 
-    <title>Installation von OTRS::ITSM</title>
+    <title>Installation / Upgrade von OTRS::ITSM</title>
 
     <para>Zur Nutzung von OTRS::ITSM muss das OTRS Framework 2.2 installiert sein. Alle dazu  notwendigen Informationen, Optionen und Installationsschritte sind im "OTRS Admin Manual" beschrieben.</para>
 
@@ -17,60 +17,78 @@
 
     </warning>
 
-    <para>Nachdem OTRS 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von ftp://ftp.otrs.org/pub/otrs/itsm/packages11/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
+    <sect1>
 
-    <itemizedlist>
+        <title>Installation</title>
 
-        <listitem>
-            <para>GeneralCatalog</para>
-        </listitem>
+        <para>Nachdem OTRS 2.2 bereit steht, melden Sie sich als Administrator in OTRS an. Mit Hilfe des Paket-Managers im Admin-Bereich bzw. von ftp://ftp.otrs.org/pub/otrs/itsm/packages11/ sind die ITSM-Pakete in der folgenden Reihenfolge zu installieren:</para>
 
-        <listitem>
-            <para>LinkObject2</para>
-        </listitem>
+        <itemizedlist>
 
-        <listitem>
-            <para>ITSMCore</para>
-        </listitem>
+            <listitem>
+                <para>GeneralCatalog</para>
+            </listitem>
 
-    </itemizedlist>
+            <listitem>
+                <para>LinkObject2</para>
+            </listitem>
 
-    <para>Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
-    [--OTRS::ITSM 1.1 Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren:</para>
+            <listitem>
+                <para>ITSMCore</para>
+            </listitem>
 
-    <itemizedlist>
+        </itemizedlist>
 
-        <listitem>
-            <para>ITSMService</para>
-        </listitem>
+        <para>Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
+        [--OTRS::ITSM 1.1 Master--] nutzen, um die nachstehenden Pakete zu installieren. Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren:</para>
 
-        <listitem>
-            <para>ITSMTicket</para>
-        </listitem>
+        <itemizedlist>
 
-        <listitem>
-            <para>ITSMConfigItem</para>
-        </listitem>
+            <listitem>
+                <para>ITSMService</para>
+            </listitem>
 
-        <listitem>
-            <para>ITSMLocation</para>
-        </listitem>
+            <listitem>
+                <para>ITSMTicket</para>
+            </listitem>
 
-        <listitem>
-            <para>ITSMStats</para>
-        </listitem>
+            <listitem>
+                <para>ITSMConfigItem</para>
+            </listitem>
 
-        <listitem>
-            <para>ImportExport</para>
-        </listitem>
+            <listitem>
+                <para>ITSMLocation</para>
+            </listitem>
 
-    </itemizedlist>
-    <para>Weitere Informationen zur Installation können Sie hier finden: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.1.ITSM</para>
-    <para>
-        <screenshot>
-        <screeninfo>index.pl - Admin Paket Manager</screeninfo>
-        <graphic srccredit="Admin Paket Manager - screenshot" scale="50" fileref="screenshots/admin-packagemanager.png"></graphic>
-        </screenshot>
-    </para>
+            <listitem>
+                <para>ITSMStats</para>
+            </listitem>
 
+            <listitem>
+                <para>ImportExport</para>
+            </listitem>
+
+        </itemizedlist>
+        <para>Weitere Informationen zur Installation können Sie hier finden: http://ftp.otrs.org/pub/otrs/itsm/INSTALL-1.1.ITSM</para>
+        <para>
+            <screenshot>
+            <screeninfo>index.pl - Admin Paket Manager</screeninfo>
+            <graphic srccredit="Admin Paket Manager - screenshot" scale="50" fileref="screenshots/admin-packagemanager.png"></graphic>
+            </screenshot>
+        </para>
+    </sect1>
+
+    <sect1>
+        <title>Upgrade</title>
+        <para>
+            Um ein bereits installiertes OTRS::ITSM auf eine neuere Version upzugraden, benutzen Sie den Paket-Manager im Admin-Bereich.
+            Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
+            [--OTRS::ITSM 1.1 Master--] nutzen, um die aktualisierten Pakete zu installieren. Falls eine aktuellere Version für ein
+            Paket verfügbar ist, erscheint rechts neben dem Paketnamen ein 'Erneuern'-Link.
+         </para>
+         <para>
+            Bei fehlender Internetverbindung sind die Pakete zu downloaden und per Paket-Manager zu installieren.
+            Deinstallieren Sie hierbei die bisher intallierten Pakete nicht, da sonst Ihre Daten verloren gehen!
+        </para>
+    </sect1>
 </chapter>
