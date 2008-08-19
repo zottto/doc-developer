@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: admin-area.xml,v 1.4 2008-08-16 17:00:05 ub Exp $ -->
+<!-- $Id: admin-area.xml,v 1.5 2008-08-19 15:06:13 ub Exp $ -->
 
 <chapter>
 
@@ -35,12 +35,6 @@
               <listitem>
                 <para>[ ConfigItem ]</para>
               </listitem>
-                <listitem>
-                    <para>[ Location ]</para>
-                </listitem>
-                <listitem>
-                    <para>[ Priority ]</para>
-                </listitem>
           </itemizedlist>
         </listitem>
 
@@ -71,7 +65,14 @@
             </itemizedlist>
         </listitem>
 
-
+        <listitem>
+            <para>ab OTRS 2.3</para>
+            <itemizedlist>
+              <listitem>
+                <para>[ Priority ]</para>
+              </listitem>
+            </itemizedlist>
+        </listitem>
 
     </itemizedlist>
     </para>
@@ -111,7 +112,7 @@
 
         <title>Konfiguration der Configuration Item Klassen</title>
 
-        <para>OTRS::ITSM bietet standardmäßig vier CI-Klassen, mit denen sich grundsätzlich alle relevanten IT Elemente abbilden lassen:</para>
+        <para>OTRS::ITSM bietet standardmäßig fünf CI-Klassen, mit denen sich grundsätzlich alle relevanten IT Elemente abbilden lassen:</para>
 
 
         <para>
@@ -137,10 +138,15 @@
             <para>alle Softwareprodukte und Lizenzen</para>
         </listitem>
 
+        <listitem>
+            <para>[ Locations ]</para>
+            <para>alle Lokationen, wie z. B. Büro, Gebäude, IT Facility.</para>
+        </listitem>
+
         </itemizedlist>
         </para>
 
-        <para>Sollten die vier Klassen zur Abbildung der eigenen IT Umgebung wider Erwarten nicht ausreichen, können weitere Klassen über den Link "General Catalog" im OTRS::ITSM Administrations-Bereich hinzugefügt werden. Hierbei ist zu beachten, dass nach Erzeugung einer neue CI-Klasse im General Catalog eine Definition unter "ConfigItem" für diese neue Klasse eingetragen werden muss.</para>
+        <para>Sollten die fünf Klassen zur Abbildung der eigenen IT Umgebung wider Erwarten nicht ausreichen, können weitere Klassen über den Link "General Catalog" im OTRS::ITSM Administrations-Bereich hinzugefügt werden. Hierbei ist zu beachten, dass nach Erzeugung einer neue CI-Klasse im General Catalog eine Definition unter "ConfigItem" für diese neue Klasse eingetragen werden muss.</para>
 
         <para>
             <screenshot>

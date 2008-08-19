@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: book.xml,v 1.6 2008-08-16 17:00:05 ub Exp $ -->
+<!-- $Id: book.xml,v 1.7 2008-08-19 15:06:13 ub Exp $ -->
 
 <book lang='de'>
 
 <bookinfo>
-<title>OTRS::ITSM 1.1 - Grundlagen</title>
+<title>OTRS::ITSM 1.2 - Grundlagen</title>
 <edition>Whitehaven Beach</edition>
 
 <copyright>
@@ -14,11 +14,11 @@
 <holder>OTRS AG</holder>
 </copyright>
 
-<date>2008-08-15</date>
+<date>2008-08-19</date>
 
 <legalnotice>
 <para>
-René Bakker, Bodo Bauer, Udo Bretz, Hauke Böttcher, Jens Bothe, Martin Edenhofer, Manuel Hecht, Richard Kammermeyer, Christopher Kuhn, André Mindermann, Henning Oschwald, Thomas Raith, Stefan Rother, Christian Schöpplein, Burchard Steinbild, (alle OTRS AG), Cassian Ewert, Marco Romann, Werner Siebecke (alle Enterprise Consulting GmbH)
+René Bakker, Udo Bretz, Hauke Böttcher, Jens Bothe, Martin Edenhofer, Manuel Hecht, Christopher Kuhn, André Mindermann, Henning Oschwald, Thomas Raith, Stefan Rother, Burchard Steinbild, (alle OTRS AG), Marco Romann, Werner Siebecke (alle Enterprise Consulting GmbH)
 </para>
 
 <para>
@@ -45,8 +45,8 @@ können Warenzeichen des jeweiligen Herstellers sein.
 
 <revhistory>
   <revision>
-    <revnumber>1.1.1</revnumber>
-    <date>15.08.2008</date>
+    <revnumber>1.2.1</revnumber>
+    <date>19.08.2008</date>
   </revision>
 </revhistory>
 

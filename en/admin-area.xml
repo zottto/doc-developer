@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: admin-area.xml,v 1.4 2008-08-16 17:00:05 ub Exp $ --><chapter>
+<!-- $Id: admin-area.xml,v 1.5 2008-08-19 15:06:13 ub Exp $ --><chapter>
     <title>The admin area of OTRS::ITSM</title>
     <para>The admin area is the central interface for the ticket system administrator. All important settings of the system configuration can be checked and/or changed here, and the system can be adapted to individual needs. </para>
     <para>The admin area can be accessed via the "admin" link in the agent interface navigation bar. The link is only shown to users logged on to the system as OTRS::ITSM administrators or having administrator permissions in the system. After a default installation you can log on to the system as OTRS admin using the user name &quot;root@localhost&quot; and the password &quot;root&quot;.</para>
@@ -13,7 +13,7 @@
 
 
         <listitem>
-          <para>ab OTRS::ITSM 1.0</para>
+          <para>from OTRS::ITSM 1.0 on</para>
           <itemizedlist>
               <listitem>
                 <para>[ General Catalog ]</para>
@@ -24,17 +24,11 @@
               <listitem>
                 <para>[ ConfigItem ]</para>
               </listitem>
-                <listitem>
-                    <para>[ Location ]</para>
-                </listitem>
-                <listitem>
-                    <para>[ Priority ]</para>
-                </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para>ab OTRS::ITSM 1.1</para>
+          <para>from OTRS::ITSM 1.1 on</para>
           <itemizedlist>
               <listitem>
                 <para>[ Import/Export ]</para>
@@ -43,7 +37,7 @@
         </listitem>
 
         <listitem>
-            <para>ab OTRS 2.2</para>
+            <para>from OTRS 2.2 on</para>
             <itemizedlist>
                 <listitem>
                   <para>[ Type ]</para>
@@ -60,7 +54,14 @@
             </itemizedlist>
         </listitem>
 
-
+        <listitem>
+            <para>from OTRS 2.3 on</para>
+            <itemizedlist>
+              <listitem>
+                <para>[ Priority ]</para>
+              </listitem>
+            </itemizedlist>
+        </listitem>
 
     </itemizedlist>
     </para>
@@ -90,7 +91,7 @@
     </sect1>
     <sect1>
     <title>Configurating configuration item classes</title>
-    <para>By default OTRS::ITSM provides four CI classes to represent all relevant IT elements:</para>
+    <para>By default OTRS::ITSM provides five CI classes to represent all relevant IT elements:</para>
     <itemizedlist>
         <listitem>
         <para>[ Computer ]</para>
@@ -108,8 +109,12 @@
         <para>[ Software ]</para>
         <para>All software products and licenses.</para>
         </listitem>
+        <listitem>
+            <para>[ Locations ]</para>
+            <para>All Locations, e.g. building, workplace, IT facility.</para>
+        </listitem>
     </itemizedlist>
-    <para>If the four classes do not suffice to describe your IT environment, further classes can be added via the "general catalog" link in the OTRS::ITSM admin area. After creating a new CI class in the general catalog, a definition must be entered in ConfigItem&quot;.</para>
+    <para>If the five classes do not suffice to describe your IT environment, further classes can be added via the "general catalog" link in the OTRS::ITSM admin area. After creating a new CI class in the general catalog, a definition must be entered in ConfigItem&quot;.</para>
     <para>
         <screenshot>
         <screeninfo>index.pl - Admin General Catalog</screeninfo>

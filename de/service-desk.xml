@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: service-desk.xml,v 1.3 2008-08-16 17:00:05 ub Exp $ -->
+<!-- $Id: service-desk.xml,v 1.4 2008-08-19 15:06:13 ub Exp $ -->
 
 <chapter>
 
@@ -34,10 +34,10 @@
     </para>
 
     <para>
-    Die Version 1.1 von OTRS::ITSM deckt die Prozesse Incident
+    Die Version 1.2 von OTRS::ITSM deckt die Prozesse Incident
     und Problem Management, Service Level Management sowie die Configuration Management DB ab,
     die bei ITIL Implementierungen in der Regel zuerst gestaltet werden. Die Nutzung und Anpassung des Systems wird in den folgenden
-    Abschnitten näher beschrieben.
+    Abschnitten näher beschrieben. Die Paketaufteilung entspricht den gleichnamigen ITIL-Disziplinen, jedes Paket kann unabhängig installiert werden.
     </para>
 
     <para>

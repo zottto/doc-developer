@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.7 2008-08-19 12:49:27 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.8 2008-08-19 15:06:13 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -28,7 +28,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
     <para>OTRS::ITSM sowie OTRS sind ohne Lizenzgebühren erhältlich und unterliegen der GNU General Public License (GPL).</para>
     <sect1>
         <title>Features</title>
-        <para>Basis von OTRS::ITSM 1.1 ist das Open Ticket Request System OTRS 2.2, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
+        <para>Basis von OTRS::ITSM 1.2 ist das Open Ticket Request System OTRS 2.3, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
 
     <para>Im Zuge der Entwicklung von OTRS::ITSM wurden im Kernprodukt OTRS diverse Ergänzungen vorgenommen.</para>
 
@@ -326,7 +326,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
         </sect2>
 
         <sect2>
-            <title>Neue Features in OTRS::ITSM 1.1</title>
+            <title>Features in OTRS::ITSM 1.1</title>
             <para>OTRS::ITSM 1.1 bietet:</para>
             <para>
             <itemizedlist>
