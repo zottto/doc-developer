@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: service-desk.xml,v 1.3 2008-08-16 17:00:05 ub Exp $ --><chapter>
+<!-- $Id: service-desk.xml,v 1.4 2008-08-19 11:59:30 ub Exp $ --><chapter>
     <title>ITIL compliant service support with OTRS::ITSM</title>
     <para>
 Just as ITIL, OTRS::ITSM does not claim to be an &quot;out-of-the-box&quot; solution for all tasks and questions arising in IT service management. It is in fact supposed to serve as a flexible, stable and easy to understand information platform.
@@ -16,5 +16,5 @@ Successful ITIL implementation projects typically take up to a year and longer. 
 OTRS::ITSM 1.1 supports the incident and problem management processes, service level management and configuration management database, which usually are designed in the first phase of ITIL implementation. A closer description of use and adaptation of the system can be found in the following sections.
     </para>
     <para>
-Implementation of OTRS::ITSM 1.0 is based on ITIL v2, by the way, which was published in 2000. Aforementioned version remains valid even after the publication of the revised ITIL v3 in summer 2007.</para>
+Implementation of OTRS::ITSM is based on ITIL v2, by the way, which was published in 2000. Aforementioned version remains valid even after the publication of the revised ITIL v3 in summer 2007.</para>
 </chapter>
