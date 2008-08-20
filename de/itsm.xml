@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.8 2008-08-19 15:06:13 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.9 2008-08-20 10:58:46 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -541,6 +541,85 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
             </itemizedlist>
             </para>
         </sect2>
+
+        <sect2>
+            <title>Neue Features in OTRS::ITSM 1.2</title>
+            <para>OTRS::ITSM 1.2 bietet:</para>
+            <para>
+            <itemizedlist>
+                <listitem>
+                    <para>Modularisierung</para>
+                    <para>
+                        Die OTRS::ITSM Pakete wurden neu aufgeteilt, somit repräsentiert jedes Paket eine ITIL-Disziplin,
+                        wie z. B. Incident/Problem-Management, Configuration Management und Service-Level Management.
+                        Die Pakete könnnen nun unabhängig voneinander, und in beliebiger Reihenfolge installiert werden.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Reduzierte Seiten-Reloads</para>
+                    <para>
+                        Einige OTRS::ITSM Funktionalitäten (z. B. Prioritätsberechnungen
+                        aufgrund der Ticket-Auswirkung) wurden mit Hilfe von AJAX-Technologien neu
+                        implementiert. Damit wird das erneute Laden von Seiten reduziert.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Gemeinsamer Link-Objekt Mechanismus</para>
+                    <para>
+                        Versionen vor OTRS::ITSM 1.2 verwendeten einen eigenen Link-Objekt Mechanismus.
+                        Aufgrund dessen konnte der in OTRS verwendete Link-Mechanismus nicht in OTRS::ITSM benutzt werden.
+                        Deswegen wurde ein neuer, gemeinsamer Link-Mechnismus implementiert, der nun von OTRS,
+                        als auch von OTRS::ITSM verwendet wird.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Höhere Geschwindigkeit</para>
+                    <para>
+                        Die Geschwindigkeit beim Zugriff auf die Configuration Item (CI) Datenbank
+                        wurde deutlich erhöht. Dies wurde erreicht, indem die Datenbank-Zugriffstechnologie
+                        auf SQL-Bind Parameter umgestellt wurde.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Locations</para>
+                    <para>
+                        Locations sind nun kein eigenständiger Menüpunkt mehr, sondern vollständig
+                        in Configuration Items integriert. Hierdurch wird die Handhabung von Locations
+                        sehr viel flexibler als bisher.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>SLA-Service-Multizuordung</para>
+                    <para>
+                        Es ist nun möglich einen SLA mehreren Services zuzuordnen.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>SLA Übersicht</para>
+                    <para>
+                        Im Service-Menü gibt es nun eine neue SLA-Übersicht.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Refresh-Mechanismus</para>
+                    <para>
+                        Es wurde ein Refresh-Mechanismus hinzugefügt, um die
+                        Service-Übersicht und die Config-Item-Überrsicht automatisch
+                        zu aktualisieren.
+                    </para>
+                </listitem>
+
+            </itemizedlist>
+            </para>
+        </sect2>
+
     </sect1>
 
     <sect1>

@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.7 2008-08-19 15:06:13 ub Exp $ --><chapter>
+<!-- $Id: itsm.xml,v 1.8 2008-08-20 10:58:46 ub Exp $ --><chapter>
     <title>OTRS::ITSM - The OTRS for IT service management</title>
     <para>IT is expected to deliver consistently high service quality in an increasingly complex field. In this context, effective and efficient incident and problem management are indispensable. However, IT service management remains a task almost impossible if there is no consistent and up-to-date database with information about the state and configuration of the IT infrastructure. </para>
     <para>The IT Infrastructure Library®, short ITIL®, is a series of books published by the United Kingdom's Office of Government Commerce (OGC), which generically combine best practice approaches to designing, providing, operating and managing IT services. ITIL does not center the technology but the services provided by the IT and comprises information on processes, roles, responsibilities, potential problem fields/resolutions and definitions of terms.</para>
@@ -442,6 +442,88 @@
         </itemizedlist>
         </para>
     </sect2>
+
+    <sect2>
+        <title>New OTRS::ITSM 1.2 features</title>
+        <para>OTRS::ITSM 1.2 offers:</para>
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>Modularization</para>
+                <para>
+                    From now on the additional ITSM packages
+                    covering single ITIL disciplines like incident management / problem
+                    management, configuration management, service level management, can be
+                    installed independently from each other. To you as a user that means
+                    that you neither have to install the packages in a certain installation
+                    order nor that you have to install them all to use OTRS::ITSM.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Reduced reloads</para>
+                <para>
+                    ITSM functionalities (e. g. priority calculation based on a tickets impact)
+                    have been reimplemented in AJAX technology to reduce necessary reloads.
+                    That leads to an increased speed using OTRS::ITSM.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Joint Link-Object mechanism</para>
+                <para>
+                    OTRS::ITSM 1.1 and lower releases
+                    were designed based on an own extended Object-Link mechanism.
+                    As a consequence, the Object-Link functionality of OTRS couldn't
+                    be used in OTRS::ITSM. A joint Object-Link mechanism has now
+                    been implemented, which covers all the features from both former
+                    Link object mechanisms.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Improved speed</para>
+                <para>
+                    The improvement to faster access the Configuration Items (CI) database
+                    has been achieved by switching database access technology to SQL bind
+                    parameters.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Locations</para>
+                <para>
+                    Locations are no longer a separate menu item. They are now integrated into
+                    the Configuration Items, which will bring a sustainable gain in flexibility.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>SLA-Service multi-assignments</para>
+                <para>
+                    It is now possible to assign an SLA to multiple Services.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>SLA Overwiew</para>
+                <para>
+                    In the service menu, there is now a new SLA overwiew mask.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>Refresh-Mechanism</para>
+                <para>
+                    Added a refresh mechanism to refresh the service overview
+                    and the config item overview screens automatically.
+                </para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+    </sect2>
+
     </sect1>
     <sect1>
     <title>Hardware and software requirements</title>

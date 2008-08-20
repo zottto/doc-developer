@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.7 2008-08-19 15:06:13 ub Exp $ -->
+<!-- $Id: installation.xml,v 1.8 2008-08-20 10:58:46 ub Exp $ -->
 
 
 
@@ -69,7 +69,28 @@
     <sect1>
         <title>Upgrade</title>
         <para>
-            Um ein bereits installiertes OTRS::ITSM auf eine neuere Version upzugraden, benutzen Sie den Paket-Manager im Admin-Bereich.
+            Sollte auf Ihrem System bereits eine ältere Version als OTRS::ITSM 1.1 installiert sein,
+            so aktualisieren Sie Ihr System zunächst mit Hilfe des Paketmanagers auf die aktuellste
+            OTRS::ITSM 1.1 Version.
+        </para>
+        <para>
+            Sollte OTRS::ITSM 1.1 bereits installiert sein, aktualisieren Sie Ihren OTRS 2.2 Framework
+            auf die Version 2.3 BEVOR Sie OTRS::ITSM upgraden. Laden Sie dazu den aktuellen OTRS 2.3
+            Framework herunter und folgen Sie den Anweisungen in der Datei UPGRADING.
+            Melden Sie sich danach in Ihrem System an, und verwenden Sie den Paket-Manager um das Paket
+            ITSMUpgradeTo12 zu installieren. Sie können es manuell hier herunterladen:
+            ftp://ftp.otrs.org/pub/otrs/itsm/packages12/ oder das Online Repository [--OTRS::ITSM 1.2 Master--]
+            verwenden. Ignorieren Sie im Paket-Manager alle Fehlermeldungen zu nicht korrekt installierten älteren Paketen.
+            Das Paket ITSMUpgradeTo12 installiert alle benötigten Pakete um Ihr System auf OTRS:ITSM 1.2 zu aktualisieren,
+            dabei werden Ihre Daten automatisch migriert.
+        </para>
+
+        <para>
+            Hinweis: Der Upgrade-Vorgang kann meherer Minuten dauern! Brechen sie den Vorgang nicht ab!
+        </para>
+
+        <para>
+            Um ein bereits installiertes OTRS::ITSM 1.2 auf eine neuere Version upzugraden, benutzen Sie den Paket-Manager im Admin-Bereich.
             Sofern für OTRS eine Verbindung mit dem Internet besteht, können Sie das Online Repository
             [--OTRS::ITSM 1.2 Master--] nutzen, um die aktualisierten Pakete zu installieren. Falls eine aktuellere Version für ein
             Paket verfügbar ist, erscheint rechts neben dem Paketnamen ein 'Erneuern'-Link.
