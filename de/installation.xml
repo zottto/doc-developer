@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: installation.xml,v 1.8 2008-08-20 10:58:46 ub Exp $ -->
+<!-- $Id: installation.xml,v 1.9 2008-08-20 11:25:45 ub Exp $ -->
 
 
 
@@ -86,7 +86,7 @@
         </para>
 
         <para>
-            Hinweis: Der Upgrade-Vorgang kann meherer Minuten dauern! Brechen sie den Vorgang nicht ab!
+            Hinweis: Der Upgrade-Vorgang kann mehrere Minuten dauern! Brechen sie den Vorgang nicht ab!
         </para>
 
         <para>
