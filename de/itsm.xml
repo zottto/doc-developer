@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.11 2008-08-20 13:42:41 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.12 2008-08-26 11:51:22 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -30,299 +30,82 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
         <title>Features</title>
         <para>Basis von OTRS::ITSM 1.2 ist das Open Ticket Request System OTRS 2.3, d.h. es stehen auch weiterhin alle Funktionalitäten zur Verfügung, die Sie von OTRS bislang kennen. Darauf aufbauend werden die Funktionalitäten zur Abbildung der ITIL Prozesse als so genannte Pakete installiert.</para>
 
-    <para>Im Zuge der Entwicklung von OTRS::ITSM wurden im Kernprodukt OTRS diverse Ergänzungen vorgenommen.</para>
-
-    <sect2>
-        <title>Neue Features im OTRS Framework 2.2</title>
-
-        <para>Die für OTRS::ITSM relevanten Features im OTRS Framework sind:</para>
-        <para>
+        <sect2>
+            <title>Neue Features in OTRS::ITSM 1.2</title>
+            <para>OTRS::ITSM 1.2 bietet:</para>
+            <para>
             <itemizedlist>
+                <listitem>
+                    <para>Modularisierung</para>
+                    <para>
+                        Die OTRS::ITSM Pakete wurden neu aufgeteilt, somit repräsentiert jedes Paket eine ITIL-Disziplin,
+                        wie z. B. Incident/Problem-Management, Configuration Management und Service-Level Management.
+                        Die Pakete könnnen nun unabhängig voneinander, und in beliebiger Reihenfolge installiert werden.
+                    </para>
+                </listitem>
 
-            <listitem>
-                <para>Services und SLAs: Auf dem Weg hin zu einem IT Service Management-Werkzeug, wurden in OTRS 2.2 die neuen Attribute 'Service' und 'Service Level Agreements (SLA)' integriert. Bei der Erstellung eines neuen Tickets kann der Anfragesteller einen Service (z. B. Email-Service) und ein zugehöriges SLA auswählen. SLA Attribute sind "response time" (Antwortzeit), "update time" (Updatezeit) und "solution time" (Lösungszeit). Diese Attribute können vom IT Service für Benachrichtigungen oder für die Eskalation von Tickets herangezogen werden, um bestehende SLAs einzuhalten. Service- und SLA-spezifische Informationen innerhalb der Header neuer Emails können weiterhin mit Hilfe des PostMasterFilter-Moduls ausgewertet werden.</para>
-            </listitem>
+                <listitem>
+                    <para>Reduzierte Seiten-Reloads</para>
+                    <para>
+                        Einige OTRS::ITSM Funktionalitäten (z. B. Prioritätsberechnungen
+                        aufgrund der Ticket-Auswirkung) wurden mit Hilfe von AJAX-Technologien neu
+                        implementiert. Damit wird das erneute Laden von Seiten reduziert.
+                    </para>
+                </listitem>
 
-            <listitem>
-                <para>Unterstützung nativer Tickettypen: Verschiedene Tickettypen können nun über das Admin-Interface verwaltet werden. Die Benutzung von Freitext-Feldern für die Spezifikation von Tickettypen ist somit nicht mehr notwendig. Installationen, die Freitextfelder für die Klassifikation von Tickettypen verwenden, müssen nicht migriert werden. Dieses neue Feature wird ebenfalls im Ticketinhalt und auch in der Druckansicht für Agenten und Kunden angezeigt und kann über das Agenten-Interface angepasst werden</para>
-            </listitem>
+                <listitem>
+                    <para>Gemeinsamer Link-Objekt Mechanismus</para>
+                    <para>
+                        Versionen vor OTRS::ITSM 1.2 verwendeten einen eigenen Link-Objekt Mechanismus.
+                        Aufgrund dessen konnte der in OTRS verwendete Link-Mechanismus nicht in OTRS::ITSM benutzt werden.
+                        Deswegen wurde ein neuer, gemeinsamer Link-Mechnismus implementiert, der nun von OTRS,
+                        als auch von OTRS::ITSM verwendet wird.
+                    </para>
+                </listitem>
 
-            <listitem>
-                <para>Änderung der OTRS-internen Struktur zur Speicherung der Kundendaten: Die Speicherung der Kundendaten wurde restrukturiert und in die Objekte "CustomerCompany" und "CustomerUser" aufgeteilt. Firmenspezifische Daten (Company) wie z. B. der Firmenname, die Firmenadresse, usw. werden nun gegenüber den personenspezifischen Daten (Vor- und Nachname, Anrede, etc.) gesondert gepflegt.</para>
-            </listitem>
+                <listitem>
+                    <para>Höhere Geschwindigkeit</para>
+                    <para>
+                        Die Geschwindigkeit beim Zugriff auf die Configuration Item (CI) Datenbank
+                        wurde deutlich erhöht. Dies wurde erreicht, indem die Datenbank-Zugriffstechnologie
+                        auf SQL-Bind Parameter umgestellt wurde.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Locations</para>
+                    <para>
+                        Locations sind nun kein eigenständiger Menüpunkt mehr, sondern vollständig
+                        in Configuration Items integriert. Hierdurch wird die Handhabung von Locations
+                        sehr viel flexibler als bisher.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>SLA-Service-Multizuordung</para>
+                    <para>
+                        Es ist nun möglich einen SLA mehreren Services zuzuordnen.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>SLA Übersicht</para>
+                    <para>
+                        Im Service-Menü gibt es nun eine neue SLA-Übersicht.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>Refresh-Mechanismus</para>
+                    <para>
+                        Es wurde ein Refresh-Mechanismus hinzugefügt, um die
+                        Service-Übersicht und die Config-Item-Überrsicht automatisch
+                        zu aktualisieren.
+                    </para>
+                </listitem>
 
             </itemizedlist>
-        </para>
-
-    </sect2>
-    <sect2>
-        <title>Features in OTRS::ITSM 1.0</title>
-        <para>OTRS::ITSM 1.0 bietet:</para>
-        <para>
-        <itemizedlist>
-            <listitem>
-                <para>ITIL konforme Abbildung der "Service Support" Prozesse</para>
-
-                <itemizedlist>
-                    <listitem>
-                        <para>Incident Management</para>
-                    </listitem>
-
-                    <listitem>
-                        <para>Problem Management</para>
-                    </listitem>
-
-                    <listitem>
-                        <para>Configuration Management</para>
-                    </listitem>
-                </itemizedlist>
-
-            </listitem>
-
-            <listitem>
-                <para>Integrierte, individuell erweiterbare Configuration Management Data Base (CMDB)</para>
-            </listitem>
-
-            <listitem>
-                <para>ITIL konformes Wording</para>
-            </listitem>
-
-            <listitem>
-                <para>ITIL konformes Rollen-, Verantwortlichkeits-, Berechtigungsmodell</para>
-            </listitem>
-
-            <listitem>
-                <para>Prozess übergreifende Kommunikationssteuerung: innerhalb der IT Serviceorganisation, mit Kunden/Anwendern/Management und Lieferanten/Providern</para>
-            </listitem>
-
-            <listitem>
-                <para>Flexible Statistik-Funktionen für (Trend-)Analysen, Kennzahlen basiertes Reporting, Planung und Controlling</para>
-            </listitem>
-
-            <listitem>
-                <para>Flexible Konfigurationsmöglichkeiten, Anpassbarkeit und Erweiterbarkeit an individuelle Anforderungen</para>
-            </listitem>
-
-        </itemizedlist>
-        </para>
-
-        <para>Configuration Management &amp; Integrierte CMDB:</para>
-
-        <para>OTRS::ITSM basiert auf einer integrierten Configuration Management Data Base (CMDB), die das Fundament für die durchgängige Steuerung der Service Management Prozesse darstellt. Sie bildet neben den Configuration Items (CI) vor allem deren komplexe Beziehungen und Abhängigkeiten untereinander bzw. innerhalb der Service-Kette ab.</para>
-
-        <para>
-        <itemizedlist>
-            <listitem>
-                <para>Umfangreiche Erfassung und Management von ITSM relevanten Configuration Items (CIs), z. B. Computer, Hardware, Software, Netze, Dokumente sowie Services, SLAs und Organisationsstrukturen</para>
-            </listitem>
-
-            <listitem>
-                <para>Abbildung des IT Service-Katalogs und geltender Vereinbarungen (SLA, OLA, UC)</para>
-            </listitem>
-
-            <listitem>
-                <para>Erfassung, Verwaltung und Darstellung der technischen und Service bezogenen Beziehungen und Abhängigkeiten zwischen CMDB-Daten, z. B. Service mit allen erforderlichen, alternativen oder relevanten CIs </para>
-            </listitem>
-
-            <listitem>
-                <para>Management historischer, aktueller und zukünftiger CI-Status, z. B. bei Problem-Diagnose, Server-Wartung oder geplanten Changes</para>
-            </listitem>
-
-            <listitem>
-                <para>Analyse möglicher Auswirkungen (Impact) von Serviceausfällen bzw. vor Konfigurationsänderungen</para>
-            </listitem>
-
-            <listitem>
-                <para>Abbildung virtualisierter IT Infrastrukturen, z. B. Server-/Speicher-Virtualisierung </para>
-            </listitem>
-
-            <listitem>
-                <para>Software-Lizenzmanagement, z. B. verfügbare/genutzte Lizenzen (Drittprodukte erforderlich)</para>
-            </listitem>
-
-            <listitem>
-                <para>Chronologisches Life-Cycle-Management für CIs, von Eingang bis Entsorgung</para>
-            </listitem>
-
-            <listitem>
-                <para>Protokollierung aller Konfigurations Änderungen an CMDB-Daten</para>
-            </listitem>
-
-            <listitem>
-                <para>Anbindung an Unternehmens-Verzeichnisse (z. B. LDAP)</para>
-            </listitem>
-
-        </itemizedlist>
-        </para>
-
-        <para>Incident Management:</para>
-
-        <para>
-        <itemizedlist>
-
-            <listitem>
-                <para>Durchgängige Prozess-Unterstützung der IT Service-Support-Organisation bei Incident-Erfassung, Klassifizierung, Priorisierung, Direkthilfe (1st Level Support), Diagnose, Koordination (2nd/3rd-Level-Support, Externe Partner etc.), Service-Wiederherstellung, Lösung, Abschluss und Dokumentation</para>
-            </listitem>
-
-            <listitem>
-                <para>Schnelle und intuitive Erfassung von Incidents und Service Requests, sowohl für Mitarbeiter am ServiceDesk als auch für Anwender (Web Self-Service)</para>
-            </listitem>
-
-            <listitem>
-                <para>Regelbasierte Ticketerzeugung und/oder Benachrichtigung, z. B. im Zusammenspiel mit IT Monitoring-Systemen</para>
-            </listitem>
-
-            <listitem>
-                <para>Klassifizierungs- und Priorisierungsoptionen (Priorität, Auswirkung, Dringlichkeit)</para>
-            </listitem>
-
-            <listitem>
-                <para>Volle CMDB-Unterstützung, z. B. vom Incident betroffene Services, beteiligte Configuration Items, FAQ-Datenbank, Verknüpfung zw. Tickets und CIs für Analysen und Reporting</para>
-            </listitem>
-
-            <listitem>
-                <para>(Automatische) Erfassung von "Artikeln" zu Tickets (Aktivitätenprotokoll)</para>
-            </listitem>
-
-            <listitem>
-                <para>Stetige Überwachung und Auswertung des Bearbeitungsfortschritts von Tickets</para>
-            </listitem>
-
-            <listitem>
-                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
-            </listitem>
-
-            <listitem>
-                <para>Bereitstellung und Speicherung relevanter Zeitdaten, z. B. für Service-Level-Management</para>
-            </listitem>
-
-            <listitem>
-                <para>Praktisches Tickethandling (Merge, Split), z. B. zur Zusammenfassung gleichartiger Incidents bzw. Aufteilen komplexerer Vorfälle</para>
-            </listitem>
-
-            <listitem>
-                <para>Planung, proaktive Steuerung und Überwachung der Service-Request-Aktivitäten (Arbeitspakete, Arbeitspläne, Service Lead Times, Fälligkeiten)</para>
-            </listitem>
-
-            <listitem>
-                <para>Erzeugung und Verfolgung von Problem-Tickets aus Incidents</para>
-            </listitem>
-
-        </itemizedlist>
-        </para>
-
-        <para>Problem Management:</para>
-
-        <para>
-        <itemizedlist>
-
-            <listitem>
-                <para>Durchgängige Prozess-Unterstützung der IT Organisation bei Problem-Identifizierung, Erfassung, Klassifizierung, Priorisierung, Problem-Ursprungsdiagnose, Lösungs-Koordination, z. B. Workaround oder Request for Change, Abschluss und Dokumentation</para>
-            </listitem>
-
-            <listitem>
-                <para>Bereitstellung relevanter Informationen für die Teil-Prozesse</para>
-                <itemizedlist>
-
-                    <listitem>
-                        <para>Problem Control (Problembehandlung),</para>
-                    </listitem>
-
-                    <listitem>
-                        <para>Error Control (Fehlerbehandlung),</para>
-                    </listitem>
-
-                    <listitem>
-                        <para>Proaktives Problem Management (z. B. Ticket-Trendanalysen) und</para>
-                    </listitem>
-
-                    <listitem>
-                        <para>Management Information (zu Incidents, Problemen und Known Errors)</para>
-                    </listitem>
-
-                </itemizedlist>
-
-            </listitem>
-
-            <listitem>
-                <para>Stetiger Blick auf aktuelle/historische Incidents, Wissensbasis (FAQs) und CMDB</para>
-            </listitem>
-
-            <listitem>
-                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
-            </listitem>
-
-            <listitem>
-                <para>Gezielte, automatische, Benachrichtigung über den Problemlösungsfortschritt an betroffene Anwender(-Gruppen) oder an das Management</para>
-            </listitem>
-
-            <listitem>
-                <para>Rückmeldung gelöster Probleme an das Incident Management</para>
-            </listitem>
-
-        </itemizedlist>
-        </para>
-
-        <para>Tickets sind die zentralen Informationscontainer für das Management von IT Service-Prozessen. Sie "transportieren" eine Vielzahl möglicher Basisdaten, z. B.:</para>
-
-
-        <para>
-        <itemizedlist>
-
-            <listitem>
-                <para>Personen, Organisationen</para>
-            </listitem>
-
-            <listitem>
-                <para>Zeitstempel</para>
-            </listitem>
-
-            <listitem>
-                <para>Priorität, Impact, Severity</para>
-            </listitem>
-
-            <listitem>
-                <para>Assoziationen zum IT Service-Katalog und zu Projekten</para>
-            </listitem>
-
-            <listitem>
-                <para>Aktivitäten, z. B. die Notiz zu einem Anruf mit Zeitaufschreibung</para>
-            </listitem>
-
-            <listitem>
-                <para>Objekte, z. B. CIs, inkl. der Relationen</para>
-            </listitem>
-
-            <listitem>
-                <para>(Sub-)Tickets, z. B. ein Problem mit den zugrunde liegenden Incidents</para>
-            </listitem>
-
-            <listitem>
-                <para>Notizen und Anhänge, z. B. gescannte Service-Request Formulare</para>
-            </listitem>
-
-            <listitem>
-                <para>Arbeitspakete, d.h. geplante, zugewiesene Aufgaben</para>
-            </listitem>
-
-            <listitem>
-                <para>SLA Informationen</para>
-            </listitem>
-
-            <listitem>
-                <para>Schwellwerte und Eskalationsdaten</para>
-            </listitem>
-
-            <listitem>
-                <para>Ticket History (aller Änderungen)</para>
-            </listitem>
-
-            <listitem>
-                <para>Accounting-Informationen (Zeitaufschreibung)</para>
-            </listitem>
-
-        </itemizedlist>
-        </para>
+            </para>
         </sect2>
 
         <sect2>
@@ -542,83 +325,283 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
             </para>
         </sect2>
 
-        <sect2>
-            <title>Neue Features in OTRS::ITSM 1.2</title>
-            <para>OTRS::ITSM 1.2 bietet:</para>
-            <para>
-            <itemizedlist>
-                <listitem>
-                    <para>Modularisierung</para>
-                    <para>
-                        Die OTRS::ITSM Pakete wurden neu aufgeteilt, somit repräsentiert jedes Paket eine ITIL-Disziplin,
-                        wie z. B. Incident/Problem-Management, Configuration Management und Service-Level Management.
-                        Die Pakete könnnen nun unabhängig voneinander, und in beliebiger Reihenfolge installiert werden.
-                    </para>
-                </listitem>
+    <sect2>
+        <title>Features in OTRS::ITSM 1.0</title>
+        <para>OTRS::ITSM 1.0 bietet:</para>
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>ITIL konforme Abbildung der "Service Support" Prozesse</para>
 
-                <listitem>
-                    <para>Reduzierte Seiten-Reloads</para>
-                    <para>
-                        Einige OTRS::ITSM Funktionalitäten (z. B. Prioritätsberechnungen
-                        aufgrund der Ticket-Auswirkung) wurden mit Hilfe von AJAX-Technologien neu
-                        implementiert. Damit wird das erneute Laden von Seiten reduziert.
-                    </para>
-                </listitem>
+                <itemizedlist>
+                    <listitem>
+                        <para>Incident Management</para>
+                    </listitem>
 
-                <listitem>
-                    <para>Gemeinsamer Link-Objekt Mechanismus</para>
-                    <para>
-                        Versionen vor OTRS::ITSM 1.2 verwendeten einen eigenen Link-Objekt Mechanismus.
-                        Aufgrund dessen konnte der in OTRS verwendete Link-Mechanismus nicht in OTRS::ITSM benutzt werden.
-                        Deswegen wurde ein neuer, gemeinsamer Link-Mechnismus implementiert, der nun von OTRS,
-                        als auch von OTRS::ITSM verwendet wird.
-                    </para>
-                </listitem>
+                    <listitem>
+                        <para>Problem Management</para>
+                    </listitem>
 
-                <listitem>
-                    <para>Höhere Geschwindigkeit</para>
-                    <para>
-                        Die Geschwindigkeit beim Zugriff auf die Configuration Item (CI) Datenbank
-                        wurde deutlich erhöht. Dies wurde erreicht, indem die Datenbank-Zugriffstechnologie
-                        auf SQL-Bind Parameter umgestellt wurde.
-                    </para>
-                </listitem>
+                    <listitem>
+                        <para>Configuration Management</para>
+                    </listitem>
+                </itemizedlist>
 
-                <listitem>
-                    <para>Locations</para>
-                    <para>
-                        Locations sind nun kein eigenständiger Menüpunkt mehr, sondern vollständig
-                        in Configuration Items integriert. Hierdurch wird die Handhabung von Locations
-                        sehr viel flexibler als bisher.
-                    </para>
-                </listitem>
+            </listitem>
 
-                <listitem>
-                    <para>SLA-Service-Multizuordung</para>
-                    <para>
-                        Es ist nun möglich einen SLA mehreren Services zuzuordnen.
-                    </para>
-                </listitem>
+            <listitem>
+                <para>Integrierte, individuell erweiterbare Configuration Management Data Base (CMDB)</para>
+            </listitem>
 
-                <listitem>
-                    <para>SLA Übersicht</para>
-                    <para>
-                        Im Service-Menü gibt es nun eine neue SLA-Übersicht.
-                    </para>
-                </listitem>
+            <listitem>
+                <para>ITIL konformes Wording</para>
+            </listitem>
 
-                <listitem>
-                    <para>Refresh-Mechanismus</para>
-                    <para>
-                        Es wurde ein Refresh-Mechanismus hinzugefügt, um die
-                        Service-Übersicht und die Config-Item-Überrsicht automatisch
-                        zu aktualisieren.
-                    </para>
-                </listitem>
+            <listitem>
+                <para>ITIL konformes Rollen-, Verantwortlichkeits-, Berechtigungsmodell</para>
+            </listitem>
 
-            </itemizedlist>
-            </para>
+            <listitem>
+                <para>Prozess übergreifende Kommunikationssteuerung: innerhalb der IT Serviceorganisation, mit Kunden/Anwendern/Management und Lieferanten/Providern</para>
+            </listitem>
+
+            <listitem>
+                <para>Flexible Statistik-Funktionen für (Trend-)Analysen, Kennzahlen basiertes Reporting, Planung und Controlling</para>
+            </listitem>
+
+            <listitem>
+                <para>Flexible Konfigurationsmöglichkeiten, Anpassbarkeit und Erweiterbarkeit an individuelle Anforderungen</para>
+            </listitem>
+
+            <listitem>
+                <para>Unterstützung nativer Tickettypen (integriert in OTRS): Verschiedene Tickettypen können nun über das Admin-Interface verwaltet werden. Die Benutzung von Freitext-Feldern für die Spezifikation von Tickettypen ist somit nicht mehr notwendig. Installationen, die Freitextfelder für die Klassifikation von Tickettypen verwenden, müssen nicht migriert werden. Dieses neue Feature wird ebenfalls im Ticketinhalt und auch in der Druckansicht für Agenten und Kunden angezeigt und kann über das Agenten-Interface angepasst werden</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+
+        <para>Configuration Management &amp; Integrierte CMDB:</para>
+
+        <para>OTRS::ITSM basiert auf einer integrierten Configuration Management Data Base (CMDB), die das Fundament für die durchgängige Steuerung der Service Management Prozesse darstellt. Sie bildet neben den Configuration Items (CI) vor allem deren komplexe Beziehungen und Abhängigkeiten untereinander bzw. innerhalb der Service-Kette ab.</para>
+
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>Umfangreiche Erfassung und Management von ITSM relevanten Configuration Items (CIs), z. B. Computer, Hardware, Software, Netze, Dokumente sowie Services, SLAs und Organisationsstrukturen</para>
+            </listitem>
+
+            <listitem>
+                <para>Abbildung des IT Service-Katalogs und geltender Vereinbarungen (SLA, OLA, UC)</para>
+            </listitem>
+
+            <listitem>
+                <para>Erfassung, Verwaltung und Darstellung der technischen und Service bezogenen Beziehungen und Abhängigkeiten zwischen CMDB-Daten, z. B. Service mit allen erforderlichen, alternativen oder relevanten CIs </para>
+            </listitem>
+
+            <listitem>
+                <para>Management historischer, aktueller und zukünftiger CI-Status, z. B. bei Problem-Diagnose, Server-Wartung oder geplanten Changes</para>
+            </listitem>
+
+            <listitem>
+                <para>Analyse möglicher Auswirkungen (Impact) von Serviceausfällen bzw. vor Konfigurationsänderungen</para>
+            </listitem>
+
+            <listitem>
+                <para>Abbildung virtualisierter IT Infrastrukturen, z. B. Server-/Speicher-Virtualisierung </para>
+            </listitem>
+
+            <listitem>
+                <para>Software-Lizenzmanagement, z. B. verfügbare/genutzte Lizenzen (Drittprodukte erforderlich)</para>
+            </listitem>
+
+            <listitem>
+                <para>Chronologisches Life-Cycle-Management für CIs, von Eingang bis Entsorgung</para>
+            </listitem>
+
+            <listitem>
+                <para>Protokollierung aller Konfigurations Änderungen an CMDB-Daten</para>
+            </listitem>
+
+            <listitem>
+                <para>Anbindung an Unternehmens-Verzeichnisse (z. B. LDAP)</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Incident Management:</para>
+
+        <para>
+        <itemizedlist>
+            <listitem>
+                <para>Services und SLAs (integriert in OTRS): Auf dem Weg hin zu einem IT Service Management-Werkzeug, wurden in OTRS 2.2 die neuen Attribute 'Service' und 'Service Level Agreements (SLA)' integriert. Bei der Erstellung eines neuen Tickets kann der Anfragesteller einen Service (z. B. Email-Service) und ein zugehöriges SLA auswählen. SLA Attribute sind "response time" (Antwortzeit), "update time" (Updatezeit) und "solution time" (Lösungszeit). Diese Attribute können vom IT Service für Benachrichtigungen oder für die Eskalation von Tickets herangezogen werden, um bestehende SLAs einzuhalten. Service- und SLA-spezifische Informationen innerhalb der Header neuer Emails können weiterhin mit Hilfe des PostMasterFilter-Moduls ausgewertet werden.</para>
+            </listitem>
+
+            <listitem>
+                <para>Durchgängige Prozess-Unterstützung der IT Service-Support-Organisation bei Incident-Erfassung, Klassifizierung, Priorisierung, Direkthilfe (1st Level Support), Diagnose, Koordination (2nd/3rd-Level-Support, Externe Partner etc.), Service-Wiederherstellung, Lösung, Abschluss und Dokumentation</para>
+            </listitem>
+
+            <listitem>
+                <para>Schnelle und intuitive Erfassung von Incidents und Service Requests, sowohl für Mitarbeiter am ServiceDesk als auch für Anwender (Web Self-Service)</para>
+            </listitem>
+
+            <listitem>
+                <para>Regelbasierte Ticketerzeugung und/oder Benachrichtigung, z. B. im Zusammenspiel mit IT Monitoring-Systemen</para>
+            </listitem>
+
+            <listitem>
+                <para>Klassifizierungs- und Priorisierungsoptionen (Priorität, Auswirkung, Dringlichkeit)</para>
+            </listitem>
+
+            <listitem>
+                <para>Volle CMDB-Unterstützung, z. B. vom Incident betroffene Services, beteiligte Configuration Items, FAQ-Datenbank, Verknüpfung zw. Tickets und CIs für Analysen und Reporting</para>
+            </listitem>
+
+            <listitem>
+                <para>(Automatische) Erfassung von "Artikeln" zu Tickets (Aktivitätenprotokoll)</para>
+            </listitem>
+
+            <listitem>
+                <para>Stetige Überwachung und Auswertung des Bearbeitungsfortschritts von Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Bereitstellung und Speicherung relevanter Zeitdaten, z. B. für Service-Level-Management</para>
+            </listitem>
+
+            <listitem>
+                <para>Praktisches Tickethandling (Merge, Split), z. B. zur Zusammenfassung gleichartiger Incidents bzw. Aufteilen komplexerer Vorfälle</para>
+            </listitem>
+
+            <listitem>
+                <para>Planung, proaktive Steuerung und Überwachung der Service-Request-Aktivitäten (Arbeitspakete, Arbeitspläne, Service Lead Times, Fälligkeiten)</para>
+            </listitem>
+
+            <listitem>
+                <para>Erzeugung und Verfolgung von Problem-Tickets aus Incidents</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Problem Management:</para>
+
+        <para>
+        <itemizedlist>
+
+            <listitem>
+                <para>Durchgängige Prozess-Unterstützung der IT Organisation bei Problem-Identifizierung, Erfassung, Klassifizierung, Priorisierung, Problem-Ursprungsdiagnose, Lösungs-Koordination, z. B. Workaround oder Request for Change, Abschluss und Dokumentation</para>
+            </listitem>
+
+            <listitem>
+                <para>Bereitstellung relevanter Informationen für die Teil-Prozesse</para>
+                <itemizedlist>
+
+                    <listitem>
+                        <para>Problem Control (Problembehandlung),</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Error Control (Fehlerbehandlung),</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Proaktives Problem Management (z. B. Ticket-Trendanalysen) und</para>
+                    </listitem>
+
+                    <listitem>
+                        <para>Management Information (zu Incidents, Problemen und Known Errors)</para>
+                    </listitem>
+
+                </itemizedlist>
+
+            </listitem>
+
+            <listitem>
+                <para>Stetiger Blick auf aktuelle/historische Incidents, Wissensbasis (FAQs) und CMDB</para>
+            </listitem>
+
+            <listitem>
+                <para>Vollständige Integration der OTRS Rollen-, Gruppen- und Queue-Mechanismen zur Zuweisung, Verfolgung, Eskalation und Auswertung von Incident-Tickets</para>
+            </listitem>
+
+            <listitem>
+                <para>Gezielte, automatische, Benachrichtigung über den Problemlösungsfortschritt an betroffene Anwender(-Gruppen) oder an das Management</para>
+            </listitem>
+
+            <listitem>
+                <para>Rückmeldung gelöster Probleme an das Incident Management</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
+
+        <para>Tickets sind die zentralen Informationscontainer für das Management von IT Service-Prozessen. Sie "transportieren" eine Vielzahl möglicher Basisdaten, z. B.:</para>
+
+
+        <para>
+        <itemizedlist>
+
+            <listitem>
+                <para>Personen, Organisationen</para>
+            </listitem>
+
+            <listitem>
+                <para>Zeitstempel</para>
+            </listitem>
+
+            <listitem>
+                <para>Priorität, Impact, Severity</para>
+            </listitem>
+
+            <listitem>
+                <para>Assoziationen zum IT Service-Katalog und zu Projekten</para>
+            </listitem>
+
+            <listitem>
+                <para>Aktivitäten, z. B. die Notiz zu einem Anruf mit Zeitaufschreibung</para>
+            </listitem>
+
+            <listitem>
+                <para>Objekte, z. B. CIs, inkl. der Relationen</para>
+            </listitem>
+
+            <listitem>
+                <para>(Sub-)Tickets, z. B. ein Problem mit den zugrunde liegenden Incidents</para>
+            </listitem>
+
+            <listitem>
+                <para>Notizen und Anhänge, z. B. gescannte Service-Request Formulare</para>
+            </listitem>
+
+            <listitem>
+                <para>Arbeitspakete, d.h. geplante, zugewiesene Aufgaben</para>
+            </listitem>
+
+            <listitem>
+                <para>SLA Informationen</para>
+            </listitem>
+
+            <listitem>
+                <para>Schwellwerte und Eskalationsdaten</para>
+            </listitem>
+
+            <listitem>
+                <para>Ticket History (aller Änderungen)</para>
+            </listitem>
+
+            <listitem>
+                <para>Accounting-Informationen (Zeitaufschreibung)</para>
+            </listitem>
+
+        </itemizedlist>
+        </para>
         </sect2>
+
+
 
     </sect1>
 
