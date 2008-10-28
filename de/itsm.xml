@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: itsm.xml,v 1.7 2008-08-19 12:49:27 ub Exp $ -->
+<!-- $Id: itsm.xml,v 1.7.2.1 2008-10-28 18:57:17 ub Exp $ -->
 
 <chapter>
     <title>OTRS::ITSM - das OTRS für IT Service Management</title>
@@ -348,7 +348,7 @@ Allerdings beschreibt die ITIL nur, "was von wem" getan bzw. woran gedacht werde
                 </listitem>
 
                 <listitem>
-                    <para>Strukturierte Service/CI-Ansicht</para>
+                    <para>Service/CI-Ansicht</para>
                     <para>
                         Erweiterung der bestehenden Service Ansicht um SLAs und der dazu verknüpften CIs.
                         Zu den CIs wird der jeweilige Incident Status angezeigt. Bei abhängigen Services und CIs
