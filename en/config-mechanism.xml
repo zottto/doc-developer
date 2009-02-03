@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.11 2007-10-01 09:29:33 martin Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.12 2009-02-03 10:00:13 martin Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -101,7 +101,29 @@ $Self->{ConfigObject}->Set(
         <sect1 id="xml-config">
         <title>XML Config Options</title>
         <para>
-If you want to add a config option:
+XML config files are located under:
+        </para>
+        <para>
+            <filename>$OTRS_HOME/Kernel/Config/Files/*.xml</filename>
+        </para>
+        <para>
+Each config file has the following layout:
+        </para>
+        <para>
+        <programlisting>
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;otrs_config version="1.0" init="Changes"&gt;
+
+   &lt;!--  config items will be here --&gt;
+
+&lt;/otrs_config&gt;
+        </programlisting>
+        </para>
+        <para>
+The "init" attribute describes where the config options should be loaded. There are different levels available and will be loaded/overloaded in the following order "Framework" (for framework settings e. g. session option), "Application" (for application settings e. g. ticket options), "Config" (for extensions to existing applications e. g. ITSM options) and "Changes" (for custom development e. g. to overwrite framework or ticket options).
+        </para>
+        <para>
+If you want to add a config items here an example:
         </para>
         <para>
         <programlisting>
