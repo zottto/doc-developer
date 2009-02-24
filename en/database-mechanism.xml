@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.25 2008-05-07 08:42:09 martin Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.26 2009-02-24 16:06:25 mh Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -114,7 +114,7 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
     &lt;Unique Name="calendar_event_title"&gt;
         &lt;UniqueColumn Name="title"/&gt;
     &lt;/Unique&gt;
-    &lt;ForeignKey ForeignTable="system_user"&gt;
+    &lt;ForeignKey ForeignTable="users"&gt;
         &lt;Reference Local="owner_id" Foreign="id"/&gt;
     &lt;/ForeignKey&gt;
 &lt;/TableCreate&gt;
