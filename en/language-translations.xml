@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.11 2009-03-05 15:05:38 tr Exp $ -->
+<!-- $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -53,7 +53,7 @@ Format:
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.11 2009-03-05 15:05:38 tr Exp $
+# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -62,15 +62,14 @@ Format:
 package Kernel::Language::de;
 
 use strict;
+use warnings;
 
-use vars qw($VERSION);
-$VERSION = '$Revision: 1.11 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.12 $) [1];
 
 # --
 sub Data {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
 
     # $$START$$
 
@@ -114,7 +113,7 @@ Format:
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.11 2009-03-05 15:05:38 tr Exp $
+# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -124,6 +123,7 @@ Format:
 package Kernel::Language::de_AgentCalendar;
 
 use strict;
+use warnings;
 
 sub Data {
     my $Self = shift;
@@ -157,7 +157,7 @@ Format:
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.11 2009-03-05 15:05:38 tr Exp $
+# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -166,15 +166,14 @@ Format:
 package Kernel::Language::xx_Custom;
 
 use strict;
+use warnings;
 
-use vars qw($VERSION);
-$VERSION = '$Revision: 1.11 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.12 $) [1];
 
 # --
 sub Data {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
 
     # $$START$$
 
