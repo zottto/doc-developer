@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.26 2009-02-24 16:06:25 mh Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.27 2009-03-05 15:38:23 tr Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -55,24 +55,24 @@ not all databases support LIMIT in SQL strings.
             </sect3>
             <sect3 id="database-sql-quote">
             <title>QUOTE</title>
-              <para>
+                <para>
 String:
-                <programlisting format="linespecific">
+                    <programlisting format="linespecific">
 my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
-                </programlisting>
-              </para>
-              <para>
+                    </programlisting>
+                </para>
+                <para>
 Integer:
-                <programlisting format="linespecific">
+                    <programlisting format="linespecific">
 my $QuotedInteger = $Self->{DBObject}->Quote('123', 'Integer');
-                </programlisting>
-              </para>
-              <para>
+                    </programlisting>
+                </para>
+                <para>
 Number:
-                <programlisting format="linespecific">
+                    <programlisting format="linespecific">
 my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
-                </programlisting>
-              </para>
+                    </programlisting>
+                </para>
             </sect3>
         </sect2>
         <sect2 id="database-xml">
@@ -171,7 +171,7 @@ my @SQL = $Self->{DBObject}->SQLProcessor(
 );
 push(@SQL, $Self->{DBObject}->SQLProcessorPost());
 
-foreach (@SQL) {
+for (@SQL) {
     $Self->{DBObject}->Do(SQL => $_);
 }
             </programlisting>

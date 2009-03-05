@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.16 2007-12-10 11:08:22 tr Exp $ -->
+<!-- $Id: templates.xml,v 1.17 2009-03-05 15:38:23 tr Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -233,7 +233,7 @@ my %Article = $Self->{TicketObject}->ArticleGet(
 );
 
 # file blocks
-foreach (qw(From To Cc Subject)) {
+for (qw(From To Cc Subject)) {
     if ($Article{$_}) {
         $Self->{LayoutObject}->Block(
             Name => 'Row',
