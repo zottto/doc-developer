@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.16 2009-03-05 14:23:37 tr Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.17 2009-03-05 14:44:12 tr Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -50,9 +50,9 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         <programlisting format="linespecific">
 # --
 # (file name) - a short description what it does
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.16 2009-03-05 14:23:37 tr Exp $
+# $Id: codesyntax.xml,v 1.17 2009-03-05 14:44:12 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -65,7 +65,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.16 2009-03-05 14:23:37 tr Exp $
+# $Id: codesyntax.xml,v 1.17 2009-03-05 14:44:12 tr Exp $
         </programlisting>
         </para>
     </sect1>
