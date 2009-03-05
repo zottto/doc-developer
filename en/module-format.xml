@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $ -->
+<!-- $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -21,7 +21,7 @@ authentication is ok.
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -31,22 +31,20 @@ authentication is ok.
 package Kernel::System::Auth::Simple;
 
 use strict;
+use warnings;
 
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
 sub GetOption {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     # return option
     return (PreAuth => 0);
 }
 sub Auth {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     [...]
     if ($Authentication) {
         return $Param{User};
@@ -84,7 +82,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -94,18 +92,17 @@ Format:
 package Kernel::Output::HTML::NotificationMotd;
 
 use strict;
+use warnings;
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
 # --
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     return $Self->{LayoutObject}->Notify(Info =>  Some daily news! );
 }
 # --
@@ -136,7 +133,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -146,18 +143,17 @@ Format:
 package Kernel::Output::HTML::NavBarABC;
 
 use strict;
+use warnings;
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
 # --
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     my %Return = ();
     $Return{'0999989'} = {
             Block => 'ItemPersonal',
@@ -209,7 +205,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -219,18 +215,20 @@ Format:
 package Kernel::Modules::AgentTest;
 
 use strict;
+use warnings;
+
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
 # --
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     [...]
     # ---------------------------------------------------------- #
     # add a new object (Note: dtl text 'New')
@@ -414,7 +412,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -424,6 +422,7 @@ Format:
 package Kernel::System::Backend;
 
 use strict;
+use warnings;
 
 =head1 NAME
 
@@ -444,14 +443,16 @@ create a backend object
 use Kernel::Config;
 use Kernel::System::Backend;
 
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
+
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
 
 =cut
 
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
@@ -465,8 +466,7 @@ $BackendObject->SomeMethodeA(ParamA => 'error', ParamB => "Need something!");
 =cut
 
 sub SomeMethodeA{
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     [...]
     return 1;
 }
@@ -482,7 +482,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.27 $ $Date: 2009-03-05 15:00:11 $
+$Revision: 1.28 $ $Date: 2009-03-05 15:31:06 $
 
 =cut
         </programlisting>
@@ -511,7 +511,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -521,11 +521,14 @@ Format:
 package Kernel::System::CustomerUser::ABD;
 
 use strict;
+use warnings;
+
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
     [...]
     return $Self;
 }
@@ -659,7 +662,7 @@ Kernel/System/Stats/Static/SomeExampleStats.pm:
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -670,6 +673,9 @@ package Kernel::System::Stats::Static::SomeExampleStats;
 
 use strict;
 use warnings;
+
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -692,8 +698,7 @@ sub new {
 }
 
 sub Param {
-    my $Self = shift;
-    my @Params = ();
+    my ( $Self, @Param ) = @_;
 
     # get current time
     my ($s,$m,$h, $D,$M,$Y) = $Self->{TimeObject}->SystemTime2Date(
@@ -816,7 +821,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -825,10 +830,11 @@ Format:
 
 package Kernel::System::Ticket::Number::Simple;
 
-use strict; use vars qw($VERSION);
+use strict;
+use warnings;
 
-$VERSION = '$Revision: 1.27 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -892,7 +898,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -902,14 +908,13 @@ Format:
 package Kernel::System::PostMaster::Filter::Example;
 
 use strict;
-use vars qw($VERSION);
+use warnings;
 
-$VERSION = '$Revision: 1.27 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
     my $Self = {};
@@ -926,8 +931,7 @@ sub new {
 }
 
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     # get config options
     my %Config = ();
     my %Match = ();
@@ -1034,7 +1038,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1044,15 +1048,14 @@ Format:
 package Kernel::Output::HTML::TicketMenuLock;
 
 use strict;
+use warnings;
 
-use vars qw($VERSION);
-$VERSION = '$Revision: 1.27 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
     my $Self = {};
@@ -1067,8 +1070,7 @@ sub new {
 }
 # --
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
     # check needed stuff
     if (!$Param{Ticket}) {
         $Self->{LogObject}->Log(Priority => 'error', Message => "Need Ticket!");
@@ -1161,7 +1163,7 @@ Format:
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
+# $Id: module-format.xml,v 1.28 2009-03-05 15:31:06 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1171,15 +1173,14 @@ Format:
 package Kernel::System::Ticket::Event::ForceUnlock;
 
 use strict;
+use warnings;
 
-use vars qw($VERSION);
-$VERSION = '$Revision: 1.27 $';
-$VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
+use vars qw(@ISA $VERSION);
+$VERSION = qw($Revision: 1.28 $) [1];
 
 # --
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
     my $Self = {};
@@ -1194,8 +1195,8 @@ sub new {
 }
 # --
 sub Run {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
+
     # check needed stuff
     for (qw(TicketID Event Config)) {
         if (!$Param{$_}) {
