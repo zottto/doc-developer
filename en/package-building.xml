@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.35 2008-07-03 17:32:34 martin Exp $ -->
+<!-- $Id: package-building.xml,v 1.36 2009-03-05 15:15:45 tr Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -72,7 +72,7 @@ The vendor URL (required).
             <para>
 The license of the package (required).
             <programlisting>
-&lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
+&lt;License&gt;GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007&lt;/License&gt;
             </programlisting>
             </para>
         </sect2>
