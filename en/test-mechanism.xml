@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.4 2006-04-02 23:25:09 martin Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.5 2009-03-05 15:03:31 tr Exp $ -->
 
 <chapter>
     <title>Unit Tests</title>
@@ -19,13 +19,13 @@ Example (/scripts/test/Calendar.t):
         <programlisting>
 # --
 # Calendar.t - Calendar
-# Copyright (C) 2001-2005 Martin Edenhofer &lt;martin+code@otrs.org&gt;
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: test-mechanism.xml,v 1.4 2006-04-02 23:25:09 martin Exp $
+# $Id: test-mechanism.xml,v 1.5 2009-03-05 15:03:31 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 use Kernel::System::User;
@@ -61,16 +61,16 @@ shell:/opt/otrs&gt; bin/UnitTest.pl -n Calendar
 +-------------------------------------------------------------------+
 /opt/otrs/scripts/test/Calendar.t:
 +-------------------------------------------------------------------+
- ok 1 - EventAdd()
+ok 1 - EventAdd()
 =====================================================================
- Product:   OTRS 2.0.x CVS
- Test Time: 0 s
- Time:      2006-04-02 12:58:37
- Host:      yourhost.example.com
- Perl:      5.8.7
- OS:        linux
- TestOk:    1
- TestNotOk: 0
+Product:   OTRS 2.0.x CVS
+Test Time: 0 s
+Time:      2006-04-02 12:58:37
+Host:      yourhost.example.com
+Perl:      5.8.7
+OS:        linux
+TestOk:    1
+TestNotOk: 0
 =====================================================================
 shell:/opt/otrs&gt;
         </programlisting>
@@ -114,4 +114,3 @@ $Self-&gt;Is(
         </para>
     </sect1>
 </chapter>
-

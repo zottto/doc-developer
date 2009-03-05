@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $ -->
+<!-- $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -19,14 +19,13 @@ authentication is ok.
         <programlisting>
 # --
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
+# --
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
-# --
-# Note:
-# available objects are: ConfigObject, LogObject and DBObject
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::Auth::Simple;
@@ -83,13 +82,13 @@ Format:
         <programlisting>
 # --
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Output::HTML::NotificationMotd;
@@ -135,13 +134,13 @@ Format:
         <programlisting>
 # --
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Output::HTML::NavBarABC;
@@ -208,13 +207,13 @@ Format:
         <programlisting>
 # --
 # Kernel/Modules/AgentTest.pm - message of the day
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Modules::AgentTest;
@@ -413,13 +412,13 @@ Format:
         <programlisting>
 # --
 # Kernel/System/Backend.pm - a core module
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::Backend;
@@ -478,12 +477,12 @@ sub SomeMethodeA{
 This software is part of the OTRS project (http://otrs.org/).
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
-the enclosed file COPYING for license information (GPL). If you
-did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+the enclosed file COPYING for license information (AGPL). If you
+did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.26 $ $Date: 2009-01-06 10:34:20 $
+$Revision: 1.27 $ $Date: 2009-03-05 15:00:11 $
 
 =cut
         </programlisting>
@@ -510,13 +509,13 @@ Format:
         <programlisting>
 # --
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::CustomerUser::ABD;
@@ -658,13 +657,13 @@ Kernel/System/Stats/Static/SomeExampleStats.pm:
         <programlisting>
 # --
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::Stats::Static::SomeExampleStats;
@@ -710,11 +709,11 @@ sub Param {
     }
     # create possible time selections
     my %Year = ();
-    foreach ($Y-10..$Y+1) {
+    for ($Y-10..$Y+1) {
         $Year{$_} = $_;
     }
     my %Month = ();
-    foreach (1..12) {
+    for (1..12) {
         my $Tmp = sprintf("%02d", $_);
         $Month{$_} = $Tmp;
     }
@@ -815,20 +814,20 @@ Format:
             <programlisting>
 # --
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
+# --
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
-# --
-# Generates auto increment ticket numbers like ss.... (e. g. 1010138, 1010139, ...)
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::Ticket::Number::Simple;
 
 use strict; use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.26 $';
+$VERSION = '$Revision: 1.27 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub CreateTicketNr {
@@ -891,11 +890,13 @@ Format:
             <programlisting>
 # --
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
+# --
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::PostMaster::Filter::Example;
@@ -903,7 +904,7 @@ package Kernel::System::PostMaster::Filter::Example;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '$Revision: 1.26 $';
+$VERSION = '$Revision: 1.27 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 sub new {
@@ -917,7 +918,7 @@ sub new {
     $Self->{Debug} = $Param{Debug} || 0;
 
     # get needed opbjects
-    foreach (qw(ConfigObject LogObject DBObject)) {
+    for (qw(ConfigObject LogObject DBObject)) {
         $Self->{$_} = $Param{$_} || die "Got no $_!";
     }
 
@@ -943,7 +944,7 @@ sub Run {
     # match 'Match => ???' stuff
     my $Matched = '';
     my $MatchedNot = 0;
-    foreach (sort keys %Match) {
+    for (sort keys %Match) {
         if ($Param{GetParam}->{$_} &amp;&amp; $Param{GetParam}->{$_} =~ /$Match{$_}/i) {
             $Matched = $1 || '1';
             if ($Self->{Debug} > 1) {
@@ -961,19 +962,19 @@ sub Run {
                     Message => "'$Param{GetParam}->{$_}' =~ /$Match{$_}/i matched NOT!",
                 );
             }
-       }
+        }
     }
     # should I ignore the incoming mail?
     if ($Matched &amp;&amp; !$MatchedNot) {
-       foreach (keys %Set) {
-           if ($Set{$_} =~ /\[\*\*\*\]/i) {
-               $Set{$_} = $Matched;
-           }
-           $Param{GetParam}->{$_} = $Set{$_};
-           $Self->{LogObject}->Log(
-               Priority => 'notice',
-               Message => "Set param '$_' to '$Set{$_}' (Message-ID: $Param{GetParam}->{'Message-ID'}) ",
-           );
+        for (keys %Set) {
+            if ($Set{$_} =~ /\[\*\*\*\]/i) {
+                $Set{$_} = $Matched;
+            }
+            $Param{GetParam}->{$_} = $Set{$_};
+            $Self->{LogObject}->Log(
+                Priority => 'notice',
+                Message => "Set param '$_' to '$Set{$_}' (Message-ID: $Param{GetParam}->{'Message-ID'}) ",
+            );
         }
     }
 
@@ -1031,13 +1032,13 @@ Format:
             <programlisting>
 # --
 # Kernel/Output/HTML/TicketMenuLock.pm
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Output::HTML::TicketMenuLock;
@@ -1045,7 +1046,7 @@ package Kernel::Output::HTML::TicketMenuLock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.26 $';
+$VERSION = '$Revision: 1.27 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1058,7 +1059,7 @@ sub new {
     bless ($Self, $Type);
 
     # get needed objects
-    foreach (qw(ConfigObject LogObject DBObject LayoutObject UserID TicketObject)) {
+    for (qw(ConfigObject LogObject DBObject LayoutObject UserID TicketObject)) {
         $Self->{$_} = $Param{$_} || die "Got no $_!";
     }
 
@@ -1158,13 +1159,13 @@ Format:
             <programlisting>
 # --
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
-# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
+# Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.26 2009-01-06 10:34:20 martin Exp $
+# $Id: module-format.xml,v 1.27 2009-03-05 15:00:11 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::System::Ticket::Event::ForceUnlock;
@@ -1172,7 +1173,7 @@ package Kernel::System::Ticket::Event::ForceUnlock;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '$Revision: 1.26 $';
+$VERSION = '$Revision: 1.27 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 # --
@@ -1185,7 +1186,7 @@ sub new {
     bless ($Self, $Type);
 
     # get needed objects
-    foreach (qw(ConfigObject TicketObject LogObject)) {
+    for (qw(ConfigObject TicketObject LogObject)) {
         $Self->{$_} = $Param{$_} || die "Got no $_!";
     }
 
@@ -1196,11 +1197,11 @@ sub Run {
     my $Self = shift;
     my %Param = @_;
     # check needed stuff
-    foreach (qw(TicketID Event Config)) {
-      if (!$Param{$_}) {
-        $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
-        return;
-      }
+    for (qw(TicketID Event Config)) {
+        if (!$Param{$_}) {
+            $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
+            return;
+        }
     }
     if ($Param{Event} eq 'MoveTicket') {
         $Self->{TicketObject}->LockSet(
