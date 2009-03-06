@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.14 2007-10-24 18:33:06 cs Exp $ -->
+<!-- $Id: book.xml,v 1.15 2009-03-06 07:07:20 tr Exp $ -->
 
 <book lang="en">
     <bookinfo>
-        <title>OTRS 2.3 - Developer Manual</title>
+        <title>OTRS 2.4 - Developer Manual</title>
         <edition>Playground</edition>
         <copyright>
-            <year>2003-2007</year>
+            <year>2003-2009</year>
             <holder>OTRS AG</holder>
         </copyright>
-        <date>2007-10-10</date>
+        <date>2009-03-06</date>
         <legalnotice>
             <para>
 Christian Schöpplein, Richard Kammermeyer, Stefan Rother, Thomas Raith, Burchard Steinbild, Andre Mindermann, Christopher Kuhn, Martin Edenhofer
