@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: layout.xml,v 1.10 2007-07-26 17:25:21 martin Exp $ -->
+<!-- $Id: layout.xml,v 1.11 2009-03-06 07:25:43 tr Exp $ -->
 
 <chapter>
     <title>Layout</title>
@@ -105,7 +105,7 @@ Examples from the Calendar Module:
 //--&gt;
 &lt;/style&gt;
 
-&lt;table border="0" width="100%" cellspacing="0" cellpadding="3" cols="1"&gt;
+&lt;table border="0" width="100%" cellspacing="0" cellpadding="3"&gt;
 &lt;tr&gt;
   &lt;td class="mainhead"&gt;
     $Env{"Box0"}$Text{"Calendar"}$Env{"Box1"}
