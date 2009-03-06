@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.17 2009-03-05 15:38:23 tr Exp $ -->
+<!-- $Id: templates.xml,v 1.18 2009-03-06 07:15:10 tr Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -186,17 +186,6 @@ If you want to include other dtl templates into a template, use the include tag:
             <programlisting>
 # include Copyright.dtl
 $Include{"Copyright"}
-            </programlisting>
-            </para>
-            <para>
-Yet another examlpe:
-            <programlisting>
-&lt;html&gt;
-&lt;head&gt;
-    &lt;tilte&gt;Some Title&lt;/tilte&gt;
-# include css.dtl file
-$Include{"css"}
-&lt;/head&gt;
             </programlisting>
             </para>
         </sect2>
