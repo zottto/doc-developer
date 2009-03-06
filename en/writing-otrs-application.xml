@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.13 2009-03-05 15:22:10 tr Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $ -->
 
 <chapter>
     <title>Writing an OTRS module for a new object</title>
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.13 2009-03-05 15:22:10 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -92,16 +92,12 @@ use warnings;
 use Kernel::System::HelloWorld;
 
 sub new {
-    my $Type = shift;
-    my %Param = @_;
+    my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
-    my $Self = {};
+    my $Self = { %Param };
     bless ($Self, $Type);
-    # get common objects
-    for (keys %Param) {
-        $Self-&gt;{$_} = $Param{$_};
-    }
+
     # check needed objects
     for (qw(ParamObject DBObject ModuleReg LogObject ConfigObject)) {
         $Self-&gt;{LayoutObject}-&gt;FatalError(Message =&gt; "Got no $_!") if (!$Self-&gt;{$_});
@@ -143,7 +139,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.13 2009-03-05 15:22:10 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -187,7 +183,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.13 2009-03-05 15:22:10 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
