@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $ -->
+<!-- $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -53,7 +53,7 @@ Format:
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
+# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -65,11 +65,11 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.12 $) [1];
+$VERSION = qw($Revision: 1.13 $) [1];
 
 # --
 sub Data {
-    my ( $Self, %Param ) = @_;
+    my $Self = shift;
 
     # $$START$$
 
@@ -92,6 +92,7 @@ sub Data {
     'off' => 'aus',Kernel/Language/$Language_Custome.pm
     };
     # $$STOP$$
+    return 1;
 }
 # --
 1;
@@ -113,7 +114,7 @@ Format:
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
+# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -137,7 +138,7 @@ sub Data {
     $Self->{Translation}->{'New Year\'s Eve!'} = 'Neu Jahr!';
     $Self->{Translation}->{'January'} = 'Januar';
     $Self->{Translation}->{'February'} = 'Februar';
-
+    return 1;
 }
 1;
             </programlisting>
@@ -157,7 +158,7 @@ Format:
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.12 2009-03-05 15:19:22 tr Exp $
+# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -169,11 +170,11 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.12 $) [1];
+$VERSION = qw($Revision: 1.13 $) [1];
 
 # --
 sub Data {
-    my ( $Self, %Param ) = @_;
+    my $Self = shift;
 
     # $$START$$
 
@@ -182,6 +183,7 @@ sub Data {
     $Self->{Translation}->{'Unlock'} = 'Lulu';
 
     # $$STOP$$
+    return 1;
 }
 # --
 1;

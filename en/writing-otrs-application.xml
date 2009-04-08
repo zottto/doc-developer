@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $ -->
 
 <chapter>
     <title>Writing an OTRS module for a new object</title>
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -95,12 +95,16 @@ sub new {
     my ( $Type, %Param ) = @_;
 
     # allocate new hash for object
-    my $Self = { %Param };
+    my $Self = {};
     bless ($Self, $Type);
 
     # check needed objects
-    for (qw(ParamObject DBObject ModuleReg LogObject ConfigObject)) {
-        $Self-&gt;{LayoutObject}-&gt;FatalError(Message =&gt; "Got no $_!") if (!$Self-&gt;{$_});
+    for my $Transfer ( (qw(
+        ParamObject DBObject ModuleReg
+        ConfigObject LogObject EncodeObject MainObject
+    )) {
+        $Self-&gt;{$Transfer} = $Param{$Transfer}
+            || $Self-&gt;{LayoutObject}-&gt;FatalError(Message =&gt; "Got no $Transfer!") ;
     }
     # create needed objects
     $Self-&gt;{HelloWorldObject} = Kernel::System::HelloWorld-&gt;new(%Param);
@@ -139,7 +143,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -183,7 +187,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.14 2009-03-06 07:02:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -229,9 +233,9 @@ use warnings;
 sub Data {
     my $Self = shift;
 
-    $Self-&gt;{Translation} = { %{$Self-&gt;{Translation}},
-        'Hello World'  =&gt; 'Hallo Welt',
-    };
+    $Self->{Translation}->{'Hello World'} = 'Hallo Welt';
+
+    return 1;
 }
 1;
         </programlisting>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.27 2009-03-05 15:38:23 tr Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.28 2009-04-08 13:44:09 tr Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -83,7 +83,7 @@ As this syntax is different from database to database, using it makes sure that
 you write applications that can be used in all of them.
             </para>
             <para>
-Note: The &lt;Insert&gt; has chnaged in >=2.2. Values are now used in content area (not longer in attribut Value).
+Note: The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (not longer in attribut Value).
             </para>
             <sect3 id="database-xml-insert">
             <title>INSERT</title>

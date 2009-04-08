@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.21 2007-09-03 13:34:21 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.22 2009-04-08 13:44:09 tr Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -249,7 +249,7 @@ A NavBar item should look like the following example:
                         <entry>-</entry>
                         <entry>module_setting.png</entry>
                     </row>
-                 </tbody>
+                </tbody>
             </tgroup>
         </informaltable>
         </para>
@@ -292,7 +292,7 @@ Menu functions - generic, used by any application module
                         <entry>k</entry>
                         <entry>personal.png</entry>
                     </row>
-                 </tbody>
+                </tbody>
             </tgroup>
         </informaltable>
         </para>
@@ -408,6 +408,12 @@ Menu functions - global, always used
                         <entry>itsm_location.png</entry>
                     </row>
                     <row>
+                        <entry>TimeAccounting</entry>
+                        <entry>6000</entry>
+                        <entry>-</entry>
+                        <entry>time_accounting.png</entry>
+                    </row>
+                    <row>
                         <entry>ContentManager</entry>
                         <entry>7050</entry>
                         <entry>-</entry>
@@ -465,7 +471,7 @@ Menu functions - global, always used
                         <entry>a</entry>
                         <entry>admin.png</entry>
                     </row>
-                 </tbody>
+                </tbody>
             </tgroup>
         </informaltable>
         </para>
@@ -485,7 +491,7 @@ AccessKey "g" is also reserved for the submission of forms.
         <para>
 An object module should have the following process flow:
         </para>
-         <para>
+        <para>
             <screenshot>
                 <graphic srccredit="" fileref="screenshots/screen-flow.png"></graphic>
             </screenshot>

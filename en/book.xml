@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.16 2009-03-12 11:27:03 tr Exp $ -->
+<!-- $Id: book.xml,v 1.17 2009-04-08 13:44:09 tr Exp $ -->
 
 <book lang="en">
     <bookinfo>
         <title>OTRS 2.4 - Developer Manual</title>
-        <edition>Aitutaki (One Foot Island, Cook Island)</edition>
+        <edition>Aitutaki Beach (Cook Island)</edition>
         <copyright>
             <year>2003-2009</year>
             <holder>OTRS AG</holder>

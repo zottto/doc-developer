@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.36 2009-03-05 15:15:45 tr Exp $ -->
+<!-- $Id: package-building.xml,v 1.37 2009-04-08 13:44:09 tr Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -35,17 +35,17 @@ The package version (required).
         <sect2 id="package-framework">
             <title>Framework</title>
             <para>
-The required framework version (2.3.x means e.g. 2.3.1 or 2.3.9) (required).
+The required framework version (2.4.x means e.g. 2.4.1 or 2.4.9) (required).
             <programlisting>
-&lt;Framework&gt;2.3.x&lt;/Framework&gt;
+&lt;Framework&gt;2.4.x&lt;/Framework&gt;
             </programlisting>
             </para>
             <para>
 Can also be used several times.
             <programlisting>
+&lt;Framework&gt;2.4.x&lt;/Framework&gt;
 &lt;Framework&gt;2.3.x&lt;/Framework&gt;
 &lt;Framework&gt;2.2.x&lt;/Framework&gt;
-&lt;Framework&gt;2.1.x&lt;/Framework&gt;
             </programlisting>
             </para>
         </sect2>
@@ -384,7 +384,7 @@ This is a whole example spec file.
 &lt;otrs_package version="1.0"&gt;
     &lt;Name&gt;Calendar&lt;/Name&gt;
     &lt;Version&gt;0.0.1&lt;/Version&gt;
-    &lt;Framework&gt;2.3.x&lt;/Framework&gt;
+    &lt;Framework&gt;2.4.x&lt;/Framework&gt;
     &lt;Vendor&gt;OTRS AG&lt;/Vendor&gt;
     &lt;URL&gt;http://otrs.org/&lt;/URL&gt;
     &lt;License&gt;GNU GENERAL PUBLIC LICENSE Version 2, June 1991&lt;/License&gt;
