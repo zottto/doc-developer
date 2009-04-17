@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.12 2009-02-03 10:00:13 martin Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.12.2.1 2009-04-17 10:14:38 mh Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -114,7 +114,7 @@ Each config file has the following layout:
 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;otrs_config version="1.0" init="Changes"&gt;
 
-   &lt;!--  config items will be here --&gt;
+    &lt;!--  config items will be here --&gt;
 
 &lt;/otrs_config&gt;
         </programlisting>
@@ -248,15 +248,15 @@ A hash can contain content arrays, hashes or pull-down menus.
         &lt;/Item&gt;
         &lt;Item Key=""&gt;
             &lt;Array&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
+                &lt;Item&gt;&lt;/Item&gt;
+                &lt;Item&gt;&lt;/Item&gt;
             &lt;/Array&gt;
         &lt;/Item&gt;
         &lt;Item Key=""&gt;
             &lt;Option SelectedID="Key"&gt;
                 &lt;Item Key=""&gt;&lt;/Item&gt;
                 &lt;Item Key=""&gt;&lt;/Item&gt;
-            &lt;/Hash&gt;
+            &lt;/Option&gt;
         &lt;/Item&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
     &lt;/Hash&gt;
