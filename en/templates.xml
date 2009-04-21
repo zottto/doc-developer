@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.18 2009-03-06 07:15:10 tr Exp $ -->
+<!-- $Id: templates.xml,v 1.19 2009-04-21 06:21:58 tr Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -155,6 +155,17 @@ Translate this text and insert the given data: $Text{"Change %s settings", "$Dat
             </programlisting>
             </para>
         </sect2>
+        <sect2 id="jstext">
+            <title>$JSText{""}</title>
+            <para>
+The same as $Text{""} but with java scprit quoting. This function quote the ' in java script code with \. Otherwise
+the code is broken.
+            <programlisting>
+Translate this text: $JSText{"Help"}
+Translate this text and insert the given data: $JSText{"Change %s settings", "$Data{"Type"}"}
+            </programlisting>
+            </para>
+        </sect2>
         <sect2 id="config">
             <title>$Config{""}</title>
             <para>
@@ -252,6 +263,13 @@ With this tag you can set a variable in the dtl template.
 &lt;dtl set $Data{"Test"} = "Some Text"&gt;
             </programlisting>
             </para>
+            <note>
+                <para>
+This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
+The removal is necessary as a sequence control in the templates is not desired.
+The function should thus not be used any more.
+                </para>
+            </note>
         </sect2>
         <sect2 id="if">
             <title>if</title>
@@ -267,11 +285,13 @@ Or with a regexp.
 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
             </programlisting>
             </para>
-            <para>
+            <note>
+                <para>
 This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
 The removal is necessary as a sequence control in the templates is not desired.
 The function should thus not be used any more.
-            </para>
+                </para>
+            </note>
         </sect2>
         <sect2 id="system-call">
             <title>system-call</title>
@@ -296,6 +316,13 @@ The output of 'procinfo' is: $Data{"procinfo"}
             <para>
 Usable to set: $Data{""}, $Env{""} and $Config{""}.
             </para>
+            <note>
+                <para>
+This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
+The removal is necessary as a sequence control in the templates is not desired.
+The function should thus not be used any more.
+                </para>
+            </note>
         </sect2>
     </sect1>
     <sect1 id="dtl-example">

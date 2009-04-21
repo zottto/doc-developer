@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.13 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.14 2009-04-21 06:21:58 tr Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -231,9 +231,9 @@ With this config element hashes can be displayed.
             </para>
         </sect2>
         <sect2 id="xml-config-subhash">
-            <title>Hash with SubArray, SubOptions, SubHash</title>
+            <title>Hash with SubArray, SubHash</title>
             <para>
-A hash can contain content arrays, hashes or pull-down menus.
+A hash can contain content, arrays or hashes.
             </para>
             <para>
             <programlisting>
@@ -251,12 +251,6 @@ A hash can contain content arrays, hashes or pull-down menus.
                 &lt;Item&gt;&lt;/Item&gt;
                 &lt;Item&gt;&lt;/Item&gt;
             &lt;/Array&gt;
-        &lt;/Item&gt;
-        &lt;Item Key=""&gt;
-            &lt;Option SelectedID="Key"&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
-            &lt;/Option&gt;
         &lt;/Item&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
     &lt;/Hash&gt;

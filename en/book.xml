@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.17 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: book.xml,v 1.18 2009-04-21 06:21:58 tr Exp $ -->
 
 <book lang="en">
     <bookinfo>
@@ -13,7 +13,7 @@
         <date>2009-03-06</date>
         <legalnotice>
             <para>
-Christian Schöpplein, Richard Kammermeyer, Stefan Rother, Thomas Raith, Burchard Steinbild, Andre Mindermann, Christopher Kuhn, Martin Edenhofer
+René Bakker, Hauke Böttcher, Stefan Bedorf, Shawn Beasley, Jens Bothe,  Udo Bretz, Martin Edenhofer, Manuel Hecht, Christopher Kuhn, André Mindermann, Henning Oschwald, Thomas Raith, Stefan Rother, Burchard Steinbild
             </para>
             <para>
 This work is copyrighted by OTRS AG.
@@ -27,9 +27,9 @@ UNIX is a registered trademark of X/Open Company Limited.
 Linux is a registered trademark of Linus Torvalds.
             </para>
             <para>
-MS-DOS, Windows, Windows 95, Windows 98, Windows NT, Windows 2000, Windows XP
-and Windows 2003 are registered trademarks of Microsoft Corporation.
-Other trademarks and registered trademarks are: SUSE and YaST of SUSE GmbH,
+MS-DOS, Windows, Windows 95, Windows 98, Windows NT, Windows 2000, Windows XP, Windows 2003
+and Windows Vista are registered trademarks of Microsoft Corporation.
+Other trademarks and registered trademarks are: SUSE and YaST of SUSE Linux GmbH,
 Red Hat and Fedora are registered trademarks of Red Hat, Inc.
 Mandrake is a registered trademark of MandrakeSoft, SA.
 Debian is a registered trademark of Software in the Public Interest, Inc.

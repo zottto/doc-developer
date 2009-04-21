@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.19 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -52,7 +52,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.19 2009-04-08 13:44:09 tr Exp $
+# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -70,7 +70,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.19 2009-04-08 13:44:09 tr Exp $
+# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -94,7 +94,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.19 2009-04-08 13:44:09 tr Exp $
+# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
         </programlisting>
         </para>
     </sect1>
@@ -112,26 +112,6 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 e.g. for perl-code
 # FRAMEWORK-2.1: the function ID2UserName is first available in OTRS 2.1
         </programlisting>
-        </para>
-    </sect1>
-    <sect1 id="objects-allocation">
-        <title>Objects and their allocation</title>
-        <para>
-    In OTRS many objects are available. But it is not allowed to use every object in each script.
-    Please note the following definitions
-        </para>
-        <para>
-        <itemizedlist mark="round">
-            <listitem>
-                <para>don't use the LayoutObject in core modules</para>
-            </listitem>
-            <listitem>
-                <para>don't use the ParamObject in core modules</para>
-            </listitem>
-            <listitem>
-                <para>don't use the DBObject in frontend modules</para>
-            </listitem>
-        </itemizedlist>
         </para>
     </sect1>
     <sect1 id="special-comments">
@@ -181,25 +161,6 @@ e.g. for perl-code
         </itemizedlist>
         </para>
     </sect1>
-    <sect1 id="mainobject-using">
-        <title>Using of the MainObject</title>
-        <para>
-    Information about the MainObject
-        </para>
-        <para>
-        <itemizedlist mark="round">
-            <listitem>
-                <para>initialize the MainObject in the basic .pl-file</para>
-            </listitem>
-            <listitem>
-                <para>in .pm files only pass it to the next Object you initialize</para>
-            </listitem>
-            <listitem>
-                <para>don't use the Perl "require" function any more</para>
-            </listitem>
-        </itemizedlist>
-        </para>
-    </sect1>
     <sect1 id="perldoc">
         <title>Perldoc</title>
         <para>
@@ -231,5 +192,63 @@ e.g. for perl-code
         <para>
     Please see that a line of code is not longer then 100 charactars.
         </para>
+    </sect1>
+    <sect1 id="core-objects">
+        <title>Core-Objects</title>
+        <sect2 id="objects-allocation">
+            <title>Objects and their allocation</title>
+            <para>
+        In OTRS many objects are available. But it is not allowed to use every object in each script.
+        Please note the following definitions
+            </para>
+            <para>
+            <itemizedlist mark="round">
+                <listitem>
+                    <para>don't use the LayoutObject in core modules</para>
+                </listitem>
+                <listitem>
+                    <para>don't use the ParamObject in core modules</para>
+                </listitem>
+                <listitem>
+                    <para>don't use the DBObject in frontend modules</para>
+                </listitem>
+            </itemizedlist>
+            </para>
+        </sect2>
+        <sect2 id="mainobject-using">
+            <title>Using of the MainObject</title>
+            <para>
+        Information about the MainObject
+            </para>
+            <para>
+            <itemizedlist mark="round">
+                <listitem>
+                    <para>initialize the MainObject in the basic .pl-file</para>
+                </listitem>
+                <listitem>
+                    <para>in .pm files only pass it to the next Object you initialize</para>
+                </listitem>
+                <listitem>
+                    <para>don't use the Perl "require" function any more</para>
+                </listitem>
+            </itemizedlist>
+            </para>
+        </sect2>
+        <sect2 id="encodeobject-using">
+            <title>Using of the EncodeObject</title>
+            <para>
+        Information about the EncodeObject
+            </para>
+            <para>
+            <itemizedlist mark="round">
+                <listitem>
+                    <para>initialize the EncodeObject in the basic .pl-file</para>
+                </listitem>
+                <listitem>
+                    <para>in .pm files only pass it to the next Object you initialize</para>
+                </listitem>
+            </itemizedlist>
+            </para>
+        </sect2>
     </sect1>
 </chapter>

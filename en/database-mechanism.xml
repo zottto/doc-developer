@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.28 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.29 2009-04-21 06:21:58 tr Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -52,6 +52,26 @@ Take care to use Limit as param and not in the SQL string because
 not all databases support LIMIT in SQL strings.
                 </para>
             </note>
+            <programlisting format="linespecific">
+my $SQL = "SELECT id FROM table WHERE tn = ? AND group = ?";
+
+$Self->{DBObject}->Prepare(
+    SQL   => $SQL,
+    Limit => 15,
+    Bind  => [ $Tn, $Group ],
+);
+
+while (my @Row = $Self->{DBObject}->FetchrowArray()) {
+    $Id = $Row[0];
+}
+return $Id;
+            </programlisting>
+            <note>
+                <para>
+Use the Bind attribute where ever you can, especially for long statements. If
+you use Bind you do not need the function Quote().
+                </para>
+            </note>
             </sect3>
             <sect3 id="database-sql-quote">
             <title>QUOTE</title>
@@ -73,6 +93,11 @@ Number:
 my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
                     </programlisting>
                 </para>
+                <note>
+                    <para>
+Please use the Bind attribute instead of Quote() where ever you can.
+                    </para>
+                </note>
             </sect3>
         </sect2>
         <sect2 id="database-xml">
@@ -82,9 +107,11 @@ The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER 
 As this syntax is different from database to database, using it makes sure that
 you write applications that can be used in all of them.
             </para>
-            <para>
-Note: The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (not longer in attribut Value).
-            </para>
+            <note>
+                <para>
+The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (not longer in attribut Value).
+                </para>
+            </note>
             <sect3 id="database-xml-insert">
             <title>INSERT</title>
             <programlisting format="linespecific">
@@ -202,9 +229,6 @@ for (@SQL) {
             </listitem>
             <listitem>
                 <para>DB2</para>
-            </listitem>
-            <listitem>
-                <para>MaxDB/SAPDB (experimental)</para>
             </listitem>
         </itemizedlist>
         </para>
