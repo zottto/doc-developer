@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.14 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.15 2009-06-14 10:00:45 martin Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -267,6 +267,8 @@ Module registration for Agent Interface.
             <programlisting>
 &lt;Setting&gt;
     &lt;FrontendModuleReg&gt;
+        &lt;Group&gt;group1&lt;/Group&gt;
+        &lt;Group&gt;group2&lt;/Group&gt;
         &lt;Description&gt;Logout&lt;/Description&gt;
         &lt;Title&gt;&lt;/Title&gt;
         &lt;NavBarName&gt;&lt;/NavBarName&gt;
@@ -296,6 +298,7 @@ Module registration for Admin Interface
 &lt;Setting&gt;
     &lt;FrontendModuleReg&gt;
         &lt;Group&gt;admin&lt;/Group&gt;
+        &lt;Group&gt;admin2&lt;/Group&gt;
         &lt;Description&gt;Admin&lt;/Description&gt;
         &lt;Title&gt;User&lt;/Title&gt;
         &lt;NavBarName&gt;Admin&lt;/NavBarName&gt;
