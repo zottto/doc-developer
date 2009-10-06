@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.19 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: templates.xml,v 1.20 2009-10-06 13:07:00 mg Exp $ -->
 
 <chapter>
     <title>Templates</title>
     <para>
-The .dtl files are to 70% plain html and just used from frontend modules
+The .dtl files are about 70% plain html and just used from frontend modules
 (Kernel/Modules/*.pm). The .dtl files are located under:
     </para>
     <para>
@@ -17,34 +17,34 @@ The usable dtl tags and syntax are described below.
     <sect1 id="template-formatting">
         <title>Formatting</title>
         <para>
-TAB: We use two spaces for every new open tag. Examples:
+We use four spaces per indentation level. Examples:
         <programlisting>
 &lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Key&lt;/td&gt;
-    &lt;td&gt;Value&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;aaa&lt;/td&gt;
-    &lt;td&gt;bbb&lt;/td&gt;
-  &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Key&lt;/td&gt;
+        &lt;td&gt;Value&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;aaa&lt;/td&gt;
+        &lt;td&gt;bbb&lt;/td&gt;
+    &lt;/tr&gt;
 &lt;/table&gt;
         </programlisting>
         <programlisting>
 &lt;form action ="index.pl"&gt;
-  &lt;input type="text" value=""&gt;
-  &lt;input type="text" value=""&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Key1&lt;/td&gt;
-      &lt;td&gt;Value1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Key2&lt;/td&gt;
-      &lt;td&gt;Value2&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-  &lt;input type="submit"&gt;
+    &lt;input type="text" value=""&gt;
+    &lt;input type="text" value=""&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Key1&lt;/td&gt;
+            &lt;td&gt;Value1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Key2&lt;/td&gt;
+            &lt;td&gt;Value2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;input type="submit"&gt;
 &lt;/form&gt;
         </programlisting>
         </para>
