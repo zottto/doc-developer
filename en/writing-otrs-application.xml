@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.16 2009-12-09 19:22:16 martin Exp $ -->
 
 <chapter>
     <title>Writing an OTRS module for a new object</title>
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.16 2009-12-09 19:22:16 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -99,19 +99,19 @@ sub new {
     bless ($Self, $Type);
 
     # check needed objects
-    for my $Transfer ( (qw(
-        ParamObject DBObject ModuleReg
-        ConfigObject LogObject EncodeObject MainObject
-    )) {
-        $Self-&gt;{$Transfer} = $Param{$Transfer}
-            || $Self-&gt;{LayoutObject}-&gt;FatalError(Message =&gt; "Got no $Transfer!") ;
+    # check needed objects
+    for (qw(ParamObject DBObject TicketObject LayoutObject LogObject QueueObject ConfigObject EncodeObject MainObject)) {
+        if ( !$Self->{$_} ) {
+            $Self->{LayoutObject}->FatalError( Message => "Got no $_!" );
+        }
     }
+
     # create needed objects
     $Self-&gt;{HelloWorldObject} = Kernel::System::HelloWorld-&gt;new(%Param);
 
     return $Self;
 }
-# --
+
 sub Run {
     my ( $Self, %Param ) = @_;
     my %Data = ();
@@ -128,6 +128,7 @@ sub Run {
     $Output   .= $Self-&gt;{LayoutObject}-&gt;Footer();
     return $Output;
 }
+
 1;
         </programlisting>
         </para>
@@ -143,7 +144,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.16 2009-12-09 19:22:16 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -187,7 +188,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.15 2009-04-08 13:44:09 tr Exp $
+# $Id: writing-otrs-application.xml,v 1.16 2009-12-09 19:22:16 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
