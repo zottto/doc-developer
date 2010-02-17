@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: change-management.xml,v 1.2 2008-08-14 13:38:22 ub Exp $ -->
+<!-- $Id: change-management.xml,v 1.2.6.1 2010-02-17 17:30:29 ub Exp $ -->
 
 <chapter>
 
     <title>Change Management</title>
 
-    <para>Der Change Management Prozess wird in einer späteren Version von OTRS::ITSM implementiert sein. Die grundlegenden Informationen lassen sich jedoch bereits ab der Version 1.0 konfigurieren, erfassen und steuern.</para>
+    <para>Der Change Management Prozess wird ab OTRS::ITSM 2.0 implementiert sein. Die grundlegenden Informationen lassen sich jedoch bereits ab der Version 1.0 konfigurieren, erfassen und steuern.</para>
 
     <para>So kann z. B. aus dem Problem Management heraus der Ticket-Status "Pending RfC" (=mittels Change zu lösender, bekannter Fehler) genutzt werden.</para>
 
