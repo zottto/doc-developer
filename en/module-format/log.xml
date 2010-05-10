@@ -8,7 +8,7 @@ There is a gobal log interface for OTRS that provides the possibility to create 
     <para>
 Writing an own logging backend is as easy as reimplementing the Kernel::System::Log::Log() method.
     </para>
-    <section id="example-module-code">
+    <section id="log-module-code">
         <title>Code example: Kernel::System::Log::CustomFile</title>
         <para>
             In this small example, we'll write a little file logging backend which works similar to
@@ -21,7 +21,7 @@ Writing an own logging backend is as easy as reimplementing the Kernel::System::
 # Kernel/System/Log/CustomFile.pm - file log backend
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: log.xml,v 1.2 2010-05-10 13:11:48 mg Exp $
+# $Id: log.xml,v 1.3 2010-05-10 15:15:09 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -34,7 +34,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
+$VERSION = qw($Revision: 1.3 $) [1];
 
 umask "002";
 
@@ -122,7 +122,7 @@ sub Log {
         ]]></programlisting>
         </para>
     </section>
-    <section id="example-module-configuration">
+    <section id="log-module-configuration">
         <title>Configuration example</title>
         <para>
             To activate our custom logging module, the administrator can either set the existing
@@ -143,13 +143,13 @@ sub Log {
         ]]></programlisting>
         </para>
     </section>
-    <section id="example-module-use_cases">
+    <section id="log-module-use_cases">
         <title>Use case examples</title>
         <para>
 Useful logging backends could be logging to a web service or to encrypted files.
         </para>
     </section>
-    <section id="example-module-caveats">
+    <section id="log-module-caveats">
         <title>Caveats and Warnings</title>
         <para>
 Please note that Kernel::System::Log has other methods than Log() which cannot be reimplemented,
