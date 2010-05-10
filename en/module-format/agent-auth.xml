@@ -1,11 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: agent-auth.xml,v 1.2 2010-05-10 15:37:49 fk Exp $ -->
+
+
 <section id="agent-auth-module">
-
     <title>Agent Authentication Module</title>
-
     <para>
         There is a agent authentication interface that allows you to create various agent authentication backends.
     </para>
-    <section id="example-module-code">
+    <section id="agent-auth-module-code">
         <title>Interface</title>
         <para>
             The interface class is called Kernel::System::Auth. The example agent authentication
@@ -18,7 +21,7 @@
 # based on Martin Edenhofer's Kernel::System::Auth::DB
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: agent-auth.xml,v 1.1 2010-05-10 15:30:34 fk Exp $
+# ID: CustomAuth.pm,v 1.1 2010/05/10 15:30:34 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -33,7 +36,7 @@ use warnings;
 use Authen::CustomAuth;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -164,12 +167,12 @@ sub Auth {
         ]]></programlisting>
         </para>
     </section>
-    <section id="example-module-configuration">
+    <section id="agent-auth-module-configuration">
         <title>Configuration example</title>
         <para>
             There is the need to activate your custom agent authenticate module. Furthermore
             a host and a password has to be provided. Zudem kann eine Option nutzlich sein, die
-            besagt, ob beim Nichterreichen des Servers die AusfÃ¼hrung der Applikation abgebrochen werden soll.
+            besagt, ob beim Nichterreichen des Servers die Ausführung der Applikation abgebrochen werden soll.
         </para>
         <para>
         <programlisting language="xml" linenumbering="numbered"><![CDATA[
@@ -184,7 +187,7 @@ sub Auth {
 </ConfigItem>
 <ConfigItem Name="AuthModule::CustomAuth::Host" Required="0" Valid="0">
     <Description Lang="en">If "CustomAuth" was selected for AuthModule, specify your radius host.</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewÃ¤hlt wurde, kann hier der CustomAuth-Server angegeben werden.</Description>
+    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier der CustomAuth-Server angegeben werden.</Description>
     <Group>Framework</Group>
     <SubGroup>Frontend::Auth</SubGroup>
     <Setting>
@@ -193,7 +196,7 @@ sub Auth {
 </ConfigItem>
 <ConfigItem Name="AuthModule::CustomAuth::Password" Required="0" Valid="0">
     <Description Lang="en">If "CustomAuth" was selected for AuthModule, specfiy the password to authenticate to your radius host.</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewÃ¤hlt wurde, kann hier das Kennwort fÃ¼r die Anmeldung am CustomAuth-Server angegeben werden.</Description>
+    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier das Kennwort für die Anmeldung am CustomAuth-Server angegeben werden.</Description>
     <Group>Framework</Group>
     <SubGroup>Frontend::Auth</SubGroup>
     <Setting>
@@ -202,7 +205,7 @@ sub Auth {
 </ConfigItem>
 <ConfigItem Name="AuthModule::CustomAuth::Die" Required="0" Valid="1">
     <Description Lang="en">If "CustomAuth" was selected for AuthModule, you can specify if the applications will stop if e. g. a server can't connected (e. g. network problems).</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewÃ¤hlt wurde, kann hier definiert werden ob die Anwendung abbricht wenn z. B. ein Server nicht erreichbar ist (z. B. Netzwerk-Probleme).</Description>
+    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier definiert werden ob die Anwendung abbricht wenn z. B. ein Server nicht erreichbar ist (z. B. Netzwerk-Probleme).</Description>
     <Group>Framework</Group>
     <SubGroup>Frontend::Auth</SubGroup>
     <Setting>
@@ -215,13 +218,13 @@ sub Auth {
         ]]></programlisting>
         </para>
     </section>
-    <section id="example-module-use_cases">
+    <section id="agent-auth-module-use_cases">
         <title>Use case examples</title>
         <para>
             Useful authentification implmentation could be a soap backend.
         </para>
     </section>
-    <section id="example-module-releases">
+    <section id="agent-auth-module-releases">
         <title>Release Availability</title>
         <para>
         <table frame='all'><title>Release Availability</title>
