@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<section id="Output Filter">
+<section id="outputfilter">
     <title>Output Filter</title>
     <para>
         Output filters allow to modify HTML on the fly. It is best practice to use output filters
@@ -21,7 +21,7 @@
     <para>
         The content of a template can be changed by the filter before any processing by the Layout module takes place.
         This kind of filter should be used in most cases.
-        Processing instructions like $Text{"..."}, <varname>$QData{"..."}</varname> can be inserted
+        Processing instructions like $Text{"..."}, $QData{"..."} can be inserted
         into the template content and they will be honored by the subsequent DTL processing.
     </para>
     <title>FilterElementPost</title>
@@ -59,8 +59,8 @@
             See package TemplateModule.
         </para>
     </section>
-    <section id="outputfilter-use_cases">
-        <section id="outputfilter-use_case_1">
+    <section id="outputfilter-usecases">
+        <section id="outputfilter-usecase-10">
             <title>Show additional ticket attributes in AgentTicketZoom.</title>
             <para>
                 All ticket attributes are passed to the AgentTicketZoom template.
@@ -68,7 +68,7 @@
                 This can be achieved with a FilterElementPre output filter.
             </para>
         </section>
-        <section id="outputfilter-use_case_1">
+        <section id="outputfilter-usecase-20">
             <title>Add an additional CSS file.</title>
             <para>
                 An additional CSS file can be added to all agent frontends with an FilterElementPre filter
@@ -77,7 +77,7 @@
                 This can be achieved with a FilterElementPre output filter.
             </para>
         </section>
-        <section id="outputfilter-use_case_2">
+        <section id="outputfilter-usecase-30">
             <title>Show the service selection as a multi level menu.</title>
             <para>
                 Use a FilterElementPost for this feature.
@@ -86,7 +86,7 @@
                 inserted into the template content. A FilterElementPost output filter must be used for that.
             </para>
         </section>
-        <section id="outputfilter-use_case_3">
+        <section id="outputfilter-usecase-40">
             <title>Create links within plain text article bodies.</title>
             <para>
                 A biotech company uses gene names like IPI00217472 in plain text articles.
@@ -95,7 +95,7 @@
                 for the gene names.
             </para>
         </section>
-        <section id="outputfilter-use_case_4">
+        <section id="outputfilter-usecase-50">
             <title>Prohibit active content</title>
             <para>
                 There is firewall rule that disallows all active content. In order to avoid rejection by the firewall
@@ -115,7 +115,7 @@
             Thus the expensive code is run only in the relevant cases.
         </para>
     </section>
-    <section id="outputfilter-best-practice">
+    <section id="outputfilter-bestpractice">
         <title>Best Practices</title>
         <para>
             In order to increase flexibility the list of affected templates should be
