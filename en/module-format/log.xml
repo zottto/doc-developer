@@ -1,0 +1,172 @@
+<section id="log-module">
+    <title>Log Module</title>
+    <para>
+There is a gobal log interface for OTRS that provides the possibility to create own log backends.
+    </para>
+    <section id="example-module-code">
+        <title>Code example</title>
+        <para>
+        <programlisting language="perl" linenumbering="numbered"><![CDATA[
+# --
+# Kernel/System/Log/File.pm - file log backend
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# $Id: log.xml,v 1.1 2010-05-10 12:31:37 fk Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::Log::File;
+
+use strict;
+use warnings;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.1 $) [1];
+
+umask "002";
+
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # get needed objects
+    for (qw(ConfigObject EncodeObject)) {
+        if ( $Param{$_} ) {
+            $Self->{$_} = $Param{$_};
+        }
+        else {
+            die "Got no $_!";
+        }
+    }
+
+    # get logfile location
+    $Self->{LogFile} = $Param{ConfigObject}->Get('LogModule::LogFile')
+        || die 'Need LogModule::LogFile param in Config.pm';
+
+    # get log file suffix
+    if ( $Param{ConfigObject}->Get('LogModule::LogFile::Date') ) {
+        my ( $s, $m, $h, $D, $M, $Y, $wd, $yd, $dst ) = localtime( time() );
+        $Y = $Y + 1900;
+        $M++;
+        $Self->{LogFile} .= ".$Y-$M";
+    }
+
+    # Fixed bug# 2265 - For IIS we need to create a own error log file.
+    # Bind stderr to log file, because iis do print stderr to web page.
+    if ( $ENV{SERVER_SOFTWARE} && $ENV{SERVER_SOFTWARE} =~ /^microsoft\-iis/i ) {
+        if ( !open STDERR, '>>', $Self->{LogFile} . '.error' ) {
+            print STDERR "ERROR: Can't write $Self->{LogFile}.error: $!";
+        }
+    }
+
+    return $Self;
+}
+
+sub Log {
+    my ( $Self, %Param ) = @_;
+
+    my $FH;
+
+    # open logfile
+    if ( !open $FH, '>>', $Self->{LogFile} ) {
+
+        # print error screen
+        print STDERR "\n";
+        print STDERR " >> Can't write $Self->{LogFile}: $! <<\n";
+        print STDERR "\n";
+        return;
+    }
+
+    # write log file
+    $Self->{EncodeObject}->SetIO($FH);
+    print $FH '[' . localtime() . ']';
+    if ( lc $Param{Priority} eq 'debug' ) {
+        print $FH "[Debug][$Param{Module}][$Param{Line}] $Param{Message}\n";
+    }
+    elsif ( lc $Param{Priority} eq 'info' ) {
+        print $FH "[Info][$Param{Module}] $Param{Message}\n";
+    }
+    elsif ( lc $Param{Priority} eq 'notice' ) {
+        print $FH "[Notice][$Param{Module}] $Param{Message}\n";
+    }
+    elsif ( lc $Param{Priority} eq 'error' ) {
+        print $FH "[Error][$Param{Module}][$Param{Line}] $Param{Message}\n";
+    }
+    else {
+
+        # print error messages to STDERR
+        print STDERR
+            "[Error][$Param{Module}] Priority: '$Param{Priority}' not defined! Message: $Param{Message}\n";
+
+        # and of course to logfile
+        print $FH
+            "[Error][$Param{Module}] Priority: '$Param{Priority}' not defined! Message: $Param{Message}\n";
+    }
+
+    # close file handle
+    close $FH;
+    return 1;
+}
+
+1;
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="example-module-configuration">
+        <title>Configuration example</title>
+        <para>
+        <programlisting language="xml" linenumbering="numbered"><![CDATA[
+<ConfigItem Name="LogModule" Required="1" Valid="1">
+    <Description Lang="en">Log module for the system. "File" writes all messages in a given logfile, "SysLog" uses the syslog daemon of the system, e.g. syslogd.</Description>
+    <Description Lang="de">Logmodul für das System. "File" schreibt in eine anzugebende Datei, "SysLog" logt mit Hilfe des systemspezifischen Logdaemons, z. B. syslogd.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Core::Log</SubGroup>
+    <Setting>
+        <Option Location="Kernel/System/Log/*.pm" SelectedID="Kernel::System::Log::SysLog"></Option>
+    </Setting>
+</ConfigItem>
+    <ConfigItem Name="LogModule::LogFile" Required="1" Valid="1">
+        <Description Lang="en">If "file" was selected for LogModule, you have to specify a logfile. The file will be created by the system, if it doesn't exist.
+</Description>
+<Description Lang="de">Wenn "File" für LogModul ausgewählt wurde, muss eine Logdatei angegeben werden. Diese wird automatisch vom System angelegt, falls
+    sie noch nicht existiert.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Core::Log</SubGroup>
+    <Setting>
+        <String Regex="">/tmp/otrs.log</String>
+    </Setting>
+</ConfigItem>
+<ConfigItem Name="LogModule::LogFile::Date" Required="1" Valid="1">
+    <Description Lang="en">Set this config parameter to "Yes", if you want to add a suffix with the actual year and month to the otrs logfile. A logfile for every month will be created.</Description>
+    <Description Lang="de">Wird dieser Konfigurationsparameter aktiviert, wird an das OTRS Logfile eine Endung mit dem aktuellen Monat und Jahr angehängt und monatlich ein neues Logfile geschrieben.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Core::Log</SubGroup>
+    <Setting>
+        <Option SelectedID="0">
+            <Item Key="0">No</Item>
+            <Item Key="1">Yes</Item>
+        </Option>
+    </Setting>
+</ConfigItem>
+        ]]></programlisting>
+        </para>
+    </section>
+        <section id="example-module-use_cases">
+            <title>Use case examples</title>
+            <para>
+One use case would be to log via a a http post to a web service. In could be also be that the logs should be saved encrypted.
+            </para>
+        </section>
+        <section id="example-module-caveats">
+            <title>Caveats and Warnings</title>
+            <para>
+If you want to care about shared memory, have a look at the Log interface.
+            </para>
+        </section>
+</section>
