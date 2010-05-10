@@ -35,6 +35,7 @@
         </para>
     </section>
     <section id="outputfilter_filtercontent">
+        <title>FilterContent</title>
         <para>
             This kind of filter allows to process the complete HTML output for the request
             right before it is sent to the browser.
