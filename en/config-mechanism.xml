@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.18 2010-05-10 15:50:50 mg Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.19 2010-05-10 16:25:45 mg Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -111,12 +111,12 @@ Each config file has the following layout:
         </para>
         <para>
         <programlisting><![CDATA[
-&lt;?xml version="1.0" encoding="utf-8" ?&gt;
-&lt;otrs_config version="1.0" init="Changes"&gt;
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_config version="1.0" init="Changes">
 
-    &lt;!--  config items will be here --&gt;
+    <!--  config items will be here -->
 
-&lt;/otrs_config&gt;
+</otrs_config>
         ]]></programlisting>
         </para>
         <para>
@@ -127,15 +127,15 @@ If you want to add config options, here is an example:
         </para>
         <para>
         <programlisting><![CDATA[
-&lt;ConfigItem Name="Ticket::Hook" Required="1" Valid="1"&gt;
-    &lt;Description Lang="en"&gt;The identifyer for a ticket. The default is Ticket#.&lt;/Description&gt;
-    &lt;Description Lang="de"&gt;Ticket-Identifikator. Als Standard wird Ticket# verwendet.&lt;/Description&gt;
-    &lt;Group>Ticket&lt;/Group&gt;
-    &lt;SubGroup&gt;Core::Ticket&lt;/SubGroup&gt;
-    &lt;Setting&gt;
-        &lt;String Regex=""&gt;Ticket#&lt;/String&gt;
-    &lt;/Setting&gt;
-&lt;/ConfigItem&gt;
+<ConfigItem Name="Ticket::Hook" Required="1" Valid="1">
+    <Description Lang="en">The identifyer for a ticket. The default is Ticket#.</Description>
+    <Description Lang="de">Ticket-Identifikator. Als Standard wird Ticket# verwendet.</Description>
+    <Group>Ticket</Group>
+    <SubGroup>Core::Ticket</SubGroup>
+    <Setting>
+        <String Regex="">Ticket#</String>
+    </Setting>
+</ConfigItem>
         ]]></programlisting>
         </para>
         <para>
@@ -163,9 +163,9 @@ This contains files and directories.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;String Regex="" Check="File"&gt;&lt;/String&gt;
-&lt;/Setting&gt;
+<Setting>
+    <String Regex="" Check="File"></String>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -176,9 +176,9 @@ A config element for multiline text.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;TextArea Regex=""&gt;&lt;/TextArea&gt;
-&lt;/Setting&gt;
+<Setting>
+    <TextArea Regex=""></TextArea>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -189,12 +189,12 @@ This config element offers preset values as a pull-down menu.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;Option SelectedID="Key"&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-    &lt;/Option&gt;
-&lt;/Setting&gt;
+<Setting>
+    <Option SelectedID="Key">
+        <Item Key=""></Item>
+        <Item Key=""></Item>
+    </Option>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -205,12 +205,12 @@ With this config element arrays can be displayed.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;Array&gt;
-        &lt;Item&gt;&lt;/Item&gt;
-        &lt;Item&gt;&lt;/Item&gt;
-    &lt;/Array&gt;
-&lt;/Setting&gt;
+<Setting>
+    <Array>
+        <Item></Item>
+        <Item></Item>
+    </Array>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -221,12 +221,12 @@ With this config element hashes can be displayed.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;Hash&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-    &lt;/Hash&gt;
-&lt;/Setting&gt;
+<Setting>
+    <Hash>
+        <Item Key=""></Item>
+        <Item Key=""></Item>
+    </Hash>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -237,24 +237,24 @@ A hash can contain content, arrays or hashes.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;Hash&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-        &lt;Item Key=""&gt;
-            &lt;Hash&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
-                &lt;Item Key=""&gt;&lt;/Item&gt;
-            &lt;/Hash&gt;
-        &lt;/Item&gt;
-        &lt;Item Key=""&gt;
-            &lt;Array&gt;
-                &lt;Item&gt;&lt;/Item&gt;
-                &lt;Item&gt;&lt;/Item&gt;
-            &lt;/Array&gt;
-        &lt;/Item&gt;
-        &lt;Item Key=""&gt;&lt;/Item&gt;
-    &lt;/Hash&gt;
-&lt;/Setting&gt;
+<Setting>
+    <Hash>
+        <Item Key=""></Item>
+        <Item Key="">
+            <Hash>
+                <Item Key=""></Item>
+                <Item Key=""></Item>
+            </Hash>
+        </Item>
+        <Item Key="">
+            <Array>
+                <Item></Item>
+                <Item></Item>
+            </Array>
+        </Item>
+        <Item Key=""></Item>
+    </Hash>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -265,26 +265,26 @@ Module registration for Agent Interface.
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;FrontendModuleReg&gt;
-        &lt;Group&gt;group1&lt;/Group&gt;
-        &lt;Group&gt;group2&lt;/Group&gt;
-        &lt;Description&gt;Logout&lt;/Description&gt;
-        &lt;Title&gt;&lt;/Title&gt;
-        &lt;NavBarName&gt;&lt;/NavBarName&gt;
-        &lt;NavBar&gt;
-            &lt;Description&gt;Logout&lt;/Description&gt;
-            &lt;Name&gt;Logout&lt;/Name&gt;
-            &lt;Image&gt;exit.png&lt;/Image&gt;
-            &lt;Link&gt;Action=Logout&lt;/Link&gt;
-            &lt;NavBar&gt;&lt;/NavBar&gt;
-            &lt;Type&gt;&lt;/Type&gt;
-            &lt;Block&gt;ItemPre&lt;/Block&gt;
-            &lt;AccessKey&gt;l&lt;/AccessKey&gt;
-            &lt;Prio&gt;100&lt;/Prio&gt;
-        &lt;/NavBar&gt;
-    &lt;/FrontendModuleReg&gt;
-&lt;/Setting&gt;
+<Setting>
+    <FrontendModuleReg>
+        <Group>group1</Group>
+        <Group>group2</Group>
+        <Description>Logout</Description>
+        <Title></Title>
+        <NavBarName></NavBarName>
+        <NavBar>
+            <Description>Logout</Description>
+            <Name>Logout</Name>
+            <Image>exit.png</Image>
+            <Link>Action=Logout</Link>
+            <NavBar></NavBar>
+            <Type></Type>
+            <Block>ItemPre</Block>
+            <AccessKey>l</AccessKey>
+            <Prio>100</Prio>
+        </NavBar>
+    </FrontendModuleReg>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>
@@ -295,21 +295,21 @@ Module registration for Admin Interface
             </para>
             <para>
             <programlisting><![CDATA[
-&lt;Setting&gt;
-    &lt;FrontendModuleReg&gt;
-        &lt;Group&gt;admin&lt;/Group&gt;
-        &lt;Group&gt;admin2&lt;/Group&gt;
-        &lt;Description&gt;Admin&lt;/Description&gt;
-        &lt;Title&gt;User&lt;/Title&gt;
-        &lt;NavBarName&gt;Admin&lt;/NavBarName&gt;
-        &lt;NavBarModule&gt;
-            &lt;Module&gt;Kernel::Output::HTML::NavBarModuleAdmin&lt;/Module&gt;
-            &lt;Name&gt;Users&lt;/Name&gt;
-            &lt;Block&gt;Block1&lt;/Block&gt;
-            &lt;Prio&gt;100&lt;/Prio&gt;
-        &lt;/NavBarModule&gt;
-    &lt;/FrontendModuleReg&gt;
-&lt;/Setting&gt;
+<Setting>
+    <FrontendModuleReg>
+        <Group>admin</Group>
+        <Group>admin2</Group>
+        <Description>Admin</Description>
+        <Title>User</Title>
+        <NavBarName>Admin</NavBarName>
+        <NavBarModule>
+            <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
+            <Name>Users</Name>
+            <Block>Block1</Block>
+            <Prio>100</Prio>
+        </NavBarModule>
+    </FrontendModuleReg>
+</Setting>
             ]]></programlisting>
             </para>
         </sect2>

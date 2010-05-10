@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: layout.xml,v 1.13 2010-05-10 15:50:50 mg Exp $ -->
+<!-- $Id: layout.xml,v 1.14 2010-05-10 16:25:45 mg Exp $ -->
 
 <chapter>
     <title>Layout</title>
@@ -84,9 +84,9 @@ Examples from the Calendar Module:
         <para>
         <programlisting><![CDATA[
 [..]
-&lt;!-- dtl:block:Overview --&gt;
-&lt;style type="text/css"&gt;
-&lt;!--
+<!-- dtl:block:Overview -->
+<style type="text/css">
+<!--
     .sunday {
         font-family:Geneva,Helvetica,Arial,sans-serif;
         font-size:10pt;
@@ -102,15 +102,15 @@ Examples from the Calendar Module:
         color:#000000;
     }
 [..]
-//--&gt;
-&lt;/style&gt;
+//-->
+</style>
 
-&lt;table border="0" width="100%" cellspacing="0" cellpadding="3"&gt;
-&lt;tr&gt;
-  &lt;td class="mainhead"&gt;
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr>
+  <td class="mainhead">
     $Env{"Box0"}$Text{"Calendar"}$Env{"Box1"}
-  &lt;/td&gt;
-&lt;/tr&gt;
+  </td>
+</tr>
 [..]
         ]]></programlisting>
         </para>

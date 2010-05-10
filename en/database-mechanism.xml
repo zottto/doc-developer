@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.31 2010-05-10 15:50:50 mg Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.32 2010-05-10 16:25:45 mg Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -115,10 +115,10 @@ The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (no
             <sect3 id="database-xml-insert">
             <title>INSERT</title>
             <programlisting format="linespecific"><![CDATA[
-&lt;Insert Table="some_table"&gt;
-    &lt;Data Key="id"&gt;1&lt;/Data&gt;
-    &lt;Data Key="description" Type="Quote"&gt;exploit&lt;/Data&gt;
-&lt;/Insert>
+<Insert Table="some_table">
+    <Data Key="id">1</Data>
+    <Data Key="description" Type="Quote">exploit</Data>
+</Insert>
             ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-create">
@@ -127,30 +127,30 @@ The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (no
 Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DATE (Format: yyyy-mm-dd hh:mm:ss) and LONGBLOB.
             </para>
             <programlisting format="linespecific"><![CDATA[
-&lt;TableCreate Name="calendar_event"&gt;
-    &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
-    &lt;Column Name="title" Required="true" Size="250" Type="VARCHAR"/&gt;
-    &lt;Column Name="content" Required="false" Size="250" Type="VARCHAR"/&gt;
-    &lt;Column Name="start_time" Required="true" Type="DATE"/&gt;
-    &lt;Column Name="end_time" Required="true" Type="DATE"/&gt;
-    &lt;Column Name="owner_id" Required="true" Type="INTEGER"/&gt;
-    &lt;Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/&gt;
-    &lt;Index Name="calendar_event_title"&gt;
-        &lt;IndexColumn Name="title"/&gt;
-    &lt;/Index&gt;
-    &lt;Unique Name="calendar_event_title"&gt;
-        &lt;UniqueColumn Name="title"/&gt;
-    &lt;/Unique&gt;
-    &lt;ForeignKey ForeignTable="users"&gt;
-        &lt;Reference Local="owner_id" Foreign="id"/&gt;
-    &lt;/ForeignKey&gt;
-&lt;/TableCreate&gt;
+<TableCreate Name="calendar_event">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
+    <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
+    <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
+    <Column Name="start_time" Required="true" Type="DATE"/>
+    <Column Name="end_time" Required="true" Type="DATE"/>
+    <Column Name="owner_id" Required="true" Type="INTEGER"/>
+    <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
+    <Index Name="calendar_event_title">
+        <IndexColumn Name="title"/>
+    </Index>
+    <Unique Name="calendar_event_title">
+        <UniqueColumn Name="title"/>
+    </Unique>
+    <ForeignKey ForeignTable="users">
+        <Reference Local="owner_id" Foreign="id"/>
+    </ForeignKey>
+</TableCreate>
             ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-drop">
             <title>DROP TABLE</title>
             <programlisting format="linespecific"><![CDATA[
-&lt;TableDrop Name="calendar_event"/&gt;
+<TableDrop Name="calendar_event"/>
             ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-alter">
@@ -159,33 +159,33 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
             The following shows an example of add, change and drop columns.
             </para>
             <programlisting format="linespecific"><![CDATA[
-&lt;TableAlter Name="calendar_event"&gt;
-    &lt;ColumnAdd Name="test_name" Type="varchar" Size="20" Required="1"/&gt;
+<TableAlter Name="calendar_event">
+    <ColumnAdd Name="test_name" Type="varchar" Size="20" Required="1"/>
 
-    &lt;ColumnChange NameOld="test_name" NameNew="test_title" Type="varchar" Size="30" Required="1"/&gt;
+    <ColumnChange NameOld="test_name" NameNew="test_title" Type="varchar" Size="30" Required="1"/>
 
-    &lt;ColumnChange NameOld="test_title" NameNew="test_title" Type="varchar" Size="100" Required="0"/&gt;
+    <ColumnChange NameOld="test_title" NameNew="test_title" Type="varchar" Size="100" Required="0"/>
 
-    &lt;ColumnDrop Name="test_title"/&gt;
+    <ColumnDrop Name="test_title"/>
 
-    &lt;IndexCreate Name="index_test3"&gt;
-        &lt;IndexColumn Name="test3"/&gt;
-    &lt;/IndexCreate&gt;
+    <IndexCreate Name="index_test3">
+        <IndexColumn Name="test3"/>
+    </IndexCreate>
 
-    &lt;IndexDrop Name="index_test3"/&gt;
+    <IndexDrop Name="index_test3"/>
 
-    &lt;UniqueCreate Name="uniq_test3"&gt;
-        &lt;UniqueColumn Name="test3"/&gt;
-    &lt;/UniqueCreate&gt;
+    <UniqueCreate Name="uniq_test3">
+        <UniqueColumn Name="test3"/>
+    </UniqueCreate>
 
-    &lt;UniqueDrop Name="uniq_test3"/&gt;
-&lt;/TableAlter&gt;
+    <UniqueDrop Name="uniq_test3"/>
+</TableAlter>
             ]]></programlisting>
             <para>
             The next shows an example how to rename a table.
             </para>
             <programlisting format="linespecific"><![CDATA[
-&lt;TableAlter NameOld="calendar_event" NameNew="calendar_event_new"/&gt;
+<TableAlter NameOld="calendar_event" NameNew="calendar_event_new"/>
             ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-code">

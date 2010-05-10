@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.22 2010-05-10 15:50:50 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.23 2010-05-10 16:25:45 mg Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -19,33 +19,33 @@ The usable dtl tags and syntax are described below.
         <para>
 We use four spaces per indentation level. Examples:
         <programlisting><![CDATA[
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Key&lt;/td&gt;
-        &lt;td&gt;Value&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;aaa&lt;/td&gt;
-        &lt;td&gt;bbb&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
+<table>
+    <tr>
+        <td>Key</td>
+        <td>Value</td>
+    </tr>
+    <tr>
+        <td>aaa</td>
+        <td>bbb</td>
+    </tr>
+</table>
         ]]></programlisting>
         <programlisting><![CDATA[
-&lt;form action ="index.pl"&gt;
-    &lt;input type="text" value=""&gt;
-    &lt;input type="text" value=""&gt;
-    &lt;table&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Key1&lt;/td&gt;
-            &lt;td&gt;Value1&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Key2&lt;/td&gt;
-            &lt;td&gt;Value2&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-    &lt;input type="submit"&gt;
-&lt;/form&gt;
+<form action ="index.pl">
+    <input type="text" value="">
+    <input type="text" value="">
+    <table>
+        <tr>
+            <td>Key1</td>
+            <td>Value1</td>
+        </tr>
+        <tr>
+            <td>Key2</td>
+            <td>Value2</td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
         ]]></programlisting>
         </para>
         <sect2 id="Comment">
@@ -94,7 +94,7 @@ The first 20 characters of the author's name: $QData{"Name","20"}.
             <para>
 The same as $QData{""} but with link encoding. This means for example that a space will be a + (e. g. for "a href").
             <programlisting><![CDATA[
-&lt;a href="$Env{"Baselink"}&amp;Location=$LQData{"File"}"&gt;$QData{"File","110"}&lt;/a&gt;
+<a href="$Env{"Baselink"}&amp;Location=$LQData{"File"}">$QData{"File","110"}</a>
             ]]></programlisting>
             </para>
         </sect2>
@@ -133,7 +133,7 @@ The current user name is: $QEnv{"Userfirstname"}
             <para>
 A tag to quote html strings.
             <programlisting><![CDATA[
-Show no html tags, quote this: $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;"}
+Show no html tags, quote this: $Quote{"<hr><b>some text</b></hr>"}
             ]]></programlisting>
             </para>
             <para>
@@ -141,7 +141,7 @@ It's also possible to cut the value. If, for example, you just want to show 20
 characters of a variable (result will be "SomeMess[..]"), use the following:
             <programlisting><![CDATA[
 Show no html tags, quote this and show just 20 characters:
-$Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;","20"}
+$Quote{"<hr><b>some text</b></hr>","20"}
             ]]></programlisting>
             </para>
         </sect2>
@@ -206,22 +206,22 @@ $Include{"Copyright"}
 The block tag can be used to define blocks. These blocks can be used several times by the
 frontend module with different data params.
             <programlisting><![CDATA[
-&lt;table&gt;
-&lt;!-- dtl:block:Row --&gt;
-    &lt;tr&gt;
-        &lt;td valign="top" width="15%"&gt;
-        &lt;b&gt;
+<table>
+<!-- dtl:block:Row -->
+    <tr>
+        <td valign="top" width="15%">
+        <b>
         $Text{"$Data{"Key"}"}:
-        &lt;/b&gt;
-        &lt;/td&gt;
-        &lt;td width="85%"&gt;
-        &lt;div title="$QData{"Value"}"&gt;
+        </b>
+        </td>
+        <td width="85%">
+        <div title="$QData{"Value"}">
         $QData{"Value","160"}
-        &lt;/div&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-&lt;!-- dtl:block:Row --&gt;
-&lt;/table&gt;
+        </div>
+        </td>
+    </tr>
+<!-- dtl:block:Row -->
+</table>
             ]]></programlisting>
             </para>
             <para>
@@ -260,7 +260,7 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
             <para>
 With this tag you can set a variable in the dtl template.
             <programlisting><![CDATA[
-&lt;dtl set $Data{"Test"} = "Some Text"&gt;
+<dtl set $Data{"Test"} = "Some Text">
             ]]></programlisting>
             </para>
             <note>
@@ -276,13 +276,13 @@ The function should thus not be used any more.
             <para>
 It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
             <programlisting><![CDATA[
-&lt;dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }&gt;
+<dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }>
             ]]></programlisting>
             </para>
             <para>
 Or with a regexp.
             <programlisting><![CDATA[
-&lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
+<dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }>
             ]]></programlisting>
             </para>
             <note>
@@ -299,7 +299,7 @@ The function should thus not be used any more.
 If you want the output of a system call back to a dtl variable.
             <programlisting><![CDATA[
 # execute system call
-&lt;dtl system-call $Data{"uptime"} = "uptime"&gt;
+<dtl system-call $Data{"uptime"} = "uptime">
 # print
 The output of 'uptime' is: $Data{"uptime"}
             ]]></programlisting>
@@ -308,7 +308,7 @@ The output of 'uptime' is: $Data{"uptime"}
 Yet another example:
             <programlisting><![CDATA[
 # execute system call
-&lt;dtl system-call $Data{"procinfo"} = "procinfo | head -n1 "&gt;
+<dtl system-call $Data{"procinfo"} = "procinfo | head -n1 ">
 # print
 The output of 'procinfo' is: $Data{"procinfo"}
             ]]></programlisting>
@@ -330,14 +330,14 @@ The function should thus not be used any more.
         <para>
         <programlisting><![CDATA[
 # set variable
-&lt;dtl set $Data{"Test1"} = "English"&gt;
+<dtl set $Data{"Test1"} = "English">
 
 # print variable
 Echo: $Data{"Test1"}
         ]]></programlisting>
         <programlisting><![CDATA[
 # condition
-&lt;dtl if ($Text{"Lock"} ne "Lock") { $Data{"Test2"} = "Not English!"; }&gt;
+<dtl if ($Text{"Lock"} ne "Lock") { $Data{"Test2"} = "Not English!"; }>
 
 # print result
 Result: $Data{"Test1"}
