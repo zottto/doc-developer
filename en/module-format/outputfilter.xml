@@ -125,7 +125,6 @@
         </para>
     </section>
     <section id="outputfilter-bestpractice">
-        <title>Best Practices</title>
         <para>
             In order to increase flexibility the list of affected templates should be
             configurable in SysConfig.
