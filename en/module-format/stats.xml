@@ -44,8 +44,6 @@ In this section a sample stats module is shown and each subroutine is explained.
 # Kernel/System/Stats/Dynamic/DeveloperManualSample.pm - all advice functions
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: stats.xml,v 1.1 2010-05-10 14:09:25 reb Exp $
-# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
@@ -61,7 +59,7 @@ use Kernel::System::State;
 use Kernel::System::Ticket;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
                 ]]></programlisting>
             </para>
             <para>
@@ -224,10 +222,323 @@ Hint: If you install this sample an you configured a statistic with some queues 
             </para>
             <para>
                 <programlisting language="perl" linenumbering="numbered"><![CDATA[
+sub GetStatElement {
+    my ( $Self, %Param ) = @_;
+
+    # search tickets
+    return $Self->{TicketObject}->TicketSearch(
+        UserID     => 1,
+        Result     => 'COUNT',
+        Permission => 'ro',
+        Limit      => 100_000_000,
+        %Param,
+    );
+}
                 ]]></programlisting>
             </para>
             <para>
+GetStatElement gets called for each cell in the result table. So it should be a numeric value. In this sample it does a simple ticket search. The hash %Param contains information about the "current" x-value and the y-value as well as any restrictions. So, for a cell that should count the created tickets for queue 'Misc' with state 'open' the passed parameter hash looks something like this:
+            </para>
+            <para>
                 <programlisting language="perl" linenumbering="numbered"><![CDATA[
+    'CreatedQueueIDs' => [
+        '4'
+    ],
+    'StateIDs' => [
+        '2'
+    ]
+                ]]></programlisting>
+            </para>
+            <para>
+If the "per cell" calculation should be avoided, GetStatTable is an alternative. GetStatTable returns a list of rows, hence an array of arrayreferences.
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+sub ExportWrapper {
+    my ( $Self, %Param ) = @_;
+
+    # wrap ids to used spelling
+    for my $Use (qw(UseAsValueSeries UseAsRestriction UseAsXvalue)) {
+        ELEMENT:
+        for my $Element ( @{ $Param{$Use} } ) {
+            next ELEMENT if !$Element || !$Element->{SelectedValues};
+            my $ElementName = $Element->{Element};
+            my $Values      = $Element->{SelectedValues};
+
+            if ( $ElementName eq 'QueueIDs' || $ElementName eq 'CreatedQueueIDs' ) {
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+                    $ID->{Content} = $Self->{QueueObject}->QueueLookup( QueueID => $ID->{Content} );
+                }
+            }
+            elsif ( $ElementName eq 'StateIDs' || $ElementName eq 'CreatedStateIDs' ) {
+                my %StateList = $Self->{StateObject}->StateList( UserID => 1 );
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+                    $ID->{Content} = $StateList{ $ID->{Content} };
+                }
+            }
+        }
+    }
+    return \%Param;
+}
+                ]]></programlisting>
+            </para>
+            <para>
+Configured statistics can be exported into XML format. But as queues with the same queue names can have different IDs on different OTRS instances it would be quite painful to export the IDs (the statistics would calculate the wrong numbers then). So an export wrapper should be written to use the names instead of ids. This should be done for each "dimension" of the stats module (x-axis, y-axis and restrictions).
+            </para>
+            <para>
+ImportWrapper works the other way around - it converts the name to the ID in the instance the configuration is imported to.
+            </para>
+            <para>
+This is a sample export:
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+
+<otrs_stats>
+<Cache>0</Cache>
+<Description>Sample stats module</Description>
+<File></File>
+<Format>CSV</Format>
+<Format>Print</Format>
+<Object>DeveloperManualSample</Object>
+<ObjectModule>Kernel::System::Stats::Dynamic::DeveloperManualSample</ObjectModule>
+<ObjectName>Sample Statistics</ObjectName>
+<Permission>stats</Permission>
+<StatType>dynamic</StatType>
+<SumCol>0</SumCol>
+<SumRow>0</SumRow>
+<Title>Sample 1</Title>
+<UseAsValueSeries Element="StateIDs" Fixed="1">
+<SelectedValues>removed</SelectedValues>
+<SelectedValues>closed unsuccessful</SelectedValues>
+<SelectedValues>closed successful</SelectedValues>
+<SelectedValues>new</SelectedValues>
+<SelectedValues>open</SelectedValues>
+</UseAsValueSeries>
+<UseAsXvalue Element="CreatedQueueIDs" Fixed="1">
+<SelectedValues>Junk</SelectedValues>
+<SelectedValues>Misc</SelectedValues>
+<SelectedValues>Postmaster</SelectedValues>
+<SelectedValues>Raw</SelectedValues>
+</UseAsXvalue>
+<Valid>1</Valid>
+</otrs_stats>
+                ]]></programlisting>
+            </para>
+            <para>
+Now, that all subroutines are explained, this is the complete sample stats module.
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+# --
+# Kernel/System/Stats/Dynamic/DeveloperManualSample.pm - all advice functions
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::Stats::Dynamic::DeveloperManualSample;
+
+use strict;
+use warnings;
+
+use Kernel::System::Queue;
+use Kernel::System::State;
+use Kernel::System::Ticket;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.2 $) [1];
+
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # check needed objects
+    for my $Object (
+        qw(DBObject ConfigObject LogObject UserObject TimeObject MainObject EncodeObject)
+        )
+    {
+        $Self->{$Object} = $Param{$Object} || die "Got no $Object!";
+    }
+
+    # created needed objects
+    $Self->{QueueObject}    = Kernel::System::Queue->new( %{$Self} );
+    $Self->{TicketObject}   = Kernel::System::Ticket->new( %{$Self} );
+    $Self->{StateObject}    = Kernel::System::State->new( %{$Self} );
+
+    return $Self;
+}
+
+sub GetObjectName {
+    my ( $Self, %Param ) = @_;
+
+    return 'Sample Statistics';
+}
+
+sub GetObjectAttributes {
+    my ( $Self, %Param ) = @_;
+
+    # get state list
+    my %StateList = $Self->{StateObject}->StateList(
+        UserID => 1,
+    );
+
+    # get queue list
+    my %QueueList = $Self->{QueueObject}->GetAllQueues();
+
+    # get current time to fix bug#3830
+    my $TimeStamp = $Self->{TimeObject}->CurrentTimestamp();
+    my ($Date) = split /\s+/, $TimeStamp;
+    my $Today = sprintf "%s 23:59:59", $Date;
+
+    my @ObjectAttributes = (
+        {
+            Name             => 'State',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'StateIDs',
+            Block            => 'MultiSelectField',
+            Values           => \%StateList,
+        },
+        {
+            Name             => 'Created in Queue',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'CreatedQueueIDs',
+            Block            => 'MultiSelectField',
+            Translation      => 0,
+            Values           => \%QueueList,
+        },
+        {
+            Name             => 'Create Time',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'CreateTime',
+            TimePeriodFormat => 'DateInputFormat',    # 'DateInputFormatLong',
+            Block            => 'Time',
+            TimeStop         => $Today,
+            Values           => {
+                TimeStart => 'TicketCreateTimeNewerDate',
+                TimeStop  => 'TicketCreateTimeOlderDate',
+            },
+        },
+    );
+
+    return @ObjectAttributes;
+}
+
+sub GetStatElement {
+    my ( $Self, %Param ) = @_;
+
+    # search tickets
+    return $Self->{TicketObject}->TicketSearch(
+        UserID     => 1,
+        Result     => 'COUNT',
+        Permission => 'ro',
+        Limit      => 100_000_000,
+        %Param,
+    );
+}
+
+sub ExportWrapper {
+    my ( $Self, %Param ) = @_;
+
+    # wrap ids to used spelling
+    for my $Use (qw(UseAsValueSeries UseAsRestriction UseAsXvalue)) {
+        ELEMENT:
+        for my $Element ( @{ $Param{$Use} } ) {
+            next ELEMENT if !$Element || !$Element->{SelectedValues};
+            my $ElementName = $Element->{Element};
+            my $Values      = $Element->{SelectedValues};
+
+            if ( $ElementName eq 'QueueIDs' || $ElementName eq 'CreatedQueueIDs' ) {
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+                    $ID->{Content} = $Self->{QueueObject}->QueueLookup( QueueID => $ID->{Content} );
+                }
+            }
+            elsif ( $ElementName eq 'StateIDs' || $ElementName eq 'CreatedStateIDs' ) {
+                my %StateList = $Self->{StateObject}->StateList( UserID => 1 );
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+                    $ID->{Content} = $StateList{ $ID->{Content} };
+                }
+            }
+        }
+    }
+    return \%Param;
+}
+
+sub ImportWrapper {
+    my ( $Self, %Param ) = @_;
+
+    # wrap used spelling to ids
+    for my $Use (qw(UseAsValueSeries UseAsRestriction UseAsXvalue)) {
+        ELEMENT:
+        for my $Element ( @{ $Param{$Use} } ) {
+            next ELEMENT if !$Element || !$Element->{SelectedValues};
+            my $ElementName = $Element->{Element};
+            my $Values      = $Element->{SelectedValues};
+
+            if ( $ElementName eq 'QueueIDs' || $ElementName eq 'CreatedQueueIDs' ) {
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+                    if ( $Self->{QueueObject}->QueueLookup( Queue => $ID->{Content} ) ) {
+                        $ID->{Content}
+                            = $Self->{QueueObject}->QueueLookup( Queue => $ID->{Content} );
+                    }
+                    else {
+                        $Self->{LogObject}->Log(
+                            Priority => 'error',
+                            Message  => "Import: Can' find the queue $ID->{Content}!"
+                        );
+                        $ID = undef;
+                    }
+                }
+            }
+            elsif ( $ElementName eq 'StateIDs' || $ElementName eq 'CreatedStateIDs' ) {
+                ID:
+                for my $ID ( @{$Values} ) {
+                    next ID if !$ID;
+
+                    my %State = $Self->{StateObject}->StateGet(
+                        Name  => $ID->{Content},
+                        Cache => 1,
+                    );
+                    if ( $State{ID} ) {
+                        $ID->{Content} = $State{ID};
+                    }
+                    else {
+                        $Self->{LogObject}->Log(
+                            Priority => 'error',
+                            Message  => "Import: Can' find state $ID->{Content}!"
+                        );
+                        $ID = undef;
+                    }
+                }
+            }
+        }
+    }
+    return \%Param;
+}
+
+1;
                 ]]></programlisting>
             </para>
         </section>
@@ -237,7 +548,6 @@ Hint: If you install this sample an you configured a statistic with some queues 
                 <programlisting language="xml" linenumbering="numbered"><![CDATA[
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <otrs_config version="1.0" init="Config">
-    <CVS>$Id: stats.xml,v 1.1 2010-05-10 14:09:25 reb Exp $</CVS>
     <ConfigItem Name="Stats::DynamicObjectRegistration###DeveloperManualSample" Required="0" Valid="1">
         <Description Lang="en">Here you can decide if the common stats module may generate stats about the number of default tickets a requester created.</Description>
         <Description Lang="de">Hier können Sie festlegen, ob das Statistik-Modul auch allgemeine Statistiken über die Anzahl von "default"-Tickets, die von Benutzern erzeugt wurden, generieren darf.</Description>
@@ -253,22 +563,22 @@ Hint: If you install this sample an you configured a statistic with some queues 
                 ]]></programlisting>
             </para>
         </section>
-        <section id="example-module-use_cases">
+        <section id="module-stats-dynamic-use_cases">
             <title>Use case examples</title>
             <para>
-List of technical and subject-specific use cases.
+Use cases.
             </para>
         </section>
-        <section id="example-module-caveats">
+        <section id="module-stats-dynamic-caveats">
             <title>Caveats and Warnings</title>
             <para>
-List of caveats and/or warnings.
+If you have a lot of cells in the result table and the GetStatElement is quite complex, the request can take a long time.
             </para>
         </section>
-        <section id="example-module-releases">
+        <section id="module-stats-dynamic-releases">
             <title>Release Availability</title>
             <para>
-List of known releases.
+Dynamic stat modules are available since OTRS 2.0.
             </para>
         </section>
     </section>
