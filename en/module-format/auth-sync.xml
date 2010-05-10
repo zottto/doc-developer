@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: auth-sync.xml,v 1.1 2010-05-10 18:50:44 fk Exp $ -->
+<!-- $Id: auth-sync.xml,v 1.2 2010-05-10 18:52:22 fk Exp $ -->
 
 
 <section id="auth-sync-module">
@@ -41,7 +41,7 @@ use warnings;
 use Net::LDAP;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -111,8 +111,8 @@ $Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
                 </thead>
             <tbody>
                     <row>
-                        <entry>ObjectID</entry>
-                        <entry>object_id</entry>
+                        <entry>LDAP</entry>
+                        <entry>2.4</entry>
                     </row>
             </tbody>
             </tgroup>
