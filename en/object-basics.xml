@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.22 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: object-basics.xml,v 1.23 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -98,17 +98,17 @@ A search over free text fields should support:
 Config naming should be with a leading prefix, the object name like this:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 $Self->{"Object::Option"} = 1234;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 Config-Hashes should be named with the same name as in the .dtl. For example:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 The config order should be global setting followed by detail settings.
@@ -121,7 +121,7 @@ An object should have a unique config file which should be located under
 $OTRS_HOME/Kernel/Config/Files/*.pm. For example:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # module reg and nav bar
 $Self->{'Frontend::Module'}->{'AgentFileManager'} = {
     Description => 'Web File Manager',
@@ -144,7 +144,7 @@ $Self->{"FileManager::Root"} = '/home/';
 
 # trash directory
 $Self->{"FileManager::Trash"} = "/home/Trash/";
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 Description of the Config Preferences:

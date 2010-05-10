@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.20 2009-10-06 13:07:00 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.21 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -18,7 +18,7 @@ The usable dtl tags and syntax are described below.
         <title>Formatting</title>
         <para>
 We use four spaces per indentation level. Examples:
-        <programlisting>
+        <programlisting><![CDATA[
 &lt;table&gt;
     &lt;tr&gt;
         &lt;td&gt;Key&lt;/td&gt;
@@ -29,8 +29,8 @@ We use four spaces per indentation level. Examples:
         &lt;td&gt;bbb&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
-        </programlisting>
-        <programlisting>
+        ]]></programlisting>
+        <programlisting><![CDATA[
 &lt;form action ="index.pl"&gt;
     &lt;input type="text" value=""&gt;
     &lt;input type="text" value=""&gt;
@@ -46,16 +46,16 @@ We use four spaces per indentation level. Examples:
     &lt;/table&gt;
     &lt;input type="submit"&gt;
 &lt;/form&gt;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <sect2 id="Comment">
             <title>Comment</title>
             <para>
 The dtl comment starts with a # at the beginning of a line and will not be
 shown in the html output.
-            <programlisting>
+            <programlisting><![CDATA[
 # this can be a comment in the dtl file
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="data">
@@ -63,9 +63,9 @@ shown in the html output.
             <para>
 If data params are given to the templates, these params can be printed to
 the template.
-            <programlisting>
+            <programlisting><![CDATA[
 The name of the author is $Data{"Name"}.
-            </programlisting>
+            ]]></programlisting>
             </para>
             <warning>
                 <para>
@@ -77,25 +77,25 @@ If the value of the param Name includes html tags, these tags are also shown.
             <title>$QData{""}</title>
             <para>
 The same as $Data{""} but the value if the param Name is html quoted (safe).
-            <programlisting>
+            <programlisting><![CDATA[
 The name of the author is $QData{"Name"}.
-            </programlisting>
+            ]]></programlisting>
 It's also possible to cut the value. If, for example, you just want to show 20
 characters of a variable (result will be "SomeName[..]"), use the following:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 The first 20 characters of the author's name: $QData{"Name","20"}.
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="lqdata">
             <title>$LQData{""}</title>
             <para>
 The same as $QData{""} but with link encoding. This means for example that a space will be a + (e. g. for "a href").
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;a href="$Env{"Baselink"}&amp;Location=$LQData{"File"}"&gt;$QData{"File","110"}&lt;/a&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="env">
@@ -103,7 +103,7 @@ The same as $QData{""} but with link encoding. This means for example that a spa
             <para>
 Env is an environment variable which is usable in more templates at a time. $Data{""}
 is just availabe for one template.
-            <programlisting>
+            <programlisting><![CDATA[
 The current user name is: $Env{"Userfirstname"}
 
 Some other common variables are:
@@ -116,43 +116,43 @@ $Env{"UserFirstname"} --> e. g. Dirk $Env{"UserFirstname"}
 $Env{"UserLogin"} --> e. g. mgg@x11.org
 $Env{"UserIsGroup[users]"} = Yes --> user groups (useful for own links)
 $Env{"UserIsGroup[admin]"} = Yes $Env{"Action"} --> the current action
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="qenv">
             <title>$QEnv{""}</title>
             <para>
 QEnv is an html quoted environment variable (like Env but quoted).
-            <programlisting>
+            <programlisting><![CDATA[
 The current user name is: $QEnv{"Userfirstname"}
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="quote">
             <title>$Quote{""}</title>
             <para>
 A tag to quote html strings.
-            <programlisting>
+            <programlisting><![CDATA[
 Show no html tags, quote this: $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;"}
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 It's also possible to cut the value. If, for example, you just want to show 20
 characters of a variable (result will be "SomeMess[..]"), use the following:
-            <programlisting>
+            <programlisting><![CDATA[
 Show no html tags, quote this and show just 20 characters:
 $Quote{"&lt;hr&gt;&lt;b&gt;some text&lt;/b&gt;&lt;/hr&gt;","20"}
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="text">
             <title>$Text{""}</title>
             <para>
 This tag translates the string (based on the user selected language).
-            <programlisting>
+            <programlisting><![CDATA[
 Translate this text: $Text{"Help"}
 Translate this text and insert the given data: $Text{"Change %s settings", "$Data{"Type"}"}
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="jstext">
@@ -160,10 +160,10 @@ Translate this text and insert the given data: $Text{"Change %s settings", "$Dat
             <para>
 The same as $Text{""} but with java scprit quoting. This function quote the ' in java script code with \. Otherwise
 the code is broken.
-            <programlisting>
+            <programlisting><![CDATA[
 Translate this text: $JSText{"Help"}
 Translate this text and insert the given data: $JSText{"Change %s settings", "$Data{"Type"}"}
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="config">
@@ -171,7 +171,7 @@ Translate this text and insert the given data: $JSText{"Change %s settings", "$D
             <para>
 With this tag you can use config variables in the template. For example the
 Kernel/config.pm:
-            <programlisting>
+            <programlisting><![CDATA[
 [Kernel/Config.pm]
     # FQDN
     # (Full qualified domain name of your system.)
@@ -180,24 +180,24 @@ Kernel/config.pm:
     # (Email of the system admin.)
     $Self->{AdminEmail} = 'admin@example.com';
 [...]
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 And the use in the dtl template:
-            <programlisting>
+            <programlisting><![CDATA[
 The hostname is '$Config{"FQDN"}'
 The admin email address is '$Config{"AdminEmail"}'
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="include">
             <title>$Include{""}</title>
             <para>
 If you want to include other dtl templates into a template, use the include tag:
-            <programlisting>
+            <programlisting><![CDATA[
 # include Copyright.dtl
 $Include{"Copyright"}
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="block">
@@ -205,7 +205,7 @@ $Include{"Copyright"}
             <para>
 The block tag can be used to define blocks. These blocks can be used several times by the
 frontend module with different data params.
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;table&gt;
 &lt;!-- dtl:block:Row --&gt;
     &lt;tr&gt;
@@ -222,11 +222,11 @@ frontend module with different data params.
     &lt;/tr&gt;
 &lt;!-- dtl:block:Row --&gt;
 &lt;/table&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 The html code can be displayed in template blocks in the frontend:
-            <programlisting>
+            <programlisting><![CDATA[
 # get article
 my %Article = $Self->{TicketObject}->ArticleGet(
     ArticleID => $ArticleID,
@@ -252,16 +252,16 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
         %Article
     },
 );
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="set">
             <title>set</title>
             <para>
 With this tag you can set a variable in the dtl template.
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;dtl set $Data{"Test"} = "Some Text"&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <note>
                 <para>
@@ -275,15 +275,15 @@ The function should thus not be used any more.
             <title>if</title>
             <para>
 It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Or with a regexp.
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <note>
                 <para>
@@ -297,21 +297,21 @@ The function should thus not be used any more.
             <title>system-call</title>
             <para>
 If you want the output of a system call back to a dtl variable.
-            <programlisting>
+            <programlisting><![CDATA[
 # execute system call
 &lt;dtl system-call $Data{"uptime"} = "uptime"&gt;
 # print
 The output of 'uptime' is: $Data{"uptime"}
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Yet another example:
-            <programlisting>
+            <programlisting><![CDATA[
 # execute system call
 &lt;dtl system-call $Data{"procinfo"} = "procinfo | head -n1 "&gt;
 # print
 The output of 'procinfo' is: $Data{"procinfo"}
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Usable to set: $Data{""}, $Env{""} and $Config{""}.
@@ -328,20 +328,20 @@ The function should thus not be used any more.
     <sect1 id="dtl-example">
         <title>Example</title>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # set variable
 &lt;dtl set $Data{"Test1"} = "English"&gt;
 
 # print variable
 Echo: $Data{"Test1"}
-        </programlisting>
-        <programlisting>
+        ]]></programlisting>
+        <programlisting><![CDATA[
 # condition
 &lt;dtl if ($Text{"Lock"} ne "Lock") { $Data{"Test2"} = "Not English!"; }&gt;
 
 # print result
 Result: $Data{"Test1"}
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
 </chapter>

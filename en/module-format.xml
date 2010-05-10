@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -16,12 +16,12 @@ You just need 3 functions: new(), GetOption() and Auth(). Return the uid, then t
 authentication is ok.
         </para>
         <para>Format:
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -53,7 +53,7 @@ sub Auth {
         return;
     }
 }
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="module-notify">
@@ -77,12 +77,12 @@ With this examplary module you can do something like the following.
         </para>
         <para>
 Format:
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -107,17 +107,17 @@ sub Run {
 }
 # --
 1;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 To use this module add the following to the <filename>Kernel/Config.pm</filename>
 and restart your webserver (if you use mod_perl).
-        <programlisting>
+        <programlisting><![CDATA[
 # Frontend::NotifyModule - module name (50-Motd)
 $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
     Module => 'Kernel::Output::HTML::NotificationMotd',
 };
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="module-navigation">
@@ -128,12 +128,12 @@ dynamic content (Name and Description). Navigation Module are located under Kern
         </para>
         <para>
 Format:
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -167,18 +167,18 @@ sub Run {
 }
 # --
 1;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 To use this module add the following code to the Kernel/Config.pm and restart
 your webserver (if you use mod_perl).
-        <programlisting>
+        <programlisting><![CDATA[
 [Kernel/Config.pm]
 # agent interface notification module
 $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
     Module => 'Kernel::Output::HTML::NavBarABC',
 };
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="frontend-modules">
@@ -201,12 +201,12 @@ For more information on core modules see
         </para>
         <para>
 Format:
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -219,7 +219,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 # --
 sub new {
@@ -279,14 +279,14 @@ sub Run {
 }
 # --
 1;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 You also need a module registration for frontend modules. Define read
 only groups with the "GroupRo" and read/write groups with the 'Group' param (see
 table below for details). You can define navigation bar icons via the
 "NavBar'"param, too (see table below for details).
-        <programlisting>
+        <programlisting><![CDATA[
 [Kernel/Config.pm]
 $Self->{'Frontend::Module'}->{'AgentTest'} = {
     Group => ['admin'],
@@ -304,7 +304,7 @@ $Self->{'Frontend::Module'}->{'AgentTest'} = {
         },
     ],
 };
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 You can access this frontend module via http (browse) with the Action
@@ -408,12 +408,12 @@ For more information on the core modules see
 Format:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -445,7 +445,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -483,10 +483,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.30 $ $Date: 2009-04-21 06:21:58 $
+$Revision: 1.31 $ $Date: 2010-05-10 11:49:36 $
 
 =cut
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="module-customer-auth">
@@ -507,12 +507,12 @@ your data ware house (read only and read/write).
 Format:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -525,7 +525,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 # --
 sub new {
@@ -574,7 +574,7 @@ sub SetPassword {
     return 1;
 }
 1;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 To use this module, see the admin manual.
@@ -594,13 +594,13 @@ Just the config setting key is different. To use this module, add the following
 to the Kernel/Config.pm and restart your webserver (if you use mod_perl).
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 [Kernel/Config.pm]
 # customer notifiacation module
 $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
     Module => 'Kernel::Output::HTML::NavBarABC',
 };
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="module-stats">
@@ -672,12 +672,12 @@ Param() to get all usable params for the stats and Run() to return the stats res
 Kernel/System/Stats/Static/SomeExampleStats.pm:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -690,7 +690,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -764,7 +764,7 @@ sub Run {
 }
 
 1;
-        </programlisting>
+        ]]></programlisting>
         </para>
 
 
@@ -791,14 +791,14 @@ The following example shows how the first path is amended.
             </para>
 
             <para>
-                <programlisting>
+                <programlisting><![CDATA[
     package Kernel::System::Stats::AccountedTime;
-                </programlisting>
+                ]]></programlisting>
             </para>
             <para>
-                <programlisting>
+                <programlisting><![CDATA[
     package Kernel::System::Stats::Static::AccountedTime;
-                </programlisting>
+                ]]></programlisting>
             </para>
         </sect2>
     </sect1>
@@ -816,12 +816,12 @@ CreateTicketNr() and GetTNByString():
 Format:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -834,7 +834,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -851,7 +851,7 @@ sub GetTNByString {
     return $Tn;
 }
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="ticket-postmaster-module">
@@ -875,7 +875,7 @@ The following is an examplary module to match emails and set X-OTRS-Headers
 Kernel/Config.pm:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # Job Name: 1-Match
 # (block/ignore all spam email with From: noreply@)
 $Self->{'PostMaster::PreFilterModule'}->{'1-Example'} = {
@@ -887,18 +887,18 @@ $Self->{'PostMaster::PreFilterModule'}->{'1-Example'} = {
         'X-OTRS-Ignore' => 'yes',
     },
 };
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Format:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -911,7 +911,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -986,7 +986,7 @@ sub Run {
 }
 
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 The following image shows you the email processing flow.
@@ -1013,7 +1013,7 @@ The following example shows you how to show a lock or a unlock ticket link.
 Kernel/Config.pm:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # for ticket zoom menu
 $Self->{'Ticket::Frontend::MenuModule'}->{'100-Lock'} =  {
     Action => 'AgentTicketLock',
@@ -1027,18 +1027,18 @@ $Self->{'Ticket::Frontend::PreMenuModule'}->{'100-Lock'} =  {
     Module => 'Kernel::Output::HTML::TicketMenuLock',
     Name   => 'Lock'
 };
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Format:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1051,7 +1051,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 # --
 sub new {
@@ -1128,7 +1128,7 @@ sub Run {
 }
 # --
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="ticket-module-event">
@@ -1148,22 +1148,22 @@ The following example shows you how to unlock a ticket after a move action.
 Kernel/Config.pm:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 $Self->{'Ticket::EventModulePost'}->{'99-ForceUnlockOnMove'} =  {
     Module => 'Kernel::System::Ticket::Event::ForceUnlock'
 };
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Format:
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.30 2009-04-21 06:21:58 tr Exp $
+# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1176,7 +1176,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.31 $) [1];
 
 # --
 sub new {
@@ -1216,7 +1216,7 @@ sub Run {
 }
 # --
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
             <para>
 Ticket Events for OTRS 2.0:

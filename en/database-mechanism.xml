@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.29 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.30 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
@@ -20,7 +20,7 @@ UPDATE, ...). It can be used like a normal Perl DBI interface.
             </para>
             <sect3 id="database-sql-do">
             <title>INSERT/UPDATE/DELETE</title>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 $Self->{DBObject}->Do(
     SQL=> "INSERT INTO table (name, id) VALUES ('SomeName', 123)",
 );
@@ -32,11 +32,11 @@ $Self->{DBObject}->Do(
 $Self->{DBObject}->Do(
     SQL=> "DELETE FROM table WHERE id = 123",
 );
-            </programlisting>
+            ]]></programlisting>
             </sect3>
             <sect3 id="database-sql-select">
             <title>SELECT</title>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 my $SQL = "SELECT id FROM table WHERE tn = '123'";
 
 $Self->{DBObject}->Prepare(SQL => $SQL, Limit => 15);
@@ -45,14 +45,14 @@ while (my @Row = $Self->{DBObject}->FetchrowArray()) {
     $Id = $Row[0];
 }
 return $Id;
-            </programlisting>
+            ]]></programlisting>
             <note>
                 <para>
 Take care to use Limit as param and not in the SQL string because
 not all databases support LIMIT in SQL strings.
                 </para>
             </note>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 my $SQL = "SELECT id FROM table WHERE tn = ? AND group = ?";
 
 $Self->{DBObject}->Prepare(
@@ -65,7 +65,7 @@ while (my @Row = $Self->{DBObject}->FetchrowArray()) {
     $Id = $Row[0];
 }
 return $Id;
-            </programlisting>
+            ]]></programlisting>
             <note>
                 <para>
 Use the Bind attribute where ever you can, especially for long statements. If
@@ -77,21 +77,21 @@ you use Bind you do not need the function Quote().
             <title>QUOTE</title>
                 <para>
 String:
-                    <programlisting format="linespecific">
+                    <programlisting format="linespecific"><![CDATA[
 my $QuotedString = $Self->{DBObject}->Quote("It's a problem!");
-                    </programlisting>
+                    ]]></programlisting>
                 </para>
                 <para>
 Integer:
-                    <programlisting format="linespecific">
+                    <programlisting format="linespecific"><![CDATA[
 my $QuotedInteger = $Self->{DBObject}->Quote('123', 'Integer');
-                    </programlisting>
+                    ]]></programlisting>
                 </para>
                 <para>
 Number:
-                    <programlisting format="linespecific">
+                    <programlisting format="linespecific"><![CDATA[
 my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
-                    </programlisting>
+                    ]]></programlisting>
                 </para>
                 <note>
                     <para>
@@ -114,19 +114,19 @@ The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (no
             </note>
             <sect3 id="database-xml-insert">
             <title>INSERT</title>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 &lt;Insert Table="some_table"&gt;
     &lt;Data Key="id"&gt;1&lt;/Data&gt;
     &lt;Data Key="description" Type="Quote"&gt;exploit&lt;/Data&gt;
 &lt;/Insert>
-            </programlisting>
+            ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-create">
             <title>CREATE TABLE</title>
             <para>
 Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DATE (Format: yyyy-mm-dd hh:mm:ss) and LONGBLOB.
             </para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 &lt;TableCreate Name="calendar_event"&gt;
     &lt;Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/&gt;
     &lt;Column Name="title" Required="true" Size="250" Type="VARCHAR"/&gt;
@@ -145,20 +145,20 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
         &lt;Reference Local="owner_id" Foreign="id"/&gt;
     &lt;/ForeignKey&gt;
 &lt;/TableCreate&gt;
-            </programlisting>
+            ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-drop">
             <title>DROP TABLE</title>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 &lt;TableDrop Name="calendar_event"/&gt;
-            </programlisting>
+            ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-alter">
             <title>ALTER TABLE</title>
             <para>
             The following shows an example of add, change and drop columns.
             </para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 &lt;TableAlter Name="calendar_event"&gt;
     &lt;ColumnAdd Name="test_name" Type="varchar" Size="20" Required="1"/&gt;
 
@@ -180,17 +180,17 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
 
     &lt;UniqueDrop Name="uniq_test3"/&gt;
 &lt;/TableAlter&gt;
-            </programlisting>
+            ]]></programlisting>
             <para>
             The next shows an example how to rename a table.
             </para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 &lt;TableAlter NameOld="calendar_event" NameNew="calendar_event_new"/&gt;
-            </programlisting>
+            ]]></programlisting>
             </sect3>
             <sect3 id="database-xml-code">
             <title>Code to process XML</title>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 my @XMLARRAY = @{$Self->ParseXML(String => $XML)};
 
 my @SQL = $Self->{DBObject}->SQLProcessor(
@@ -201,7 +201,7 @@ push(@SQL, $Self->{DBObject}->SQLProcessorPost());
 for (@SQL) {
     $Self->{DBObject}->Do(SQL => $_);
 }
-            </programlisting>
+            ]]></programlisting>
             </sect3>
         </sect2>
     </sect1>

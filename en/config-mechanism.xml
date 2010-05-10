@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.16 2009-11-09 12:54:49 mb Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.17 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -31,7 +31,7 @@ And could look as follows:
             <filename>Kernel/config/Files/Calendar.pm</filename>
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 # module reg and nav bar
 $Self->{'Frontend::Module'}->{'AgentCalendar'} = {
     Description => 'Calendar',
@@ -53,7 +53,7 @@ $Self->{'Frontend::Module'}->{'AgentCalendar'} = {
 $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
     Module => 'Kernel::Output::HTML::NotificationCalendar',
 };
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="custom-config">
@@ -82,20 +82,20 @@ The config object is a base object and thus available in each Frontend Module.
 If you want to access a config option:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 my $ConfigOption = $Self->{ConfigObject}->Get('Prefix::Option');
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 If you want to change a config option at runtime and just for this one request/process:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 $Self->{ConfigObject}->Set(
     Key => 'Prefix::Option'
     Value => 'SomeNewValue',
 );
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
         <sect1 id="xml-config">
@@ -110,14 +110,14 @@ XML config files are located under:
 Each config file has the following layout:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 &lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;otrs_config version="1.0" init="Changes"&gt;
 
     &lt;!--  config items will be here --&gt;
 
 &lt;/otrs_config&gt;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 The "init" attribute describes where the config options should be loaded. There are different levels available and will be loaded/overloaded in the following order: "Framework" (for framework settings e. g. session option), "Application" (for application settings e. g. ticket options), "Config" (for extensions to existing applications e. g. ITSM options) and "Changes" (for custom development e. g. to overwrite framework or ticket options).
@@ -126,7 +126,7 @@ The "init" attribute describes where the config options should be loaded. There 
 If you want to add config options, here is an example:
         </para>
         <para>
-        <programlisting>
+        <programlisting><![CDATA[
 &lt;ConfigItem Name="Ticket::Hook" Required="1" Valid="1"&gt;
     &lt;Description Lang="en"&gt;The identifyer for a ticket. The default is Ticket#.&lt;/Description&gt;
     &lt;Description Lang="de"&gt;Ticket-Identifikator. Als Standard wird Ticket# verwendet.&lt;/Description&gt;
@@ -136,7 +136,7 @@ If you want to add config options, here is an example:
         &lt;String Regex=""&gt;Ticket#&lt;/String&gt;
     &lt;/Setting&gt;
 &lt;/ConfigItem&gt;
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
 If "required" is set to "1", the config variable is included and cannot be disabled.
@@ -162,11 +162,11 @@ The check attribute checks elements on the file system.
 This contains files and directories.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;String Regex="" Check="File"&gt;&lt;/String&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-textarea">
@@ -175,11 +175,11 @@ This contains files and directories.
 A config element for multiline text.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;TextArea Regex=""&gt;&lt;/TextArea&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-option">
@@ -188,14 +188,14 @@ A config element for multiline text.
 This config element offers preset values as a pull-down menu.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;Option SelectedID="Key"&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
     &lt;/Option&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-array">
@@ -204,14 +204,14 @@ This config element offers preset values as a pull-down menu.
 With this config element arrays can be displayed.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;Array&gt;
         &lt;Item&gt;&lt;/Item&gt;
         &lt;Item&gt;&lt;/Item&gt;
     &lt;/Array&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-hash">
@@ -220,14 +220,14 @@ With this config element arrays can be displayed.
 With this config element hashes can be displayed.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;Hash&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
     &lt;/Hash&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-subhash">
@@ -236,7 +236,7 @@ With this config element hashes can be displayed.
 A hash can contain content, arrays or hashes.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;Hash&gt;
         &lt;Item Key=""&gt;&lt;/Item&gt;
@@ -255,7 +255,7 @@ A hash can contain content, arrays or hashes.
         &lt;Item Key=""&gt;&lt;/Item&gt;
     &lt;/Hash&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-navbar">
@@ -264,7 +264,7 @@ A hash can contain content, arrays or hashes.
 Module registration for Agent Interface.
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;FrontendModuleReg&gt;
         &lt;Group&gt;group1&lt;/Group&gt;
@@ -285,7 +285,7 @@ Module registration for Agent Interface.
         &lt;/NavBar&gt;
     &lt;/FrontendModuleReg&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="xml-config-navbarmodule">
@@ -294,7 +294,7 @@ Module registration for Agent Interface.
 Module registration for Admin Interface
             </para>
             <para>
-            <programlisting>
+            <programlisting><![CDATA[
 &lt;Setting&gt;
     &lt;FrontendModuleReg&gt;
         &lt;Group&gt;admin&lt;/Group&gt;
@@ -310,7 +310,7 @@ Module registration for Admin Interface
         &lt;/NavBarModule&gt;
     &lt;/FrontendModuleReg&gt;
 &lt;/Setting&gt;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
     </sect1>

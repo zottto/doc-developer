@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: language-translations.xml,v 1.14 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Language Translations</title>
@@ -48,12 +48,12 @@ following is an example of a Default Framework Translation File.
             </para>
             <para>
 Format:
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
+# $Id: language-translations.xml,v 1.14 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -65,7 +65,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.13 $) [1];
+$VERSION = qw($Revision: 1.14 $) [1];
 
 # --
 sub Data {
@@ -96,7 +96,7 @@ sub Data {
 }
 # --
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="frontend-translation-file">
@@ -109,12 +109,12 @@ is used, the Frontend Translation File "Kernel/Language/de_Agentcalendar.pm" is 
             </para>
             <para>
 Format:
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
+# $Id: language-translations.xml,v 1.14 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -141,7 +141,7 @@ sub Data {
     return 1;
 }
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
         <sect2 id="custom-translation-file">
@@ -153,12 +153,12 @@ create this file for your language.
             </para>
             <para>
 Format:
-            <programlisting>
+            <programlisting><![CDATA[
 # --
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: language-translations.xml,v 1.13 2009-04-08 13:44:09 tr Exp $
+# $Id: language-translations.xml,v 1.14 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -170,7 +170,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.13 $) [1];
+$VERSION = qw($Revision: 1.14 $) [1];
 
 # --
 sub Data {
@@ -187,7 +187,7 @@ sub Data {
 }
 # --
 1;
-            </programlisting>
+            ]]></programlisting>
             </para>
         </sect2>
     </sect1>
@@ -216,9 +216,9 @@ these five steps:
                     Add the new language translation to the framework by adding it to your
                     <filename>Kernel/Config.pm</filename>.
                 </para>
-                <programlisting>
+                <programlisting><![CDATA[
 $Self->{DefaultUsedLanguages}->{fr} = 'French';
-                </programlisting>
+                ]]></programlisting>
             </listitem>
             <listitem>
                 <para>

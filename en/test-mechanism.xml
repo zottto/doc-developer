@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.6 2009-04-08 13:44:09 tr Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.7 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Unit Tests</title>
@@ -16,12 +16,12 @@ For example the file /scripts/test/Calendar.t for the Calendar Module.
         <para>
 A test file consists of the function call of the function to be tested and the analysis of the return value.
 Example (/scripts/test/Calendar.t):
-        <programlisting>
+        <programlisting><![CDATA[
 # --
 # Calendar.t - Calendar
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: test-mechanism.xml,v 1.6 2009-04-08 13:44:09 tr Exp $
+# $Id: test-mechanism.xml,v 1.7 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -55,14 +55,14 @@ $Self-&gt;True(
 );
 
 [..]
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1>
         <title>Testing</title>
         <para>
 To check your tests, just use "bin/UnitTest.pl -n Calendar" to use /scripts/test/Calendar.t.
-        <programlisting>
+        <programlisting><![CDATA[
 shell:/opt/otrs&gt; bin/UnitTest.pl -n Calendar
 +-------------------------------------------------------------------+
 /opt/otrs/scripts/test/Calendar.t:
@@ -79,44 +79,44 @@ TestOk:    1
 TestNotOk: 0
 =====================================================================
 shell:/opt/otrs&gt;
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1>
         <title>True()</title>
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
-        <programlisting>
+        <programlisting><![CDATA[
 $Self-&gt;True(
     $EventID,
     'EventAdd()',
 );
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1>
         <title>False()</title>
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
-        <programlisting>
+        <programlisting><![CDATA[
 $Self-&gt;False(
     $EventID,
     'EventAdd()',
 );
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1>
         <title>Is()</title>
         <para>
 This function tests whether the variables $A and $B are equal.
-        <programlisting>
+        <programlisting><![CDATA[
 $Self-&gt;Is(
     $A,
     $B,
     'Test Name',
 );
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
 </chapter>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.22 2010-05-10 11:49:36 mg Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -14,7 +14,7 @@
             TAB: We use 4 spaces. Examples for braces:
         </para>
         <para>
-        <programlisting format="linespecific">
+        <programlisting format="linespecific"><![CDATA[
 if ($Condition) {
     Foo();
 }
@@ -25,7 +25,7 @@ else {
 while ($Condition == 1) {
     Foo();
 }
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="naming">
@@ -35,9 +35,9 @@ while ($Condition == 1) {
             must be descriptive nouns or noun phrases with the first letter set upper case.
         </para>
         <para>
-        <programlisting format="linespecific">
+        <programlisting format="linespecific"><![CDATA[
 e. g. @TicktIDs or $Output or BuildQueueView()
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="source-code-header">
@@ -47,30 +47,30 @@ e. g. @TicktIDs or $Output or BuildQueueView()
             Source files are saved in Charset ISO-8859-1.
         </para>
         <para>
-        <programlisting format="linespecific">
+        <programlisting format="linespecific"><![CDATA[
 # --
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
+# $Id: codesyntax.xml,v 1.22 2010-05-10 11:49:36 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
             Executable files (*.pl) have a special header.
         </para>
         <para>
-        <programlisting format="linespecific">
+        <programlisting format="linespecific"><![CDATA[
 #!/usr/bin/perl -w
 # --
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
+# $Id: codesyntax.xml,v 1.22 2010-05-10 11:49:36 mg Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -87,15 +87,15 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 # or see http://www.gnu.org/licenses/agpl.txt.
 # --
-        </programlisting>
+        ]]></programlisting>
         </para>
         <para>
             The following line is updated by the CVS:
         </para>
         <para>
-        <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
-        </programlisting>
+        <programlisting format="linespecific"><![CDATA[
+# $Id: codesyntax.xml,v 1.22 2010-05-10 11:49:36 mg Exp $
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="version-comments">
@@ -108,10 +108,10 @@ e. g. @TicktIDs or $Output or BuildQueueView()
             For perl use '#' and for xml use the xml comments.
         </para>
         <para>
-        <programlisting format="linespecific">
+        <programlisting format="linespecific"><![CDATA[
 e.g. for perl-code
 # FRAMEWORK-2.1: the function ID2UserName is first available in OTRS 2.1
-        </programlisting>
+        ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="special-comments">
@@ -123,19 +123,19 @@ e.g. for perl-code
 
         </para>
         <para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
     # -----------------------------#
     # here starts a special area
     # -----------------------------#
-            </programlisting>
+            ]]></programlisting>
         </para>
         <para>
     Example 2 - especially for customizing standard OTRS files
         </para>
         <para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
     # --- customizing for bsi
-            </programlisting>
+            ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="function-restrictions">
@@ -168,7 +168,7 @@ e.g. for perl-code
     perldoc. It should look like the following example.
         </para>
         <para>
-            <programlisting format="linespecific">
+            <programlisting format="linespecific"><![CDATA[
 =item SystemTime2TimeStamp()
 
 returns a time stamp in "yyyy-mm-dd 23:59:59" format.
@@ -186,7 +186,7 @@ pass the Type parameter like this:
     );
 
 =cut
-            </programlisting>
+            ]]></programlisting>
         </para>
     </sect1>
     <sect1 id="line-length">
