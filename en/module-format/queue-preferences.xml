@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: queue-preferences.xml,v 1.1 2010-05-10 19:11:50 fk Exp $ -->
+<!-- $Id: queue-preferences.xml,v 1.2 2010-05-10 19:29:50 fk Exp $ -->
 
 
 <section id="queue-preferences-module">
@@ -11,7 +11,7 @@
         The queue preferences modules are located under
         Kernel/System/Queue/*.pm. For more information about their configuration see the admin manual.
         Following, there is an example of a queue preferences module.
-        Save it under Kernel/System/Queue/CustomAuth.pm.
+        Save it under Kernel/System/Queue/PreferencesCustom.pm.
         You just need 3 functions: new(), QueuePreferencesSet() and QueuePreferencesGet(). Return 1, then the
         synchonisation is ok.
     </para>
@@ -40,7 +40,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -151,7 +151,7 @@ sub QueuePreferencesGet {
     <section id="queue-preferences-module-use_cases">
         <title>Use case examples</title>
         <para>
-            Useful preferences implmentation could be a soap or radius backend.
+            Useful preferences implementation could be a soap or radius backend.
         </para>
     </section>
     <section id="queue-preferences-module-releases">
