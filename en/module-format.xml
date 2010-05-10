@@ -1,10 +1,27 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $ -->
+<!-- $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $ -->
 
 <chapter>
     <title>Module Format</title>
-    <sect1 id="module-auth">
+
+    <section id="core-modules">
+        <title>Core Modules</title>
+        <xi:include href="module-format/crypt.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/log.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/stats.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </section>
+
+    <section id="frontend-modules">
+        <title>Frontend Modules</title>
+        <xi:include href="module-format/dashboard.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </section>
+
+    <section id="old-module-description">
+        <title>Old Module Descriptions</title>
+        <para>Please remove these old sections if newer ones were created.</para>
+
+    <section id="module-auth">
         <title>Auth Module</title>
         <para>
 There are several agent authentication modules (DB, LDAP and HTTPBasicAuth)
@@ -21,7 +38,7 @@ authentication is ok.
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -55,8 +72,8 @@ sub Auth {
 }
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="module-notify">
+    </section>
+    <section id="module-notify">
         <title>Notify Module</title>
         <para>
 With agent notification modules you can inform agents about new information. A
@@ -82,7 +99,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -119,8 +136,8 @@ $Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
 };
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="module-navigation">
+    </section>
+    <section id="module-navigation">
         <title>Navigation Module</title>
         <para>
 In this module layer you can create dynamic navigation bar items with
@@ -133,7 +150,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -180,8 +197,8 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
 };
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="frontend-modules">
+    </section>
+    <section id="frontend-modules">
         <title>Frontend Modules</title>
         <para>
 Frontend Modules are located under  "$OTRS_HOME/Kernel/Modules/*.pm". There
@@ -206,7 +223,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -219,7 +236,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 # --
 sub new {
@@ -387,8 +404,8 @@ Description of NavBar (icon points) options:
             </tgroup>
         </informaltable>
         </para>
-    </sect1>
-    <sect1 id="module-core">
+    </section>
+    <section id="module-core">
         <title>Core Modules</title>
         <para>
 Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for
@@ -413,7 +430,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -445,7 +462,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -483,20 +500,20 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.31 $ $Date: 2010-05-10 11:49:36 $
+$Revision: 1.32 $ $Date: 2010-05-10 15:09:24 $
 
 =cut
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="module-customer-auth">
+    </section>
+    <section id="module-customer-auth">
         <title>Customer Auth Module</title>
         <para>
 The same as "Agent Auth Modules" but the module location is
 <filename>Kernel/System/CustomerAuth/*.pm</filename>.
         </para>
-    </sect1>
-    <sect1 id="module-customer-user">
+    </section>
+    <section id="module-customer-user">
         <title>Customer User Module</title>
         <para>
 This module layer can be used as a bridge between your customer source
@@ -512,7 +529,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -525,7 +542,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 # --
 sub new {
@@ -579,8 +596,8 @@ sub SetPassword {
         <para>
 To use this module, see the admin manual.
         </para>
-    </sect1>
-    <sect1 id="module-customer-navigation">
+    </section>
+    <section id="module-customer-navigation">
         <title>Customer Navigation Module</title>
         <para>
 In this module layer you can create dynamic navigation bar items with
@@ -602,8 +619,8 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
 };
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="module-stats">
+    </section>
+    <section id="module-stats">
         <title>Stats Module</title>
         <para>
 There are two different types of internal stats modules - dynamic and static
@@ -677,7 +694,7 @@ Kernel/System/Stats/Static/SomeExampleStats.pm:
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -690,7 +707,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -801,8 +818,8 @@ The following example shows how the first path is amended.
                 ]]></programlisting>
             </para>
         </sect2>
-    </sect1>
-    <sect1 id="ticket-modules">
+    </section>
+    <section id="ticket-modules">
         <title>Ticket Modules</title>
         <sect2 id="ticket-number-module">
             <title>Ticket Number Module</title>
@@ -821,7 +838,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -834,7 +851,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -898,7 +915,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -911,7 +928,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -1038,7 +1055,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1051,7 +1068,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 # --
 sub new {
@@ -1163,7 +1180,7 @@ Format:
 # Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.31 2010-05-10 11:49:36 mg Exp $
+# $Id: module-format.xml,v 1.32 2010-05-10 15:09:24 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1176,7 +1193,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
+$VERSION = qw($Revision: 1.32 $) [1];
 
 # --
 sub new {
@@ -1265,5 +1282,6 @@ The Article Module (Kernel/System/Ticket/Article.pm) facilitates the readout and
 More modules and their descriptions are listed under <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
             </para>
         </sect2>
-    </sect1>
+    </section>
+    </section>
 </chapter>
