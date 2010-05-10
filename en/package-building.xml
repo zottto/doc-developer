@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.40 2010-05-10 16:25:45 mg Exp $ -->
+<!-- $Id: package-building.xml,v 1.41 2010-05-10 16:29:06 mg Exp $ -->
 
 <chapter>
     <title>Package Building</title>
@@ -243,7 +243,7 @@ Some Info formated in dtl/html....
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "<pre></pre>" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
             </para>
         </sect2>
         <sect2 id="package-intro-uninstall">
@@ -259,7 +259,7 @@ Some Info formated in dtl/html....
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "<pre></pre>" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
             </para>
         </sect2>
         <sect2 id="package-intro-reinstall">
@@ -275,7 +275,7 @@ Some Info formated in dtl/html....
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "<pre></pre>" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
             </para>
         </sect2>
         <sect2 id="package-intro-upgrade">
@@ -291,7 +291,7 @@ Some Info formated in dtl/html....
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "<pre></pre>" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
             </para>
         </sect2>
         <sect2 id="package-code-install">
