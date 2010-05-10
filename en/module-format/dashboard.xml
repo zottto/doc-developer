@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: dashboard.xml,v 1.3 2010-05-10 15:01:54 ud Exp $ -->
+<!-- $Id: dashboard.xml,v 1.4 2010-05-10 15:07:14 mae Exp $ -->
 
-    <sect id="module-dashboard">
+    <section id="module-dashboard">
         <title>Dashboard Module</title>
         <para>
 Dashboard module to display statistics in the form of a line graph.
@@ -18,7 +18,7 @@ Dashboard module to display statistics in the form of a line graph.
 # Kernel/Output/HTML/DashboardTicketStatsGeneric.pm - message of the day
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: dashboard.xml,v 1.3 2010-05-10 15:01:54 ud Exp $
+# $Id: dashboard.xml,v 1.4 2010-05-10 15:07:14 mae Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -31,7 +31,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -205,4 +205,4 @@ An excessive number of days or individual lines may lead to performance degradat
 from 2.4.0
             </para>
         </section>
-    </sect>
+    </section>
