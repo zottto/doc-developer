@@ -1,4 +1,4 @@
-    <sect1 id="module-dashboard">
+    <sect id="module-dashboard">
         <title>Dashboard Module</title>
         <para>
 Dashboard module to display statistics in the form of a line graph.
@@ -9,13 +9,12 @@ Dashboard module to display statistics in the form of a line graph.
             </screenshot>
         </para>
         <para>
-Format:
         <programlisting language="perl" linenumbering="numbered"><![CDATA[
 # --
 # Kernel/Output/HTML/DashboardTicketStatsGeneric.pm - message of the day
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: dashboard.xml,v 1.1 2010-05-10 14:10:30 ud Exp $
+# $Id: dashboard.xml,v 1.2 2010-05-10 14:33:40 ud Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -28,7 +27,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -202,4 +201,4 @@ An excessive number of days or individual lines may lead to performance degradat
 from 2.4.0
             </para>
         </section>
-    </sect1>
+    </sect>
