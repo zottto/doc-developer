@@ -68,6 +68,7 @@
         </para>
     </section>
     <section id="outputfilter-usecases">
+        <title>Use Cases</title>
         <section id="outputfilter-usecase-10">
             <title>Show additional ticket attributes in AgentTicketZoom.</title>
             <para>
