@@ -14,13 +14,13 @@
     <section id="ticketevent-code">
         <title>Code example</title>
         <para>
-            See Kernel/System/Ticket/Event/TicketPostEventHandlerTemplate.pm in the package TemplateModule.
+            See Kernel/System/Ticket/Event/EventModulePostTemplate.pm in the package TemplateModule.
         </para>
     </section>
     <section id="ticketevent-configuration">
         <title>Configuration example</title>
         <para>
-            See package TemplateModule.
+            See Kernel/Config/Files/EventModulePostTemplate.xml in the package TemplateModule.
         </para>
     </section>
     <section id="ticketevent-usecases">
