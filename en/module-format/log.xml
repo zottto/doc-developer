@@ -1,3 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: log.xml,v 1.4 2010-05-10 16:31:04 fk Exp $ -->
+
+
 <section id="log-module">
 
     <title>Log Module</title>
@@ -21,7 +26,7 @@ Writing an own logging backend is as easy as reimplementing the Kernel::System::
 # Kernel/System/Log/CustomFile.pm - file log backend
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: log.xml,v 1.3 2010-05-10 15:15:09 mg Exp $
+# $Id: log.xml,v 1.4 2010-05-10 16:31:04 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -34,7 +39,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
 
 umask "002";
 
