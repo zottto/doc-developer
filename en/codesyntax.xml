@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -52,7 +52,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
+# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -70,7 +70,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
+# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -94,7 +94,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific">
-# $Id: codesyntax.xml,v 1.20 2009-04-21 06:21:58 tr Exp $
+# $Id: codesyntax.xml,v 1.21 2010-05-10 10:02:09 mg Exp $
         </programlisting>
         </para>
     </sect1>
@@ -169,21 +169,23 @@ e.g. for perl-code
         </para>
         <para>
             <programlisting format="linespecific">
-    =item SystemTime2TimeStamp()
+=item SystemTime2TimeStamp()
 
-    returns a time stamp in "yyyy-mm-dd 23:59:59" format.
+returns a time stamp in "yyyy-mm-dd 23:59:59" format.
 
-        my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
-            SystemTime => $SystemTime,
-        );
+    my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
+        SystemTime => $SystemTime,
+    );
 
-    If you need the short format "23:59:59" if the date is today (if needed).
+If you need the short format "23:59:59" for dates that are "today",
+pass the Type parameter like this:
 
-        my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
-            SystemTime => $SystemTime,
-            Type => 'Short',
-        );
-    =cut
+    my $TimeStamp = $TimeObject->SystemTime2TimeStamp(
+        SystemTime => $SystemTime,
+        Type       => 'Short',
+    );
+
+=cut
             </programlisting>
         </para>
     </sect1>
