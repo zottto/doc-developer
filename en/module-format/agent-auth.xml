@@ -1,12 +1,18 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: agent-auth.xml,v 1.2 2010-05-10 15:37:49 fk Exp $ -->
+<!-- $Id: agent-auth.xml,v 1.3 2010-05-10 16:27:11 fk Exp $ -->
 
 
 <section id="agent-auth-module">
     <title>Agent Authentication Module</title>
     <para>
-        There is a agent authentication interface that allows you to create various agent authentication backends.
+        There are several agent authentication modules (DB, LDAP and HTTPBasicAuth)
+        which come with the OTRS framework. It is also possible to develop your own
+        authentication modules. The agent authentication modules are located under
+        Kernel/System/Auth/*.pm. For more information about their configuration see the admin manual.
+        Following, there is an example of a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm.
+        You just need 3 functions: new(), GetOption() and Auth(). Return the uid, then the
+        authentication is ok.
     </para>
     <section id="agent-auth-module-code">
         <title>Interface</title>
@@ -36,7 +42,7 @@ use warnings;
 use Authen::CustomAuth;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
+$VERSION = qw($Revision: 1.3 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -170,9 +176,8 @@ sub Auth {
     <section id="agent-auth-module-configuration">
         <title>Configuration example</title>
         <para>
-            There is the need to activate your custom agent authenticate module. Furthermore
-            a host and a password has to be provided. Zudem kann eine Option nutzlich sein, die
-            besagt, ob beim Nichterreichen des Servers die Ausführung der Applikation abgebrochen werden soll.
+            There is the need to activate your custom agent authenticate module.
+            This can be done using the xml configuration below.
         </para>
         <para>
         <programlisting language="xml" linenumbering="numbered"><![CDATA[
@@ -183,36 +188,6 @@ sub Auth {
     <SubGroup>Frontend::Auth</SubGroup>
     <Setting>
         <Option Location="Kernel/System/Auth/*.pm" SelectedID="Kernel::System::Auth::CustomAuth"></Option>
-    </Setting>
-</ConfigItem>
-<ConfigItem Name="AuthModule::CustomAuth::Host" Required="0" Valid="0">
-    <Description Lang="en">If "CustomAuth" was selected for AuthModule, specify your radius host.</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier der CustomAuth-Server angegeben werden.</Description>
-    <Group>Framework</Group>
-    <SubGroup>Frontend::Auth</SubGroup>
-    <Setting>
-        <String Regex="">host</String>
-    </Setting>
-</ConfigItem>
-<ConfigItem Name="AuthModule::CustomAuth::Password" Required="0" Valid="0">
-    <Description Lang="en">If "CustomAuth" was selected for AuthModule, specfiy the password to authenticate to your radius host.</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier das Kennwort für die Anmeldung am CustomAuth-Server angegeben werden.</Description>
-    <Group>Framework</Group>
-    <SubGroup>Frontend::Auth</SubGroup>
-    <Setting>
-        <String Regex="">secret</String>
-    </Setting>
-</ConfigItem>
-<ConfigItem Name="AuthModule::CustomAuth::Die" Required="0" Valid="1">
-    <Description Lang="en">If "CustomAuth" was selected for AuthModule, you can specify if the applications will stop if e. g. a server can't connected (e. g. network problems).</Description>
-    <Description Lang="de">Wenn "CustomAuth" als AuthModule ausgewählt wurde, kann hier definiert werden ob die Anwendung abbricht wenn z. B. ein Server nicht erreichbar ist (z. B. Netzwerk-Probleme).</Description>
-    <Group>Framework</Group>
-    <SubGroup>Frontend::Auth</SubGroup>
-    <Setting>
-        <Option SelectedID="1">
-            <Item Key="1">Yes</Item>
-            <Item Key="0">No</Item>
-        </Option>
     </Setting>
 </ConfigItem>
         ]]></programlisting>
@@ -250,7 +225,7 @@ sub Auth {
             </row>
             <row>
                 <entry>Radius</entry>
-                <entry>2.1</entry>
+                <entry>1.3</entry>
             </row>
             </tbody>
             </tgroup>
