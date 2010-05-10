@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $ -->
+<!-- $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -38,7 +38,7 @@ authentication is ok.
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -99,7 +99,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -150,7 +150,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -223,7 +223,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -236,7 +236,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 # --
 sub new {
@@ -430,7 +430,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -462,7 +462,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -500,7 +500,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.38 $ $Date: 2010-05-10 18:44:46 $
+$Revision: 1.39 $ $Date: 2010-05-10 18:54:49 $
 
 =cut
         ]]></programlisting>
@@ -529,7 +529,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -542,7 +542,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 # --
 sub new {
@@ -694,7 +694,7 @@ Kernel/System/Stats/Static/SomeExampleStats.pm:
 # Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -707,7 +707,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -838,7 +838,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -851,7 +851,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -915,7 +915,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -928,7 +928,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -1055,7 +1055,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
+# $Id: module-format.xml,v 1.39 2010-05-10 18:54:49 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1068,7 +1068,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
+$VERSION = qw($Revision: 1.39 $) [1];
 
 # --
 sub new {
@@ -1148,123 +1148,7 @@ sub Run {
             ]]></programlisting>
             </para>
         </section>
-        <section id="ticket-module-event">
-            <title>Ticket Event Module</title>
-            <para>
-To do some actions on ticket events, just write your own ticket event module.
-            </para>
-            <para>
-These modules are located under "Kernel/System/Ticket/Event/*.pm".
-For default modules see the admin manual. You just need two functions:
-new() and Run():
-            </para>
-            <para>
-The following example shows you how to unlock a ticket after a move action.
-            </para>
-            <para>
-Kernel/Config.pm:
-            </para>
-            <para>
-            <programlisting><![CDATA[
-$Self->{'Ticket::EventModulePost'}->{'99-ForceUnlockOnMove'} =  {
-    Module => 'Kernel::System::Ticket::Event::ForceUnlock'
-};
-            ]]></programlisting>
-            </para>
-            <para>
-Format:
-            </para>
-            <para>
-            <programlisting><![CDATA[
-# --
-# Kernel/System/Ticket/Event/ForceUnlook.pm - unlock ticket
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.38 2010-05-10 18:44:46 bes Exp $
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::Ticket::Event::ForceUnlock;
-
-use strict;
-use warnings;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.38 $) [1];
-
-# --
-sub new {
-    my ( $Type, %Param ) = @_;
-
-    # allocate new hash for object
-    my $Self = {};
-    bless ($Self, $Type);
-
-    # get needed objects
-    for (qw(ConfigObject TicketObject LogObject)) {
-        $Self->{$_} = $Param{$_} || die "Got no $_!";
-    }
-
-    return $Self;
-}
-# --
-sub Run {
-    my ( $Self, %Param ) = @_;
-
-    # check needed stuff
-    for (qw(TicketID Event Config)) {
-        if (!$Param{$_}) {
-            $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
-            return;
-        }
-    }
-    if ($Param{Event} eq 'MoveTicket') {
-        $Self->{TicketObject}->LockSet(
-            TicketID => $Param{TicketID},
-            Lock => 'unlock',
-            SendNoNotification => 1,
-            UserID => 1,
-        );
-    }
-    return 1;
-}
-# --
-1;
-            ]]></programlisting>
-            </para>
-            <para>
-Ticket Events for OTRS 2.0:
-TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
-TicketEscalationStartUpdate, MoveTicket,
-SetCustomerData, TicketFreeTextSet, TicketFreeTimeSet,
-TicketPendingTimeSet, LockSet,
-StateSet, OwnerSet,
-TicketResponsibleUpdate, PrioritySet, HistoryAdd,
-HistoryDelete, TicketAccountTime, TicketMerge, ArticleCreate,
-ArticleFreeTextSet, ArticleUpdate, ArticleSend,
-ArticleBounce, SendAgentNotification,
-SendCustomerNotification, SendAutoResponse, ArticleFlagSet;
-            </para>
-            <para>
-Ticket Events for OTRS 2.1 and higher:
-TicketCreate, TicketDelete, TicketTitleUpdate, TicketUnlockTimeoutUpdate,
-TicketEscalationStartUpdate, TicketQueueUpdate (MoveTicket),
-TicketCustomerUpdate (SetCustomerData), TicketFreeTextUpdate
-(TicketFreeTextSet), TicketFreeTimeUpdate (TicketFreeTimeSet),
-TicketPendingTimeUpdate (TicketPendingTimeSet), TicketLockUpdate (LockSet),
-TicketStateUpdate (StateSet), TicketOwnerUpdate (OwnerSet),
-TicketResponsibleUpdate, TicketPriorityUpdate (PrioritySet),
-TicketSubscribe, TicketUnsubscribe, HistoryAdd,
-HistoryDelete, TicketAccountTime, TicketMerge, ArticleCreate,
-ArticleFreeTextUpdate (ArticleFreeTextSet), ArticleUpdate, ArticleSend,
-ArticleBounce, ArticleAgentNotification, (SendAgentNotification),
-ArticleCustomerNotification (SendCustomerNotification), ArticleAutoResponse
-(SendAutoResponse), ArticleFlagSet, ArticleFlagDelete;
-            </para>
-        </section>
+        <xi:include href="module-format/ticketevent.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <section id="more-modules">
             <title>More Modules</title>
             <para>
