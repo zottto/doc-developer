@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.17 2010-05-10 11:49:36 mg Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.18 2010-05-10 15:50:50 mg Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>

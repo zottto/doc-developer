@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: dashboard.xml,v 1.5 2010-05-10 15:17:25 ud Exp $ -->
+<!-- $Id: dashboard.xml,v 1.6 2010-05-10 15:50:50 mg Exp $ -->
 
     <section id="module-dashboard">
         <title>Dashboard Module</title>
@@ -18,7 +18,7 @@ Dashboard module to display statistics in the form of a line graph.
 # Kernel/Output/HTML/DashboardTicketStatsGeneric.pm - message of the day
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: dashboard.xml,v 1.5 2010-05-10 15:17:25 ud Exp $
+# $Id: dashboard.xml,v 1.6 2010-05-10 15:50:50 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -31,7 +31,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
+$VERSION = qw($Revision: 1.6 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -174,7 +174,7 @@ and restart your webserver (if you use mod_perl).
         <programlisting language="xml" linenumbering="numbered"><![CDATA[
 <ConfigItem Name="DashboardBackend###0250-TicketStats" Required="0" Valid="1">
     <Description Lang="en">Parameters for the dashboard backend. "Group" are used to restriced access to the plugin (e. g. Group: admin;group1;group2;). "Default" means if the plugin is enabled per default or if the user needs to enable it manually. "CacheTTL" means the cache time in minutes for the plugin.</Description>
-    <Description Lang="de">Parameter für das Dashboard Backend. "Group" ist verwendet um den Zugriff auf das Plugin einzuschränken (z. B. Group: admin;group1;group2;). ""Default" bedeutet ob das Plugin per default aktiviert ist oder ob dies der Anwender manuell machen muss. "CacheTTL" ist die Cache-Zeit in Minuten nach der das Plugin erneut aufgerufen wird.</Description>
+    <Description Lang="de">Parameter fï¿½r das Dashboard Backend. "Group" ist verwendet um den Zugriff auf das Plugin einzuschrï¿½nken (z. B. Group: admin;group1;group2;). ""Default" bedeutet ob das Plugin per default aktiviert ist oder ob dies der Anwender manuell machen muss. "CacheTTL" ist die Cache-Zeit in Minuten nach der das Plugin erneut aufgerufen wird.</Description>
     <Group>Ticket</Group>
     <SubGroup>Frontend::Agent::Dashboard</SubGroup>
     <Setting>

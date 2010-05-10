@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.18 2009-04-21 06:21:58 tr Exp $ -->
+<!-- $Id: book.xml,v 1.19 2010-05-10 15:50:50 mg Exp $ -->
 
 <book lang="en">
     <bookinfo>
@@ -13,7 +13,7 @@
         <date>2009-03-06</date>
         <legalnotice>
             <para>
-René Bakker, Hauke Böttcher, Stefan Bedorf, Shawn Beasley, Jens Bothe,  Udo Bretz, Martin Edenhofer, Manuel Hecht, Christopher Kuhn, André Mindermann, Henning Oschwald, Thomas Raith, Stefan Rother, Burchard Steinbild
+RenÃ© Bakker, Hauke BÃ¶ttcher, Stefan Bedorf, Shawn Beasley, Jens Bothe,  Udo Bretz, Martin Edenhofer, Manuel Hecht, Christopher Kuhn, AndrÃ© Mindermann, Henning Oschwald, Thomas Raith, Stefan Rother, Burchard Steinbild
             </para>
             <para>
 This work is copyrighted by OTRS AG.
