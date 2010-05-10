@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.13 2010-05-10 15:50:50 mg Exp $ -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: log-mechanism.xml,v 1.14 2010-05-10 18:50:54 bes Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>

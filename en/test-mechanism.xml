@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.8 2010-05-10 15:50:50 mg Exp $ -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: test-mechanism.xml,v 1.9 2010-05-10 18:50:54 bes Exp $ -->
 
 <chapter>
     <title>Unit Tests</title>
@@ -21,7 +21,7 @@ Example (/scripts/test/Calendar.t):
 # Calendar.t - Calendar
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: test-mechanism.xml,v 1.8 2010-05-10 15:50:50 mg Exp $
+# $Id: test-mechanism.xml,v 1.9 2010-05-10 18:50:54 bes Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
