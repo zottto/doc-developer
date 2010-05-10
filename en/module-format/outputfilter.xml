@@ -35,7 +35,6 @@
         </para>
     </section>
     <section id="outputfilter_filtercontent">
-        <title>FilterContent</title>
         <para>
             This kind of filter allows to process the complete HTML output for the request
             right before it is sent to the browser.
@@ -125,6 +124,7 @@
         </para>
     </section>
     <section id="outputfilter-bestpractice">
+        <title>Best Practices</title>
         <para>
             In order to increase flexibility the list of affected templates should be
             configurable in SysConfig.
