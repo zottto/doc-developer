@@ -1,0 +1,275 @@
+<section id="module-stats">
+    <title>Stats Module</title>
+    <para>
+There are two different types of internal stats modules - dynamic and static. This section describes how such stats modules can be developed.
+    </para>
+    <section id="module-stats-dynamic">
+        <title>Dynamic Stats</title>
+        <para>
+In contrast to static stats modules, dynamic statistics can be configured via the OTRS web interface. In this section a simple statistic module is developed. Each dynamic stats module has to implement these subroutines
+        </para>
+        <para>
+            <itemizedlist mark="round">
+                <listitem>
+                    <para>new</para>
+                </listitem>
+                <listitem>
+                    <para>GetObjectName</para>
+                </listitem>
+                <listitem>
+                    <para>GetObjectAttributes</para>
+                </listitem>
+                <listitem>
+                    <para>ExportWrapper</para>
+                </listitem>
+                <listitem>
+                    <para>ImportWrapper</para>
+                </listitem>
+                <listitem>
+                    <para>GetHeaderLine</para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+Furthermore the module has to implement either GetStatElement or GetStatTable.
+        </para>
+        <section id="module-stats-dynamic-subroutines">
+            <title>Code example</title>
+            <para>
+In this section a sample stats module is shown and each subroutine is explained.
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+# --
+# Kernel/System/Stats/Dynamic/DeveloperManualSample.pm - all advice functions
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# $Id: stats.xml,v 1.1 2010-05-10 14:09:25 reb Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::Stats::Dynamic::DeveloperManualSample;
+
+use strict;
+use warnings;
+
+use Kernel::System::Queue;
+use Kernel::System::State;
+use Kernel::System::Ticket;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.1 $) [1];
+                ]]></programlisting>
+            </para>
+            <para>
+This is common boilerplate that can be found in common OTRS modules. The class/package name is declared via the package keyword. Then the needed modules are 'use'd.
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # check needed objects
+    for my $Object (
+        qw(DBObject ConfigObject LogObject UserObject TimeObject MainObject EncodeObject)
+        )
+    {
+        $Self->{$Object} = $Param{$Object} || die "Got no $Object!";
+    }
+
+    # created needed objects
+    $Self->{QueueObject}    = Kernel::System::Queue->new( %{$Self} );
+    $Self->{TicketObject}   = Kernel::System::Ticket->new( %{$Self} );
+    $Self->{StateObject}    = Kernel::System::State->new( %{$Self} );
+
+    return $Self;
+}
+                ]]></programlisting>
+            </para>
+            <para>
+new is the constructor for this statistic module. It creates a new instance of the class. According to the coding guidelines objects of other classes that are needed in this module have to be created in "new". In lines 27 to 29 the object of the stats module is created. Lines 31 to 37 check if objects that are needed in this code - either for creating other objects or in this module - are passed. After that the other objects are created.
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+sub GetObjectName {
+    my ( $Self, %Param ) = @_;
+
+    return 'Sample Statistics';
+}
+                ]]></programlisting>
+            </para>
+            <para>
+GetObjectName returns a Name for the Statistics module. This is the label that is shown in the drop down in the configuration (see picture 1) as well as in the list of existing statistics (see picture 2).
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+sub GetObjectAttributes {
+    my ( $Self, %Param ) = @_;
+
+    # get state list
+    my %StateList = $Self->{StateObject}->StateList(
+        UserID => 1,
+    );
+
+    # get queue list
+    my %QueueList = $Self->{QueueObject}->GetAllQueues();
+
+    # get current time to fix bug#3830
+    my $TimeStamp = $Self->{TimeObject}->CurrentTimestamp();
+    my ($Date) = split /\s+/, $TimeStamp;
+    my $Today = sprintf "%s 23:59:59", $Date;
+
+    my @ObjectAttributes = (
+        {
+            Name             => 'State',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'StateIDs',
+            Block            => 'MultiSelectField',
+            Values           => \%StateList,
+        },
+        {
+            Name             => 'Created in Queue',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'CreatedQueueIDs',
+            Block            => 'MultiSelectField',
+            Translation      => 0,
+            Values           => \%QueueList,
+        },
+        {
+            Name             => 'Create Time',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'CreateTime',
+            TimePeriodFormat => 'DateInputFormat',    # 'DateInputFormatLong',
+            Block            => 'Time',
+            TimeStop         => $Today,
+            Values           => {
+                TimeStart => 'TicketCreateTimeNewerDate',
+                TimeStop  => 'TicketCreateTimeOlderDate',
+            },
+        },
+    );
+
+    return @ObjectAttributes;
+}
+                ]]></programlisting>
+            </para>
+            <para>
+In this sample stats module, we want to provide three attributes the user can chose from: A list of queues, a list of states an a time drop down (see picture 3). To get the values shown in the drop down, some operations are needed. In this case call StateList and GetAllQueues.
+            </para>
+            <para>
+Then the list of attributes is created. Each attribute is defined via a hashreference. You can use these keys:
+            </para>
+            <para>
+                <itemizedlist mark="round" >
+                    <listitem>
+                        <para>Name</para>
+                        <para>the label in the web interface</para>
+                    </listitem>
+                    <listitem>
+                        <para>UseAsXvalue</para>
+                        <para>Can this attribute be used on the x-axis</para>
+                    </listitem>
+                    <listitem>
+                        <para>UseAsValueSeries</para>
+                        <para>Can this attribute be used on the y-axis</para>
+                    </listitem>
+                    <listitem>
+                        <para>UseAsRestriction</para>
+                        <para>Can this attribute be used for restrictions.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Element</para>
+                        <para>the HTML fieldname</para>
+                    </listitem>
+                    <listitem>
+                        <para>Block</para>
+                        <para>the block name in the template file (e.g. &lt;OTRS_HOME&gt;/Kernel/Output/HTML/Standard/AgentStatsEditXaxis.dtl)</para>
+                    </listitem>
+                    <listitem>
+                        <para>Values</para>
+                        <para>the values shown in the attribute</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+Hint: If you install this sample an you configured a statistic with some queues - lets say 'queue A' and 'queue B' - then these queues are the only ones that are shown to the user when he starts the statistic. Sometimes a dynamic drop down or multiselect field is needed. In this case, you can set "SelectedValues" in the definition of the attribute:
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+        {
+            Name             => 'Created in Queue',
+            UseAsXvalue      => 1,
+            UseAsValueSeries => 1,
+            UseAsRestriction => 1,
+            Element          => 'CreatedQueueIDs',
+            Block            => 'MultiSelectField',
+            Translation      => 0,
+            Values           => \%QueueList,
+            SelectedValues   => [ @SelectedQueues ],
+        },
+                ]]></programlisting>
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                ]]></programlisting>
+            </para>
+            <para>
+                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                ]]></programlisting>
+            </para>
+        </section>
+        <section id="module-stats-dynamic-configuration">
+            <title>Configuration example</title>
+            <para>
+                <programlisting language="xml" linenumbering="numbered"><![CDATA[
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<otrs_config version="1.0" init="Config">
+    <CVS>$Id: stats.xml,v 1.1 2010-05-10 14:09:25 reb Exp $</CVS>
+    <ConfigItem Name="Stats::DynamicObjectRegistration###DeveloperManualSample" Required="0" Valid="1">
+        <Description Lang="en">Here you can decide if the common stats module may generate stats about the number of default tickets a requester created.</Description>
+        <Description Lang="de">Hier können Sie festlegen, ob das Statistik-Modul auch allgemeine Statistiken über die Anzahl von "default"-Tickets, die von Benutzern erzeugt wurden, generieren darf.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Core::Stats</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Module">Kernel::System::Stats::Dynamic::DeveloperManualSample</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+</otrs_config>
+                ]]></programlisting>
+            </para>
+        </section>
+        <section id="example-module-use_cases">
+            <title>Use case examples</title>
+            <para>
+List of technical and subject-specific use cases.
+            </para>
+        </section>
+        <section id="example-module-caveats">
+            <title>Caveats and Warnings</title>
+            <para>
+List of caveats and/or warnings.
+            </para>
+        </section>
+        <section id="example-module-releases">
+            <title>Release Availability</title>
+            <para>
+List of known releases.
+            </para>
+        </section>
+    </section>
+</section>
