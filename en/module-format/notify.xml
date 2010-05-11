@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: notify.xml,v 1.1 2010-05-11 16:35:36 fk Exp $ -->
+<!-- $Id: notify.xml,v 1.2 2010-05-11 16:36:23 fk Exp $ -->
 
 
 <section id="notify-module">
@@ -33,7 +33,7 @@
     <section id="notify-module-code">
         <title>Code Example</title>
         <para>
-            The ticket menu modules are located under
+            The notification modules are located under
             Kernel/Output/HTML/TicketNotification*.pm.
             There is an example of a notify module below.
             Save it under Kernel/Output/HTML/TicketNotificationCustom.pm.
@@ -45,7 +45,7 @@
 # Kernel/Output/HTML/NotificationCustom.pm
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: notify.xml,v 1.1 2010-05-11 16:35:36 fk Exp $
+# $Id: notify.xml,v 1.2 2010-05-11 16:36:23 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -60,7 +60,7 @@ use warnings;
 use Kernel::System::Custom;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
