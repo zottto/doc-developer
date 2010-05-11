@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $ -->
+<!-- $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -14,6 +14,7 @@
         <xi:include href="module-format/log.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/outputfilter.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/stats.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/virtualfs.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     </section>
 
     <section id="frontend-modules">
@@ -42,7 +43,7 @@ authentication is ok.
 # Kernel/System/Auth/Simple.pm - provides the simple authentication
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -103,7 +104,7 @@ Format:
 # Kernel/Output/HTML/NotificationMotd.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -154,7 +155,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -227,7 +228,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -240,7 +241,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 # --
 sub new {
@@ -434,7 +435,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -466,7 +467,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -504,7 +505,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.40 $ $Date: 2010-05-11 15:25:00 $
+$Revision: 1.41 $ $Date: 2010-05-11 15:48:46 $
 
 =cut
         ]]></programlisting>
@@ -533,7 +534,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -546,7 +547,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 # --
 sub new {
@@ -624,205 +625,6 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
         ]]></programlisting>
         </para>
     </section>
-    <section id="old-module-stats">
-        <title>Stats Module</title>
-        <para>
-There are two different types of internal stats modules - dynamic and static
-        </para>
-        <section id="dynamic-stats">
-            <title>Dynamic stats</title>
-            <para>
-If you create a dynamic stats file, you can configurate your own statistics via
-the web frontend.
-            </para>
-        <para>
-The following functions are required (or optional) to get a functional script.
-        <itemizedlist mark="round" >
-            <listitem>
-                <para>sub new</para>
-                <para>to generate a new instance</para>
-            </listitem>
-            <listitem>
-                <para>sub GetObjectName</para>
-                <para>gives the name of this dynamic stats module to the web frontend.</para>
-            </listitem>
-            <listitem>
-                <para>sub GetObjectAttributes</para>
-                <para>generates an array with all possible elements of this dynamic stats module.</para>
-            </listitem>
-            <listitem>
-                <para>sub GetStatElement</para>
-                <para>
-provides the content of a cell. Required if you do not use the function GetStatTable().
-For example, have a look at Kernel/System/Stats/Dynamic/Ticket.pm.
-                </para>
-            </listitem>
-            <listitem>
-                <para>sub GetStatTable</para>
-                <para>
-provides the content of a table. Required if you do not use the function GetStatElement().
-For example, have a look at Kernel/System/Stats/Dynamic/TicketList.pm.
-                </para>
-            </listitem>
-            <listitem>
-                <para>sub ExportWrapper</para>
-                <para>converts the internal stats xml into a commonly usable format. For example 'queue id' into 'queue name'.</para>
-            </listitem>
-            <listitem>
-                <para>sub ImportWrapper</para>
-                <para>undoes the changes of the ExportWrapper during stats import.</para>
-            </listitem>
-            <listitem>
-                <para>sub GetHeaderLine</para>
-                <para>provides a individual sorted header line. Optional. Only if needed.</para>
-            </listitem>
-        </itemizedlist>
-        </para>
-        <para>
-For example, have a look at
-Kernel/System/Stats/Dynamic/Ticket.pm:
-        </para>
-        </section>
-        <section id="static-stats">
-            <title>Static stats</title>
-        <para>
-A static stats module is easy to make - you just need two functions.
-Param() to get all usable params for the stats and Run() to return the stats result.
-        </para>
-        <para>
-Kernel/System/Stats/Static/SomeExampleStats.pm:
-        </para>
-        <para>
-        <programlisting><![CDATA[
-# --
-# Kernel/System/Stats/Static/SomeExampleStats.pm - stats module
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::Stats::Static::SomeExampleStats;
-
-use strict;
-use warnings;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
-
-sub new {
-    my ( $Type, %Param ) = @_;
-
-    # allocate new hash for object
-    my $Self = { %Param };
-    bless( $Self, $Type );
-
-    # check all needed objects
-    for (qw(ConfigObject EncodeObject LogObject DBObject)) {
-        die "Got no $_" if ( !$Self->{$_} );
-    }
-
-    return $Self;
-}
-
-sub Param {
-    my $Self = shift;
-
-    # get current time
-    my ($s,$m,$h, $D,$M,$Y) = $Self->{TimeObject}->SystemTime2Date(
-        SystemTime => $Self->{TimeObject}->SystemTime(),
-    );
-    # get one month before
-    my $SelectedYear  = $M == 1 ? $Y - 1 : $Y;
-    my $SelectedMonth = $M == 1 ? 12     : $M - 1;
-
-    # create possible time selections
-    my %Year = map { $_ => $_; } ( $Y - 10 .. $Y );
-    my %Month = map { $_ => sprintf( "%02d", $_ ); } ( 1 .. 12 );
-
-    my @Params = (
-        {
-            Frontend => 'Year',
-            Name => 'Year',
-            Multiple => 0,
-            Size => 0,
-            SelectedID => $SelectedYear,
-            Data => {
-                %Year,
-            },
-        },
-        {
-            Frontend => 'Month',
-            Name => 'Month',
-            Multiple => 0,
-            Size => 0,
-            SelectedID => $SelectedMonth,
-            Data => {
-                %Month,
-            },
-        },
-    );
-    return @Params;
-}
-
-sub Run {
-    my ( $Self, %Param ) = @_;
-
-    my $Title = "$Param{Year}-$Param{Month}";
-
-    my @HeadData = ('Col A', 'Col B', 'Col C');
-
-    my @Data = (
-        [1, 4, 7],
-        [6, 1, 4],
-        [9, 4, 6],
-    );
-
-    return ([$Title],[@HeadData], @Data);
-}
-
-1;
-        ]]></programlisting>
-        </para>
-
-
-        </section>
-        <section id="stats-using-old-stats" >
-            <title>Using old static stats</title>
-
-            <para>
-Standard OTRS versions 1.3 and 2.0 already facilitated the generation of stats.
-Various stats for OTRS versions 1.3 and 2.0 which have been specially
-developed to meet customers' requirements can be used in more recent versions too.
-            </para>
-
-            <para>
-The files must merely be moved from the
-<filename>Kernel/System/Stats/</filename> path to
-<filename>Kernel/System/Stats/Static/</filename>. Additionally
-the package name of the respective script must be amended by
-"::Static".
-            </para>
-
-            <para>
-The following example shows how the first path is amended.
-            </para>
-
-            <para>
-                <programlisting><![CDATA[
-    package Kernel::System::Stats::AccountedTime;
-                ]]></programlisting>
-            </para>
-            <para>
-                <programlisting><![CDATA[
-    package Kernel::System::Stats::Static::AccountedTime;
-                ]]></programlisting>
-            </para>
-        </section>
-    </section>
     <section id="ticket-modules">
         <title>Ticket Modules</title>
         <section id="ticket-number-module">
@@ -842,7 +644,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -855,7 +657,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -919,7 +721,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -932,7 +734,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -1059,7 +861,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.40 2010-05-11 15:25:00 fk Exp $
+# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -1072,7 +874,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.40 $) [1];
+$VERSION = qw($Revision: 1.41 $) [1];
 
 # --
 sub new {
