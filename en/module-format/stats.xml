@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: stats.xml,v 1.3 2010-05-10 16:30:14 reb Exp $ -->
+<!-- $Id: stats.xml,v 1.4 2010-05-11 15:23:29 reb Exp $ -->
 <section id="module-stats">
     <title>Stats Module</title>
     <para>
@@ -39,7 +39,7 @@ Furthermore the module has to implement either GetStatElement or GetStatTable. A
 In this section a sample stats module is shown and each subroutine is explained.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 # --
 # Kernel/System/Stats/Dynamic/DynamicStatsTemplate.pm - all advice functions
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
@@ -59,14 +59,14 @@ use Kernel::System::State;
 use Kernel::System::Ticket;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
                 ]]></programlisting>
             </para>
             <para>
 This is common boilerplate that can be found in common OTRS modules. The class/package name is declared via the package keyword. Then the needed modules are 'use'd.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub new {
     my ( $Type, %Param ) = @_;
 
@@ -95,7 +95,7 @@ sub new {
 new is the constructor for this statistic module. It creates a new instance of the class. According to the coding guidelines objects of other classes that are needed in this module have to be created in "new". In lines 27 to 29 the object of the stats module is created. Lines 31 to 37 check if objects that are needed in this code - either for creating other objects or in this module - are passed. After that the other objects are created.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub GetObjectName {
     my ( $Self, %Param ) = @_;
 
@@ -107,7 +107,7 @@ sub GetObjectName {
 GetObjectName returns a Name for the Statistics module. This is the label that is shown in the drop down in the configuration as well as in the list of existing statistics (column "object").
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub GetObjectAttributes {
     my ( $Self, %Param ) = @_;
 
@@ -206,7 +206,7 @@ Then the list of attributes is created. Each attribute is defined via a hashrefe
 Hint: If you install this sample an you configured a statistic with some queues - lets say 'queue A' and 'queue B' - then these queues are the only ones that are shown to the user when he starts the statistic. Sometimes a dynamic drop down or multiselect field is needed. In this case, you can set "SelectedValues" in the definition of the attribute:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
         {
             Name             => 'Created in Queue',
             UseAsXvalue      => 1,
@@ -221,7 +221,7 @@ Hint: If you install this sample an you configured a statistic with some queues 
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub GetStatElement {
     my ( $Self, %Param ) = @_;
 
@@ -240,7 +240,7 @@ sub GetStatElement {
 GetStatElement gets called for each cell in the result table. So it should be a numeric value. In this sample it does a simple ticket search. The hash %Param contains information about the "current" x-value and the y-value as well as any restrictions. So, for a cell that should count the created tickets for queue 'Misc' with state 'open' the passed parameter hash looks something like this:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
     'CreatedQueueIDs' => [
         '4'
     ],
@@ -253,7 +253,7 @@ GetStatElement gets called for each cell in the result table. So it should be a 
 If the "per cell" calculation should be avoided, GetStatTable is an alternative. GetStatTable returns a list of rows, hence an array of arrayreferences. This leads to the same result as using GetStatElement
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub GetStatTable {
     my ( $Self, %Param ) = @_;
 
@@ -284,7 +284,7 @@ sub GetStatTable {
 GetStatTable gets all information about the stats query that is needed. The passed parameters contains information about the attributes (Restrictions, attributes that are used for x/y-axis) and the table structure. The table structure is a hash reference where the keys are the values of the y-axis and their values are hashreferences with the parameters used for GetStatElement subroutines.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
     'Restrictions' => {},
     'TableStructure' => {
         'closed successful' => [
@@ -359,7 +359,7 @@ GetStatTable gets all information about the stats query that is needed. The pass
 Sometimes the headers of the table have to be changed. In that case, a subroutine called GetHeaderLine has to be implemented. That subroutine has to return an arrayreference with the column headers as elements. It gets information about the x-values passed.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub GetHeaderLine {
     my ( $Self, %Param ) = @_;
 
@@ -373,7 +373,7 @@ sub GetHeaderLine {
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 sub ExportWrapper {
     my ( $Self, %Param ) = @_;
 
@@ -416,7 +416,7 @@ ImportWrapper works the other way around - it converts the name to the ID in the
 This is a sample export:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 
 <otrs_stats>
@@ -454,7 +454,7 @@ This is a sample export:
 Now, that all subroutines are explained, this is the complete sample stats module.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 # --
 # Kernel/System/Stats/Dynamic/DynamicStatsTemplate.pm - all advice functions
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
@@ -474,7 +474,7 @@ use Kernel::System::State;
 use Kernel::System::Ticket;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -665,12 +665,11 @@ sub ImportWrapper {
         <section id="module-stats-dynamic-configuration">
             <title>Configuration example</title>
             <para>
-                <programlisting language="xml" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <otrs_config version="1.0" init="Config">
     <ConfigItem Name="Stats::DynamicObjectRegistration###DynamicStatsTemplate" Required="0" Valid="1">
         <Description Lang="en">Here you can decide if the common stats module may generate stats about the number of default tickets a requester created.</Description>
-        <Description Lang="de">Hier können Sie festlegen, ob das Statistik-Modul auch allgemeine Statistiken über die Anzahl von "default"-Tickets, die von Benutzern erzeugt wurden, generieren darf.</Description>
         <Group>Framework</Group>
         <SubGroup>Core::Stats</SubGroup>
         <Setting>
@@ -705,8 +704,385 @@ Dynamic stat modules are available since OTRS 2.0.
     <section id="module-stats-static">
         <title>Static Stats</title>
         <para>
-The subsequent paragraphs describe the static stats.
+The subsequent paragraphs describe the static stats. Static stats are very easy to create as these modules have to implement only three subroutines.
         </para>
+        <para>
+            <itemizedlist mark="round">
+                <listitem>
+                    <para>new</para>
+                </listitem>
+                <listitem>
+                    <para>Param</para>
+                </listitem>
+                <listitem>
+                    <para>Run</para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <section id="module-stats-static-subroutines">
+            <title>Code example</title>
+            <para>
+The following paragraphs describe the subroutines needed in a static stats.
+            </para>
+            <para>
+                <programlisting><![CDATA[
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {%Param};
+    bless( $Self, $Type );
+
+    # check all needed objects
+    for my $Needed (
+        qw(DBObject ConfigObject LogObject
+        TimeObject MainObject EncodeObject)
+        )
+    {
+        $Self->{$Needed} = $Param{$Needed} || die "Got no $Needed";
+    }
+
+    # create needed objects
+    $Self->{TypeObject}   = Kernel::System::Type->new( %{$Self} );
+    $Self->{TicketObject} = Kernel::System::Ticket->new( %{$Self} );
+    $Self->{QueueObject}  = Kernel::System::Queue->new( %{$Self} );
+
+    return $Self;
+}
+                ]]></programlisting>
+            </para>
+            <para>
+new creates a new instance of the static stats class. First it creates a new object and then it checks for the needed objects.
+            </para>
+            <para>
+                <programlisting><![CDATA[
+sub Param {
+    my $Self = shift;
+
+    my %Queues = $Self->{QueueObject}->GetAllQueues();
+    my %Types  = $Self->{TypeObject}->TypeList(
+        Valid => 1,
+    );
+
+    my @Params = (
+        {
+            Frontend  => 'Type',
+            Name      => 'TypeIDs',
+            Multiple  => 1,
+            Size      => 3,
+            Data      => \%Types,
+        },
+        {
+            Frontend  => 'Queue',
+            Name      => 'QueueIDs',
+            Multiple  => 1,
+            Size      => 3,
+            Data      => \%Queues,
+        },
+    );
+
+    return @Params;
+}
+                ]]></programlisting>
+            </para>
+            <para>
+The Param method provides the list of all parameters/attributes that can be selected to create a static stat. It gets some parameters passed: The values for the stats attributes provided in a request, the format of the stats and the name of the object (name of the module).
+            </para>
+            <para>
+The parameters/attributes have to be hashreferences with these key-value-pairs.
+            </para>
+            <para>
+                <itemizedlist mark="round" >
+                    <listitem>
+                        <para>Frontent</para>
+                        <para>the label in the web interface</para>
+                    </listitem>
+                    <listitem>
+                        <para>Name</para>
+                        <para>the HTML fieldname</para>
+                    </listitem>
+                    <listitem>
+                        <para>Data</para>
+                        <para>the values shown in the attribute</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+Other parameter for the BuildSelection method of the LayoutObject can be used, as it is done with "Size" and "Multiple" in this sample module.
+            </para>
+            <para>
+                <programlisting><![CDATA[
+sub Run {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    for my $Needed (qw(TypeIDs QueueIDs)) {
+        if ( !$Param{$Needed} ) {
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!",
+            );
+            return;
+        }
+    }
+
+    # set report title
+    my $Title = 'Tickets per Queue';
+
+    # table headlines
+    my @HeadData = (
+        'Ticket Number',
+        'Queue',
+        'Type',
+    );
+
+    my @Data;
+    my @TicketIDs = $Self->{TicketObject}->TicketSearch(
+        UserID     => 1,
+        Result     => 'ARRAY',
+        Permission => 'ro',
+        %Param,
+    );
+
+    for my $TicketID ( @TicketIDs ) {
+        my %Ticket = $Self->{TicketObject}->TicketGet(
+            UserID => 1,
+            TicketID => $TicketID,
+        );
+        push @Data, [ $Ticket{TicketNumber}, $Ticket{Queue}, $Ticket{Type} ];
+    }
+
+    return ( [$Title], [@HeadData], @Data );
+}
+                ]]></programlisting>
+            </para>
+            <para>
+The Run method actually generates the table data for the stats. It gets the attributes for this stats passed. In this sample it in %Param a key 'TypeIDs' and a key 'QueueIDs' exist (see attributes in Param method) and their values are arrayreferences. The returned data consists of three parts: Two arrayreferences and an array. In the first arrayreference the title for the statistic is stored, the second arrayreference contains the headlines for the columns in the table. And then the data for the table body follow.
+            </para>
+            <para>
+                <programlisting><![CDATA[
+# --
+# Kernel/System/Stats/Static/StaticStatsTemplate.pm
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::Stats::Static::StaticStatsTemplate;
+
+use strict;
+use warnings;
+
+use Kernel::System::Type;
+use Kernel::System::Ticket;
+use Kernel::System::Queue;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.4 $) [1];
+
+=head1 NAME
+
+StaticStatsTemplate.pm - the module that creates the stats about tickets in a queue
+
+=head1 SYNOPSIS
+
+All functions
+
+=head1 PUBLIC INTERFACE
+
+=over 4
+
+=cut
+
+=item new()
+
+create an object
+
+    use Kernel::Config;
+    use Kernel::System::Encode;
+    use Kernel::System::Log;
+    use Kernel::System::Main;
+    use Kernel::System::Time;
+    use Kernel::System::DB;
+    use Kernel::System::Stats::Static::StaticStatsTemplate;
+
+    my $ConfigObject = Kernel::Config->new();
+    my $EncodeObject = Kernel::System::Encode->new(
+        ConfigObject => $ConfigObject,
+    );
+    my $LogObject    = Kernel::System::Log->new(
+        ConfigObject => $ConfigObject,
+    );
+    my $MainObject = Kernel::System::Main->new(
+        ConfigObject => $ConfigObject,
+        LogObject    => $LogObject,
+    );
+    my $TimeObject = Kernel::System::Time->new(
+        ConfigObject => $ConfigObject,
+        LogObject    => $LogObject,
+    );
+    my $DBObject = Kernel::System::DB->new(
+        ConfigObject => $ConfigObject,
+        LogObject    => $LogObject,
+        MainObject   => $MainObject,
+    );
+    my $StatsObject = Kernel::System::Stats::Static::StaticStatsTemplate->new(
+        ConfigObject => $ConfigObject,
+        LogObject    => $LogObject,
+        MainObject   => $MainObject,
+        TimeObject   => $TimeObject,
+        DBObject     => $DBObject,
+        EncodeObject => $EncodeObject,
+    );
+
+=cut
+
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {%Param};
+    bless( $Self, $Type );
+
+    # check all needed objects
+    for my $Needed (
+        qw(DBObject ConfigObject LogObject
+        TimeObject MainObject EncodeObject)
+        )
+    {
+        $Self->{$Needed} = $Param{$Needed} || die "Got no $Needed";
+    }
+
+    # create needed objects
+    $Self->{TypeObject}   = Kernel::System::Type->new( %{$Self} );
+    $Self->{TicketObject} = Kernel::System::Ticket->new( %{$Self} );
+    $Self->{QueueObject}  = Kernel::System::Queue->new( %{$Self} );
+
+    return $Self;
+}
+
+=item Param()
+
+Get all parameters a user can specify.
+
+    my @Params = $StatsObject->Param();
+
+=cut
+
+sub Param {
+    my $Self = shift;
+
+    my %Queues = $Self->{QueueObject}->GetAllQueues();
+    my %Types  = $Self->{TypeObject}->TypeList(
+        Valid => 1,
+    );
+
+    my @Params = (
+        {
+            Frontend  => 'Type',
+            Name      => 'TypeIDs',
+            Multiple  => 1,
+            Size      => 3,
+            Data      => \%Types,
+        },
+        {
+            Frontend  => 'Queue',
+            Name      => 'QueueIDs',
+            Multiple  => 1,
+            Size      => 3,
+            Data      => \%Queues,
+        },
+    );
+
+    return @Params;
+}
+
+=item Run()
+
+generate the statistic.
+
+    my $StatsInfo = $StatsObject->Run(
+        TypeIDs  => [
+            1, 2, 4
+        ],
+        QueueIDs => [
+            3, 4, 6
+        ],
+    );
+
+=cut
+
+sub Run {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    for my $Needed (qw(TypeIDs QueueIDs)) {
+        if ( !$Param{$Needed} ) {
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!",
+            );
+            return;
+        }
+    }
+
+    # set report title
+    my $Title = 'Tickets per Queue';
+
+    # table headlines
+    my @HeadData = (
+        'Ticket Number',
+        'Queue',
+        'Type',
+    );
+
+    my @Data;
+    my @TicketIDs = $Self->{TicketObject}->TicketSearch(
+        UserID     => 1,
+        Result     => 'ARRAY',
+        Permission => 'ro',
+        %Param,
+    );
+
+    for my $TicketID ( @TicketIDs ) {
+        my %Ticket = $Self->{TicketObject}->TicketGet(
+            UserID => 1,
+            TicketID => $TicketID,
+        );
+        push @Data, [ $Ticket{TicketNumber}, $Ticket{Queue}, $Ticket{Type} ];
+    }
+
+    return ( [$Title], [@HeadData], @Data );
+}
+
+1;
+
+=back
+
+=head1 TERMS AND CONDITIONS
+
+This software is part of the OTRS project (http://otrs.org/).
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (AGPL). If you
+did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+
+=head1 VERSION
+
+$Revision: 1.4 $ $Date: 2010-05-11 15:23:29 $
+
+=cut
+                ]]></programlisting>
+            </para>
+        </section>
+        <section id="module-stats-static-configuration">
+            <title>Configuration example</title>
+            <para>
+There is no configuration needed. Right after installation, the module is available to create a statistic for this module.
+            </para>
+        </section>
         <section id="module-stats-static-use_cases">
             <title>Use case examples</title>
             <para>
@@ -743,12 +1119,12 @@ the package name of the respective script must be amended by
 The following example shows how the first path is amended.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
     package Kernel::System::Stats::AccountedTime;
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting><![CDATA[
     package Kernel::System::Stats::Static::AccountedTime;
                 ]]></programlisting>
             </para>
