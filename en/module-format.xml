@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $ -->
+<!-- $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $ -->
 
 <chapter>
     <title>Module Format</title>
@@ -13,6 +13,9 @@
         <xi:include href="module-format/customer-user-preferences.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/log.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/outputfilter.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/queue-preferences.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/service-preferences.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/sla-preferences.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/stats.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
         <xi:include href="module-format/virtualfs.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     </section>
@@ -20,128 +23,13 @@
     <section id="frontend-modules">
         <title>Frontend Modules</title>
         <xi:include href="module-format/dashboard.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/notify.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+        <xi:include href="module-format/ticket-menu.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     </section>
 
     <section id="old-module-description">
         <title>Old Module Descriptions</title>
         <para>Please remove these old sections if newer ones were created.</para>
-
-    <section id="module-auth">
-        <title>Auth Module</title>
-        <para>
-There are several agent authentication modules (DB, LDAP and HTTPBasicAuth)
-which come with the OTRS framework. It is also possible to develop your own
-authentication modules. The agent authentication modules are located under
-Kernel/System/Auth/*.pm. For more information about their configuration see the admin manual.
-Following, there is an example of a simple agent auth module. Save it under Kernel/System/Auth/Simple.pm.
-You just need 3 functions: new(), GetOption() and Auth(). Return the uid, then the
-authentication is ok.
-        </para>
-        <para>Format:
-        <programlisting><![CDATA[
-# --
-# Kernel/System/Auth/Simple.pm - provides the simple authentication
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::Auth::Simple;
-
-use strict;
-use warnings;
-
-sub new {
-    my ( $Type, %Param ) = @_;
-    [...]
-    return $Self;
-}
-sub GetOption {
-    my ( $Self, %Param ) = @_;
-    # return option
-    return (PreAuth => 0);
-}
-sub Auth {
-    my ( $Self, %Param ) = @_;
-    [...]
-    if ($Authentication) {
-        return $Param{User};
-    }
-    else {
-        return;
-    }
-}
-        ]]></programlisting>
-        </para>
-    </section>
-    <section id="module-notify">
-        <title>Notify Module</title>
-        <para>
-With agent notification modules you can inform agents about new information. A
-normal navigation looks like the following screen shot.
-        </para>
-        <para>
-            <screenshot>
-                <graphic srccredit="" scale="60" fileref="screenshots/notify-screen1.png"></graphic>
-            </screenshot>
-        </para>
-        <para>
-With this examplary module you can do something like the following.
-        </para>
-        <para>
-            <screenshot>
-                <graphic srccredit="" scale="60" fileref="screenshots/notify-screen2.png"></graphic>
-            </screenshot>
-        </para>
-        <para>
-Format:
-        <programlisting><![CDATA[
-# --
-# Kernel/Output/HTML/NotificationMotd.pm - message of the day
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::Output::HTML::NotificationMotd;
-
-use strict;
-use warnings;
-
-# --
-sub new {
-    my ( $Type, %Param ) = @_;
-    [...]
-    return $Self;
-}
-# --
-sub Run {
-    my ( $Self, %Param ) = @_;
-    return $Self->{LayoutObject}->Notify(Info =>  'Some daily news!' );
-}
-# --
-1;
-        ]]></programlisting>
-        </para>
-        <para>
-To use this module add the following to the <filename>Kernel/Config.pm</filename>
-and restart your webserver (if you use mod_perl).
-        <programlisting><![CDATA[
-# Frontend::NotifyModule - module name (50-Motd)
-$Self->{'Frontend::NotifyModule'}->{'50-Motd'} = {
-    Module => 'Kernel::Output::HTML::NotificationMotd',
-};
-        ]]></programlisting>
-        </para>
-    </section>
     <section id="module-navigation">
         <title>Navigation Module</title>
         <para>
@@ -155,7 +43,7 @@ Format:
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -228,7 +116,7 @@ Format:
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -241,7 +129,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 # --
 sub new {
@@ -435,7 +323,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -467,7 +355,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -505,17 +393,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.41 $ $Date: 2010-05-11 15:48:46 $
+$Revision: 1.42 $ $Date: 2010-05-14 08:01:49 $
 
 =cut
         ]]></programlisting>
-        </para>
-    </section>
-    <section id="module-customer-auth">
-        <title>Customer Auth Module</title>
-        <para>
-The same as "Agent Auth Modules" but the module location is
-<filename>Kernel/System/CustomerAuth/*.pm</filename>.
         </para>
     </section>
     <section id="module-customer-user">
@@ -534,7 +415,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -547,7 +428,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 # --
 sub new {
@@ -644,7 +525,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -657,7 +538,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -721,7 +602,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -734,7 +615,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -861,7 +742,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.41 2010-05-11 15:48:46 reb Exp $
+# $Id: module-format.xml,v 1.42 2010-05-14 08:01:49 fk Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -874,7 +755,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.41 $) [1];
+$VERSION = qw($Revision: 1.42 $) [1];
 
 # --
 sub new {
