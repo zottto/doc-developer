@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: sla-preferences.xml,v 1.1 2010-05-10 19:27:05 fk Exp $ -->
+<!-- $Id: sla-preferences.xml,v 1.2 2010-05-14 08:01:00 fk Exp $ -->
 
 
 <section id="sla-preferences-module">
@@ -16,7 +16,7 @@
         synchonisation is ok.
     </para>
     <section id="sla-preferences-module-code">
-        <title>Interface</title>
+        <title>Code Example</title>
         <para>
             The interface class is called Kernel::System::SLA. The example sla preferences
             may be called Kernel::System::SLA::PreferencesCustom. You can find an example below.
@@ -40,7 +40,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -129,7 +129,7 @@ sub SLAPreferencesGet {
         </para>
     </section>
     <section id="sla-preferences-module-configuration">
-        <title>Configuration example</title>
+        <title>Configuration Example</title>
         <para>
             There is the need to activate your custom sla preferences module.
             This can be done using the xml configuration below.
@@ -149,7 +149,7 @@ sub SLAPreferencesGet {
         </para>
     </section>
     <section id="sla-preferences-module-use_cases">
-        <title>Use case examples</title>
+        <title>Use Case Example</title>
         <para>
             Useful preferences implementation could be a soap or radius backend.
         </para>
