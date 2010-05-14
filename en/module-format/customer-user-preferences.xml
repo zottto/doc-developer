@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: customer-user-preferences.xml,v 1.1 2010-05-11 14:51:54 fk Exp $ -->
+<!-- $Id: customer-user-preferences.xml,v 1.2 2010-05-14 07:54:43 fk Exp $ -->
 
 
 <section id="customer-user-preferences-module">
@@ -15,7 +15,7 @@
         You just need 4 functions: new(), SearchPreferences(), SetPreferences() and GetPreferences().
     </para>
     <section id="customer-user-preferences-module-code">
-        <title>Interface</title>
+        <title>Code Example</title>
         <para>
             The interface class is called Kernel::System::CustomerUser. The example customer-user preferences
             may be called Kernel::System::CustomerUser::Preferences::Custom. You can find an example below.
@@ -39,7 +39,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -149,7 +149,7 @@ sub SearchPreferences {
         </para>
     </section>
     <section id="customer-user-preferences-module-configuration">
-        <title>Configuration example</title>
+        <title>Configuration Example</title>
         <para>
             There is the need to activate your custom customer-user preferences module.
             This can be done using the xml configuration below.
@@ -179,7 +179,7 @@ sub SearchPreferences {
         </para>
     </section>
     <section id="customer-user-preferences-module-use_cases">
-        <title>Use case examples</title>
+        <title>Use Case Example</title>
         <para>
             Useful preferences implementation could be a soap or ldap backend.
         </para>

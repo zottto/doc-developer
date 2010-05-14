@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: auth-sync.xml,v 1.4 2010-05-10 19:30:19 fk Exp $ -->
+<!-- $Id: auth-sync.xml,v 1.5 2010-05-14 07:53:36 fk Exp $ -->
 
 
 <section id="auth-sync-module">
@@ -16,7 +16,7 @@
         synchonisation is ok.
     </para>
     <section id="auth-sync-module-code">
-        <title>Interface</title>
+        <title>Code Example</title>
         <para>
             The interface class is called Kernel::System::Auth. The example agent authentication
             may be called Kernel::System::Auth::Sync::CustomAuthSync. You can find an example below.
@@ -41,7 +41,7 @@ use warnings;
 use Net::LDAP;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.4 $) [1];
+$VERSION = qw($Revision: 1.5 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -81,19 +81,21 @@ sub Sync {
         </para>
     </section>
     <section id="auth-sync-module-configuration">
-        <title>Configuration example</title>
+        <title>Configuration Example</title>
         <para>
             There is the need to activate your custom synconisation authenticate module.
             This can be done using the perl configuration below.
+            It is not recommended to use the xml configuration because you can lock
+            you out via the sysconfig.
         </para>
         <para>
         <programlisting linenumbering="numbered" ><![CDATA[
-$Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
+            $Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
         ]]></programlisting>
         </para>
     </section>
     <section id="auth-sync-module-use_cases">
-        <title>Use case examples</title>
+        <title>Use Case Examples</title>
         <para>
             Useful synchonisation implementation could be a soap or radius backend.
         </para>
@@ -122,7 +124,7 @@ $Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
     <section id="auth-sync-module-caveats">
         <title>Caveats and Warnings</title>
         <para>
-Please note that the synchonisation was part of the authentification class Kernel::System::Auth before framework 2.4.
+        Please note that the synchonisation was part of the authentification class Kernel::System::Auth before framework 2.4.
         </para>
     </section>
 </section>

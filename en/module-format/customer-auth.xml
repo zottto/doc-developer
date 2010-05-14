@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: customer-auth.xml,v 1.1 2010-05-10 16:18:34 fk Exp $ -->
+<!-- $Id: customer-auth.xml,v 1.2 2010-05-14 07:54:19 fk Exp $ -->
 
 
 <section id="customer-auth-module">
@@ -15,13 +15,13 @@
         authentication is ok.
     </para>
     <section id="customer-auth-module-code">
-        <title>Interface</title>
+        <title>Code Example</title>
         <para>
             The interface class is called Kernel::System::CustomerAuth. The example customer authentication
             may be called Kernel::System::CustomerAuth::CustomAuth. You can find an example below.
         </para>
         <para>
-        <programlisting language="perl" linenumbering="numbered"><![CDATA[
+        <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/CustomerAuth/CustomAuth.pm - provides the custom Authentication
 # based on Martin Edenhofer's Kernel::System::Auth::DB
@@ -42,7 +42,7 @@ use warnings;
 use Authen::CustomAuth;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -176,13 +176,13 @@ sub Auth {
         </para>
     </section>
     <section id="customer-auth-module-configuration">
-        <title>Configuration example</title>
+        <title>Configuration Example</title>
         <para>
             There is the need to activate your custom customer authenticate module.
             This can be done using the xml configuration below.
         </para>
         <para>
-        <programlisting language="xml" linenumbering="numbered"><![CDATA[
+        <programlisting linenumbering="numbered"><![CDATA[
 <ConfigItem Name="AuthModule" Required="1" Valid="1">
     <Description Lang="en">Module to authenticate customers.</Description>
     <Description Lang="de">Modul zum Authentifizieren der Customer.</Description>
@@ -196,42 +196,42 @@ sub Auth {
         </para>
     </section>
     <section id="customer-auth-module-use_cases">
-        <title>Use case examples</title>
+        <title>Use Case Example</title>
         <para>
-            Useful authentification implmentation could be a soap backend.
+            Useful authentification implementation could be a soap backend.
         </para>
     </section>
     <section id="customer-auth-module-releases">
         <title>Release Availability</title>
         <para>
-        <table frame='all'><title>Release Availability</title>
-            <tgroup cols='2' align='left' colsep='1' rowsep='1'>
-            <colspec colname='Name'/>
-            <colspec colname='Release'/>
-            <thead>
-            <row>
-                <entry>DB</entry>
-                <entry>1.0</entry>
-            </row>
-            </thead>
-            <tfoot>
-            <row>
-                <entry>HTTPBasicAuth</entry>
-                <entry>1.2</entry>
-            </row>
-            </tfoot>
-            <tbody>
-            <row>
-                <entry>LDAP</entry>
-                <entry>1.0</entry>
-            </row>
-            <row>
-                <entry>Radius</entry>
-                <entry>1.3</entry>
-            </row>
-            </tbody>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>Release</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>DB</entry>
+                        <entry>1.0</entry>
+                    </row>
+                    <row>
+                        <entry>HTTPBasicAuth</entry>
+                        <entry>1.2</entry>
+                    </row>
+                    <row>
+                        <entry>LDAP</entry>
+                        <entry>1.0</entry>
+                    </row>
+                    <row>
+                        <entry>Radius</entry>
+                        <entry>1.3</entry>
+                    </row>
+                </tbody>
             </tgroup>
-        </table>
+        </informaltable>
         </para>
     </section>
 </section>
