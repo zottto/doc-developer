@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.14 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: architecture.xml,v 1.15 2010-05-28 10:06:42 mb Exp $ -->
 
 <chapter>
     <title>Architecture</title>
@@ -199,7 +199,9 @@ actions in the system.
 The database interface supports different databases.
         </para>
         <para>
-For tables on database relation see otrs-database.png: <ulink url="ftp://ftp.otrs.org/pub/otrs/misc/">ftp://ftp.otrs.org/pub/otrs/misc/</ulink>
+For the OTRS data model please refer to the files in your /doc directory.
+Alternatively you can look at the data model on our CVS server:
+<ulink url="http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4">http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4</ulink>.
         </para>
     </sect1>
 </chapter>
