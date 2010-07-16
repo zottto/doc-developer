@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.24 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: templates.xml,v 1.25 2010-07-16 11:54:06 mg Exp $ -->
 
 <chapter>
     <title>Templates</title>
@@ -255,93 +255,5 @@ my $HTMLOutput = $Self->{LayoutObject}->Output(
             ]]></programlisting>
             </para>
         </sect2>
-        <sect2 id="set">
-            <title>set</title>
-            <para>
-With this tag you can set a variable in the dtl template.
-            <programlisting><![CDATA[
-<dtl set $Data{"Test"} = "Some Text">
-            ]]></programlisting>
-            </para>
-            <note>
-                <para>
-This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
-The removal is necessary as a sequence control in the templates is not desired.
-The function should thus not be used any more.
-                </para>
-            </note>
-        </sect2>
-        <sect2 id="if">
-            <title>if</title>
-            <para>
-It's also possible to use a really "simple" (ne|eq|=~|!~) if condition.
-            <programlisting><![CDATA[
-<dtl if ($Text{"Lock"} eq "Lock") { $Data{"Language"} = "en"; }>
-            ]]></programlisting>
-            </para>
-            <para>
-Or with a regexp.
-            <programlisting><![CDATA[
-<dtl if ($Text{"Lock"} =~ "/text/i") { $Data{"Lala"} = "Matched"; }>
-            ]]></programlisting>
-            </para>
-            <note>
-                <para>
-This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
-The removal is necessary as a sequence control in the templates is not desired.
-The function should thus not be used any more.
-                </para>
-            </note>
-        </sect2>
-        <sect2 id="system-call">
-            <title>system-call</title>
-            <para>
-If you want the output of a system call back to a dtl variable.
-            <programlisting><![CDATA[
-# execute system call
-<dtl system-call $Data{"uptime"} = "uptime">
-# print
-The output of 'uptime' is: $Data{"uptime"}
-            ]]></programlisting>
-            </para>
-            <para>
-Yet another example:
-            <programlisting><![CDATA[
-# execute system call
-<dtl system-call $Data{"procinfo"} = "procinfo | head -n1 ">
-# print
-The output of 'procinfo' is: $Data{"procinfo"}
-            ]]></programlisting>
-            </para>
-            <para>
-Usable to set: $Data{""}, $Env{""} and $Config{""}.
-            </para>
-            <note>
-                <para>
-This template function can still be found in several OTRS templates but will be removed in future versions of OTRS.
-The removal is necessary as a sequence control in the templates is not desired.
-The function should thus not be used any more.
-                </para>
-            </note>
-        </sect2>
-    </sect1>
-    <sect1 id="dtl-example">
-        <title>Example</title>
-        <para>
-        <programlisting><![CDATA[
-# set variable
-<dtl set $Data{"Test1"} = "English">
-
-# print variable
-Echo: $Data{"Test1"}
-        ]]></programlisting>
-        <programlisting><![CDATA[
-# condition
-<dtl if ($Text{"Lock"} ne "Lock") { $Data{"Test2"} = "Not English!"; }>
-
-# print result
-Result: $Data{"Test1"}
-        ]]></programlisting>
-        </para>
     </sect1>
 </chapter>
