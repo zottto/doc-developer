@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.20 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.21 2010-07-22 14:09:46 ub Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -127,7 +127,7 @@ If you want to add config options, here is an example:
         </para>
         <para>
         <programlisting><![CDATA[
-<ConfigItem Name="Ticket::Hook" Required="1" Valid="1">
+<ConfigItem Name="Ticket::Hook" Required="1" Valid="1" ConfigLevel="300">
     <Description Lang="en">The identifyer for a ticket. The default is Ticket#.</Description>
     <Description Lang="de">Ticket-Identifikator. Als Standard wird Ticket# verwendet.</Description>
     <Group>Ticket</Group>
@@ -143,6 +143,12 @@ If "required" is set to "1", the config variable is included and cannot be disab
         </para>
         <para>
 If "valid" is set to "1", the config variable is active. If it is set to "0", the config variable is inactive.
+        </para>
+        <para>
+If the optional attribute "ConfigLevel" is set, the config variable might not be edited by the administrator,
+depending on his own config level. The config variable "ConfigLevel" sets the level of technical experience
+of the administrator. It can be 100 (Expert), 200 (Advanced) or 300 (Beginner). All config variables with a defined
+config level lower than the administrators config level can not be edited.
         </para>
         <para>
 The config variable is defined in the "setting" element.
