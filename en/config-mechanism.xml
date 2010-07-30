@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.21 2010-07-22 14:09:46 ub Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.22 2010-07-30 09:39:03 ub Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
@@ -147,8 +147,10 @@ If "valid" is set to "1", the config variable is active. If it is set to "0", th
         <para>
 If the optional attribute "ConfigLevel" is set, the config variable might not be edited by the administrator,
 depending on his own config level. The config variable "ConfigLevel" sets the level of technical experience
-of the administrator. It can be 100 (Expert), 200 (Advanced) or 300 (Beginner). All config variables with a defined
-config level lower than the administrators config level can not be edited.
+of the administrator. It can be 100 (Expert), 200 (Advanced) or 300 (Beginner).
+As a guideline which config level should be given to an option, it is recommended that all options
+having to do with the configuration of externel interaction, like Sendmail, LDAP, SOAP,
+and others should get a config level of at least 200 (Advanced).
         </para>
         <para>
 The config variable is defined in the "setting" element.
