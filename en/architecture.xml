@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.15 2010-05-28 10:06:42 mb Exp $ -->
+<!-- $Id: architecture.xml,v 1.16 2010-08-12 13:20:39 mg Exp $ -->
 
 <chapter>
-    <title>Architecture</title>
+    <title>Architecture Overview</title>
     <para>
 The OTRS framework is modular. The following picture shows the basic
 layer architecture of OTRS.
