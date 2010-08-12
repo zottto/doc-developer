@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: config-mechanism.xml,v 1.22 2010-07-30 09:39:03 ub Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.23 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Config Mechanism</title>
-    <sect1 id="default-config">
+    <section id="default-config">
         <title>Default Config</title>
         <para>
 There are different default config files. The main one, which comes with the
@@ -55,8 +55,8 @@ $Self->{'Frontend::NotifyModule'}->{'80-ShowCalendarEvents'} = {
 };
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="custom-config">
+    </section>
+    <section id="custom-config">
         <title>Custom Config</title>
         <para>
 If you want to change a config option, copy it to
@@ -71,8 +71,8 @@ options are overwritten with your settings.
         <para>
 This way it is easy to handle updates -  you just need the Kernel/Config.pm.
         </para>
-    </sect1>
-    <sect1 id="accessing-config-options">
+    </section>
+    <section id="accessing-config-options">
         <title>Accessing Config Options</title>
         <para>
 You can read and write (for one request) the config options via the core module "Kernel::Config".
@@ -97,8 +97,8 @@ $Self->{ConfigObject}->Set(
 );
         ]]></programlisting>
         </para>
-    </sect1>
-        <sect1 id="xml-config">
+    </section>
+        <section id="xml-config">
         <title>XML Config Options</title>
         <para>
 XML config files are located under:
@@ -155,13 +155,13 @@ and others should get a config level of at least 200 (Advanced).
         <para>
 The config variable is defined in the "setting" element.
         </para>
-        <sect2 id="xml-config-variable">
+        <section id="xml-config-variable">
             <title>Types of XML Config Variables</title>
             <para>
 The XML config settings support various types of variables.
             </para>
-        </sect2>
-        <sect2 id="xml-config-string">
+        </section>
+        <section id="xml-config-string">
             <title>String</title>
             <para>
 A config element for numbers and single-line strings.
@@ -176,8 +176,8 @@ This contains files and directories.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-textarea">
+        </section>
+        <section id="xml-config-textarea">
             <title>Textarea</title>
             <para>
 A config element for multiline text.
@@ -189,8 +189,8 @@ A config element for multiline text.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-option">
+        </section>
+        <section id="xml-config-option">
             <title>Options</title>
             <para>
 This config element offers preset values as a pull-down menu.
@@ -205,8 +205,8 @@ This config element offers preset values as a pull-down menu.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-array">
+        </section>
+        <section id="xml-config-array">
             <title>Array</title>
             <para>
 With this config element arrays can be displayed.
@@ -221,8 +221,8 @@ With this config element arrays can be displayed.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-hash">
+        </section>
+        <section id="xml-config-hash">
             <title>Hash</title>
             <para>
 With this config element hashes can be displayed.
@@ -237,8 +237,8 @@ With this config element hashes can be displayed.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-subhash">
+        </section>
+        <section id="xml-config-subhash">
             <title>Hash with SubArray, SubHash</title>
             <para>
 A hash can contain content, arrays or hashes.
@@ -265,8 +265,8 @@ A hash can contain content, arrays or hashes.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-navbar">
+        </section>
+        <section id="xml-config-navbar">
             <title>FrontendModuleReg (NavBar)</title>
             <para>
 Module registration for Agent Interface.
@@ -295,8 +295,8 @@ Module registration for Agent Interface.
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-        <sect2 id="xml-config-navbarmodule">
+        </section>
+        <section id="xml-config-navbarmodule">
             <title>FrontendModuleReg (NavBarModule)</title>
             <para>
 Module registration for Admin Interface
@@ -320,6 +320,6 @@ Module registration for Admin Interface
 </Setting>
             ]]></programlisting>
             </para>
-        </sect2>
-    </sect1>
+        </section>
+    </section>
 </chapter>

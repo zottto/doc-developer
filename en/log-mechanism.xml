@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: log-mechanism.xml,v 1.14 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.15 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Log Mechanism</title>
     <para>
 OTRS comes with a log backend that can be used for application logging and debugging.
     </para>
-    <sect1 id="use-and-syntax">
+    <section id="use-and-syntax">
         <title>Use and Syntax</title>
         <para>
 All module layers have ready-made Log Objects which can be used by
@@ -18,8 +18,8 @@ $Self->{LogObject}->Log(
 );
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="example">
+    </section>
+    <section id="example">
         <title>Example</title>
         <para>
 The following example shows how to use the log mechanism without a module layer.
@@ -42,5 +42,5 @@ $Self->{LogObject}->Log(
 );
         ]]></programlisting>
         </para>
-    </sect1>
+    </section>
 </chapter>

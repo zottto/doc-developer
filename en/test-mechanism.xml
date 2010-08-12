@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: test-mechanism.xml,v 1.9 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: test-mechanism.xml,v 1.10 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Unit Tests</title>
     <para>
 OTRS provides unit tests for core modules.
     </para>
-    <sect1 id="testing">
+    <section id="testing">
         <title>Creating a test file</title>
         <para>
 The test files are stored in .t files under /scripts/test/*.t.
@@ -21,7 +21,7 @@ Example (/scripts/test/Calendar.t):
 # Calendar.t - Calendar
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: test-mechanism.xml,v 1.9 2010-05-10 18:50:54 bes Exp $
+# $Id: test-mechanism.xml,v 1.10 2010-08-12 14:03:40 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -57,8 +57,8 @@ $Self-&gt;True(
 [..]
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1>
+    </section>
+    <section>
         <title>Testing</title>
         <para>
 To check your tests, just use "bin/UnitTest.pl -n Calendar" to use /scripts/test/Calendar.t.
@@ -81,8 +81,8 @@ TestNotOk: 0
 shell:/opt/otrs&gt;
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1>
+    </section>
+    <section>
         <title>True()</title>
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
@@ -93,8 +93,8 @@ $Self-&gt;True(
 );
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1>
+    </section>
+    <section>
         <title>False()</title>
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
@@ -105,8 +105,8 @@ $Self-&gt;False(
 );
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1>
+    </section>
+    <section>
         <title>Is()</title>
         <para>
 This function tests whether the variables $A and $B are equal.
@@ -118,5 +118,5 @@ $Self-&gt;Is(
 );
         ]]></programlisting>
         </para>
-    </sect1>
+    </section>
 </chapter>

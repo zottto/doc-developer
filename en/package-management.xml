@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.14 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: package-management.xml,v 1.15 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Package Management</title>
@@ -13,7 +13,7 @@ For example, the OTRS project offers OTRS modules like a calendar, a file manage
 or web mail in OTRS packages via online repositories on our ftp servers.
 The packages can be managed (install/upgrade/uninstall) via the admin interface.
     </para>
-    <sect1 id="package-distribution">
+    <section id="package-distribution">
         <title>Package Distribution</title>
         <para>
 If you want to create an OPM online repositiory, just tell the OTRS framework
@@ -30,7 +30,7 @@ $Self->{'Package::RepositoryList'} = {
 [...]
         ]]></programlisting>
         </para>
-        <sect2 id="package-repositiory-index">
+        <section id="package-repositiory-index">
             <title>Package Repository Index</title>
             <para>
 In your repository, create an index file for your OPM packages.
@@ -40,15 +40,15 @@ shell> bin/opm.pl -a index -d /path/to/repository/ > /path/to/repository/otrs.xm
 shell>
             </screen>
             </para>
-        </sect2>
-    </sect1>
-    <sect1 id="package-commands">
+        </section>
+    </section>
+    <section id="package-commands">
         <title>Package Commands</title>
         <para>
 You can use the following OPM commands over the admin interface or over bin/opm.pl
 to manage admin jobs for OPM packages.
         </para>
-        <sect2 id="install">
+        <section id="install">
             <title>Install</title>
             <para>
 Install OPM packages.
@@ -67,8 +67,8 @@ shell> bin/opm.pl -a install -p /path/to/package.opm
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-        <sect2 id="uninstall">
+        </section>
+        <section id="uninstall">
             <title>Uninstall</title>
             <para>
 Uninstall OPM packages.
@@ -87,8 +87,8 @@ shell> bin/opm.pl -a uninstall -p /path/to/package.opm
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-        <sect2 id="upgrade">
+        </section>
+        <section id="upgrade">
             <title>Upgrade</title>
             <para>
                 Upgrade OPM packages.
@@ -107,8 +107,8 @@ shell> bin/opm.pl -a upgrade -p /path/to/package.opm
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-        <sect2 id="list">
+        </section>
+        <section id="list">
             <title>List</title>
             <para>
 List all OPM packages.
@@ -127,6 +127,6 @@ shell> bin/opm.pl -a list
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-    </sect1>
+        </section>
+    </section>
 </chapter>

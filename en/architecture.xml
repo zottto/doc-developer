@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.16 2010-08-12 13:20:39 mg Exp $ -->
+<!-- $Id: architecture.xml,v 1.17 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Architecture Overview</title>
@@ -11,7 +11,7 @@ layer architecture of OTRS.
     <screenshot>
         <graphic srccredit="" scale="60" fileref="screenshots/architecture.png"></graphic>
     </screenshot>
-    <sect1 id="directory">
+    <section id="directory">
         <title>Directories</title>
         <para>
         <informaltable>
@@ -111,15 +111,15 @@ layer architecture of OTRS.
             </tgroup>
         </informaltable>
         </para>
-    </sect1>
-    <sect1 id="otrs-files">
+    </section>
+    <section id="otrs-files">
         <title>Files</title>
         <para>.pl = Perl</para>
         <para>.pm = Perl Modul</para>
         <para>.dtl = Dynamic Template Language (html template file)</para>
         <para>.dist = Default Templates of Files</para>
-    </sect1>
-    <sect1 id="core-module">
+    </section>
+    <section id="core-module">
         <title>Core Modules</title>
         <para>
 Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is
@@ -154,8 +154,8 @@ ticket" and "create ticket". A few main core modules are:
         <para>
 For more information, see: <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
-    </sect1>
-    <sect1 id="frontend-handle">
+    </section>
+    <section id="frontend-handle">
         <title>Frontend Handle</title>
         <para>
 The interface between the browser, web server and the frontend modules.
@@ -164,8 +164,8 @@ A frontend module can be used via the http-link.
         <para>
             <ulink url="">http://localhost/otrs/index.pl?Action=Modul</ulink>
         </para>
-    </sect1>
-    <sect1 id="frontend-module">
+    </section>
+    <section id="frontend-module">
         <title>Frontend Modules</title>
         <para>
 Frontend modules are located under "$OTRS_HOE/Kernel/Modules/*.pm". There are
@@ -184,16 +184,16 @@ functions from the current user), GroupObject (to get the group functions).
 For more information on core modules see:
 <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
         </para>
-    </sect1>
-    <sect1 id="cmd-frontend">
+    </section>
+    <section id="cmd-frontend">
         <title>CMD Frontend</title>
         <para>
 The CMD (Command) Frontend is like the Web Frontend Handle and the Web Frontend Module in
 one (just without the LayoutObject) and uses the core modules for some
 actions in the system.
         </para>
-    </sect1>
-    <sect1 id="database">
+    </section>
+    <section id="database">
         <title>Database</title>
         <para>
 The database interface supports different databases.
@@ -203,5 +203,5 @@ For the OTRS data model please refer to the files in your /doc directory.
 Alternatively you can look at the data model on our CVS server:
 <ulink url="http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4">http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4</ulink>.
         </para>
-    </sect1>
+    </section>
 </chapter>

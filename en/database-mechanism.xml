@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: database-mechanism.xml,v 1.33 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: database-mechanism.xml,v 1.34 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Database Mechanism</title>
     <para>
 OTRS comes with a database layer that supports different databases.
     </para>
-    <sect1 id="database-how-it-works">
+    <section id="database-how-it-works">
         <title>How it works</title>
         <para>
 The database layer (Kernel::System::DB) has two input options: SQL and XML.
         </para>
-        <sect2 id="database-sql">
+        <section id="database-sql">
             <title>SQL</title>
             <para>
 The SQL interface should be used for normal database actions (SELECT, INSERT,
 UPDATE, ...). It can be used like a normal Perl DBI interface.
             </para>
-            <sect3 id="database-sql-do">
+            <section id="database-sql-do">
             <title>INSERT/UPDATE/DELETE</title>
             <programlisting format="linespecific"><![CDATA[
 $Self->{DBObject}->Do(
@@ -33,8 +33,8 @@ $Self->{DBObject}->Do(
     SQL=> "DELETE FROM table WHERE id = 123",
 );
             ]]></programlisting>
-            </sect3>
-            <sect3 id="database-sql-select">
+            </section>
+            <section id="database-sql-select">
             <title>SELECT</title>
             <programlisting format="linespecific"><![CDATA[
 my $SQL = "SELECT id FROM table WHERE tn = '123'";
@@ -72,8 +72,8 @@ Use the Bind attribute where ever you can, especially for long statements. If
 you use Bind you do not need the function Quote().
                 </para>
             </note>
-            </sect3>
-            <sect3 id="database-sql-quote">
+            </section>
+            <section id="database-sql-quote">
             <title>QUOTE</title>
                 <para>
 String:
@@ -98,9 +98,9 @@ my $QuotedNumber = $Self->{DBObject}->Quote('21.35', 'Number');
 Please use the Bind attribute instead of Quote() where ever you can.
                     </para>
                 </note>
-            </sect3>
-        </sect2>
-        <sect2 id="database-xml">
+            </section>
+        </section>
+        <section id="database-xml">
             <title>XML</title>
             <para>
 The XML interface should be used for INSERT, CREATE TABLE, DROP TABLE and ALTER TABLE.
@@ -112,7 +112,7 @@ you write applications that can be used in all of them.
 The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (not longer in attribut Value).
                 </para>
             </note>
-            <sect3 id="database-xml-insert">
+            <section id="database-xml-insert">
             <title>INSERT</title>
             <programlisting format="linespecific"><![CDATA[
 <Insert Table="some_table">
@@ -120,8 +120,8 @@ The &lt;Insert&gt; has changed in >=2.2. Values are now used in content area (no
     <Data Key="description" Type="Quote">exploit</Data>
 </Insert>
             ]]></programlisting>
-            </sect3>
-            <sect3 id="database-xml-create">
+            </section>
+            <section id="database-xml-create">
             <title>CREATE TABLE</title>
             <para>
 Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DATE (Format: yyyy-mm-dd hh:mm:ss) and LONGBLOB.
@@ -146,14 +146,14 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
     </ForeignKey>
 </TableCreate>
             ]]></programlisting>
-            </sect3>
-            <sect3 id="database-xml-drop">
+            </section>
+            <section id="database-xml-drop">
             <title>DROP TABLE</title>
             <programlisting format="linespecific"><![CDATA[
 <TableDrop Name="calendar_event"/>
             ]]></programlisting>
-            </sect3>
-            <sect3 id="database-xml-alter">
+            </section>
+            <section id="database-xml-alter">
             <title>ALTER TABLE</title>
             <para>
             The following shows an example of add, change and drop columns.
@@ -187,8 +187,8 @@ Possible data types are: BIGINT, SMALLINT, INTEGER, VARCHAR (Size=1-1000000), DA
             <programlisting format="linespecific"><![CDATA[
 <TableAlter NameOld="calendar_event" NameNew="calendar_event_new"/>
             ]]></programlisting>
-            </sect3>
-            <sect3 id="database-xml-code">
+            </section>
+            <section id="database-xml-code">
             <title>Code to process XML</title>
             <programlisting format="linespecific"><![CDATA[
 my @XMLARRAY = @{$Self->ParseXML(String => $XML)};
@@ -202,16 +202,16 @@ for (@SQL) {
     $Self->{DBObject}->Do(SQL => $_);
 }
             ]]></programlisting>
-            </sect3>
-        </sect2>
-    </sect1>
-    <sect1 id="database-driver">
+            </section>
+        </section>
+    </section>
+    <section id="database-driver">
         <title>Database Drivers</title>
         <para>
             The database drivers are located under <filename>$OTRS_HOME/Kernel/System/DB/*.pm</filename>.
         </para>
-    </sect1>
-    <sect1 id="database-supported">
+    </section>
+    <section id="database-supported">
         <title>Supported Databases</title>
         <para>
         <itemizedlist mark="round">
@@ -232,5 +232,5 @@ for (@SQL) {
             </listitem>
         </itemizedlist>
         </para>
-    </sect1>
+    </section>
 </chapter>

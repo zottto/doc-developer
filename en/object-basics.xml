@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: object-basics.xml,v 1.25 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: object-basics.xml,v 1.26 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Object Basics</title>
@@ -8,7 +8,7 @@
 This chapter describes the basics of a new object (e. g. a ticket, faq, calendar, ...)
 and how the environment should look like.
     </para>
-    <sect1 id="object-options">
+    <section id="object-options">
         <title>Object Options</title>
         <para>
 An object (e.g. a ticket, faq, calendar, ...) should  at least have the following options
@@ -72,8 +72,8 @@ An object (e.g. a ticket, faq, calendar, ...) should  at least have the followin
             </tgroup>
         </informaltable>
         </para>
-    </sect1>
-    <sect1 id="search-options">
+    </section>
+    <section id="search-options">
         <title>Search Options</title>
         <para>
 A search over free text fields should support:
@@ -91,8 +91,8 @@ A search over free text fields should support:
             </listitem>
         </itemizedlist>
         </para>
-    </sect1>
-    <sect1 id="config-naming">
+    </section>
+    <section id="config-naming">
         <title>Config Naming</title>
         <para>
 Config naming should be with a leading prefix, the object name like this:
@@ -113,8 +113,8 @@ $Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
         <para>
 The config order should be global setting followed by detail settings.
         </para>
-    </sect1>
-    <sect1 id="config-file">
+    </section>
+    <section id="config-file">
         <title>Config File</title>
         <para>
 An object should have a unique config file which should be located under
@@ -195,8 +195,8 @@ Description of the Config Preferences:
             </tgroup>
         </informaltable>
         </para>
-    </sect1>
-    <sect1 id="navbar-setting">
+    </section>
+    <section id="navbar-setting">
         <title>NavBar Settings</title>
         <para>
 A NavBar item should look like the following example:
@@ -485,8 +485,8 @@ AccessKey "g" is also reserved for the submission of forms.
             </para>
         </note>
         </para>
-    </sect1>
-    <sect1 id="screen-flow">
+    </section>
+    <section id="screen-flow">
         <title>Screen flow</title>
         <para>
 An object module should have the following process flow:
@@ -496,5 +496,5 @@ An object module should have the following process flow:
                 <graphic srccredit="" fileref="screenshots/screen-flow.png"></graphic>
             </screenshot>
         </para>
-    </sect1>
+    </section>
 </chapter>

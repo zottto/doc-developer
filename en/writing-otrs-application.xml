@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.22 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.23 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Writing an OTRS module for a new object</title>
@@ -8,7 +8,7 @@
 In this chapter, the writing of a new OTRS module is illustrated on the basis of a simple small programme.
 Necessary prerequisite is an OTRS development environment as specified in the chapter of the same name.
     </para>
-    <sect1 id="what-we-want-to-write">
+    <section id="what-we-want-to-write">
         <title>What we want to write</title>
         <para>
 We want to write a little OTRS module that displays the text 'Hello World' when called up.
@@ -23,8 +23,8 @@ Each module should at least contain the following directories:
         <para>Kernel/Config/</para>
         <para>Kernel/Config/Files/</para>
         <para>Kernel/Language/</para>
-    </sect1>
-    <sect1 id="default-config-file">
+    </section>
+    <section id="default-config-file">
         <title>Default Config File</title>
         <para>
 The creation of a module registration facilitates the display of the new module in OTRS.
@@ -63,8 +63,8 @@ The impact of the various settings is described in the chapter 'Config Mechanism
 </otrs_config>
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="writing-frontend-module">
+    </section>
+    <section id="writing-frontend-module">
         <title>Frontend Module</title>
         <para>
 After creating the links and executing the Sysconfig, a new module with the name 'HelloWorld' is displayed.
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.22 2010-05-10 18:50:54 bes Exp $
+# $Id: writing-otrs-application.xml,v 1.23 2010-08-12 14:03:40 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -131,8 +131,8 @@ sub Run {
 1;
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="writing-core-module">
+    </section>
+    <section id="writing-core-module">
         <title>Core Module</title>
         <para>
 Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWorld.pm" with the following content:
@@ -143,7 +143,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.22 2010-05-10 18:50:54 bes Exp $
+# $Id: writing-otrs-application.xml,v 1.23 2010-08-12 14:03:40 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -174,8 +174,8 @@ sub GetHelloWorldText {
 1;
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="dtl-template-file">
+    </section>
+    <section id="dtl-template-file">
         <title>dtl Template File</title>
         <para>
 The last thing missing before the new module can run is the relevant template.
@@ -187,7 +187,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.22 2010-05-10 18:50:54 bes Exp $
+# $Id: writing-otrs-application.xml,v 1.23 2010-08-12 14:03:40 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -215,8 +215,8 @@ Thus, we create the following file:
         <para>
 The module is working now and displays the text 'Hello World' when called up.
         </para>
-    </sect1>
-    <sect1 id="language-file">
+    </section>
+    <section id="language-file">
         <title>Language File</title>
         <para>
 If the text 'Hello World' is to be translated into German, a language file for this language must be created:
@@ -240,8 +240,8 @@ sub Data {
 1;
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="summery">
+    </section>
+    <section id="summery">
         <title>Summary</title>
         <para>
 The example given above shows that it is not too difficult to write a new module for OTRS.
@@ -249,5 +249,5 @@ It is important, though, to make sure that the module and file name are unique a
 do not interfere with the framework or other expansion modules.
 When a module is finished, an OPM package must be generated from it (see chapter 'Package Building').
         </para>
-    </sect1>
+    </section>
 </chapter>

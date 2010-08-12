@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: codesyntax.xml,v 1.26 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: codesyntax.xml,v 1.27 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Coding Style Guide</title>
@@ -8,7 +8,7 @@
         In order to preserve the consistent development of the OTRS project, we have set
         up a few guidelines regarding style.
     </para>
-    <sect1 id="formatting">
+    <section id="formatting">
         <title>Formatting</title>
         <para>
             TAB: We use 4 spaces. Examples for braces:
@@ -27,8 +27,8 @@ while ($Condition == 1) {
 }
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="naming">
+    </section>
+    <section id="naming">
         <title>Naming</title>
         <para>
             Names and comments are written in English. Variables, Objects and Methods
@@ -39,8 +39,8 @@ while ($Condition == 1) {
 e. g. @TicktIDs or $Output or BuildQueueView()
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="source-code-header">
+    </section>
+    <section id="source-code-header">
         <title>Source Code Header and Charset</title>
         <para>
             Attach the following header to each and every source file.
@@ -52,7 +52,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.26 2010-05-10 18:50:54 bes Exp $
+# $Id: codesyntax.xml,v 1.27 2010-08-12 14:03:40 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -70,7 +70,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: codesyntax.xml,v 1.26 2010-05-10 18:50:54 bes Exp $
+# $Id: codesyntax.xml,v 1.27 2010-08-12 14:03:40 mg Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -94,11 +94,11 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
-# $Id: codesyntax.xml,v 1.26 2010-05-10 18:50:54 bes Exp $
+# $Id: codesyntax.xml,v 1.27 2010-08-12 14:03:40 mg Exp $
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="version-comments">
+    </section>
+    <section id="version-comments">
         <title>Version Comments</title>
         <para>
             Some functions may not be available in the current framework version. Thus, sometimes
@@ -113,8 +113,8 @@ e.g. for perl-code
 # FRAMEWORK-2.1: the function ID2UserName is first available in OTRS 2.1
         ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="special-comments">
+    </section>
+    <section id="special-comments">
         <title>Special comments</title>
         <para>
     The only ways to create special comments are the following ways.
@@ -137,8 +137,8 @@ e.g. for perl-code
     # --- customizing for bsi
             ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="function-restrictions">
+    </section>
+    <section id="function-restrictions">
         <title>Restrictions for some functions</title>
         <para>
     Some functions are not useful in every script. Please pay attention
@@ -160,8 +160,8 @@ e.g. for perl-code
             </listitem>
         </itemizedlist>
         </para>
-    </sect1>
-    <sect1 id="perldoc">
+    </section>
+    <section id="perldoc">
         <title>Perldoc</title>
         <para>
     Every function which could be used outside of its package must have a
@@ -188,16 +188,16 @@ pass the Type parameter like this:
 =cut
             ]]></programlisting>
         </para>
-    </sect1>
-    <sect1 id="line-length">
+    </section>
+    <section id="line-length">
         <title>Length of lines</title>
         <para>
     Please see that a line of code is not longer then 100 charactars.
         </para>
-    </sect1>
-    <sect1 id="core-objects">
+    </section>
+    <section id="core-objects">
         <title>Core-Objects</title>
-        <sect2 id="objects-allocation">
+        <section id="objects-allocation">
             <title>Objects and their allocation</title>
             <para>
         In OTRS many objects are available. But it is not allowed to use every object in each script.
@@ -216,8 +216,8 @@ pass the Type parameter like this:
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-        <sect2 id="mainobject-using">
+        </section>
+        <section id="mainobject-using">
             <title>Using of the MainObject</title>
             <para>
         Information about the MainObject
@@ -235,8 +235,8 @@ pass the Type parameter like this:
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-        <sect2 id="encodeobject-using">
+        </section>
+        <section id="encodeobject-using">
             <title>Using of the EncodeObject</title>
             <para>
         Information about the EncodeObject
@@ -251,6 +251,6 @@ pass the Type parameter like this:
                 </listitem>
             </itemizedlist>
             </para>
-        </sect2>
-    </sect1>
+        </section>
+    </section>
 </chapter>

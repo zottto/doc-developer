@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: development-environment.xml,v 1.9 2010-05-10 18:50:54 bes Exp $ -->
+<!-- $Id: development-environment.xml,v 1.10 2010-08-12 14:03:40 mg Exp $ -->
 
 <chapter>
     <title>Development Environment</title>
     <para>
 To facilitate the writing of OTRS expansion modules, the creation of a development environment is necessary.
     </para>
-    <sect1 id="environment-cvs-checkout">
+    <section id="environment-cvs-checkout">
         <title>Framework checkout (CVS)</title>
         <para>
 First of all a directory must be created in which the modules can be stored.
@@ -36,8 +36,8 @@ Check out the "module-tools" module, too for your development environment. It co
 To enable the CVS-OTRS it is necessary to configure it on the Apache web server and to create the Config.pm.
 Then the Installer.pl can be executed. The basic system is ready to run now.
         </para>
-    </sect1>
-    <sect1 id="environment-link-modules">
+    </section>
+    <section id="environment-link-modules">
         <title>Linking Expansion Modules</title>
         <para>
 A clear separation between OTRS and the modules is necessary for proper developing.
@@ -62,8 +62,8 @@ To remove links from OTRS enter the following command:
 shell> ~/src/module-tools/remove_links.pl ~/src/otrs/
         </screen>
         </para>
-    </sect1>
-    <sect1 id="environment-after-link">
+    </section>
+    <section id="environment-after-link">
         <title>Necessary Actions after Linking</title>
         <para>
 As soon as the linking is completed, the Sysconfig must be run to register the module in OTRS.
@@ -77,5 +77,5 @@ Example:
 shell> cat Calendar.sopm | bin/xml2sql.pl -t mysql
         </screen>
         </para>
-    </sect1>
+    </section>
 </chapter>
