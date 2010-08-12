@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.25 2010-07-16 11:54:06 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.26 2010-08-12 13:11:40 mg Exp $ -->
 
 <chapter>
-    <title>Templates</title>
+    <title>Templating Mechanism</title>
     <para>
 The .dtl files are about 70% plain html and just used from frontend modules
 (Kernel/Modules/*.pm). The .dtl files are located under:
@@ -48,6 +48,9 @@ We use four spaces per indentation level. Examples:
 </form>
         ]]></programlisting>
         </para>
+    </sect1>
+    <sect1 id="TemplateCommands">
+        <title>Template Commands</title>
         <sect2 id="Comment">
             <title>Comment</title>
             <para>
