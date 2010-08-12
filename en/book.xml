@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.20 2010-05-11 14:47:24 mg Exp $ -->
+<!-- $Id: book.xml,v 1.21 2010-08-12 13:09:47 mg Exp $ -->
 
 <book lang="en">
     <bookinfo>
@@ -47,20 +47,20 @@ manufacturer.
         </legalnotice>
     </bookinfo>
     <xi:include href="introduction.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    <xi:include href="codesyntax.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="development-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="architecture.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="package-management.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="package-building.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="config-mechanism.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="database-mechanism.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="log-mechanism.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    <xi:include href="module-format.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="templates.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="layout.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="language-translations.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="module-format.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="object-basics.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    <xi:include href="development-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="writing-otrs-application.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    <xi:include href="package-management.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    <xi:include href="package-building.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="test-mechanism.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="codesyntax.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     <xi:include href="additional-resources.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 </book>
