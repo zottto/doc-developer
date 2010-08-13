@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: object-basics.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+
+<section>
+    <title>Object Basics</title>
+    <para>
+This chapter describes the basics of a new object (e. g. a ticket, faq, calendar, ...)
+and how the environment should look like.
+    </para>
+    <section id="object-options">
+        <title>Object Options</title>
+        <para>
+An object (e.g. a ticket, faq, calendar, ...) should  at least have the following options
+(named after their function) in the application and in the database.
+        </para>
+        <para>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Application</entry>
+                        <entry>database naming</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>ObjectID</entry>
+                        <entry>object_id</entry>
+                    </row>
+                    <row>
+                        <entry>Number</entry>
+                        <entry>number</entry>
+                    </row>
+                    <row>
+                        <entry>Title</entry>
+                        <entry>title</entry>
+                    </row>
+                    <row>
+                        <entry>...</entry>
+                        <entry>...</entry>
+                    </row>
+                    <row>
+                        <entry>StateID</entry>
+                        <entry>state_id</entry>
+                    </row>
+                    <row>
+                        <entry>WordAndWord</entry>
+                        <entry>word_and_word</entry>
+                    </row>
+                    <row>
+                        <entry>...</entry>
+                        <entry>...</entry>
+                    </row>
+                    <row>
+                        <entry>Created</entry>
+                        <entry>created</entry>
+                    </row>
+                    <row>
+                        <entry>CreatedBy</entry>
+                        <entry>created_by</entry>
+                    </row>
+                    <row>
+                        <entry>Changed</entry>
+                        <entry>changed</entry>
+                    </row>
+                    <row>
+                        <entry>ChangedBy</entry>
+                        <entry>changed_by</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+    </section>
+    <section id="search-options">
+        <title>Search Options</title>
+        <para>
+A search over free text fields should support:
+        </para>
+        <para>
+        <itemizedlist mark="round" >
+            <listitem>
+                <para>a normal search "thomas" (always)</para>
+            </listitem>
+            <listitem>
+                <para>an and condition like "thomas+raith" (if possible)</para>
+            </listitem>
+            <listitem>
+                <para>an or condition like "thomas||raith" (if possible)</para>
+            </listitem>
+        </itemizedlist>
+        </para>
+    </section>
+    <section id="config-naming">
+        <title>Config Naming</title>
+        <para>
+Config naming should be with a leading prefix, the object name like this:
+        </para>
+        <para>
+        <programlisting><![CDATA[
+$Self->{"Object::Option"} = 1234;
+        ]]></programlisting>
+        </para>
+        <para>
+Config-Hashes should be named with the same name as in the .dtl. For example:
+        </para>
+        <para>
+        <programlisting><![CDATA[
+$Self->{"Object::CategoryList"} -> $Data{"CategoryList"}
+        ]]></programlisting>
+        </para>
+        <para>
+The config order should be global setting followed by detail settings.
+        </para>
+    </section>
+    <section id="config-file">
+        <title>Config File</title>
+        <para>
+An object should have a unique config file which should be located under
+$OTRS_HOME/Kernel/Config/Files/*.pm. For example:
+        </para>
+        <para>
+        <programlisting><![CDATA[
+# module reg and nav bar
+$Self->{'Frontend::Module'}->{'AgentFileManager'} = {
+    Description => 'Web File Manager',
+    NavBarName => 'FileManager',
+    NavBar => [
+    {
+        Description => 'A web file manager',
+        Name => 'File-Manager',
+        Image => 'filemanager.png',
+        Link => 'Action=AgentFileManager',
+        NavBar => 'FileManager',
+        Prio => 5000,
+        AccessKey => 'f',
+    },
+    ],
+};
+
+# browse/download root directory
+$Self->{"FileManager::Root"} = '/home/';
+
+# trash directory
+$Self->{"FileManager::Trash"} = "/home/Trash/";
+        ]]></programlisting>
+        </para>
+        <para>
+Description of the Config Preferences:
+        </para>
+        <para>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Element</entry>
+                        <entry>description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>NavBarName</entry>
+                        <entry>module name</entry>
+                    </row>
+                    <row>
+                        <entry>Group/GroupRo</entry>
+                        <entry>group access authorization</entry>
+                    </row>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>name of the link button</entry>
+                    </row>
+                    <row>
+                        <entry>Image</entry>
+                        <entry>image for the link button</entry>
+                    </row>
+                    <row>
+                        <entry>Link</entry>
+                        <entry>URI</entry>
+                    </row>
+                    <row>
+                        <entry>NavBar</entry>
+                        <entry>module name (correlation)</entry>
+                    </row>
+                    <row>
+                        <entry>Prio</entry>
+                        <entry>prio in the button list</entry>
+                    </row>
+                    <row>
+                        <entry>AccessKey</entry>
+                        <entry>short key (key + ALT) for quick access over the keyboard. </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+    </section>
+    <section id="navbar-setting">
+        <title>NavBar Settings</title>
+        <para>
+A NavBar item should look like the following example:
+        </para>
+        <para>
+        <informaltable>
+            <tgroup cols="4">
+                <thead>
+                    <row>
+                        <entry>NavBarPoint</entry>
+                        <entry>Prio</entry>
+                        <entry>AccessKey</entry>
+                        <entry>Image</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Overview</entry>
+                        <entry>100</entry>
+                        <entry>o</entry>
+                        <entry>overview.png</entry>
+                    </row>
+                    <row>
+                        <entry>New</entry>
+                        <entry>200</entry>
+                        <entry>n</entry>
+                        <entry>new.png</entry>
+                    </row>
+                    <row>
+                        <entry>Search</entry>
+                        <entry>300</entry>
+                        <entry>s</entry>
+                        <entry>search.png</entry>
+                    </row>
+                    <row>
+                        <entry>Delete</entry>
+                        <entry>400</entry>
+                        <entry>d</entry>
+                        <entry>delete.png</entry>
+                    </row>
+                    <row>
+                        <entry>Import</entry>
+                        <entry>500</entry>
+                        <entry>-</entry>
+                        <entry>import.png</entry>
+                    </row>
+                    <row>
+                        <entry>Setting</entry>
+                        <entry>900</entry>
+                        <entry>-</entry>
+                        <entry>module_setting.png</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+        <para>
+Menu functions - generic, used by any application module
+        </para>
+        <para>
+        <informaltable>
+            <tgroup cols="4">
+                <thead>
+                    <row>
+                        <entry>NavBarPoint</entry>
+                        <entry>Prio</entry>
+                        <entry>AccessKey</entry>
+                        <entry>Image</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Logout</entry>
+                        <entry>10</entry>
+                        <entry>l</entry>
+                        <entry>logout.png</entry>
+                    </row>
+                    <row>
+                        <entry>Preferences</entry>
+                        <entry>0</entry>
+                        <entry>p</entry>
+                        <entry>preferences.png</entry>
+                    </row>
+                    <row>
+                        <entry>New Messages</entry>
+                        <entry>999989</entry>
+                        <entry>m</entry>
+                        <entry>new-messages.png</entry>
+                    </row>
+                    <row>
+                        <entry>Locked Tickets</entry>
+                        <entry>9999999</entry>
+                        <entry>k</entry>
+                        <entry>personal.png</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+        <para>
+Menu functions - global, always used
+        </para>
+        <para>
+        <informaltable>
+            <tgroup cols="4">
+                <thead>
+                    <row>
+                        <entry>NavBarPoint</entry>
+                        <entry>Prio</entry>
+                        <entry>AccessKey</entry>
+                        <entry>Image</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Ticket</entry>
+                        <entry>200</entry>
+                        <entry>t</entry>
+                        <entry>ticket.png</entry>
+                    </row>
+                    <row>
+                        <entry>Incident (SIRIOS-Project)</entry>
+                        <entry>2000</entry>
+                        <entry>i</entry>
+                        <entry>incident.png</entry>
+                    </row>
+                    <row>
+                        <entry>Advisory (SIRIOS-Project)</entry>
+                        <entry>2100</entry>
+                        <entry>d</entry>
+                        <entry>advisory.png</entry>
+                    </row>
+                    <row>
+                        <entry>ShortAdvisory (SIRIOS-BSI-specific)</entry>
+                        <entry>2150</entry>
+                        <entry>z</entry>
+                        <entry>advisory_short.png</entry>
+                    </row>
+                    <row>
+                        <entry>VirusWarning (SIRIOS-BSI-specific)</entry>
+                        <entry>2300</entry>
+                        <entry>x</entry>
+                        <entry>viruswarning.png</entry>
+                    </row>
+                    <row>
+                        <entry>FreeTextMessage (SIRIOS-BSI-specific)</entry>
+                        <entry>2400</entry>
+                        <entry>y</entry>
+                        <entry>freetextmessage.png</entry>
+                    </row>
+                    <row>
+                        <entry>Vulnerability (SIRIOS-Project)</entry>
+                        <entry>2500</entry>
+                        <entry>v</entry>
+                        <entry>vulnerability.png</entry>
+                    </row>
+                    <row>
+                        <entry>Artefact (SIRIOS-Project)</entry>
+                        <entry>2600</entry>
+                        <entry>r</entry>
+                        <entry>artefactdb.png</entry>
+                    </row>
+                    <row>
+                        <entry>WebWatcher (SIRIOS-Project)</entry>
+                        <entry>2700</entry>
+                        <entry>z</entry>
+                        <entry>webwatcher.png</entry>
+                    </row>
+                    <row>
+                        <entry>IDMEFConsole (SIRIOS-Project)</entry>
+                        <entry>2800</entry>
+                        <entry>-</entry>
+                        <entry>idmef_console.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Authoring (WID-Project)</entry>
+                        <entry>2900</entry>
+                        <entry>-</entry>
+                        <entry>wid_authoring.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Portal-Admin-User (WID-Project)</entry>
+                        <entry>2910</entry>
+                        <entry>-</entry>
+                        <entry>wid_portal_admin_user.png</entry>
+                    </row>
+                    <row>
+                        <entry>WID-Portal-Admin-Group (WID-Project)</entry>
+                        <entry>2920</entry>
+                        <entry>-</entry>
+                        <entry>wid_portal_admin_group.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMService (OTRS::ITSM)</entry>
+                        <entry>3100</entry>
+                        <entry>-</entry>
+                        <entry>itsm_service.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMConfigItem (OTRS::ITSM)</entry>
+                        <entry>3200</entry>
+                        <entry>-</entry>
+                        <entry>itsm_configitem.png</entry>
+                    </row>
+                    <row>
+                        <entry>ITSMLocation (OTRS::ITSM)</entry>
+                        <entry>3300</entry>
+                        <entry>-</entry>
+                        <entry>itsm_location.png</entry>
+                    </row>
+                    <row>
+                        <entry>TimeAccounting</entry>
+                        <entry>6000</entry>
+                        <entry>-</entry>
+                        <entry>time_accounting.png</entry>
+                    </row>
+                    <row>
+                        <entry>ContentManager</entry>
+                        <entry>7050</entry>
+                        <entry>-</entry>
+                        <entry>contentmanager.png</entry>
+                    </row>
+                    <row>
+                        <entry>Calendar</entry>
+                        <entry>8000</entry>
+                        <entry>c</entry>
+                        <entry>calendar.png</entry>
+                    </row>
+                    <row>
+                        <entry>FileManager</entry>
+                        <entry>8100</entry>
+                        <entry>f</entry>
+                        <entry>filemanager.png</entry>
+                    </row>
+                    <row>
+                        <entry>WebMail</entry>
+                        <entry>8200</entry>
+                        <entry>w</entry>
+                        <entry>webmail.png</entry>
+                    </row>
+                    <row>
+                        <entry>FAQ</entry>
+                        <entry>8300</entry>
+                        <entry>q</entry>
+                        <entry>help.png</entry>
+                    </row>
+                    <row>
+                        <entry>Call</entry>
+                        <entry>8400</entry>
+                        <entry>-</entry>
+                        <entry>call.png</entry>
+                    </row><row>
+                        <entry>Stats</entry>
+                        <entry>8500</entry>
+                        <entry>-</entry>
+                        <entry>stats.png</entry>
+                    </row>
+                    <row>
+                        <entry>CustomerDB</entry>
+                        <entry>9000</entry>
+                        <entry>-</entry>
+                        <entry>folder_yellow.png</entry>
+                    </row><row>
+                        <entry>CustomerCompanyDB</entry>
+                        <entry>9100</entry>
+                        <entry>-</entry>
+                        <entry>folder_yellow.png</entry>
+                    </row>
+                    <row>
+                        <entry>Admin</entry>
+                        <entry>10000</entry>
+                        <entry>a</entry>
+                        <entry>admin.png</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+        <para>
+Table 3: Menu Applications -default application modules
+        </para>
+        <para>
+        <note>
+            <para>
+AccessKey "g" is also reserved for the submission of forms.
+            </para>
+        </note>
+        </para>
+    </section>
+    <section id="screen-flow">
+        <title>Screen flow</title>
+        <para>
+An object module should have the following process flow:
+        </para>
+        <para>
+            <screenshot>
+                <graphic srccredit="" fileref="screenshots/screen-flow.png"></graphic>
+            </screenshot>
+        </para>
+    </section>
+</section>

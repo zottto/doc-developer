@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: templates.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+
+<section>
+    <title>Templating Mechanism</title>
+    <para>
+The .dtl files are about 70% plain html and just used from frontend modules
+(Kernel/Modules/*.pm). The .dtl files are located under:
+    </para>
+    <para>
+        <filename>$OTRS_HOME/Kernel/Output/HTML/Standard/*.dtl</filename>
+    </para>
+    <para>
+The usable dtl tags and syntax are described below.
+    </para>
+    <section id="template-formatting">
+        <title>Formatting</title>
+        <para>
+We use four spaces per indentation level. Examples:
+        <programlisting><![CDATA[
+<table>
+    <tr>
+        <td>Key</td>
+        <td>Value</td>
+    </tr>
+    <tr>
+        <td>aaa</td>
+        <td>bbb</td>
+    </tr>
+</table>
+        ]]></programlisting>
+        <programlisting><![CDATA[
+<form action ="index.pl">
+    <input type="text" value="">
+    <input type="text" value="">
+    <table>
+        <tr>
+            <td>Key1</td>
+            <td>Value1</td>
+        </tr>
+        <tr>
+            <td>Key2</td>
+            <td>Value2</td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="TemplateCommands">
+        <title>Template Commands</title>
+        <section id="Comment">
+            <title>Comment</title>
+            <para>
+The dtl comment starts with a # at the beginning of a line and will not be
+shown in the html output.
+            <programlisting><![CDATA[
+# this can be a comment in the dtl file
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="data">
+            <title>$Data{""}</title>
+            <para>
+If data params are given to the templates, these params can be printed to
+the template.
+            <programlisting><![CDATA[
+The name of the author is $Data{"Name"}.
+            ]]></programlisting>
+            </para>
+            <warning>
+                <para>
+If the value of the param Name includes html tags, these tags are also shown.
+                </para>
+            </warning>
+        </section>
+        <section id="qdata">
+            <title>$QData{""}</title>
+            <para>
+The same as $Data{""} but the value if the param Name is html quoted (safe).
+            <programlisting><![CDATA[
+The name of the author is $QData{"Name"}.
+            ]]></programlisting>
+It's also possible to cut the value. If, for example, you just want to show 20
+characters of a variable (result will be "SomeName[..]"), use the following:
+            </para>
+            <para>
+            <programlisting><![CDATA[
+The first 20 characters of the author's name: $QData{"Name","20"}.
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="lqdata">
+            <title>$LQData{""}</title>
+            <para>
+The same as $QData{""} but with link encoding. This means for example that a space will be a + (e. g. for "a href").
+            <programlisting><![CDATA[
+<a href="$Env{"Baselink"}&amp;Location=$LQData{"File"}">$QData{"File","110"}</a>
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="env">
+            <title>$Env{""}</title>
+            <para>
+Env is an environment variable which is usable in more templates at a time. $Data{""}
+is just availabe for one template.
+            <programlisting><![CDATA[
+The current user name is: $Env{"Userfirstname"}
+
+Some other common variables are:
+$Env{"SessionID"} --> the current session id
+$Env{"Time"} --> the current time e. g.  Thu Dec 27 16:00:55 2001
+$Env{"CGIHandle"} --> the current CGI handle e. g.  index.pl
+$Env{"UserCharset"} --> the current site charset e. g.  iso-8859-1
+$Env{"Baselink"} --> the baselink --> index.pl?SessionID=...
+$Env{"UserFirstname"} --> e. g. Dirk $Env{"UserFirstname"}
+$Env{"UserLogin"} --> e. g. mgg@x11.org
+$Env{"UserIsGroup[users]"} = Yes --> user groups (useful for own links)
+$Env{"UserIsGroup[admin]"} = Yes $Env{"Action"} --> the current action
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="qenv">
+            <title>$QEnv{""}</title>
+            <para>
+QEnv is an html quoted environment variable (like Env but quoted).
+            <programlisting><![CDATA[
+The current user name is: $QEnv{"Userfirstname"}
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="quote">
+            <title>$Quote{""}</title>
+            <para>
+A tag to quote html strings.
+            <programlisting><![CDATA[
+Show no html tags, quote this: $Quote{"<hr><b>some text</b></hr>"}
+            ]]></programlisting>
+            </para>
+            <para>
+It's also possible to cut the value. If, for example, you just want to show 20
+characters of a variable (result will be "SomeMess[..]"), use the following:
+            <programlisting><![CDATA[
+Show no html tags, quote this and show just 20 characters:
+$Quote{"<hr><b>some text</b></hr>","20"}
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="text">
+            <title>$Text{""}</title>
+            <para>
+This tag translates the string (based on the user selected language).
+            <programlisting><![CDATA[
+Translate this text: $Text{"Help"}
+Translate this text and insert the given data: $Text{"Change %s settings", "$Data{"Type"}"}
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="jstext">
+            <title>$JSText{""}</title>
+            <para>
+The same as $Text{""} but with java scprit quoting. This function quote the ' in java script code with \. Otherwise
+the code is broken.
+            <programlisting><![CDATA[
+Translate this text: $JSText{"Help"}
+Translate this text and insert the given data: $JSText{"Change %s settings", "$Data{"Type"}"}
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="config">
+            <title>$Config{""}</title>
+            <para>
+With this tag you can use config variables in the template. For example the
+Kernel/config.pm:
+            <programlisting><![CDATA[
+[Kernel/Config.pm]
+    # FQDN
+    # (Full qualified domain name of your system.)
+    $Self->{FQDN} = 'otrs.example.com';
+    # AdminEmail
+    # (Email of the system admin.)
+    $Self->{AdminEmail} = 'admin@example.com';
+[...]
+            ]]></programlisting>
+            </para>
+            <para>
+And the use in the dtl template:
+            <programlisting><![CDATA[
+The hostname is '$Config{"FQDN"}'
+The admin email address is '$Config{"AdminEmail"}'
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="include">
+            <title>$Include{""}</title>
+            <para>
+If you want to include other dtl templates into a template, use the include tag:
+            <programlisting><![CDATA[
+# include Copyright.dtl
+$Include{"Copyright"}
+            ]]></programlisting>
+            </para>
+        </section>
+        <section id="block">
+            <title>Block</title>
+            <para>
+The block tag can be used to define blocks. These blocks can be used several times by the
+frontend module with different data params.
+            <programlisting><![CDATA[
+<table>
+<!-- dtl:block:Row -->
+    <tr>
+        <td valign="top" width="15%">
+        <b>
+        $Text{"$Data{"Key"}"}:
+        </b>
+        </td>
+        <td width="85%">
+        <div title="$QData{"Value"}">
+        $QData{"Value","160"}
+        </div>
+        </td>
+    </tr>
+<!-- dtl:block:Row -->
+</table>
+            ]]></programlisting>
+            </para>
+            <para>
+The html code can be displayed in template blocks in the frontend:
+            <programlisting><![CDATA[
+# get article
+my %Article = $Self->{TicketObject}->ArticleGet(
+    ArticleID => $ArticleID,
+);
+
+# file blocks
+for (qw(From To Cc Subject)) {
+    if ($Article{$_}) {
+        $Self->{LayoutObject}->Block(
+            Name => 'Row',
+            Data => {
+                Key => $_,
+                Value => $Article{$_},
+            },
+        );
+    }
+}
+
+# process template
+my $HTMLOutput = $Self->{LayoutObject}->Output(
+    TemplateFile => 'AgentZoomBody',
+    Data => {
+        %Article
+    },
+);
+            ]]></programlisting>
+            </para>
+        </section>
+    </section>
+</section>
