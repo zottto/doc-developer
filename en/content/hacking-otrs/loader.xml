@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<!-- $Id: loader.xml,v 1.1 2010-08-13 12:48:10 mg Exp $ -->
+
+<section id="loader">
+    <title>The CSS and JS "Loader"</title>
+    <para>
+        To be documented...
+    </para>
+
+    <section>
+        <title>How it works</title>
+        <para></para>
+    </section>
+
+    <section>
+        <title>Loading CSS</title>
+        <para>Common/Module, IE678</para>
+    </section>
+
+    <section>
+        <title>CSS File Types</title>
+        <para>Common/Module</para>
+    </section>
+</section>

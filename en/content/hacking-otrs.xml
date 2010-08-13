@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: hacking-otrs.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+<!-- $Id: hacking-otrs.xml,v 1.2 2010-08-13 12:48:10 mg Exp $ -->
 
 <chapter id="hacking">
     <title>Hacking OTRS</title>
@@ -17,8 +17,9 @@
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/config-mechanism.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/database-mechanism.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/log-mechanism.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/skins.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/loader.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/templates.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hacking-otrs/layout.xml" />
     </section>
 
     <section id="how-to-extend">
