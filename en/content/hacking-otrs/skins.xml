@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: skins.xml,v 1.2 2010-08-16 10:13:18 mg Exp $ -->
+<!-- $Id: skins.xml,v 1.3 2010-08-16 12:49:49 mg Exp $ -->
 
 <section id="skins">
     <title>Skins</title>
@@ -157,6 +157,74 @@
 
     <section>
         <title>Creating a New Skin</title>
-        <para></para>
+        <para>In this section, we will be creating a new agent skin which replaces the default OTRS logo with a custom company logo,
+        and configure that skin to be the one which all agents will see by default.</para>
+
+        <para>There are only two simple steps we need to take to achieve this goal:
+            <itemizedlist>
+                <listitem><para>create the skin files and</para></listitem>
+                <listitem><para>make the skin known to the OTRS system.</para></listitem>
+            </itemizedlist>
+        </para>
+
+        <para>
+            Let's start by creating the files needed for our new skin. First of all, we need to create a new
+            folder for this skin (we'll call it "custom"). This folder will be
+            <filename>$OTRS_HOME/var/httpd/htdocs/skins/Agent/custom</filename>.
+        </para>
+        <para>
+            In there, we need to place the new logo file (e.g. <filename>custom-logo.png</filename> in a new directory
+            <filename>img</filename>. In addition to that, a new CSS file must be created in the new folder
+            <filename>css</filename> which defines the new skin's appearance. We'll call it <filename>Core.Header.css</filename>
+            (remember that it must have the same name as the files in the "default" skin). This is the code needed for the CSS file:
+
+            <programlisting><![CDATA[
+#Logo {
+    background: url(../img/custom-logo.png) no-repeat;
+    height: 67px; /* specify height and width to match your logo's dimensions */
+    width: 224px;
+    /* optional: specify "top" and "right" to reposition the logo on the screen */
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            Now comes the second step, making the new skin known to the OTRS system. For this, we need to create a new config
+            file <filename>$OTRS_HOME/Kernel/Config/Files/CustomSkin.xml</filename>, which will contain the needed settings
+            as follows:
+
+            <programlisting><![CDATA[
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_config version="1.0" init="Framework">
+    <ConfigItem Name="Loader::Agent::Skin###100-custom" Required="0" Valid="1">
+        <Description Translatable="1">Custom skin for the development manual.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Frontend::Agent</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="InternalName">custom</Item>
+                <Item Key="VisibleName">Custom</Item>
+                <Item Key="Description">Custom skin for the development manual.</Item>
+                <Item Key="HomePage">www.yourcompany.com</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+</otrs_config>
+            ]]></programlisting>
+
+            To make this configuration active, we need to navigate to the SysConfig module in the admin area
+            of OTRS (alternatively, you can run the script <filename>$OTRS_HOME/bin/otrs.RebuildConfig.pl</filename>).
+            This will regenerate the Perl cache of the XML configuration files, so that our new skin is now known
+            and can be selected in the system. To make it the default skin that new agents see before they made their
+            own skin selection, edit the SysConfig setting "Loader::Agent::DefaultSelectedSkin" and set it to "custom".
+        </para>
+        <para>
+            In conclusion: to create a new skin in OTRS, we had to place the new logo file, and create one CSS and one XML file, resulting
+            in three new files:
+            <screen>
+$OTRS_HOME/Kernel/Config/Files/CustomSkin.xml
+$OTRS_HOME/var/httpd/htdocs/skins/Agent/custom/img/custom-logo.png
+$OTRS_HOME/var/httpd/htdocs/skins/Agent/custom/css/Core.Header.css
+            </screen>
+        </para>
     </section>
 </section>
