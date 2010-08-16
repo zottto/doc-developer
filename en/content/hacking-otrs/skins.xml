@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: skins.xml,v 1.1 2010-08-13 12:48:10 mg Exp $ -->
+<!-- $Id: skins.xml,v 1.2 2010-08-16 10:13:18 mg Exp $ -->
 
 <section id="skins">
     <title>Skins</title>
@@ -137,7 +137,7 @@
         </para>
 
         <para>
-            For details regarding the CSS file types, please see the section on the Loader.
+            For details regarding the CSS file types, please see the <link linkend="loader">section on the Loader</link>.
         </para>
 
         <para>
