@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: book.xml,v 1.22 2010-08-13 08:59:27 mg Exp $ -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY % local.common.attrib "xml:base  CDATA  #IMPLIED">
+]>
+<!-- $Id: book.xml,v 1.23 2010-08-16 12:49:02 mg Exp $ -->
 
 <book lang="en">
     <bookinfo>
