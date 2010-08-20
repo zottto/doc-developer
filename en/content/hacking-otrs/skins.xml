@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: skins.xml,v 1.4 2010-08-20 08:21:19 mg Exp $ -->
+<!-- $Id: skins.xml,v 1.5 2010-08-20 08:21:45 mg Exp $ -->
 
 <section id="skins">
     <title>Skins</title>
@@ -169,7 +169,7 @@
             change that in your skin to another color and normal text, it is not enough to write
 
             <programlisting><![CDATA[
-.Header p {
+.Header h1 {
     color: #F00;
 }
             ]]></programlisting>
@@ -177,7 +177,7 @@
             Because the original rule for <literal>font-weight</literal> still applies. You need to override it explicitly:
 
             <programlisting><![CDATA[
-.Header p {
+.Header h1 {
     font-weight: normal;
     color: #F00;
 }
