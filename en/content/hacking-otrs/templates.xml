@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.2 2010-08-20 09:05:03 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.3 2010-08-20 11:48:38 mg Exp $ -->
 
 <section>
     <title>Templating Mechanism</title>
@@ -117,7 +117,7 @@ The name of the author is $QData{"Name"}.
                 ]]></programlisting>
 
                 It's also possible specify a maximum length for the value.
-                If, for example, you just want to show 8 characters of a variable (result will be "SomeName[.,.]"),
+                If, for example, you just want to show 8 characters of a variable (result will be "SomeName[...]"),
                 use the following:
 
                 <programlisting><![CDATA[
@@ -188,51 +188,13 @@ The current user name is: $QEnv{"UserFirstname"}
             </para>
         </section>
 
-        <section id="quote">
-            <title>$Quote{""}</title>
-            <para>
-A tag to quote html strings.
-            <programlisting><![CDATA[
-Show no html tags, quote this: $Quote{"<hr><b>some text</b></hr>"}
-            ]]></programlisting>
-            </para>
-            <para>
-It's also possible to cut the value. If, for example, you just want to show 20
-characters of a variable (result will be "SomeMess[..]"), use the following:
-            <programlisting><![CDATA[
-Show no html tags, quote this and show just 20 characters:
-$Quote{"<hr><b>some text</b></hr>","20"}
-            ]]></programlisting>
-            </para>
-        </section>
-
-        <section id="text">
-            <title>$Text{""}</title>
-            <para>
-This tag translates the string (based on the user selected language).
-            <programlisting><![CDATA[
-Translate this text: $Text{"Help"}
-Translate this text and insert the given data: $Text{"Change %s settings", "$Data{"Type"}"}
-            ]]></programlisting>
-            </para>
-        </section>
-        <section id="jstext">
-            <title>$JSText{""}</title>
-            <para>
-The same as $Text{""} but with java scprit quoting. This function quote the ' in java script code with \. Otherwise
-the code is broken.
-            <programlisting><![CDATA[
-Translate this text: $JSText{"Help"}
-Translate this text and insert the given data: $JSText{"Change %s settings", "$Data{"Type"}"}
-            ]]></programlisting>
-            </para>
-        </section>
         <section id="config">
             <title>$Config{""}</title>
             <para>
-With this tag you can use config variables in the template. For example the
-Kernel/config.pm:
-            <programlisting><![CDATA[
+                With this tag you can insert config variables into the template. Let's
+                see an example Kernel/Config.pm:
+
+                <programlisting><![CDATA[
 [Kernel/Config.pm]
     # FQDN
     # (Full qualified domain name of your system.)
@@ -241,80 +203,230 @@ Kernel/config.pm:
     # (Email of the system admin.)
     $Self->{AdminEmail} = 'admin@example.com';
 [...]
-            ]]></programlisting>
-            </para>
-            <para>
-And the use in the dtl template:
-            <programlisting><![CDATA[
+                ]]></programlisting>
+
+                To output values from it in the template, use:
+
+                <programlisting><![CDATA[
 The hostname is '$Config{"FQDN"}'
 The admin email address is '$Config{"AdminEmail"}'
-            ]]></programlisting>
+                ]]></programlisting>
+            </para>
+            <warning>
+                <para>
+                    Because of the missing HTML quoting, this can result in security problems.
+                </para>
+                <para>
+                    Whenever possible, use <link linkend="quote"><literal>$Quote{"$Config{""}"}</literal></link>.
+                </para>
+            </warning>
+        </section>
+
+        <section id="quote">
+            <title>$Quote{""}</title>
+            <para>
+                This tag can be used to perform quoting on HTML strings, when no other quoting is possible.
+
+                <programlisting><![CDATA[
+$Quote{"$Config{"ProductName"}"} ($Quote{"$Config{"Ticket::Hook"}"})
+                ]]></programlisting>
+
+                It's also possible specify a maximum length for the value.
+                If, for example, you just want to show 8 characters of a variable (result will be "Some lon[...]"),
+                use the following:
+
+                <programlisting><![CDATA[
+$Quote{"Some long long string", "8"})
+                ]]></programlisting>
             </para>
         </section>
+
+        <section id="text">
+            <title>$Text{""}</title>
+            <para>
+                Translates the enlosed string into the current user's selected language
+                and performs HTML quoting on the resulting string. If no translation is found,
+                the original string will be used.
+
+                <programlisting><![CDATA[
+Translate this text: $Text{"Help"}
+                ]]></programlisting>
+
+                When translating data coming from the application, use <literal>$Data</literal>
+                inside of <literal>$Text</literal>, not <literal>$QData</literal>, to prevent
+                double quoting:
+
+                <programlisting><![CDATA[
+Translate data from the application: $Text{"$Data{"Type"}"}
+                ]]></programlisting>
+
+                You can also specify parameters (%s) inside of the string which should be replaced
+                with other data:
+
+                <programlisting><![CDATA[
+Translate this text and insert the given data: $Text{"Change %s settings", "$Data{"Type"}"}
+                ]]></programlisting>
+            </para>
+        </section>
+
+        <section id="jstext">
+            <title>$JSText{""}</title>
+            <para>
+                Works in the same way as <link linkend="text"><literal>$Text{""}</literal></link>, but
+                does not perform HTML encoding but JavaScript string escaping instead (all
+                <literal>'</literal> characters will be encoded as <literal>\'</literal>. So with
+                the help of this tag you can make sure that even dynamic strings will not break your
+                JavaScript code.
+
+                <programlisting><![CDATA[
+window.alert('$JSText{"Some message's content"}');
+
+// after the command was replaced in the template, this will
+// result in (for an English speaking agent):
+
+window.alert('Some message\'s content');
+                ]]></programlisting>
+
+                Make sure to use <literal>'</literal> as string delimiter for strings where you want
+                to use <literal>$JSText</literal> inside.
+            </para>
+        </section>
+
         <section id="include">
             <title>$Include{""}</title>
             <para>
-If you want to include other dtl templates into a template, use the include tag:
-            <programlisting><![CDATA[
+                Includes another template file into the current one. The included file may also contain
+                template commands.
+
+                <programlisting><![CDATA[
 # include Copyright.dtl
 $Include{"Copyright"}
-            ]]></programlisting>
+                ]]></programlisting>
             </para>
         </section>
+
         <section id="block">
-            <title>Block</title>
+            <title>dtl:block</title>
             <para>
-The block tag can be used to define blocks. These blocks can be used several times by the
-frontend module with different data params.
-            <programlisting><![CDATA[
-<table>
-<!-- dtl:block:Row -->
-    <tr>
-        <td valign="top" width="15%">
-        <b>
-        $Text{"$Data{"Key"}"}:
-        </b>
-        </td>
-        <td width="85%">
-        <div title="$QData{"Value"}">
-        $QData{"Value","160"}
-        </div>
-        </td>
-    </tr>
-<!-- dtl:block:Row -->
-</table>
-            ]]></programlisting>
+                With this command, one can specify parts of a template file as a block. This block
+                needs to be explicitly filled with a function call from the application, to be
+                present in the generated output. The application can call the block 0 (it will not
+                be present in the output), 1 or more times (each with possibly a different set of
+                data parameters passed to the template).
             </para>
             <para>
-The html code can be displayed in template blocks in the frontend:
-            <programlisting><![CDATA[
-# get article
-my %Article = $Self->{TicketObject}->ArticleGet(
-    ArticleID => $ArticleID,
+                One common use case is the filling of a table with dynamic data:
+
+                <programlisting><![CDATA[
+<table class="DataTable">
+    <thead>
+        <tr>
+            <th>$Text{"Name"}</th>
+            <th>$Text{"Type"}</th>
+            <th>$Text{"Comment"}</th>
+            <th>$Text{"Valid"}</th>
+            <th>$Text{"Changed"}</th>
+            <th>$Text{"Created"}</th>
+        </tr>
+    </thead>
+    <tbody>
+<!-- dtl:block:NoDataFoundMsg -->
+        <tr>
+            <td colspan="6">
+                $Text{"No data found."}
+            </td>
+        </tr>
+<!-- dtl:block:NoDataFoundMsg -->
+<!-- dtl:block:OverviewResultRow -->
+        <tr>
+            <td><a class="AsBlock" href="$Env{"Baselink"}Action=$Env{"Action"};Subaction=Change;ID=$LQData{"ID"}">$QData{"Name"}</a></td>
+            <td>$Text{"$Data{"TypeName"}"}</td>
+            <td title="$QData{"Comment"}">$QData{"Comment","20"}</td>
+            <td>$Text{"$Data{"Valid"}"}</td>
+            <td>$TimeShort{"$QData{"ChangeTime"}"}</td>
+            <td>$TimeShort{"$QData{"CreateTime"}"}</td>
+        </tr>
+<!-- dtl:block:OverviewResultRow -->
+    </tbody>
+</table>
+                ]]></programlisting>
+
+                The surrounding table with the header is always generated.
+                If no data was found, the block <literal>NoDataFoundMsg</literal> is called
+                once, resulting in a table with one data row with the message "No data found."
+            </para>
+            <para>
+                If data was found, for each row there is one function call made for the
+                block <literal>OverViewResultRow</literal> (each time passing in the data
+                for this particular row), resulting in a table with
+                as many data rows as results were found.
+            </para>
+            <para>
+                Let's look at how the blocks are called from the application module:
+
+                <programlisting><![CDATA[
+ my %List = $Self->{StateObject}->StateList(
+    UserID => 1,
+    Valid  => 0,
 );
 
-# file blocks
-for (qw(From To Cc Subject)) {
-    if ($Article{$_}) {
+# if there are any states, they are shown
+if (%List) {
+
+    # get valid list
+    my %ValidList = $Self->{ValidObject}->ValidList();
+    for ( sort { $List{$a} cmp $List{$b} } keys %List ) {
+
+        my %Data = $Self->{StateObject}->StateGet( ID => $_, );
         $Self->{LayoutObject}->Block(
-            Name => 'Row',
+            Name => 'OverviewResultRow',
             Data => {
-                Key => $_,
-                Value => $Article{$_},
+                Valid => $ValidList{ $Data{ValidID} },
+                %Data,
             },
         );
     }
 }
 
-# process template
-my $HTMLOutput = $Self->{LayoutObject}->Output(
-    TemplateFile => 'AgentZoomBody',
-    Data => {
-        %Article
-    },
-);
-            ]]></programlisting>
+# otherwise a no data found msg is displayed
+else {
+    $Self->{LayoutObject}->Block(
+        Name => 'NoDataFoundMsg',
+        Data => {},
+    );
+}
+                ]]></programlisting>
+
+                Note how the blocks have both their name and an optional set of data
+                passed in as separate parameters to the block function call. Data inserting
+                commands inside a block always need the data provided to the block function
+                call of this block, not the <link linkend="using-templates">general template
+                rendering call</link>.
+            </para>
+            <para>
+                For details, please refer to the documentation of <literal>Kernel::Output::HTML::Layout</literal>
+                on <ulink url="http://dev.otrs/org">dev.otrs.org</ulink>.
             </para>
         </section>
+    </section>
+    <section id="using-templates">
+        <title>Using a template file</title>
+        <para>
+            Ok, but how to actually process a template file and generate the result? This is really simple:
+
+            <programlisting><![CDATA[
+# render AdminState.dtl
+$Output .= $Self->{LayoutObject}->Output(
+    TemplateFile => 'AdminState',
+    Data         => \%Param,
+);
+            ]]></programlisting>
+
+            In the frontend modules, the <literal>Output()</literal> function of
+            <literal>Kernel::Output::HTML::Layout</literal> is called (after all the needed blocks
+            have been called in this template) to generate the final output. An optional set of
+            data parameters is passed to the template, for all data inserting commands which are not
+            inside of a block.
+        </para>
     </section>
 </section>
