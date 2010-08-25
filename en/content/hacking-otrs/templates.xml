@@ -1,60 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.4 2010-08-23 08:47:05 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.5 2010-08-25 14:07:58 mg Exp $ -->
 
 <section>
     <title>Templating Mechanism</title>
     <para>
-        The .dtl files are about 70% plain html and just used from frontend modules
-        (Kernel/Modules/*.pm). The .dtl files are located under:
+        Internally, OTRS uses a templating mechanism to dynamically generate its
+        HTML pages (and other content), while keeping the program logic (Perl) and
+        the presentation (HTML) separate. Typically, a frontend module will use an
+        own template file, pass some data to it and return the rendered result to
+        the user.
+    </para>
+    <para>
+        The template files are located at:
         <filename>$OTRS_HOME/Kernel/Output/HTML/Standard/*.dtl</filename>
     </para>
     <para>
-        The usable dtl tags and syntax are described below.
+        Inside of these templates, a set of commands for data manipulation, localization
+        and simple logical structures can be used. This section describes these commands
+        and shows how to use them in templates.
     </para>
-
-    <section id="template-formatting">
-        <title>Formatting</title>
-        <para>
-            We use four spaces per indentation level. Example:
-
-         <programlisting><![CDATA[
-<div class="MainBox ARIARoleMain SpacingTopLarge">
-
-    <div class="W33pc CenterBox SpacingBottomLarge">
-        <div class="WidgetSimple">
-            <div class="Header">
-                <h2>$Text{"Warning"}</h2>
-            </div>
-            <div class="Content">
-                <h4>
-                    $Text{"Message"}: <span class="Error">$Data{"Message"}</span>
-                </h4>
-
-                <p class="SpacingTop">
-                    $Data{"Comment"}
-                </p>
-
-                <p class="SpacingTop">
-                    <a href="#" id="GoBack">$Text{"Go back to the previous page"}</a>
-                    ...
-                </p>
-            </div>
-        </div>
-    </div>
-
-</div>
-            ]]></programlisting>
-        </para>
-    </section>
 
     <section id="TemplateCommands">
         <title>Template Commands</title>
-        <para>
-            In the templates you can use various commands to inserte data from the
-            running OTRS module, and for commenting. Below you find the list of
-            available commands with a description.
-        </para>
 
         <section>
             <title>Data Manipulation Commands</title>
@@ -486,6 +454,51 @@ else {
                 </para>
             </section>
         </section>
+        <section>
+            <title>dtl:js_on_document_complete</title>
+            <para>
+                Marks JavaScript code which should be executed after all CSS, JavaScript
+                and other external content has been loaded and the basic JavaScript initialization
+                was finished. Again, let's look at an example:
+
+                <programlisting><![CDATA[
+<form title="$Text{"Move ticket to a different queue"}" action="$Env{"CGIHandle"}" method="get">
+    <input type="hidden" name="Action" value="AgentTicketMove"/>
+    <input type="hidden" name="QueueID" value="$QData{"QueueID"}"/>
+    <input type="hidden" name="TicketID" value="$QData{"TicketID"}"/>
+    <label for="DestQueueID" class="InvisibleText">$Text{"Change queue"}:</label>
+    $Data{"MoveQueuesStrg"}
+</form>
+<!-- dtl:js_on_document_complete -->
+<script type="text/javascript">
+    $('#DestQueueID').bind('change', function (Event) {
+        $(this).closest('form').submit();
+    });
+</script>
+<!-- dtl:js_on_document_complete -->
+                ]]></programlisting>
+
+                This snippet creates a small form and puts an onchange-Handler on the
+                &lt;select&gt; element which causes and automatical form submit.
+            </para>
+            <para>
+                Why is it neccessary to enclose the JavaScript code in
+                <literal>dtl:js_on_document_complate</literal>?
+                Starting with OTRS 3.0, JavaScript loading was
+                moved to the footer part of the page for performance reasons. This means that
+                within the &lt;body&gt; of the page, no JavaScript libraries are loaded yet.
+                With <literal>dtl:js_on_document_complete</literal> you can make sure that this
+                JavaScript is moved to a part of the final HTML document, where it will be
+                executed only after the entire external JavaScript and CSS content has been
+                successfully loaded and initialized.
+            </para>
+            <para>
+                Inside the <literal>dtl:js_on_document_complete</literal> block, you can use
+                &lt;script&gt; tags to enclose your JavaScript code, but you do not have to do so.
+                It may be beneficial because it will enable correct syntax highlighting in IDEs
+                which support it.
+            </para>
+        </section>
     </section>
 
     <section id="using-templates">
@@ -499,7 +512,7 @@ $Output .= $Self->{LayoutObject}->Output(
     TemplateFile => 'AdminState',
     Data         => \%Param,
 );
-                ]]></programlisting>
+            ]]></programlisting>
 
             In the frontend modules, the <literal>Output()</literal> function of
             <literal>Kernel::Output::HTML::Layout</literal> is called (after all the needed blocks
