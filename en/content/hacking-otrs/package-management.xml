@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-management.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+<!-- $Id: package-management.xml,v 1.2 2010-08-26 15:22:30 mb Exp $ -->
 
 <section>
     <title>Package Management</title>
@@ -36,7 +36,7 @@ $Self->{'Package::RepositoryList'} = {
 In your repository, create an index file for your OPM packages.
 OTRS just reads this index file and knows what packages are available.
             <screen>
-shell> bin/opm.pl -a index -d /path/to/repository/ > /path/to/repository/otrs.xml
+shell> bin/otrs.PackageManager.pl -a index -d /path/to/repository/ > /path/to/repository/otrs.xml
 shell>
             </screen>
             </para>
@@ -45,7 +45,7 @@ shell>
     <section id="package-commands">
         <title>Package Commands</title>
         <para>
-You can use the following OPM commands over the admin interface or over bin/opm.pl
+You can use the following OPM commands over the admin interface or over bin/otrs.PackageManager.pl
 to manage admin jobs for OPM packages.
         </para>
         <section id="install">
@@ -61,7 +61,7 @@ Install OPM packages.
                 <listitem>
                     <para>CMD:
                     <screen>
-shell> bin/opm.pl -a install -p /path/to/package.opm
+shell> bin/otrs.PackageManager.pl -a install -p /path/to/package.opm
                     </screen>
                     </para>
                 </listitem>
@@ -81,7 +81,7 @@ Uninstall OPM packages.
                 <listitem>
                     <para>CMD:
                     <screen>
-shell> bin/opm.pl -a uninstall -p /path/to/package.opm
+shell> bin/otrs.PackageManager.pl -a uninstall -p /path/to/package.opm
                     </screen>
                     </para>
                 </listitem>
@@ -101,7 +101,7 @@ shell> bin/opm.pl -a uninstall -p /path/to/package.opm
                 <listitem>
                     <para>CMD:
                     <screen>
-shell> bin/opm.pl -a upgrade -p /path/to/package.opm
+shell> bin/otrs.PackageManager.pl -a upgrade -p /path/to/package.opm
                     </screen>
                     </para>
                 </listitem>
@@ -121,7 +121,7 @@ List all OPM packages.
                 <listitem>
                     <para>CMD:
                     <screen>
-shell> bin/opm.pl -a list
+shell> bin/otrs.PackageManager.pl -a list
                     </screen>
                     </para>
                 </listitem>

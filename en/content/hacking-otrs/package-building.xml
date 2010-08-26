@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+<!-- $Id: package-building.xml,v 1.2 2010-08-26 15:22:30 mb Exp $ -->
 
 <section>
     <title>Package Building</title>
@@ -428,7 +428,7 @@ This is a whole example spec file.
         <para>
 To build an .opm package from the spec opm.
         <screen>
-shell> bin/opm.pl -a build -p /path/to/example.sopm
+shell> bin/otrs.PackageManager.pl -a build -p /path/to/example.sopm
 writing /tmp/example-0.0.1.opm
 shell>
         </screen>
