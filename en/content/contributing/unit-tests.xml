@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: unit-tests.xml,v 1.1 2010-08-13 08:59:29 mg Exp $ -->
+<!-- $Id: unit-tests.xml,v 1.2 2010-08-26 14:59:57 mb Exp $ -->
 
 <section id="unit-tests">
     <title>Unit Tests</title>
@@ -21,7 +21,7 @@ Example (/scripts/test/Calendar.t):
 # Calendar.t - Calendar
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: unit-tests.xml,v 1.1 2010-08-13 08:59:29 mg Exp $
+# $Id: unit-tests.xml,v 1.2 2010-08-26 14:59:57 mb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -37,19 +37,19 @@ use vars qw($Self);
 use Kernel::System::User;
 use Kernel::System::CalendarEvent;
 
-$Self->{UserObject} = Kernel::System::User-&gt;new(%{$Self});
-$Self->{EventObject} = Kernel::System::CalendarEvent-&gt;new(%{$Self}, UserID =&gt; 1);
+$Self->{UserObject} = Kernel::System::User->new(%{$Self});
+$Self->{EventObject} = Kernel::System::CalendarEvent->new(%{$Self}, UserID => 1);
 
 
-my $EventID = $Self-&gt;{EventObject}-&gt;EventAdd(
-    Title =&gt; 'Some Test',
-    StartTime =&gt; '1977-10-27 20:15',
-    EndTime =&gt; '1977-10-27 21:00',
-    State =&gt; 'public',
-    UserIDs =&gt; [1],
+my $EventID = $Self->{EventObject}->EventAdd(
+    Title => 'Some Test',
+    StartTime => '1977-10-27 20:15',
+    EndTime => '1977-10-27 21:00',
+    State => 'public',
+    UserIDs => [1],
 );
 
-$Self-&gt;True(
+$Self->True(
     $EventID,
     'EventAdd()',
 );
@@ -61,24 +61,24 @@ $Self-&gt;True(
     <section>
         <title>Testing</title>
         <para>
-To check your tests, just use "bin/UnitTest.pl -n Calendar" to use /scripts/test/Calendar.t.
+To check your tests, just use "bin/otrs.UnitTest.pl -n Calendar" to use /scripts/test/Calendar.t.
         <programlisting><![CDATA[
-shell:/opt/otrs&gt; bin/UnitTest.pl -n Calendar
+shell:/opt/otrs> bin/otrs.UnitTest.pl -n Calendar
 +-------------------------------------------------------------------+
 /opt/otrs/scripts/test/Calendar.t:
 +-------------------------------------------------------------------+
 ok 1 - EventAdd()
 =====================================================================
-Product:   OTRS 2.0.x CVS
+Product:   OTRS 3.0.x CVS
 Test Time: 0 s
-Time:      2006-04-02 12:58:37
+Time:      2010-04-02 12:58:37
 Host:      yourhost.example.com
-Perl:      5.8.7
+Perl:      5.8.9
 OS:        linux
 TestOk:    1
 TestNotOk: 0
 =====================================================================
-shell:/opt/otrs&gt;
+shell:/opt/otrs>
         ]]></programlisting>
         </para>
     </section>
@@ -87,7 +87,7 @@ shell:/opt/otrs&gt;
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is valid.
         <programlisting><![CDATA[
-$Self-&gt;True(
+$Self->True(
     $EventID,
     'EventAdd()',
 );
@@ -99,7 +99,7 @@ $Self-&gt;True(
         <para>
 This function tests whether the return value of the function 'EventAdd()' in the variable $EventID is invalid.
         <programlisting><![CDATA[
-$Self-&gt;False(
+$Self->False(
     $EventID,
     'EventAdd()',
 );
@@ -111,7 +111,7 @@ $Self-&gt;False(
         <para>
 This function tests whether the variables $A and $B are equal.
         <programlisting><![CDATA[
-$Self-&gt;Is(
+$Self->Is(
     $A,
     $B,
     'Test Name',
