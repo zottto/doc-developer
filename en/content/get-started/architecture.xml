@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.1 2010-08-13 08:59:29 mg Exp $ -->
+<!-- $Id: architecture.xml,v 1.2 2010-09-22 12:17:03 mb Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>
@@ -201,7 +201,7 @@ The database interface supports different databases.
         <para>
 For the OTRS data model please refer to the files in your /doc directory.
 Alternatively you can look at the data model on our CVS server:
-<ulink url="http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4">http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=co;pathrev=rel-2_4</ulink>.
+<ulink url="http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=markup">http://source.otrs.org/viewvc.cgi/otrs/doc/otrs-database.png?view=markup</ulink>.
         </para>
     </section>
 </section>
