@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: loader.xml,v 1.2 2010-09-15 07:28:22 mg Exp $ -->
+<!-- $Id: loader.xml,v 1.3 2010-10-11 19:09:17 ep Exp $ -->
 
 <section id="loader">
     <title>The CSS and JavaScript "Loader"</title>
@@ -10,7 +10,7 @@
         (good maintainability by a large number of separate files) and
         performance issues (making few HTTP requests and serving minified
         content without unneccessary whitespace and documentation)
-        hat to be addressed. To achieve these goals, the Loader was invented.
+        had to be addressed. To achieve these goals, the Loader was invented.
     </para>
 
     <section>
