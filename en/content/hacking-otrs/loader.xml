@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: loader.xml,v 1.3 2010-10-11 19:09:17 ep Exp $ -->
+<!-- $Id: loader.xml,v 1.4 2010-10-26 14:59:17 mg Exp $ -->
 
 <section id="loader">
     <title>The CSS and JavaScript "Loader"</title>
@@ -91,13 +91,9 @@
             very few CSS and JavaScript tags in the HTML code, like this:
 
             <programlisting><![CDATA[
-<!--CommonJS-->
 <script type="text/javascript" src="/otrs30-dev-web/js/js-cache/CommonJS_d16010491cbd4faaaeb740136a8ecbfd.js"></script>
-<!--/CommonJS-->
 
-<!--ModuleJS-->
 <script type="text/javascript" src="/otrs30-dev-web/js/js-cache/ModuleJS_b54ba9c085577ac48745f6849978907c.js"></script>
-<!--/ModuleJS-->
             ]]></programlisting>
 
             What just happened? During the original request generating the HTML code for this page,
@@ -110,26 +106,21 @@
             The CSS section looks a little more complicated:
 
             <programlisting><![CDATA[
-<!--CommonCSS-->
     <link rel="stylesheet" type="text/css" href="/otrs30-dev-web/skins/Agent/default/css-cache/CommonCSS_00753c78c9be7a634c70e914486bfbad.css" />
-<!--/CommonCSS-->
 
-<!--CommonCSS_IE7-->
 <!--[if IE 7]>
     <link rel="stylesheet" type="text/css" href="/otrs30-dev-web/skins/Agent/default/css-cache/CommonCSS_IE7_59394a0516ce2e7359c255a06835d31f.css" />
-    <![endif]-->
-<!--/CommonCSS_IE7-->
+<![endif]-->
 
-<!--CommonCSS_IE8-->
 <!--[if IE 8]>
     <link rel="stylesheet" type="text/css" href="/otrs30-dev-web/skins/Agent/default/css-cache/CommonCSS_IE8_ff58bd010ef0169703062b6001b13ca9.css" />
-    <![endif]-->
-<!--/CommonCSS_IE8-->
+<![endif]-->
             ]]></programlisting>
 
-            The reason is that Internet Explorer 7 and 8 need special treatment because
-            of their lacking support of web standard technologies. So we have some normal CSS,
-            and some that is inside of so-called "conditional comments" which cause it to be loaded
+            The reason is that Internet Explorer 7 and 8 need special treatment in addition to the
+            default CSS because of their lacking support of web standard technologies.
+            So we have some normal CSS that is loaded in all browsers, and some special CSS
+            that is inside of so-called "conditional comments" which cause it to be loaded
             <emphasis>only</emphasis> by Internet Explorer 7/8. All other browsers will ignore it.
         </para>
         <para>
@@ -255,6 +246,31 @@
                 Now you have all information you need to configure the way the Loader
                 handles JavaScript code.
             </para>
+            <para>
+                There is one special case: for <literal>ToolbarModule</literal>s, you can also add custom
+                JavaScript files. Just add a <literal>JavaScript</literal> attribute to
+                the configuration like this:
+
+                <programlisting><![CDATA[
+<ConfigItem Name="Frontend::ToolBarModule###410-Ticket::AgentTicketEmail" Required="0" Valid="1">
+    <Description Translatable="1">Toolbar Item for a shortcut.</Description>
+    <Group>Ticket</Group>
+    <SubGroup>Frontend::Agent::ToolBarModule</SubGroup>
+    <Setting>
+        <Hash>
+            <Item Key="Module">Kernel::Output::HTML::ToolBarLink</Item>
+            <Item Key="Name">New email ticket</Item>
+            <Item Key="Priority">1009999</Item>
+            <Item Key="Link">Action=AgentTicketEmail</Item>
+            <Item Key="Action">AgentTicketEmail</Item>
+            <Item Key="AccessKey">l</Item>
+            <Item Key="CssClass">EmailTicket</Item>
+            <Item Key="JavaScript">OTRS.Agent.CustomToolbarModule.js</Item>
+        </Hash>
+    </Setting>
+</ConfigItem>
+                ]]></programlisting>
+            </para>
         </section>
     </section>
 
@@ -360,6 +376,32 @@
                 It is also possible to specify module-specific CSS for Internet Explorer 8
                 (tagname <literal>&lt;CSS_IE8&gt;</literal>) and, in the case of the customer interface,
                 for Internet Explorer 6 (tagname <literal>&lt;CSS_IE6&gt;</literal>).
+            </para>
+            <para>
+                There is one special case: for <literal>ToolbarModule</literal>s, you can also add custom
+                CSS files. Just add a <literal>CSS</literal>, <literal>CSS_IE7</literal> or
+                <literal>CSS_IE8</literal> attribute to the configuration like this:
+
+                <programlisting><![CDATA[
+<ConfigItem Name="Frontend::ToolBarModule###410-Ticket::AgentTicketEmail" Required="0" Valid="1">
+    <Description Translatable="1">Toolbar Item for a shortcut.</Description>
+    <Group>Ticket</Group>
+    <SubGroup>Frontend::Agent::ToolBarModule</SubGroup>
+    <Setting>
+        <Hash>
+            <Item Key="Module">Kernel::Output::HTML::ToolBarLink</Item>
+            <Item Key="Name">New email ticket</Item>
+            <Item Key="Priority">1009999</Item>
+            <Item Key="Link">Action=AgentTicketEmail</Item>
+            <Item Key="Action">AgentTicketEmail</Item>
+            <Item Key="AccessKey">l</Item>
+            <Item Key="CssClass">EmailTicket</Item>
+            <Item Key="CSS">OTRS.Agent.CustomToolbarModule.css</Item>
+            <Item Key="CSS_IE7">OTRS.Agent.CustomToolbarModule.IE7.css</Item>
+        </Hash>
+    </Setting>
+</ConfigItem>
+                ]]></programlisting>
             </para>
         </section>
     </section>
