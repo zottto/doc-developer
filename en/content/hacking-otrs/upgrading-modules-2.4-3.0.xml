@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: upgrading-modules-2.4-3.0.xml,v 1.1 2010-09-13 10:41:36 mg Exp $ -->
+<!-- $Id: upgrading-modules-2.4-3.0.xml,v 1.2 2010-11-08 12:55:49 martin Exp $ -->
 
 <section id="upgrading-modules-2.4-3.0">
     <title>Upgrading OTRS Extensions from 2.4 to 3.0</title>
@@ -66,6 +66,76 @@
         <para>
             Please note that the <literal>Block</literal> names changed (Agent, Customer, Email, Queue, Ticket and System are available).
             An additional <literal>Description</literal> tag has been added.
+        </para>
+    </section>
+
+    <section>
+        <title>
+            Configuration of NavBar was Changed
+        </title>
+
+        <para>
+            Old Style:
+
+            <programlisting><![CDATA[
+    <ConfigItem Name="Frontend::Module###AgentTicketSearch" Required="0" Valid="1">
+        <Description Lang="en">Frontend module registration for the AgentTicketSearch object in the agent interface.</Description>
+        <Description Lang="de">Frontendmodul-Registration des AgentTicketSearch-Objekts im Agent-Interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description>Search Tickets</Description>
+                <Title>Search</Title>
+                <NavBarName>Ticket</NavBarName>
+                <NavBar>
+                    <Description>Search Tickets</Description>
+                    <Name>Search</Name>
+                    <Image>search.png</Image>
+                    <Link>Action=AgentTicketSearch</Link>
+                    <NavBar>Ticket</NavBar>
+                    <Type></Type>
+                    <Block></Block>
+                    <AccessKey>s</AccessKey>
+                    <Prio>300</Prio>
+                </NavBar>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            New Style:
+
+            <programlisting><![CDATA[
+    <ConfigItem Name="Frontend::Module###AgentTicketSearch" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description>Search Ticket</Description>
+                <Title>Search</Title>
+                <NavBarName>Ticket</NavBarName>
+                <NavBar>
+                    <Description Translatable="1">Search Ticket</Description>
+                    <Name Translatable="1">Search</Name>
+                    <Link>Action=AgentTicketSearch</Link>
+                    <LinkOption></LinkOption>
+                    <NavBar>Ticket</NavBar>
+                    <Type></Type>
+                    <Block></Block>
+                    <AccessKey>s</AccessKey>
+                    <Prio>300</Prio>
+                </NavBar>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            Please note that the <literal>NavBar</literal> names changed (Description Name Link LinkOption NavBar Type Block AccessKey Prio are available).
+            An additional <literal>LinkOption</literal> tag has been added and <literal>Image</literal> tag has been removed.
         </para>
     </section>
 
