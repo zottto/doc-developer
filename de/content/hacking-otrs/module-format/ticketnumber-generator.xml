@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<section id="ticketnumber-generator">
+    <title>Ticket Number Generator Modules</title>
+    <para>
+        Ticket number generators are used to create distinct identifiers aka
+TicketNumber for new tickets.  Any method of creating a string of numbers is
+possible, you should use common sense about the length of the resulting
+string (guideline: 5-10).  When creating a ticket number, make sure the
+result is prefixed by the SysConfig-Variable SystemID in order to enable the
+detection of ticket numbers on inbound email responses.  A ticket number
+generator module needs the two functions TicketCreateNumber() and
+GetTNByString().  The method TicketCreateNumber() is called without
+parameters and returns the new ticket number.  The method GetTNByString() is
+called with the param String which contains the string to be parsed for a
+ticket number and returns the ticket number if found.
+    </para>
+    <section id="ticketnumber-generator-code">
+        <title>Code example</title>
+        <para>
+            See Kernel/System/Ticket/Number/UserRandom.pm in the package TemplateModule.
+        </para>
+    </section>
+    <section id="ticketnumber-generator-configuration">
+        <title>Configuration example</title>
+        <para>
+            See Kernel/Config/Files/TicketNumberGenerator.xml in the package
+TemplateModule.
+        </para>
+    </section>
+    <section id="ticketnumber-generator-usecases">
+        <title>Use Cases</title>
+        <section id="ticketnumber-generator-usecase-10">
+            <title>Ticket numbers should follow a specific scheme.</title>
+            <para>
+                You will need to create a new ticket number generator if the default modules
+don't provide the ticket number scheme you'd like to use.
+            </para>
+        </section>
+    </section>
+    <section id="ticketnumber-generator-caveats">
+        <title>Caveats and Warnings</title>
+        <para>
+            You should stick to the code of GetTNByString() as used in existing ticket
+number generators to prevent problems with ticket number parsing.  Also the
+routine to detect a loop in TicketCreateNumber() should be kept intact to
+prevent duplicate ticket numbers.
+        </para>
+    </section>
+    <section id="ticketnumber-generator-releases">
+        <title>Release Availability</title>
+        <para>
+            Ticket number generators have been available in OTRS since OTRS 1.1.
+        </para>
+    </section>
+</section>

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+
+
+<!-- $Id: auth-sync.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<section id="auth-sync-module">
+    <title>Authentication Synchonisation Module</title>
+    <para>
+        There is a LDAP authentication synchonisation module which come with the
+OTRS framework. It is also possible to develop your own authentication
+modules. The authentication synchonisation modules are located under
+Kernel/System/Auth/Sync/*.pm. For more information about their configuration
+see the admin manual.  Following, there is an example of an authentication
+synchonisation module.  Save it under
+Kernel/System/Auth/Sync/CustomAuthSync.pm.  You just need 2 functions: new()
+and Sync(). Return 1, then the synchonisation is ok.
+    </para>
+    <section id="auth-sync-module-code">
+        <title>Code Example</title>
+        <para>
+            The interface class is called Kernel::System::Auth. The example agent
+authentication may be called Kernel::System::Auth::Sync::CustomAuthSync. You
+can find an example below.
+        </para>
+        <para>
+        <programlisting linenumbering="numbered"><![CDATA[
+# --
+# Kernel/System/Auth/Sync/CustomAuthSync.pm - provides the CustomAuthSync
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# Id: CustomAuthSync.pm,v 1.9 2010/03/25 14:42:45 martin Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::Auth::Sync::CustomAuthSync;
+
+use strict;
+use warnings;
+use Net::LDAP;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.1 $) [1];
+
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # check needed objects
+    for (qw(LogObject ConfigObject DBObject UserObject GroupObject EncodeObject)) {
+        $Self->{$_} = $Param{$_} || die "No $_!";
+    }
+
+    # Debug 0=off 1=on
+    $Self->{Debug} = 0;
+
+...
+
+    return $Self;
+}
+
+sub Sync {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    for (qw(User)) {
+        if ( !$Param{$_} ) {
+            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $_!" );
+            return;
+        }
+    }
+...
+    return 1;
+}
+
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="auth-sync-module-configuration">
+        <title>Configuration Example</title>
+        <para>
+            There is the need to activate your custom synconisation authenticate
+module.  This can be done using the perl configuration below.  It is not
+recommended to use the xml configuration because you can lock you out via
+the sysconfig.
+        </para>
+        <para>
+        <programlisting linenumbering="numbered" ><![CDATA[
+            $Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="auth-sync-module-use_cases">
+        <title>Use Case Examples</title>
+        <para>
+            Useful synchonisation implementation could be a soap or radius backend.
+        </para>
+    </section>
+    <section id="auth-sync-module-releases">
+        <title>Release Availability</title>
+        <para>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>Release</entry>
+                    </row>
+                </thead>
+            <tbody>
+                    <row>
+                        <entry>LDAP</entry>
+                        <entry>2.4</entry>
+                    </row>
+            </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+    </section>
+    <section id="auth-sync-module-caveats">
+        <title>Caveats and Warnings</title>
+        <para>
+        Please note that the synchonisation was part of the authentification class
+Kernel::System::Auth before framework 2.4.
+        </para>
+    </section>
+</section>

@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+
+<!-- $Id: upgrading-modules-2.4-3.0.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<section id="upgrading-modules-2.4-3.0">
+    <title>Upgrading OTRS Extensions from 2.4 to 3.0</title>
+
+    <section>
+        <title>
+            Configuration of NavBarModule was Changed
+        </title>
+
+        <para>
+            Old Style: <programlisting><![CDATA[
+<ConfigItem Name="Frontend::Module###AdminUser" Required="0" Valid="1">
+    <Description Lang="en">Frontend module registration for the AdminUser object in the admin area.</Description>
+    <Description Lang="de">Frontendmodul-Registrierung des AdminUser-Objekts im Admin-Bereich.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
+    <Setting>
+        <FrontendModuleReg>
+            <Group>admin</Group>
+            <Description>Admin</Description>
+            <Title>User</Title>
+            <NavBarName>Admin</NavBarName>
+            <NavBarModule>
+                <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
+                <Name>Users</Name>
+                <Block>Block1</Block>
+                <Prio>100</Prio>
+            </NavBarModule>
+        </FrontendModuleReg>
+    </Setting>
+</ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            New Style: <programlisting><![CDATA[
+<ConfigItem Name="Frontend::Module###AdminUser" Required="0" Valid="1">
+    <Description Lang="en">Frontend module registration for the AdminUser object in the admin area.</Description>
+    <Description Lang="de">Frontendmodul-Registrierung des AdminUser-Objekts im Admin-Bereich.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
+    <Setting>
+        <FrontendModuleReg>
+            <Group>admin</Group>
+            <Description>Create and manage users.</Description>
+            <Title>Users</Title>
+            <NavBarName>Admin</NavBarName>
+            <NavBarModule>
+                <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
+                <Name>Users</Name>
+                <Description>Create and manage users.</Description>
+                <Block>Agent</Block>
+                <Prio>100</Prio>
+            </NavBarModule>
+        </FrontendModuleReg>
+    </Setting>
+</ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            Please note that the <literal>Block</literal> names changed (Agent,
+Customer, Email, Queue, Ticket and System are available).  An additional
+<literal>Description</literal> tag has been added.
+        </para>
+    </section>
+
+    <section>
+        <title>
+            Configuration of NavBar was Changed
+        </title>
+
+        <para>
+            Old Style: <programlisting><![CDATA[
+    <ConfigItem Name="Frontend::Module###AgentTicketSearch" Required="0" Valid="1">
+        <Description Lang="en">Frontend module registration for the AgentTicketSearch object in the agent interface.</Description>
+        <Description Lang="de">Frontendmodul-Registration des AgentTicketSearch-Objekts im Agent-Interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description>Search Tickets</Description>
+                <Title>Search</Title>
+                <NavBarName>Ticket</NavBarName>
+                <NavBar>
+                    <Description>Search Tickets</Description>
+                    <Name>Search</Name>
+                    <Image>search.png</Image>
+                    <Link>Action=AgentTicketSearch</Link>
+                    <NavBar>Ticket</NavBar>
+                    <Type></Type>
+                    <Block></Block>
+                    <AccessKey>s</AccessKey>
+                    <Prio>300</Prio>
+                </NavBar>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            New Style: <programlisting><![CDATA[
+    <ConfigItem Name="Frontend::Module###AgentTicketSearch" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description>Search Ticket</Description>
+                <Title>Search</Title>
+                <NavBarName>Ticket</NavBarName>
+                <NavBar>
+                    <Description Translatable="1">Search Ticket</Description>
+                    <Name Translatable="1">Search</Name>
+                    <Link>Action=AgentTicketSearch</Link>
+                    <LinkOption></LinkOption>
+                    <NavBar>Ticket</NavBar>
+                    <Type></Type>
+                    <Block></Block>
+                    <AccessKey>s</AccessKey>
+                    <Prio>300</Prio>
+                </NavBar>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+            ]]></programlisting>
+        </para>
+        <para>
+            Please note that the <literal>NavBar</literal> names changed (Description
+Name Link LinkOption NavBar Type Block AccessKey Prio are available).  An
+additional <literal>LinkOption</literal> tag has been added and
+<literal>Image</literal> tag has been removed.
+        </para>
+    </section>
+
+    <section>
+        <title>
+            Configuration Setting Frontend::NavBarModule was Renamed
+        </title>
+        <para>
+            Frontend::NavBarModule was renamed to Frontend::ToolBarModule.  Block option
+need to get replaced, ToolBarItem is now used.
+        </para>
+    </section>
+
+    <section>
+        <title>
+            PreferencesGroups configuration
+        </title>
+        <para>
+            Up to this point, the PreferencesGroups (which can be used to create a
+section in the Agent or Customer configuration dialog) had either a
+description (<literal>Desc</literal>), or a field label
+(<literal>Key</literal>), or both. With the new GUI, the interface was
+slightly changed so that now the <literal>Key</literal> always must be
+provided.
+        </para>
+        <para>
+            The existing entries were changed so that either the <literal>Desc</literal>
+was shortened and turned into a <literal>Key</literal> instead, or a concise
+<literal>Key</literal> was added to describe the setting in Question.
+        </para>
+        <para>
+            This is also what should be done (either of the two options)  when porting a
+custom PreferencesGroups module to OTRS 3.0.
+        </para>
+        <para>
+            Example: <programlisting><![CDATA[
+<ConfigItem Name="PreferencesGroups###RefreshTime" Required="0" Valid="1">
+    <Description Lang="en">Parameters for the RefreshTime object in the preference view.</Description>
+    <Description Lang="de">Parameter für das RefreshTime-Objekt in der Ansicht für die Einstellungen.</Description>
+    <Group>Ticket</Group>         <SubGroup>Frontend::Agent::Preferences</SubGroup>
+    <Setting>
+        <Hash>
+            <Item Key="Module">Kernel::Output::HTML::PreferencesGeneric</Item>
+            <Item Key="Colum">Other Settings</Item>
+            <Item Key="Label">QueueView Refresh Time</Item>
+            <Item Key="Desc">If enabled, the QueueView will automatically refresh after the specified time.</Item>
+            <Item Key="Key">Refresh QueueView after</Item>
+            <Item Key="Data">
+                <Hash>
+                    <Item Key="0">off</Item>
+                    <Item Key="2"> 2 minutes</Item>
+                    <Item Key="5"> 5 minutes</Item>
+                    <Item Key="7"> 7 minutes</Item>
+                    <Item Key="10">10 minutes</Item>
+                    <Item Key="15">15 minutes</Item>
+                </Hash>
+            </Item>
+            <Item Key="DataSelected">0</Item>
+            <Item Key="PrefKey">UserRefreshTime</Item>
+            <Item Key="Prio">2000</Item>
+            <Item Key="Activ">1</Item>
+        </Hash>
+    </Setting>
+</ConfigItem>
+            ]]></programlisting> <literal>Key</literal>
+is mandatory, <literal>Desc</literal> is optional.
+        </para>
+    </section>
+</section>

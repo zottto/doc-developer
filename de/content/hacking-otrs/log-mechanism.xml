@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+
+<!-- $Id: log-mechanism.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<section>
+    <title>Log Mechanism</title>
+    <para>
+OTRS comes with a log backend that can be used for application logging and
+debugging.
+    </para>
+    <section id="use-and-syntax">
+        <title>Use and Syntax</title>
+        <para>
+All module layers have ready-made Log Objects which can be used by
+<programlisting><![CDATA[
+$Self->{LogObject}->Log(
+    Priority => 'error',
+    Message => 'Need something!',
+);
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="example">
+        <title>Example</title>
+        <para>
+The following example shows how to use the log mechanism without a module
+layer.  <programlisting><![CDATA[
+use Kernel::Config;
+use Kernel::System::Encode;
+use Kernel::System::Log;
+
+my $ConfigObject = Kernel::Config->new();
+my $EncodeObject = Kernel::System::Encode->new(
+    ConfigObject => $ConfigObject,
+);
+my $LogObject    = Kernel::System::Log->new(
+    ConfigObject => $ConfigObject,
+);
+
+$Self->{LogObject}->Log(
+    Priority => 'error',
+    Message => 'Need something!',
+);
+        ]]></programlisting>
+        </para>
+    </section>
+</section>

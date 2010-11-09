@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+
+
+<!-- $Id: customer-auth.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<section id="customer-auth-module">
+    <title>Customer Authentication Module</title>
+    <para>
+        There are several customer authentication modules (DB, LDAP and
+HTTPBasicAuth)  which come with the OTRS framework. It is also possible to
+develop your own authentication modules. The customer authentication modules
+are located under Kernel/System/CustomerAuth/*.pm. For more information
+about their configuration see the admin manual.  Following, there is an
+example of a simple customer auth module. Save it under
+Kernel/System/CustomerAuth/Simple.pm.  You just need 3 functions: new(),
+GetOption() and Auth(). Return the uid, then the authentication is ok.
+    </para>
+    <section id="customer-auth-module-code">
+        <title>Code Example</title>
+        <para>
+            The interface class is called Kernel::System::CustomerAuth. The example
+customer authentication may be called
+Kernel::System::CustomerAuth::CustomAuth. You can find an example below.
+        </para>
+        <para>
+        <programlisting linenumbering="numbered"><![CDATA[
+# --
+# Kernel/System/CustomerAuth/CustomAuth.pm - provides the custom Authentication
+# based on Martin Edenhofer's Kernel::System::Auth::DB
+# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# --
+# Id: CustomAuth.pm,v 1.11 2009/09/22 15:16:05 mb Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::CustomerAuth::CustomAuth;
+
+use strict;
+use warnings;
+
+use Authen::CustomAuth;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.1 $) [1];
+
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # check needed objects
+    for (qw(LogObject ConfigObject DBObject)) {
+        $Self->{$_} = $Param{$_} || die "No $_!";
+    }
+
+    # Debug 0=off 1=on
+    $Self->{Debug} = 0;
+
+    # get config
+    $Self->{Die}
+        = $Self->{ConfigObject}->Get( 'Customer::AuthModule::CustomAuth::Die' . $Param{Count} );
+
+    # get user table
+    $Self->{CustomAuthHost}
+        = $Self->{ConfigObject}->Get( 'Customer::AuthModule::CustomAuth::Host' . $Param{Count} )
+        || die "Need Customer::AuthModule::CustomAuth::Host$Param{Count} in Kernel/Config.pm";
+    $Self->{CustomAuthSecret}
+        = $Self->{ConfigObject}->Get( 'Customer::AuthModule::CustomAuth::Password' . $Param{Count} )
+        || die "Need Customer::AuthModule::CustomAuth::Password$Param{Count} in Kernel/Config.pm";
+
+    return $Self;
+}
+
+sub GetOption {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    if ( !$Param{What} ) {
+        $Self->{LogObject}->Log( Priority => 'error', Message => "Need What!" );
+        return;
+    }
+
+    # module options
+    my %Option = ( PreAuth => 0, );
+
+    # return option
+    return $Option{ $Param{What} };
+}
+
+sub Auth {
+    my ( $Self, %Param ) = @_;
+
+    # check needed stuff
+    if ( !$Param{User} ) {
+        $Self->{LogObject}->Log( Priority => 'error', Message => "Need User!" );
+        return;
+    }
+
+    # get params
+    my $User       = $Param{User}      || '';
+    my $Pw         = $Param{Pw}        || '';
+    my $RemoteAddr = $ENV{REMOTE_ADDR} || 'Got no REMOTE_ADDR env!';
+    my $UserID     = '';
+    my $GetPw      = '';
+
+    # just in case for debug!
+    if ( $Self->{Debug} > 0 ) {
+        $Self->{LogObject}->Log(
+            Priority => 'notice',
+            Message  => "User: '$User' tried to authentificate with Pw: '$Pw' ($RemoteAddr)",
+        );
+    }
+
+    # just a note
+    if ( !$User ) {
+        $Self->{LogObject}->Log(
+            Priority => 'notice',
+            Message  => "No User given!!! (REMOTE_ADDR: $RemoteAddr)",
+        );
+        return;
+    }
+
+    # just a note
+    if ( !$Pw ) {
+        $Self->{LogObject}->Log(
+            Priority => 'notice',
+            Message  => "User: $User Authentication without Pw!!! (REMOTE_ADDR: $RemoteAddr)",
+        );
+        return;
+    }
+
+    # Create a custom object
+    my $CustomAuth = Authen::CustomAuth->new(
+        Host   => $Self->{CustomAuthHost},
+        Secret => $Self->{CustomAuthSecret},
+    );
+    if ( !$CustomAuth ) {
+        if ( $Self->{Die} ) {
+            die "Can't connect to $Self->{CustomAuthHost}: $@";
+        }
+        else {
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Can't connect to $Self->{CustomAuthHost}: $@",
+            );
+            return;
+        }
+    }
+    my $AuthResult = $CustomAuth->check_pwd( $User, $Pw );
+
+    # login note
+    if ( defined($AuthResult) && $AuthResult == 1 ) {
+        $Self->{LogObject}->Log(
+            Priority => 'notice',
+            Message  => "User: $User Authentication ok (REMOTE_ADDR: $RemoteAddr).",
+        );
+        return $User;
+    }
+
+    # just a note
+    else {
+        $Self->{LogObject}->Log(
+            Priority => 'notice',
+            Message  => "User: $User Authentication with wrong Pw!!! (REMOTE_ADDR: $RemoteAddr)"
+        );
+        return;
+    }
+}
+
+1;
+
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="customer-auth-module-configuration">
+        <title>Configuration Example</title>
+        <para>
+            There is the need to activate your custom customer authenticate module.
+This can be done using the xml configuration below.
+        </para>
+        <para>
+        <programlisting linenumbering="numbered"><![CDATA[
+<ConfigItem Name="AuthModule" Required="1" Valid="1">
+    <Description Lang="en">Module to authenticate customers.</Description>
+    <Description Lang="de">Modul zum Authentifizieren der Customer.</Description>
+    <Group>Framework</Group>
+    <SubGroup>Frontend::CustomerAuthAuth</SubGroup>
+    <Setting>
+        <Option Location="Kernel/System/CustomerAuth/*.pm" SelectedID="Kernel::System::CustomerAuth::CustomAuth"></Option>
+    </Setting>
+</ConfigItem>
+        ]]></programlisting>
+        </para>
+    </section>
+    <section id="customer-auth-module-use_cases">
+        <title>Use Case Example</title>
+        <para>
+            Useful authentification implementation could be a soap backend.
+        </para>
+    </section>
+    <section id="customer-auth-module-releases">
+        <title>Release Availability</title>
+        <para>
+        <informaltable>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>Release</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>DB</entry>
+                        <entry>1.0</entry>
+                    </row>
+                    <row>
+                        <entry>HTTPBasicAuth</entry>
+                        <entry>1.2</entry>
+                    </row>
+                    <row>
+                        <entry>LDAP</entry>
+                        <entry>1.0</entry>
+                    </row>
+                    <row>
+                        <entry>Radius</entry>
+                        <entry>1.3</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        </para>
+    </section>
+</section>
