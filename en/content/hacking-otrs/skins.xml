@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: skins.xml,v 1.5 2010-08-20 08:21:45 mg Exp $ -->
+<!-- $Id: skins.xml,v 1.6 2010-11-22 12:33:42 mg Exp $ -->
 
 <section id="skins">
     <title>Skins</title>
@@ -43,12 +43,8 @@
             which cause the CSS files to be loaded by the browser. Let's see an example of this:
 
             <programlisting><![CDATA[
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css-cache/CommonCSS_179376764084443c181048401ae0e2ad.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/ivory/css-cache/CommonCSS_e0783e0c2445ad9cc59c35d6e4629684.css" />
-<!--/CommonCSS-->
             ]]></programlisting>
 
             Here it can clearly be seen that the default skin is loaded first, and then the custom skin specified
@@ -58,67 +54,26 @@
             Loader turned off:
 
             <programlisting><![CDATA[
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Reset.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Default.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Header.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.OverviewControl.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.OverviewSmall.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.OverviewMedium.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.OverviewLarge.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Footer.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Grid.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Form.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Table.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Widget.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.WidgetMenu.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.TicketDetail.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Tooltip.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Dialog.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Print.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Agent.CustomerUser.GoogleMaps.css" />
-<!--/CommonCSS-->
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/default/css/Core.Agent.CustomerUser.OpenTicket.css" />
-<!--/CommonCSS-->
-
-<!--CommonCSS-->
     <link rel="stylesheet" href="/otrs-web/skins/Agent/ivory/css/Core.Dialog.css" />
-<!--/CommonCSS-->
             ]]></programlisting>
 
             Here we can better see the individual files that come from the skins.
