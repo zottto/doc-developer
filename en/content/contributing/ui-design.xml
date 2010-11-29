@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: ui-design.xml,v 1.1 2010-11-29 13:10:09 mg Exp $ -->
+<!-- $Id: ui-design.xml,v 1.2 2010-11-29 13:11:15 mg Exp $ -->
 
-<section id="ui-desing">
+<section id="ui-design">
     <title>User Interface Design</title>
 
     <section>
