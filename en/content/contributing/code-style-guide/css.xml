@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: css.xml,v 1.1 2010-11-29 12:51:07 mg Exp $ -->
+<!-- $Id: css.xml,v 1.2 2010-11-29 12:55:40 mg Exp $ -->
 
 <section id="code-style-guide-css">
     <title>CSS</title>
@@ -106,10 +106,6 @@
                     <programlisting format="linespecific"><![CDATA[
 <div class="NavigationBar" id="AdminMenu"></div>
                     ]]></programlisting>
-                </para>
-            </listitem>
-            <listitem>
-                <para>
                 </para>
             </listitem>
         </itemizedlist>
