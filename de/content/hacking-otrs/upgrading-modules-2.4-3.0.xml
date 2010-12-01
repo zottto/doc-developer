@@ -2,10 +2,60 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: upgrading-modules-2.4-3.0.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: upgrading-modules-2.4-3.0.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="upgrading-modules-2.4-3.0">
     <title>Upgrading OTRS Extensions from 2.4 to 3.0</title>
 
+    <section>
+        <title>
+            Translation of configuration file descriptions.
+        </title>
+
+        <para>
+            Previously, OTRS had translations for items in the sysconfig in multiple
+language in the XML files.  Starting OTRS 3.0.x, the translations are
+removed from the configuration file. The configuration file only stores the
+English descriptions. If needed, you can localize the descriptions in your
+translation file in the way 'regular' strings in the web interface are
+translated. This has the added benefit that if a translator wants to
+localize a module's configuration, this can be fully done from the
+translation file. The <filename>otrs.CreateTranslationFile.pl</filename>
+script has been adjusted to also grab strings from the SysConfig.
+        </para>
+        <para>
+            Additionaly, if you have tags that are configured in SysConfig but displayed
+in the GUI, you can indicate with the option
+<emphasis>Translatable=&quot;1&quot;</emphasis> that this is a field that
+should be added to the translation file.  <programlisting><![CDATA[
+    <ConfigItem Name="ProductName" Required="1" Valid="1">
+        <Description Lang="en">This setting controls the name of the application as is shown in the web interface as well as the tabs and title bar of your web browser.</Description>
+        <Description Lang="de">Im WebFrontend angezeigter Name der Software.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Core</SubGroup>
+        <Setting>
+            <String Regex="">OTRS</String>
+        </Setting>
+    </ConfigItem>
+        ]]></programlisting>
+        </para>
+        <para>
+            New Style: <programlisting><![CDATA[
+    <ConfigItem Name="ProductName" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Defines the name of the application, shown in the web interface, tabs and title bar of the web browser.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Core</SubGroup>
+        <Setting>
+            <String Regex="">OTRS</String>
+        </Setting>
+    </ConfigItem>
+        ]]></programlisting>
+        </para>
+        <para>
+            Please note that the <literal>Block</literal> names changed (Agent,
+Customer, Email, Queue, Ticket and System are available).  An additional
+<literal>Description</literal> tag has been added.
+        </para>
+    </section>
     <section>
         <title>
             Configuration of NavBarModule was Changed
@@ -33,31 +83,30 @@
         </FrontendModuleReg>
     </Setting>
 </ConfigItem>
-            ]]></programlisting>
+        ]]></programlisting>
         </para>
         <para>
             New Style: <programlisting><![CDATA[
-<ConfigItem Name="Frontend::Module###AdminUser" Required="0" Valid="1">
-    <Description Lang="en">Frontend module registration for the AdminUser object in the admin area.</Description>
-    <Description Lang="de">Frontendmodul-Registrierung des AdminUser-Objekts im Admin-Bereich.</Description>
-    <Group>Framework</Group>
-    <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
-    <Setting>
-        <FrontendModuleReg>
-            <Group>admin</Group>
-            <Description>Create and manage users.</Description>
-            <Title>Users</Title>
-            <NavBarName>Admin</NavBarName>
-            <NavBarModule>
-                <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
-                <Name>Users</Name>
-                <Description>Create and manage users.</Description>
-                <Block>Agent</Block>
-                <Prio>100</Prio>
-            </NavBarModule>
-        </FrontendModuleReg>
-    </Setting>
-</ConfigItem>
+    <ConfigItem Name="Frontend::Module###AdminUser" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Group>admin</Group>
+                <Description>Create and manage agents.</Description>
+                <Title>Agents</Title>
+                <NavBarName>Admin</NavBarName>
+                <NavBarModule>
+                    <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
+                    <Name Translatable="1">Agents</Name>
+                    <Description Translatable="1">Create and manage agents.</Description>
+                    <Block>Agent</Block>
+                    <Prio>100</Prio>
+                </NavBarModule>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
             ]]></programlisting>
         </para>
         <para>
@@ -168,34 +217,34 @@ custom PreferencesGroups module to OTRS 3.0.
         </para>
         <para>
             Example: <programlisting><![CDATA[
-<ConfigItem Name="PreferencesGroups###RefreshTime" Required="0" Valid="1">
-    <Description Lang="en">Parameters for the RefreshTime object in the preference view.</Description>
-    <Description Lang="de">Parameter für das RefreshTime-Objekt in der Ansicht für die Einstellungen.</Description>
-    <Group>Ticket</Group>         <SubGroup>Frontend::Agent::Preferences</SubGroup>
-    <Setting>
-        <Hash>
-            <Item Key="Module">Kernel::Output::HTML::PreferencesGeneric</Item>
-            <Item Key="Colum">Other Settings</Item>
-            <Item Key="Label">QueueView Refresh Time</Item>
-            <Item Key="Desc">If enabled, the QueueView will automatically refresh after the specified time.</Item>
-            <Item Key="Key">Refresh QueueView after</Item>
-            <Item Key="Data">
-                <Hash>
-                    <Item Key="0">off</Item>
-                    <Item Key="2"> 2 minutes</Item>
-                    <Item Key="5"> 5 minutes</Item>
-                    <Item Key="7"> 7 minutes</Item>
-                    <Item Key="10">10 minutes</Item>
-                    <Item Key="15">15 minutes</Item>
-                </Hash>
-            </Item>
-            <Item Key="DataSelected">0</Item>
-            <Item Key="PrefKey">UserRefreshTime</Item>
-            <Item Key="Prio">2000</Item>
-            <Item Key="Activ">1</Item>
-        </Hash>
-    </Setting>
-</ConfigItem>
+    <ConfigItem Name="PreferencesGroups###RefreshTime" Required="0" Valid="1">
+        <Description Translatable="1">Parameters for the RefreshTime object in the preference view of the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::Preferences</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::PreferencesGeneric</Item>
+                <Item Key="Column">Other Settings</Item>
+                <Item Key="Label" Translatable="1">QueueView Refresh Time</Item>
+                <Item Key="Desc" Translatable="1">If enabled, the QueueView will automatically refresh after the specified time.</Item>
+                <Item Key="Key" Translatable="1">Refresh QueueView after</Item>
+                <Item Key="Data">
+                    <Hash>
+                        <Item Key="0">off</Item>
+                        <Item Key="2"> 2 minutes</Item>
+                        <Item Key="5"> 5 minutes</Item>
+                        <Item Key="7"> 7 minutes</Item>
+                        <Item Key="10">10 minutes</Item>
+                        <Item Key="15">15 minutes</Item>
+                    </Hash>
+                </Item>
+                <Item Key="DataSelected">0</Item>
+                <Item Key="PrefKey">UserRefreshTime</Item>
+                <Item Key="Prio">2000</Item>
+                <Item Key="Active">1</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
             ]]></programlisting> <literal>Key</literal>
 is mandatory, <literal>Desc</literal> is optional.
         </para>

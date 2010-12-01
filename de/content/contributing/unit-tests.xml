@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: unit-tests.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: unit-tests.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="unit-tests">
     <title>Unit Tests</title>
     <para>
@@ -22,7 +22,7 @@ the analysis of the return value.  Example (/scripts/test/Calendar.t):
 # Calendar.t - Calendar
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: unit-tests.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: unit-tests.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: templates.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Templating Mechanism</title>
     <para>
@@ -285,7 +285,7 @@ $Date{"$Data{"CreateTime"}"}
             <title>Template Processing Commands</title>
 
             <section id="Comment">
-                <title>Comment</title>
+                <title>Kommentar</title>
                 <para>
                     The dtl comment starts with a # at the beginning of a line and will not be
 shown in the html output. This can be used both for commenting the DTL

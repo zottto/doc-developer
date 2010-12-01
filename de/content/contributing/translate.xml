@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: translate.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: translate.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="translate">
     <title>Translate OTRS</title>
     <para>
@@ -54,7 +54,7 @@ Format: <programlisting><![CDATA[
 # Kernel/Language/de.pm - provides de language translation
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: translate.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: translate.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -66,7 +66,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 # --
 sub Data {
@@ -116,7 +116,7 @@ Format: <programlisting><![CDATA[
 # Kernel/Language/de_AgentCalendar.pm - provides de language translation
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: translate.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: translate.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -159,7 +159,7 @@ Format: <programlisting><![CDATA[
 # Kernel/Language/xx_Custom.pm - provides xx custom language translation
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: translate.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: translate.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -171,7 +171,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 # --
 sub Data {

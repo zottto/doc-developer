@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: config-mechanism.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: config-mechanism.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Config Mechanism</title>
     <section id="default-config">
@@ -204,7 +204,7 @@ A config element for multiline text.
             </para>
         </section>
         <section id="xml-config-option">
-            <title>Options</title>
+            <title>Optionen</title>
             <para>
 This config element offers preset values as a pull-down menu.
             </para>

@@ -3,7 +3,7 @@
 
 
 
-<!-- $Id: service-preferences.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: service-preferences.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="service-preferences-module">
     <title>Service Preferences Module</title>
     <para>
@@ -43,7 +43,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

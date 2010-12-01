@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: architecture.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: architecture.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="architecture-overview">
     <title>Architecture Overview</title>
     <para>
@@ -13,14 +13,14 @@ architecture of OTRS.
 <graphic srccredit="" scale="60"
 fileref="screenshots/architecture.png"></graphic></screenshot>
     <section id="directory">
-        <title>Directories</title>
+        <title>Verzeichnisse</title>
         <para>
         <informaltable>
             <tgroup cols="2">
                 <thead>
                     <row>
-                        <entry>Directory</entry>
-                        <entry>Description</entry>
+                        <entry>Verzeichnis</entry>
+                        <entry>Beschreibung</entry>
                     </row>
                 </thead>
                 <tbody>
@@ -114,7 +114,7 @@ fileref="screenshots/architecture.png"></graphic></screenshot>
         </para>
     </section>
     <section id="otrs-files">
-        <title>Files</title>
+        <title>Dateien</title>
         <para>.pl = Perl</para>
         <para>.pm = Perl Modul</para>
         <para>.dtl = Dynamic Template Language (html template file)</para>
@@ -197,7 +197,7 @@ modules for some actions in the system.
         </para>
     </section>
     <section id="database">
-        <title>Database</title>
+        <title>Datenbank</title>
         <para>
 The database interface supports different databases.
         </para>

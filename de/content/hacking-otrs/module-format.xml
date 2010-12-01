@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Module Format</title>
 
@@ -19,6 +19,7 @@
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/sla-preferences.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/stats.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/virtualfs.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/ticketnumber-generator.xml" />
     </section>
 
     <section id="frontend-modules">
@@ -44,7 +45,7 @@ Format: <programlisting><![CDATA[
 # Kernel/Output/HTML/NavBarABC.pm - shows a navbar item dynamicaly
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -116,7 +117,7 @@ Format: <programlisting><![CDATA[
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -129,7 +130,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 # --
 sub new {
@@ -231,7 +232,7 @@ Description of Frontend::Module options:
                 <thead>
                     <row>
                         <entry>Key</entry>
-                        <entry>Description</entry>
+                        <entry>Beschreibung</entry>
                     </row>
                 </thead>
                 <tbody>
@@ -244,7 +245,7 @@ Description of Frontend::Module options:
                         <entry>An ARRAY reference of ro groups of this module.</entry>
                     </row>
                     <row>
-                        <entry>Description</entry>
+                        <entry>Beschreibung</entry>
                         <entry>Module description, just for internal use - not shown in the user interface.</entry>
                     </row>
                     <row>
@@ -264,12 +265,12 @@ Description of NavBar (icon points) options:
                 <thead>
                     <row>
                         <entry>Key</entry>
-                        <entry>Description</entry>
+                        <entry>Beschreibung</entry>
                     </row>
                 </thead>
                 <tbody>
                     <row>
-                        <entry>Description</entry>
+                        <entry>Beschreibung</entry>
                         <entry>The description of the icon which is shown in the navbar after the curser is
 pointed on it.</entry>
                     </row>
@@ -324,7 +325,7 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -356,7 +357,7 @@ use Kernel::Config;
 use Kernel::System::Backend;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 my $ConfigObject = Kernel::Config->new();
 my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
@@ -394,7 +395,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
 =head1 VERSION
 
-$Revision: 1.1 $ $Date: 2010-11-09 11:15:49 $
+$Revision: 1.2 $ $Date: 2010-12-01 13:31:52 $
 
 =cut
         ]]></programlisting>
@@ -416,7 +417,7 @@ Format:
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -429,7 +430,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 # --
 sub new {
@@ -527,7 +528,7 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -540,7 +541,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub CreateTicketNr {
     my $Self = shift;
@@ -605,7 +606,7 @@ Format:
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -618,7 +619,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -744,7 +745,7 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: module-format.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -757,7 +758,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 # --
 sub new {

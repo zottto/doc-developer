@@ -4,7 +4,7 @@
 ]>
 
 
-<!-- $Id: book.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: book.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <book lang="de">
     <bookinfo>
         <title>OTRS 3.0 - Entwicklerhandbuch</title>

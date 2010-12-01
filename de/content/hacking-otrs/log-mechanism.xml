@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: log-mechanism.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: log-mechanism.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Log Mechanism</title>
     <para>
@@ -22,7 +22,7 @@ $Self->{LogObject}->Log(
         </para>
     </section>
     <section id="example">
-        <title>Example</title>
+        <title>Beispiel</title>
         <para>
 The following example shows how to use the log mechanism without a module
 layer.  <programlisting><![CDATA[

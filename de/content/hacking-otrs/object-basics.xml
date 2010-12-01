@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: object-basics.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: object-basics.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Object Basics</title>
     <para>
@@ -31,12 +31,12 @@ database.
                         <entry>object_id</entry>
                     </row>
                     <row>
-                        <entry>Number</entry>
-                        <entry>number</entry>
+                        <entry>Zahl</entry>
+                        <entry>Zahl</entry>
                     </row>
                     <row>
-                        <entry>Title</entry>
-                        <entry>title</entry>
+                        <entry>Titel</entry>
+                        <entry>Titel</entry>
                     </row>
                     <row>
                         <entry>...</entry>
@@ -55,8 +55,8 @@ database.
                         <entry>...</entry>
                     </row>
                     <row>
-                        <entry>Created</entry>
-                        <entry>created</entry>
+                        <entry>Erstellt</entry>
+                        <entry>erstellt</entry>
                     </row>
                     <row>
                         <entry>CreatedBy</entry>
@@ -158,7 +158,7 @@ Description of the Config Preferences:
                 <thead>
                     <row>
                         <entry>Element</entry>
-                        <entry>description</entry>
+                        <entry>Beschreibung</entry>
                     </row>
                 </thead>
                 <tbody>
@@ -223,25 +223,25 @@ A NavBar item should look like the following example:
                         <entry>overview.png</entry>
                     </row>
                     <row>
-                        <entry>New</entry>
+                        <entry>Neu</entry>
                         <entry>200</entry>
                         <entry>n</entry>
                         <entry>new.png</entry>
                     </row>
                     <row>
-                        <entry>Search</entry>
+                        <entry>Suchen</entry>
                         <entry>300</entry>
                         <entry>s</entry>
                         <entry>search.png</entry>
                     </row>
                     <row>
-                        <entry>Delete</entry>
+                        <entry>Löschen</entry>
                         <entry>400</entry>
                         <entry>d</entry>
                         <entry>delete.png</entry>
                     </row>
                     <row>
-                        <entry>Import</entry>
+                        <entry>Importieren</entry>
                         <entry>500</entry>
                         <entry>-</entry>
                         <entry>import.png</entry>
@@ -272,13 +272,13 @@ Menu functions - generic, used by any application module
                 </thead>
                 <tbody>
                     <row>
-                        <entry>Logout</entry>
+                        <entry>Abmelden</entry>
                         <entry>10</entry>
                         <entry>l</entry>
                         <entry>logout.png</entry>
                     </row>
                     <row>
-                        <entry>Preferences</entry>
+                        <entry>Einstellungen</entry>
                         <entry>0</entry>
                         <entry>p</entry>
                         <entry>preferences.png</entry>

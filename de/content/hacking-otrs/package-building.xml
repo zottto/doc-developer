@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: package-building.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: package-building.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section>
     <title>Package Building</title>
     <para>
@@ -81,7 +81,7 @@ The package change log (optional).  <programlisting><![CDATA[
             </para>
         </section>
         <section id="package-description">
-            <title>Description</title>
+            <title>Beschreibung</title>
             <para>
 The package description in different languages (required).  <programlisting><![CDATA[
 <Description Lang="en">A web calendar.</Description>

@@ -3,7 +3,7 @@
 
 
 
-<!-- $Id: log.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: log.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <section id="log-module">
 
     <title>Log Module</title>
@@ -30,7 +30,7 @@ entry.
 # Kernel/System/Log/CustomFile.pm - file log backend
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: log.xml,v 1.1 2010-11-09 11:15:49 mg Exp $
+# $Id: log.xml,v 1.2 2010-12-01 13:31:52 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -43,7 +43,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 umask "002";
 

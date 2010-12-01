@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 
-<!-- $Id: contributing.xml,v 1.1 2010-11-09 11:15:49 mg Exp $ -->
+<!-- $Id: contributing.xml,v 1.2 2010-12-01 13:31:52 mg Exp $ -->
 <chapter id="contributing">
     <title>Contributing to OTRS</title>
     <abstract>
@@ -15,6 +15,7 @@ other users will be able to benefit from your work.
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/translate.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/code-style.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/ui-design.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/accessibility.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/unit-tests.xml" />
 
