@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: stats.xml,v 1.3 2010-05-10 16:30:14 reb Exp $ -->
+<!-- $Id: stats.xml,v 1.3.2.1 2010-12-07 08:58:50 mg Exp $ -->
 <section id="module-stats">
     <title>Stats Module</title>
     <para>
@@ -39,7 +39,7 @@ Furthermore the module has to implement either GetStatElement or GetStatTable. A
 In this section a sample stats module is shown and each subroutine is explained.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/Stats/Dynamic/DynamicStatsTemplate.pm - all advice functions
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
@@ -59,14 +59,14 @@ use Kernel::System::State;
 use Kernel::System::Ticket;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.3.2.1 $) [1];
                 ]]></programlisting>
             </para>
             <para>
 This is common boilerplate that can be found in common OTRS modules. The class/package name is declared via the package keyword. Then the needed modules are 'use'd.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub new {
     my ( $Type, %Param ) = @_;
 
@@ -95,7 +95,7 @@ sub new {
 new is the constructor for this statistic module. It creates a new instance of the class. According to the coding guidelines objects of other classes that are needed in this module have to be created in "new". In lines 27 to 29 the object of the stats module is created. Lines 31 to 37 check if objects that are needed in this code - either for creating other objects or in this module - are passed. After that the other objects are created.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub GetObjectName {
     my ( $Self, %Param ) = @_;
 
@@ -107,7 +107,7 @@ sub GetObjectName {
 GetObjectName returns a Name for the Statistics module. This is the label that is shown in the drop down in the configuration as well as in the list of existing statistics (column "object").
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub GetObjectAttributes {
     my ( $Self, %Param ) = @_;
 
@@ -206,7 +206,7 @@ Then the list of attributes is created. Each attribute is defined via a hashrefe
 Hint: If you install this sample an you configured a statistic with some queues - lets say 'queue A' and 'queue B' - then these queues are the only ones that are shown to the user when he starts the statistic. Sometimes a dynamic drop down or multiselect field is needed. In this case, you can set "SelectedValues" in the definition of the attribute:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
         {
             Name             => 'Created in Queue',
             UseAsXvalue      => 1,
@@ -221,7 +221,7 @@ Hint: If you install this sample an you configured a statistic with some queues 
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub GetStatElement {
     my ( $Self, %Param ) = @_;
 
@@ -240,7 +240,7 @@ sub GetStatElement {
 GetStatElement gets called for each cell in the result table. So it should be a numeric value. In this sample it does a simple ticket search. The hash %Param contains information about the "current" x-value and the y-value as well as any restrictions. So, for a cell that should count the created tickets for queue 'Misc' with state 'open' the passed parameter hash looks something like this:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
     'CreatedQueueIDs' => [
         '4'
     ],
@@ -253,7 +253,7 @@ GetStatElement gets called for each cell in the result table. So it should be a 
 If the "per cell" calculation should be avoided, GetStatTable is an alternative. GetStatTable returns a list of rows, hence an array of arrayreferences. This leads to the same result as using GetStatElement
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub GetStatTable {
     my ( $Self, %Param ) = @_;
 
@@ -284,7 +284,7 @@ sub GetStatTable {
 GetStatTable gets all information about the stats query that is needed. The passed parameters contains information about the attributes (Restrictions, attributes that are used for x/y-axis) and the table structure. The table structure is a hash reference where the keys are the values of the y-axis and their values are hashreferences with the parameters used for GetStatElement subroutines.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
     'Restrictions' => {},
     'TableStructure' => {
         'closed successful' => [
@@ -359,7 +359,7 @@ GetStatTable gets all information about the stats query that is needed. The pass
 Sometimes the headers of the table have to be changed. In that case, a subroutine called GetHeaderLine has to be implemented. That subroutine has to return an arrayreference with the column headers as elements. It gets information about the x-values passed.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub GetHeaderLine {
     my ( $Self, %Param ) = @_;
 
@@ -373,7 +373,7 @@ sub GetHeaderLine {
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 sub ExportWrapper {
     my ( $Self, %Param ) = @_;
 
@@ -416,7 +416,7 @@ ImportWrapper works the other way around - it converts the name to the ID in the
 This is a sample export:
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 
 <otrs_stats>
@@ -454,7 +454,7 @@ This is a sample export:
 Now, that all subroutines are explained, this is the complete sample stats module.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/Stats/Dynamic/DynamicStatsTemplate.pm - all advice functions
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
@@ -474,7 +474,7 @@ use Kernel::System::State;
 use Kernel::System::Ticket;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.3.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -665,12 +665,12 @@ sub ImportWrapper {
         <section id="module-stats-dynamic-configuration">
             <title>Configuration example</title>
             <para>
-                <programlisting language="xml" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <otrs_config version="1.0" init="Config">
     <ConfigItem Name="Stats::DynamicObjectRegistration###DynamicStatsTemplate" Required="0" Valid="1">
         <Description Lang="en">Here you can decide if the common stats module may generate stats about the number of default tickets a requester created.</Description>
-        <Description Lang="de">Hier kÃ¶nnen Sie festlegen, ob das Statistik-Modul auch allgemeine Statistiken Ã¼ber die Anzahl von "default"-Tickets, die von Benutzern erzeugt wurden, generieren darf.</Description>
+        <Description Lang="de">Hier können Sie festlegen, ob das Statistik-Modul auch allgemeine Statistiken über die Anzahl von "default"-Tickets, die von Benutzern erzeugt wurden, generieren darf.</Description>
         <Group>Framework</Group>
         <SubGroup>Core::Stats</SubGroup>
         <Setting>
@@ -743,12 +743,12 @@ the package name of the respective script must be amended by
 The following example shows how the first path is amended.
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
     package Kernel::System::Stats::AccountedTime;
                 ]]></programlisting>
             </para>
             <para>
-                <programlisting language="perl" linenumbering="numbered"><![CDATA[
+                <programlisting linenumbering="numbered"><![CDATA[
     package Kernel::System::Stats::Static::AccountedTime;
                 ]]></programlisting>
             </para>
