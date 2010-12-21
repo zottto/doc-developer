@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: translate-docs.xml,v 1.1 2010-12-17 13:25:36 mg Exp $ -->
+<!-- $Id: translate-docs.xml,v 1.2 2010-12-21 15:58:09 mg Exp $ -->
 
 <section id="translating-docs">
     <title>Translating the Documentation</title>
@@ -68,6 +68,13 @@
         <ulink url="http://lists.otrs.org/cgi-bin/listinfo/i18n">i18n mailing list</ulink> of OTRS.
         The OTRS team will take care of regenerating the XML documenation for your language.
     </para>
+    <important>
+        <para>
+            Especially if you add a new translation, it is recommended to send in snapshots of your file regularly
+            to make sure that your translation has the correct structure and that the docbook documentation
+            can be successfully generated from it, producing valid XML documents.
+        </para>
+    </important>
     <para>
         If you want to test your translation file locally, you can checkout the doc-admin repository
         and use po4a directly to generate the translation files. Please see the file <literal>po4a.conf</literal>
