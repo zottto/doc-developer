@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: customer-auth.xml,v 1.1 2010-05-10 16:18:34 fk Exp $ -->
+<!-- $Id: customer-auth.xml,v 1.1.2.1 2011-01-19 08:39:11 mg Exp $ -->
 
 
 <section id="customer-auth-module">
@@ -21,11 +21,11 @@
             may be called Kernel::System::CustomerAuth::CustomAuth. You can find an example below.
         </para>
         <para>
-        <programlisting language="perl" linenumbering="numbered"><![CDATA[
+        <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/CustomerAuth/CustomAuth.pm - provides the custom Authentication
 # based on Martin Edenhofer's Kernel::System::Auth::DB
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
 # --
 # Id: CustomAuth.pm,v 1.11 2009/09/22 15:16:05 mb Exp $
 # --
@@ -42,7 +42,7 @@ use warnings;
 use Authen::CustomAuth;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.1.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -182,7 +182,7 @@ sub Auth {
             This can be done using the xml configuration below.
         </para>
         <para>
-        <programlisting language="xml" linenumbering="numbered"><![CDATA[
+        <programlisting linenumbering="numbered"><![CDATA[
 <ConfigItem Name="AuthModule" Required="1" Valid="1">
     <Description Lang="en">Module to authenticate customers.</Description>
     <Description Lang="de">Modul zum Authentifizieren der Customer.</Description>
