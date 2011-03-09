@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: perl.xml,v 1.2 2011-03-09 14:47:19 mb Exp $ -->
+<!-- $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $ -->
 
 <section id="code-style-guide-perl">
     <title>Perl</title>
@@ -49,7 +49,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.2 2011-03-09 14:47:19 mb Exp $
+# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -67,7 +67,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 # (file name) - a short description what it does
 # Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.2 2011-03-09 14:47:19 mb Exp $
+# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -91,7 +91,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
-# $Id: perl.xml,v 1.2 2011-03-09 14:47:19 mb Exp $
+# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
         ]]></programlisting>
         </para>
     </section>
@@ -271,7 +271,7 @@ pass the Type parameter like this:
         <para>
             As the space has no longer a special meaning, you have to use a single character class to match a single space ( [ ]). If you want to match any whitespace you can use \s.
 
-In the regex, the dot ('.') includes the newline (whereas in regex withoud s modifier the dot means 'everything but newline'). If you want to match anything but newline, you have to use the negated single character class ([^\n]).
+In the regex, the dot ('.') includes the newline (whereas in regex without s modifier the dot means 'everything but newline'). If you want to match anything but newline, you have to use the negated single character class ([^\n]).
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
