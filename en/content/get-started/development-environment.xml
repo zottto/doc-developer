@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: development-environment.xml,v 1.1 2010-08-13 08:59:29 mg Exp $ -->
+<!-- $Id: development-environment.xml,v 1.2 2011-03-27 08:50:05 mh Exp $ -->
 
 <section id="development-environment">
     <title>Development Environment</title>
@@ -16,11 +16,11 @@ or the CVS head by using the following command (loginpassword: cvs):
         </para>
         <para>
         <screen>
-shell> cvs -d :pserver:anonymous@cvs.otrs.org:/home/cvs login
+shell> cvs -d :pserver:anonymous@source.otrs.org:/home/cvs login
 # for CVS Head
-shell> cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co otrs
+shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co otrs
 # for a specific branch
-shell> cvs -z3 -d :pserver:anonymous@cvs.otrs.org:/home/cvs co -r rel-2_4 otrs
+shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co -r rel-2_4 otrs
         </screen>
         </para>
         <para>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: translate.xml,v 1.2 2010-12-17 13:25:36 mg Exp $ -->
+<!-- $Id: translate.xml,v 1.3 2011-03-27 08:50:05 mh Exp $ -->
 
 <section id="translate">
     <title>Translating OTRS</title>
@@ -55,7 +55,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
+$VERSION = qw($Revision: 1.3 $) [1];
 
 sub Data {
     my $Self = shift;
@@ -139,7 +139,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
+$VERSION = qw($Revision: 1.3 $) [1];
 
 sub Data {
     my $Self = shift;
@@ -176,7 +176,7 @@ sub Data {
             <listitem>
                 <para>
                     Take the current translation file (Kernel/Language/$Language.pm) from CVS
-                    (<ulink url="http://cvs.otrs.org/">http://cvs.otrs.org</ulink>) and save it in your
+                    (<ulink url="http://source.otrs.org/">http://source.otrs.org</ulink>) and save it in your
                     <filename>Kernel/Language/</filename> directory, overwriting the current one in your
                     filesystem.
                 </para>
@@ -212,7 +212,7 @@ sub Data {
             <listitem>
                 <para>
                     Take the current German translation (Kernel/Language/de.pm) from CVS
-                    (<ulink url="http://cvs.otrs.org/">http://cvs.otrs.org</ulink>).
+                    (<ulink url="http://source.otrs.org/">http://source.otrs.org</ulink>).
                     Use the German version because this is always up to date.
                 </para>
             </listitem>
