@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: skins.xml,v 1.6 2010-11-22 12:33:42 mg Exp $ -->
+<!-- $Id: skins.xml,v 1.7 2011-05-11 07:45:53 mab Exp $ -->
 
 <section id="skins">
     <title>Skins</title>
@@ -143,12 +143,14 @@
 
     <section>
         <title>Creating a New Skin</title>
-        <para>In this section, we will be creating a new agent skin which replaces the default OTRS logo with a custom company logo,
+        <para>In this section, we will be creating a new agent skin which replaces the default OTRS background color (white)
+        with a custom company color (light grey) and replaces the default logo by a custome one.
         and configure that skin to be the one which all agents will see by default.</para>
 
         <para>There are only two simple steps we need to take to achieve this goal:
             <itemizedlist>
-                <listitem><para>create the skin files and</para></listitem>
+                <listitem><para>create the skin files</para></listitem>
+                <listitem><para>configure the new logo and</para></listitem>
                 <listitem><para>make the skin known to the OTRS system.</para></listitem>
             </itemizedlist>
         </para>
@@ -159,28 +161,39 @@
             <filename>$OTRS_HOME/var/httpd/htdocs/skins/Agent/custom</filename>.
         </para>
         <para>
-            In there, we need to place the new logo file (e.g. <filename>custom-logo.png</filename> in a new directory
-            <filename>img</filename>. In addition to that, a new CSS file must be created in the new folder
-            <filename>css</filename> which defines the new skin's appearance. We'll call it <filename>Core.Header.css</filename>
-            (remember that it must have the same name as the files in the "default" skin). This is the code needed for the CSS file:
+            In there, we need to place the new CSS file in a new directory
+            <filename>css</filename> which defines the new skin's appearance. We'll call it <filename>Core.Default.css</filename>
+            (remember that it must have the same name as one of the files in the "default" skin). This is the code needed for the CSS file:
 
             <programlisting><![CDATA[
-#Logo {
-    background: url(../img/custom-logo.png) no-repeat;
-    height: 67px; /* specify height and width to match your logo's dimensions */
-    width: 224px;
-    /* optional: specify "top" and "right" to reposition the logo on the screen */
+body {
+    background-color: #c0c0c0; /* not very beautiful but it meets our purpose */
 }
             ]]></programlisting>
         </para>
         <para>
-            Now comes the second step, making the new skin known to the OTRS system. For this, we need to create a new config
-            file <filename>$OTRS_HOME/Kernel/Config/Files/CustomSkin.xml</filename>, which will contain the needed settings
+            Now follows the second step, adding a new logo and making the new skin known to the OTRS system. For this, we first need
+            to place our custom logo (e.g. <filename>logo.png</filename>) in a new directory (e.g. <filename>img</filename>) in our skin directory.
+            Then we need to create a new config file <filename>$OTRS_HOME/Kernel/Config/Files/CustomSkin.xml</filename>, which will contain the needed settings
             as follows:
 
             <programlisting><![CDATA[
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_config version="1.0" init="Framework">
+    <ConfigItem Name="AgentLogo" Required="0" Valid="1">
+        <Description Translatable="1">The logo shown in the header of the agent interface. The URL to the image must be a relative URL to the skin image directory.</Description>
+        <Group>Framework</Group>
+        <SubGroup>Frontend::Agent</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="URL">skins/Agent/custom/img/logo.png</Item>
+                <Item Key="StyleTop">13px</Item>
+                <Item Key="StyleRight">75px</Item>
+                <Item Key="StyleHeight">67px</Item>
+                <Item Key="StyleWidth">244px</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
     <ConfigItem Name="Loader::Agent::Skin###100-custom" Required="0" Valid="1">
         <Description Translatable="1">Custom skin for the development manual.</Description>
         <Group>Framework</Group>
