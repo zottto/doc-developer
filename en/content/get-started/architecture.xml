@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.2 2010-09-22 12:17:03 mb Exp $ -->
+<!-- $Id: architecture.xml,v 1.3 2011-06-23 22:22:19 en Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>
@@ -80,8 +80,12 @@ layer architecture of OTRS.
                         <entry>htdocs directory with index.html</entry>
                     </row>
                     <row>
-                        <entry>var/httpd/htdocs/css/Standard/</entry>
-                        <entry>css-style-sheets</entry>
+                        <entry>var/httpd/htdocs/skins/XXX/ where XXX can be Agent or Customer</entry>
+                        <entry>available skins</entry>
+                    </row>
+                    <row>
+                        <entry>var/httpd/htdocs/skins/XXX/default/css/ where XXX can be Agent or Customer</entry>
+                        <entry>css-style-sheets for the default skin</entry>
                     </row>
                     <row>
                         <entry>var/httpd/htdocs/images/Standard/</entry>
