@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.3 2011-06-23 22:22:19 en Exp $ -->
+<!-- $Id: architecture.xml,v 1.4 2011-06-23 22:27:05 en Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>
@@ -94,10 +94,6 @@ layer architecture of OTRS.
                     <row>
                         <entry>var/httpd/htdocs/js/</entry>
                         <entry>java script files</entry>
-                    </row>
-                    <row>
-                        <entry>var/httpd/htdocs/images/yui/</entry>
-                        <entry>several yui versions</entry>
                     </row>
                     <row>
                         <entry>scripts/</entry>
