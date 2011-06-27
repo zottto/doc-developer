@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.4 2011-06-23 22:27:05 en Exp $ -->
+<!-- $Id: architecture.xml,v 1.5 2011-06-27 09:10:25 mg Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>
@@ -25,7 +25,7 @@ layer architecture of OTRS.
                 <tbody>
                     <row>
                         <entry>bin/</entry>
-                        <entry>CMD programmes</entry>
+                        <entry>commandline tools</entry>
                     </row>
                     <row>
                         <entry>bin/cgi-bin/</entry>
@@ -37,19 +37,19 @@ layer architecture of OTRS.
                     </row>
                     <row>
                         <entry>Kernel</entry>
-                        <entry>modules</entry>
+                        <entry>application codebase</entry>
                     </row>
                     <row>
                         <entry>Kernel/Config/</entry>
-                        <entry>config</entry>
+                        <entry>configuration files</entry>
                     </row>
                     <row>
                         <entry>Kernel/Config/Files</entry>
-                        <entry>config files</entry>
+                        <entry>configuration files</entry>
                     </row>
                     <row>
                         <entry>Kernel/Language</entry>
-                        <entry>language translation</entry>
+                        <entry>language translation files</entry>
                     </row>
                     <row>
                         <entry>Kernel/System/</entry>
@@ -80,32 +80,28 @@ layer architecture of OTRS.
                         <entry>htdocs directory with index.html</entry>
                     </row>
                     <row>
-                        <entry>var/httpd/htdocs/skins/XXX/ where XXX can be Agent or Customer</entry>
-                        <entry>available skins</entry>
+                        <entry>var/httpd/htdocs/skins/Agent/</entry>
+                        <entry>available skins for the Agent interface</entry>
                     </row>
                     <row>
-                        <entry>var/httpd/htdocs/skins/XXX/default/css/ where XXX can be Agent or Customer</entry>
-                        <entry>css-style-sheets for the default skin</entry>
-                    </row>
-                    <row>
-                        <entry>var/httpd/htdocs/images/Standard/</entry>
-                        <entry>icons and pictures</entry>
+                        <entry>var/httpd/htdocs/skins/Customer/</entry>
+                        <entry>available skins for the Customer interface</entry>
                     </row>
                     <row>
                         <entry>var/httpd/htdocs/js/</entry>
-                        <entry>java script files</entry>
+                        <entry>JavaScript files</entry>
                     </row>
                     <row>
                         <entry>scripts/</entry>
-                        <entry>misc</entry>
+                        <entry>misc files</entry>
                     </row>
                     <row>
                         <entry>scripts/test/</entry>
-                        <entry>test files</entry>
+                        <entry>unit test files</entry>
                     </row>
                     <row>
-                        <entry>scripts/sample/</entry>
-                        <entry>sample files</entry>
+                        <entry>scripts/test/sample/</entry>
+                        <entry>unit test sample data files</entry>
                     </row>
                 </tbody>
             </tgroup>
