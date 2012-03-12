@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: invoker.xml,v 1.1 2011-07-27 15:28:13 cr Exp $ -->
+<!-- $Id: gi-invoker.xml,v 1.1 2012-03-12 13:53:45 cr Exp $ -->
 
 <section id="invoker">
     <title>Invoker</title>
@@ -240,7 +240,7 @@ did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =head1 VERSION
 
-$Revision: 1.1 $ $Date: 2011-07-27 15:28:13 $
+$Revision: 1.1 $ $Date: 2012-03-12 13:53:45 $
 
 =cut
                 ]]></programlisting>
