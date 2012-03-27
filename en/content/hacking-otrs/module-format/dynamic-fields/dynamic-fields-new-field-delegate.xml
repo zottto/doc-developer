@@ -1,0 +1,888 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: dynamic-fields-new-field-delegate.xml,v 1.1 2012-03-27 05:46:40 cr Exp $ -->
+
+<section id="dynamic-fields-new-field-delegate">
+    <title>Dynamic Field Delegate Example</title>
+    <para>
+        The delegate <emphasis>is</emphasis> the Dynamic Field. It contains several functions that
+        are used wide in the OTRS framework. It's mandatory to implement all this functions.
+    </para>
+    <note>
+        <para>
+            Please refer to the Perl Online Documentation (POD) of the module
+            /Kernel/System/DynmicField/Backend.pm to have the list of all attributes and possible
+            return data for each function.
+        </para>
+    </note>
+    <section id="dynamic-fields-new-field-delegate-code">
+        <title>Code Example:</title>
+        <para>
+            In this section the Password Dynamic Field delegate is shown and explained.
+         </para>
+         <para>
+            <programlisting><![CDATA[
+# --
+# Kernel/System/DynamicField/Backend/Password.pm - Delegate for DynamicField Password backend
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
+# --
+# $Id: dynamic-fields-new-field-delegate.xml,v 1.1 2012-03-27 05:46:40 cr Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+
+package Kernel::System::DynamicField::Backend::Password;
+
+use strict;
+use warnings;
+
+use Kernel::System::VariableCheck qw(:all);
+use Kernel::System::DynamicFieldValue;
+use Kernel::System::DynamicField::Backend::BackendCommon;
+
+use vars qw($VERSION);
+$VERSION = qw($Revision: 1.1 $) [1];
+            ]]></programlisting>
+        </para>
+        <para>
+            This is the common header that can be found in common OTRS modules. The class/package
+            name is declared via the package keyword.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub new {
+    my ( $Type, %Param ) = @_;
+
+    # allocate new hash for object
+    my $Self = {};
+    bless( $Self, $Type );
+
+    # get needed objects
+    for my $Needed (qw(ConfigObject EncodeObject LogObject MainObject DBObject)) {
+        die "Got no $Needed!" if !$Param{$Needed};
+
+        $Self->{$Needed} = $Param{$Needed};
+    }
+
+    # create additional objects
+    $Self->{DynamicFieldValueObject} = Kernel::System::DynamicFieldValue->new( %{$Self} );
+    $Self->{BackendCommonObject}
+        = Kernel::System::DynamicField::Backend::BackendCommon->new( %{$Self} );
+
+    return $Self;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            The constructor <emphasis>new</emphasis> creates a new instance of the class. According
+            to the coding guidelines objects of other classes that are needed in this module should
+            be created here.
+        </para>
+        <note>
+            <para>
+                Delegates are created only by the BankendObject and not directly from any other
+                module.
+            </para>
+        </note>
+        <para>
+            <programlisting><![CDATA[
+sub ValueGet {
+    my ( $Self, %Param ) = @_;
+
+    my $DFValue = $Self->{DynamicFieldValueObject}->ValueGet(
+        FieldID  => $Param{DynamicFieldConfig}->{ID},
+        ObjectID => $Param{ObjectID},
+    );
+
+    return if !$DFValue;
+    return if !IsArrayRefWithData($DFValue);
+    return if !IsHashRefWithData( $DFValue->[0] );
+
+    return $DFValue->[0]->{ValueText};
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function retrieves the value from the field on a specified Object. In this case we
+            are returning the first text value, since the field only stores one text value at time.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub ValueSet {
+    my ( $Self, %Param ) = @_;
+
+    my $Success = $Self->{DynamicFieldValueObject}->ValueSet(
+        FieldID  => $Param{DynamicFieldConfig}->{ID},
+        ObjectID => $Param{ObjectID},
+        Value    => [
+            {
+                ValueText => $Param{Value},
+            },
+        ],
+        UserID => $Param{UserID},
+    );
+
+    return $Success;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>ValueSet()</emphasis> is used to store a Dynamic Field value, in this case
+            this field only stores one text type value. Other fields could store more than one
+            value on either ValueText, ValueDateTime, or ValueInt format.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub ValueDelete {
+    my ( $Self, %Param ) = @_;
+
+    my $Success = $Self->{DynamicFieldValueObject}->ValueDelete(
+        FieldID  => $Param{DynamicFieldConfig}->{ID},
+        ObjectID => $Param{ObjectID},
+        UserID   => $Param{UserID},
+    );
+
+    return $Success;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used to delete one field value attached to a particular object ID, is
+            used for example if the instance of object is to be deleted, then there is no reason to
+            have the field value stored in the database for that particular object instance.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub AllValuesDelete {
+    my ( $Self, %Param ) = @_;
+
+    my $Success = $Self->{DynamicFieldValueObject}->AllValuesDelete(
+        FieldID => $Param{DynamicFieldConfig}->{ID},
+        UserID  => $Param{UserID},
+    );
+
+    return $Success;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>AllValuesDelete()</emphasis> function is used to delete all values from a
+            certain Dynamic Field. This function is very useful when a Dynamic Field is going to be
+            deleted.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub ValueValidate {
+    my ( $Self, %Param ) = @_;
+
+    my $Success = $Self->{DynamicFieldValueObject}->ValueValidate(
+        Value => {
+            ValueText => $Param{Value},
+        },
+        UserID => $Param{UserID}
+    );
+
+    return $Success;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            The <emphasis>ValueValidate()</emphasis> function is used to check if the value is
+            consistent to its type.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub SearchSQLGet {
+    my ( $Self, %Param ) = @_;
+
+    my %Operators = (
+        Equals            => '=',
+        GreaterThan       => '>',
+        GreaterThanEquals => '>=',
+        SmallerThan       => '<',
+        SmallerThanEquals => '<=',
+    );
+
+    if ( $Operators{ $Param{Operator} } ) {
+        my $SQL = " $Param{TableAlias}.value_text $Operators{$Param{Operator}} '";
+        $SQL .= $Self->{DBObject}->Quote( $Param{SearchTerm} ) . "' ";
+        return $SQL;
+    }
+
+    if ( $Param{Operator} eq 'Like' ) {
+
+        my $SQL = $Self->{DBObject}->QueryCondition(
+            Key   => "$Param{TableAlias}.value_text",
+            Value => $Param{SearchTerm},
+        );
+
+        return $SQL;
+    }
+
+    $Self->{'LogObject'}->Log(
+        'Priority' => 'error',
+        'Message'  => "Unsupported Operator $Param{Operator}",
+    );
+
+    return;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used by TicketSearch core module to build the internal query to search
+            for a ticket based on this field as a search parameter.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub SearchSQLOrderFieldGet {
+    my ( $Self, %Param ) = @_;
+
+    return "$Param{TableAlias}.value_text";
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            The <emphasis>SearchSQLOrderFieldGet</emphasis> is also a helper for TicketSearch
+            module, "$Param{TableAlias}." should be kept and "value_text" could be replaced with
+            "value_date" or "value_int" depending on the field.
+        </para>
+    <para>
+        <programlisting><![CDATA[
+sub EditFieldRender {
+    my ( $Self, %Param ) = @_;
+
+    # take config from field config
+    my $FieldConfig = $Param{DynamicFieldConfig}->{Config};
+    my $FieldName   = 'DynamicField_' . $Param{DynamicFieldConfig}->{Name};
+    my $FieldLabel  = $Param{DynamicFieldConfig}->{Label};
+
+    my $Value = '';
+
+    # set the field value or default
+    if ( $Param{UseDefaultValue} ) {
+        $Value = ( defined $FieldConfig->{DefaultValue} ? $FieldConfig->{DefaultValue} : '' );
+    }
+    $Value = $Param{Value} if defined $Param{Value};
+
+    # extract the dynamic field value form the web request
+    my $FieldValue = $Self->EditFieldValueGet(
+        %Param,
+    );
+
+    # set values from ParamObject if present
+    if ( defined $FieldValue ) {
+        $Value = $FieldValue;
+    }
+
+    # check and set class if necessary
+    my $FieldClass = 'DynamicFieldText';
+    if ( defined $Param{Class} && $Param{Class} ne '' ) {
+        $FieldClass .= ' ' . $Param{Class};
+    }
+
+    # set field as mandatory
+    $FieldClass .= ' Validate_Required' if $Param{Mandatory};
+
+    # set error css class
+    $FieldClass .= ' ServerError' if $Param{ServerError};
+
+    my $HTMLString = <<"EOF";
+<input type="password" class="$FieldClass" id="$FieldName" name="$FieldName" title="$FieldLabel" value="$Value" />
+EOF
+
+    if ( $Param{Mandatory} ) {
+        my $DivID = $FieldName . 'Error';
+
+        # for client side validation
+        $HTMLString .= <<"EOF";
+    <div id="$DivID" class="TooltipErrorMessage">
+        <p>
+            \$Text{"This field is required."}
+        </p>
+    </div>
+EOF
+    }
+
+    if ( $Param{ServerError} ) {
+
+        my $ErrorMessage = $Param{ErrorMessage} || 'This field is required.';
+        my $DivID = $FieldName . 'ServerError';
+
+        # for server side validation
+        $HTMLString .= <<"EOF";
+    <div id="$DivID" class="TooltipErrorMessage">
+        <p>
+            \$Text{"$ErrorMessage"}
+        </p>
+    </div>
+EOF
+    }
+
+    # call EditLabelRender on the common backend
+    my $LabelString = $Self->{BackendCommonObject}->EditLabelRender(
+        DynamicFieldConfig => $Param{DynamicFieldConfig},
+        Mandatory          => $Param{Mandatory} || '0',
+        FieldName          => $FieldName,
+    );
+
+    my $Data = {
+        Field => $HTMLString,
+        Label => $LabelString,
+    };
+
+    return $Data;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is the responsible to create the HTML representation of the field and its
+            label, and is used in the edit screens like "AgentTicketPhone", "AgentTicketNote", etc
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub EditFieldValueGet {
+    my ( $Self, %Param ) = @_;
+
+    my $FieldName = 'DynamicField_' . $Param{DynamicFieldConfig}->{Name};
+
+    my $Value;
+
+    # check if there is a Template and retreive the dinalic field value from there
+    if ( IsHashRefWithData( $Param{Template} ) ) {
+        $Value = $Param{Template}->{$FieldName};
+    }
+
+    # otherwise get dynamic field value form param
+    else {
+        $Value = $Param{ParamObject}->GetParam( Param => $FieldName );
+    }
+
+    if ( defined $Param{ReturnTemplateStructure} && $Param{ReturnTemplateStructure} eq '1' ) {
+        return {
+            $FieldName => $Value,
+        };
+    }
+
+    # for this field the normal return an the ReturnValueStructure are the same
+    return $Value;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>EditFieldValueGet()</emphasis> is a function used in the edit screens of OTRS
+            and its purpose is to get the value of the field, either form a template like generic
+            agent profile or from a web request. This function gets the web request in the
+            $Param{ParamObject}, that is a copy of the ParamObject of the Frontend Module or screen.
+        </para>
+        <para>
+            There are two return formats for this function, the normal: that is just the raw value
+            or a structure: that is the pair field name => field value. for example a Date Dynamic
+            Field returns normally the date as string, and if it should return the an structure it
+            returns a pair for each part of the the date in the hash.
+        </para>
+        <para>
+            The if the result should be a structure then, normally this is used to store its values
+            in a template, like a generic agent profile. For example a date field uses several HTML
+            components to build the field, like the "Used" check-box and selects for year, month,
+            day etc.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub EditFieldValueValidate {
+    my ( $Self, %Param ) = @_;
+
+    # get the field value from the http request
+    my $Value = $Self->EditFieldValueGet(
+        DynamicFieldConfig => $Param{DynamicFieldConfig},
+        ParamObject        => $Param{ParamObject},
+
+        # not necessary for this backend but place it for consistency reasons
+        ReturnValueStructure => 1,
+    );
+
+    my $ServerError;
+    my $ErrorMessage;
+
+    # perform necessary validations
+    if ( $Param{Mandatory} && $Value eq '' ) {
+        $ServerError = 1;
+    }
+
+    # create resulting structure
+    my $Result = {
+        ServerError  => $ServerError,
+        ErrorMessage => $ErrorMessage,
+    };
+
+    return $Result;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function should provide at least, a method to validate if the field is empty, and
+            return an error if the field is empty and mandatory, but it can also do more validations
+            for other kind of fields, like if the option selected is valid, or if a date should be
+            only in the past etc. It can provide a custom error message also.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub DisplayValueRender {
+    my ( $Self, %Param ) = @_;
+
+    # set HTMLOuput as default if not specified
+    if ( !defined $Param{HTMLOutput} ) {
+        $Param{HTMLOutput} = 1;
+    }
+
+    my $Value;
+    my $Title;
+
+    # check if field is set to show password or not
+    if (
+        defined $Param{DynamicFieldConfig}->{Config}->{ShowValue}
+        && $Param{DynamicFieldConfig}->{Config}->{ShowValue} eq 'Yes'
+        )
+    {
+
+        # get raw Title and Value strings from field value
+        $Value = defined $Param{Value} ? $Param{Value} : '';
+        $Title = $Value;
+    }
+    else{
+
+        # show the mask and not the value
+        $Value = $Param{DynamicFieldConfig}->{Config}->{ValueMask} || '';
+        $Title = 'The value of this field is hidden.'
+    }
+
+    # HTMLOuput transformations
+    if ( $Param{HTMLOutput} ) {
+        $Value = $Param{LayoutObject}->Ascii2Html(
+            Text => $Value,
+            Max => $Param{ValueMaxChars} || '',
+        );
+
+        $Title = $Param{LayoutObject}->Ascii2Html(
+            Text => $Title,
+            Max => $Param{TitleMaxChars} || '',
+        );
+    }
+    else {
+        if ( $Param{ValueMaxChars} && length($Value) > $Param{ValueMaxChars} ) {
+            $Value = substr( $Value, 0, $Param{ValueMaxChars} ) . '...';
+        }
+        if ( $Param{TitleMaxChars} && length($Title) > $Param{TitleMaxChars} ) {
+            $Title = substr( $Title, 0, $Param{TitleMaxChars} ) . '...';
+        }
+    }
+
+    # create return structure
+    my $Data = {
+        Value => $Value,
+        Title => $Title,
+    };
+
+    return $Data;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>DisplayValueRender()</emphasis> function returns the field value as a plain
+            text as well as its title (both can be translated). for this particular example we are
+            checking if the password should be reveled or display a predefined mask by  a
+            configuration parameter in the Dynamic Field.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub IsSortable {
+    my ( $Self, %Param ) = @_;
+
+    # we don't want to sort by password
+    return 0;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This functions just return 1, if the field can be used for sorting (e.g. in ticket
+            overview screens), or 0 if it can't.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub SearchFieldRender {
+    my ( $Self, %Param ) = @_;
+
+    # take config from field config
+    my $FieldConfig = $Param{DynamicFieldConfig}->{Config};
+    my $FieldName   = 'Search_DynamicField_' . $Param{DynamicFieldConfig}->{Name};
+    my $FieldLabel  = $Param{DynamicFieldConfig}->{Label};
+
+    # set the field value
+    my $Value = ( defined $Param{DefaultValue} ? $Param{DefaultValue} : '' );
+
+    # get the field value, this fuction is always called after the profile is loaded
+    my $FieldValue = $Self->SearchFieldValueGet(%Param);
+
+    # set values from profile if present
+    if ( defined $FieldValue ) {
+        $Value = $FieldValue;
+    }
+
+    # check and set class if necessary
+    my $FieldClass = 'DynamicFieldText';
+
+    my $HTMLString = <<"EOF";
+<input type="text" class="$FieldClass" id="$FieldName" name="$FieldName" title="$FieldLabel" value="$Value" />
+EOF
+
+    my $AdditionalText;
+    if ( $Param{UseLabelHints} ) {
+        $AdditionalText = 'e.g. Text or Te*t';
+    }
+
+    # call EditLabelRender on the common backend
+    my $LabelString = $Self->{BackendCommonObject}->EditLabelRender(
+        DynamicFieldConfig => $Param{DynamicFieldConfig},
+        FieldName          => $FieldName,
+        AdditionalText     => $AdditionalText,
+    );
+
+    my $Data = {
+        Field => $HTMLString,
+        Label => $LabelString,
+    };
+
+    return $Data;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used by ticket search dialog and its similar to "EditFieldRander", but
+            normally on a search screen small changes has to be done for all fields, for this
+            example we use a HTML text input instead of a password input. In other fields like
+            Dropdown field is displayed as a Multiple select in order to let the user search for
+            more than one value at a time.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub SearchFieldValueGet {
+    my ( $Self, %Param ) = @_;
+
+    my $Value;
+
+    # get dynamic field value form param object
+    if ( defined $Param{ParamObject} ) {
+        $Value = $Param{ParamObject}
+            ->GetParam( Param => 'Search_DynamicField_' . $Param{DynamicFieldConfig}->{Name} );
+    }
+
+    # otherwise get the value from the profile
+    elsif ( defined $Param{Profile} ) {
+        $Value = $Param{Profile}->{ 'Search_DynamicField_' . $Param{DynamicFieldConfig}->{Name} };
+    }
+    else {
+        return;
+    }
+
+    if ( defined $Param{ReturnProfileStructure} && $Param{ReturnProfileStructure} eq 1 ) {
+        return {
+            'Search_DynamicField_' . $Param{DynamicFieldConfig}->{Name} => $Value,
+        };
+    }
+
+    return $Value;
+
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            Very similar to <emphasis>EditFieldValueGet()</emphasis>, but uses a different name
+            prefix, adapted for the search dialog screen.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub SearchFieldParameterBuild {
+    my ( $Self, %Param ) = @_;
+
+    # get field value
+    my $Value = $Self->SearchFieldValueGet(%Param);
+
+    # set operator
+    my $Operator = 'Equals';
+
+    # search for a wild card in the value
+    if ( $Value && $Value =~ m{\*} ) {
+
+        # change oprator
+        $Operator = 'Like';
+    }
+
+    # return search parameter structure
+    return {
+        Parameter => {
+            $Operator => $Value,
+        },
+        Display => $Value,
+    };
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>SearchFieldParameterBuild()</emphasis> is used also by the ticket search
+            dialog to set the correct operator and value to do the search on this field. It also
+            returns how the value should be displayed in the used search attributes, in the results
+            page.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub StatsFieldParameterBuild {
+    my ( $Self, %Param ) = @_;
+
+    return {
+        Name    => $Param{DynamicFieldConfig}->{Label},
+        Element => 'DynamicField_' . $Param{DynamicFieldConfig}->{Name},
+    };
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used by the stats modules, it includes the field definition in the
+            stats format. For fields with fixed values it also includes all this possible values
+            and if they can be translated, take a look to the Dropdown delegate code for an example
+            how to implement those.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub CommonSearchFieldParameterBuild {
+    my ( $Self, %Param ) = @_;
+
+    my $Value = $Param{Value};
+
+    # set operator
+    my $Operator = 'Equals';
+
+    # search for a wild card in the value
+    if ( $Value && $Value =~ m{\*} ) {
+
+        # change oprator
+        $Operator = 'Like';
+    }
+
+    return {
+        $Operator => $Value,
+    };
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            <emphasis>CommonSearchFieldParameterBuild()</emphasis> is very similar to the
+            <emphasis>SearchFieldParameterBuild()</emphasis>, the difference id that the
+            <emphasis>SearchFieldParameterBuild()</emphasis> gets the value from the search profile
+            and this one gets the value directly from its parameters.
+        </para>
+        <para>
+            This function is used by generic agent and stats modules.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub ReadableValueRender {
+    my ( $Self, %Param ) = @_;
+
+    my $Value;
+    my $Title;
+
+    # check if field is set to show password or not
+    if (
+        defined $Param{DynamicFieldConfig}->{Config}->{ShowValue}
+        && $Param{DynamicFieldConfig}->{Config}->{ShowValue} eq 'Yes'
+        )
+    {
+
+        # get raw Title and Value strings from field value
+        $Value = defined $Param{Value} ? $Param{Value} : '';
+        $Title = $Value;
+    }
+    else{
+
+        # show the mask and not the value
+        $Value = $Param{DynamicFieldConfig}->{Config}->{ValueMask} || '';
+        $Title = 'The value of this field is hidden.'
+    }
+
+    # cut strings if needed
+    if ( $Param{ValueMaxChars} && length($Value) > $Param{ValueMaxChars} ) {
+        $Value = substr( $Value, 0, $Param{ValueMaxChars} ) . '...';
+    }
+    if ( $Param{TitleMaxChars} && length($Title) > $Param{TitleMaxChars} ) {
+        $Title = substr( $Title, 0, $Param{TitleMaxChars} ) . '...';
+    }
+
+    # create return structure
+    my $Data = {
+        Value => $Value,
+        Title => $Title,
+    };
+
+    return $Data;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is similar to <emphasis>DisplayValueRender()</emphasis> but is used  in
+            places where there is no LayoutObject.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub TemplateValueTypeGet {
+    my ( $Self, %Param ) = @_;
+
+    my $FieldName = 'DynamicField_' . $Param{DynamicFieldConfig}->{Name};
+
+    # set the field types
+    my $EditValueType   = 'SCALAR';
+    my $SearchValueType = 'SCALAR';
+
+    # return the correct structure
+    if ( $Param{FieldType} eq 'Edit' ) {
+        return {
+            $FieldName => $EditValueType,
+            }
+    }
+    elsif ( $Param{FieldType} eq 'Search' ) {
+        return {
+            'Search_' . $FieldName => $SearchValueType,
+            }
+    }
+    else {
+        return {
+            $FieldName             => $EditValueType,
+            'Search_' . $FieldName => $SearchValueType,
+            }
+    }
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            The <emphasis>TemplateValueTypeGet()</emphasis> function is used to know how the
+            Dynamic Field values stored on a profile should be retrieved, as an SCALAR or as an
+            ARRAY, and it also defines the correct name of the field in the profile.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub IsAJAXUpdateable {
+    my ( $Self, %Param ) = @_;
+
+    return 0;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used to define if the values of a Dynamic Field should be refreshed in
+            an AJAX update. Returns 1 Only for fields which its resulting HTML code form
+            <emphasis>EditFieldRender</emphasis> could be updated by the stock or custom
+            core.AJAX.js module.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub RandomValueSet {
+    my ( $Self, %Param ) = @_;
+
+    my $Value = int( rand(500) );
+
+    my $Success = $Self->ValueSet(
+        %Param,
+        Value => $Value,
+    );
+
+    if ( !$Success ) {
+        return {
+            Success => 0,
+        };
+    }
+    return {
+        Success => 1,
+        Value   => $Value,
+    };
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            This function is used by otrs.FillDB.pl script to populate the database with some test
+            and random data. The value inserted by this function is not really relevant. The only
+            restriction is that the value must be compatible with the field value type.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub IsMatchable {
+    my ( $Self, %Param ) = @_;
+
+    return 1;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            Used to define if the <emphasis>ObjectMatch()</emphasis> could be called for this field.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub ObjectMatch {
+    my ( $Self, %Param ) = @_;
+
+    my $FieldName = 'DynamicField_' . $Param{DynamicFieldConfig}->{Name};
+
+    # return false if not match
+    if ( $Param{ObjectAttributes}->{$FieldName} ne $Param{Value} ) {
+        return 0;
+    }
+
+    return 1;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            Used by the notification modules this function returns 1 if the field is present in the
+            $Param{ObjectAttributes} parameter and if it match the given value.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+sub AJAXPossibleValuesGet {
+    my ( $Self, %Param ) = @_;
+
+    # not supported
+    return;
+}
+            ]]></programlisting>
+        </para>
+        <para>
+            If the field supports AJAX updates, this function returns all the possible values
+            defined for the field, including the "" => "-" value (PossibleNone) if configured.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+1;
+
+=back
+
+=head1 TERMS AND CONDITIONS
+
+This software is part of the OTRS project (L<http://otrs.org/>).
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (AGPL). If you
+did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
+
+=cut
+
+=head1 VERSION
+
+$Revision: 1.1 $ $Date: 2012-03-27 05:46:40 $
+
+=cut
+            ]]></programlisting>
+        </para>
+        <para>
+            The normal OTRS footer for a Perl module file.
+        </para>
+    </section>
+</section>

@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: dynamic-fields-framework.xml,v 1.1 2012-03-27 05:45:18 cr Exp $ -->
+
+<section id="dynamic-fields-framework">
+    <title>Dynamic Fields Framework</title>
+    <para>
+        Before creating new Dynamic Fields is necessary to understand its framework and how OTRS
+        screens interact with them, as well as their underlying API.
+    </para>
+    <para>
+        The following picture shows the architecture of the Dynamic Fields framework.
+    </para>
+    <screenshot>
+        <graphic srccredit="" scale="50" fileref="../../../../screenshots/dfframework.png"></graphic>
+    </screenshot>
+
+    <section id="dynamic-fields-framework-backends">
+        <title>Dynamic Field Backend Modules</title>
+
+        <section id="dynamic-fields-framework-backends-backend">
+            <title>Dynamic Field (Backend)</title>
+            <para>
+                Normally called as "BackendObject" in the frontend modules is the mediator between
+                the frontend modules and each specific Dynamic Field implementation or Delegate. It
+                defines a Generic middle API for all Dynamic Field Delegates, and each Delegate has
+                the responsibility to implement the middle API for the specific needs for the field.
+            </para>
+            <para>
+                The Dynamic Field Banckend is the master controller of all the Delegates, each
+                function in this module is responsible to check the required parameters and call
+                the same function in the specific Delegate according to the Dynamic Field
+                Configuration parameter received.
+            </para>
+            <para>
+                This module is also responsible to call specific functions on each Object Type
+                Delegate (like Ticket or Article) e.g to add a history entry or fire an event.
+            </para>
+            <para>
+                This module is located in $OTRS_HOME/Kernel/System/DynamicField/Backend.pm.
+            </para>
+        </section>
+
+        <section id="dynamic-fields-framework-backends-delegates">
+            <title>Dynamic Field Delegates</title>
+            <para>
+                A Dynamic Field Delegate is the implementation of the Dynamic Field. Each Delegate
+                must implement all the functions specified in the Backend.
+            </para>
+            <para>
+                A Delegate is responsible to know how to get its own value or values from a web
+                request, or from a profile (like a search profile), it also needs to know the HTML
+                code to render the field in edit or display screens, or how to interact with the
+                stats module, among other functions.
+            </para>
+            <para>
+                This modules are located in $OTRS_HOME/Kernel/System/DynamicField/Backend/*.pm.
+            </para>
+        </section>
+
+        <section id="dynamic-fields-framework-backends-object-delegates">
+            <title>Object Type Delegates</title>
+            <para>
+                A Dynamic Field Delegate is responsible to perform specific functions on the
+                object linked to the dynamic field. this functions are triggered by the
+                BackendObject as they are needed.
+            </para>
+            <para>
+                This modules are located in $OTRS_HOME/Kernel/System/DynamicField/ObjectType/*.pm.
+            </para>
+        </section>
+    </section>
+    <section id="dynamic-fields-framework-admin">
+        <title>Dynamic Fields Admin Modules</title>
+        <para>
+            To manage the Dynamic Fields (Add, Edit and List) a series of modules has been already
+            developed. There is one specific master module (AdminDynamicField.pm) to show the list
+            of defined Dynamic Fields, and from within other modules are called to create new
+            Dynamic Fields or modify an existing ones.
+        </para>
+        <para>
+            Normally a Dynamic Field Delegate needs its own Admin Module (Admin Dialog) to define
+            its properties, that might differ from other Delegates. But this is not mandatory,
+            Delegates can share Admin Dialogs, if they can provide add needed information for all
+            the Delegates linked to them  no matter if they are from different type. What is
+            mandatory is that each Delegate must be linked to an Admin Dialog. (e.g. Text and
+            TextArea Delegates share AdminDynamicFieldText.pm Admin Dialog, and Date and Date/Time
+            Delegates share AdminDynamicFieldDateTime.pm Admin Dialog).
+        </para>
+        <para>
+            Admin Dialogs follows the normal OTRS Admin Module rules and architecture. But for
+            standardization all configuration common parts to all Dynamic Fields should have the
+            same look and feel among all Admin Dialogs.
+        </para>
+        <para>
+            This modules are located in $OTRS_HOME/Kernel/Modules/*.pm.
+        </para>
+        <note>
+            <para>
+                Each Admin Dialog needs its corresponding HTML template file (.dtl).
+            </para>
+        </note>
+    </section>
+    <section id="dynamic-fields-framework-core">
+        <title>Dynamic Fields Core Modules</title>
+        <para>
+            This modules reads and writes the Dynamic Fields information from and to the database
+            tables.
+        </para>
+        <section id="dynamic-fields-framework-core-dynamicfield">
+            <title>"DynamicField.pm" Core Module</title>
+            <para>
+                This module is responsible to manage the Dynamic Field definitions, it provides the
+                basic API for add, change, delete, list and get Dynamic Fields and is located
+                in $OTRS_HOME/Kernel/System/DynamicField.pm.
+            </para>
+        </section>
+        <section id="dynamic-fields-framework-core-dynamicfieldvalue">
+            <title>"DynamicFieldValue.pm" Core Module</title>
+            <para>
+                This module is responsible to read and write Dynamic Field values into the from and
+                into the database this module is highly use by the Delegates and is located in
+                $OTRS_HOME/Kernel/System/DynamicFieldValue.pm.
+            </para>
+        </section>
+    </section>
+    <section id="dynamic-fields-framework-database">
+        <title>Dynamic Fields Database Tables</title>
+        <para>
+            There are two tables in the database to store the dynamic field information:
+        </para>
+        <para>
+            <emphasis>dynamic_field</emphasis>: Used by the Core Module DynamicField.pm, it stores
+            the Dynamic Field definitions.
+        </para>
+        <para>
+            <emphasis>dynamic_field_value</emphasis>: Used by the Core Module DynamicFieldValue.pm
+            to save the Dynamic Field values for each Dynamic Field and each Object Type instance.
+        </para>
+    </section>
+    <section id="dynamic-fields-framework-configuration-files">
+        <title>Dynamic Fields Configuration Files</title>
+        <para>
+            The Backend module needs a way to know which Delegates exists and since the Delegates
+            can be easily extended, the easiest way to archive this is to use the system
+            configuration, where the information of Dynamic Field Delegates and ObjectType Delegates
+            can be stored and extended.
+        </para>
+        <para>
+            The master Admin Module also needs to know this information about the Dynamic Field
+            Delegates to use the Admin Dialog linked with, to create or modify the Dynamic Fields.
+        </para>
+        <para>
+            Frontend modules needs to read the system configuration to know which Dynamic Fields
+            are active for each screen and which ones are also mandatory. for example:
+            Ticket::Frontend::AgentTicketPhone###DynamicField stores the active, mandatory and
+            inactive Dynamic Fields for New Phone Ticket Screen.
+        </para>
+    </section>
+</section>

@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: dynamic-fields-new-field-admin-module-template.xml,v 1.1 2012-03-27 05:46:13 cr Exp $ -->
+
+<section id="dynamic-fields-new-field-admin-module-template">
+    <title>Dynamic Field DTL Template for Admin Dialog Example</title>
+    <para>
+        The template is the place where the HTML code of the dialog is stored.
+    </para>
+    <section id="dynamic-fields-new-field-admin-module-template-code">
+        <title>Code Example:</title>
+            <para>
+                In this section an Admin Dialog DTL Template for the password Dynamic Field is
+                shown and explained.
+            </para>
+        <para>
+            <programlisting><![CDATA[
+# --
+# AdminDynamicFieldPassword.dtl - provides HTML form for AdminDynamicFieldPassword
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
+# --
+# $Id: dynamic-fields-new-field-admin-module-template.xml,v 1.1 2012-03-27 05:46:13 cr Exp $
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+            ]]></programlisting>
+        </para>
+        <para>
+            This is common header that can be found in common OTRS modules.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+<div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst">
+    <h1>$Text{"Dynamic Fields"} - $Text{"$Data{"ObjectTypeName"}"}: $Text{"$Data{"Mode"}"} $Text{"$Data{"FieldTypeName"}"} $Text{"Field"}</h1>
+
+    <div class="Clear"></div>
+
+    <div class="SidebarColumn">
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>$Text{"Actions"}</h2>
+            </div>
+            <div class="Content">
+                <ul class="ActionList">
+                    <li>
+                        <a href="$Env{"Baselink"}Action=AdminDynamicField" class="CallForAction"><span>$Text{"Go back to overview"}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+            ]]></programlisting>
+        </para>
+        <para>
+            This is part of the code has the main box and also the actions side bar, no
+            modifications are needed in this section.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+    <div class="ContentColumn">
+        <form action="$Env{"CGIHandle"}" method="post" class="Validate PreventMultipleSubmits">
+            <input type="hidden" name="Action" value="AdminDynamicFieldPassword" />
+            <input type="hidden" name="Subaction" value="$QData{"Mode"}Action" />
+            <input type="hidden" name="ObjectType" value="$QData{"ObjectType"}" />
+            <input type="hidden" name="FieldType" value="$QData{"FieldType"}" />
+            <input type="hidden" name="ID" value="$QData{"ID"}" />
+            ]]></programlisting>
+        </para>
+        <para>
+            In this section of the code is defined the right part of the dialog, notice that the
+            value of the Action hidden input must match with the name of the Admin Dialog.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+            <div class="WidgetSimple">
+                <div class="Header">
+                    <h2>$Text{"General"}</h2>
+                </div>
+                <div class="Content">
+                    <div class="LayoutGrid ColumnsWithSpacing">
+                        <div class="Size1of2">
+                            <fieldset class="TableLike">
+                                <label class="Mandatory" for="Name"><span class="Marker">*</span> $Text{"Name"}:</label>
+                                <div class="Field">
+                                    <input id="Name" class="W50pc $QData{"NameServerError"} $QData{"ShowWarning"}  Validate_Alphanumeric" type="text" maxlength="200" value="$QData{"Name"}" name="Name"/>
+                                    <div id="NameError" class="TooltipErrorMessage"><p>$Text{"This field is required, and the value should be alphabetic and numeric characters only."}</p></div>
+                                    <div id="NameServerError" class="TooltipErrorMessage"><p>$Text{"$Data{"NameServerErrorMessage"}"}</p></div>
+                                    <p class="FieldExplanation">$Text{"Must be unique and only accept alphabetic and numeric characters."}</p>
+                                    <p class="Warning Hidden">$Text{"Changing this value will require manual changes in the system."}</p>
+                                </div>
+                                <div class="Clear"></div>
+
+                                <label class="Mandatory" for="Label"><span class="Marker">*</span> $Text{"Label"}:</label>
+                                <div class="Field">
+                                    <input id="Label" class="W50pc $QData{"LabelServerError"} Validate_Required" type="text" maxlength="200" value="$QData{"Label"}" name="Label"/>
+                                    <div id="LabelError" class="TooltipErrorMessage"><p>$Text{"This field is required."}</p></div>
+                                    <div id="LabelServerError" class="TooltipErrorMessage"><p>$Text{"$Data{"LabelServerErrorMessage"}"}</p></div>
+                                    <p class="FieldExplanation">$Text{"This is the name to be shown on the screens where the field is active."}</p>
+                                </div>
+                                <div class="Clear"></div>
+
+                                <label class="Mandatory" for="FieldOrder"><span class="Marker">*</span> $Text{"Field order"}:</label>
+                                <div class="Field">
+                                    $Data{"DynamicFieldOrderSrtg"}
+                                    <div id="FieldOrderError" class="TooltipErrorMessage"><p>$Text{"This field is required and must be numeric."}</p></div>
+                                    <div id="FieldOrderServerError" class="TooltipErrorMessage"><p>$Text{"$Data{"FieldOrderServerErrorMessage"}"}</p></div>
+                                    <p class="FieldExplanation">$Text{"This is the order in which this field will be shown on the screens where is active."}</p>
+                                </div>
+                                <div class="Clear"></div>
+                            </fieldset>
+                        </div>
+                        <div class="Size1of2">
+                            <fieldset class="TableLike">
+                                <label for="ValidID">$Text{"Validity"}:</label>
+                                <div class="Field">
+                                    $Data{"ValidityStrg"}
+                                </div>
+                                <div class="Clear"></div>
+
+                                <div class="SpacingTop"></div>
+                                <label for="FieldTypeName">$Text{"Field type"}:</label>
+                                <div class="Field">
+                                    <input id="FieldTypeName" readonly="readonly" class="W50pc" type="text" maxlength="200" value="$QData{"FieldTypeName"}" name="FieldTypeName"/>
+                                    <div class="Clear"></div>
+                                </div>
+
+                                <div class="SpacingTop"></div>
+                                <label for="ObjectTypeName">$Text{"Object type"}:</label>
+                                <div class="Field">
+                                    <input id="ObjectTypeName" readonly="readonly" class="W50pc" type="text" maxlength="200" value="$QData{"ObjectTypeName"}" name="ObjectTypeName"/>
+                                    <div class="Clear"></div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ]]></programlisting>
+        </para>
+        <para>
+            This first widget contains the common form attributes for the Dynamic Fields, for
+            consistency with other Dynamic Fields is recommended to leave this part of the code
+            unchanged.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+            <div class="WidgetSimple">
+                <div class="Header">
+                    <h2>$Text{"$Data{"FieldTypeName"}"} $Text{"Field Settings"}</h2>
+                </div>
+                <div class="Content">
+                    <fieldset class="TableLike">
+
+                        <label for="DefaultValue">$Text{"Default value"}:</label>
+                        <div class="Field">
+                            <input id="DefaultValue" class="W50pc" type="text" maxlength="200" value="$QData{"DefaultValue"}" name="DefaultValue"/>
+                            <p class="FieldExplanation">$Text{"This is the default value for this field."}</p>
+                        </div>
+                        <div class="Clear"></div>
+
+                        <label for="ShowValue">$Text{"Show value"}:</label>
+                        <div class="Field">
+                                $Data{"ShowValueStrg"}
+                                <p class="FieldExplanation">
+                                    $Text{"To reveal the field value in non edit screens ( e.g. Ticket Zoom Screen )"}
+                                </p>
+                        </div>
+                        <div class="Clear"></div>
+
+                        <label for="ValueMask">$Text{"Hidden value mask"}:</label>
+                        <div class="Field">
+                            <input id="ValueMask" class="W50pc" type="text" maxlength="200" value="$QData{"ValueMask"}" name="ValueMask"/>
+                            <p class="FieldExplanation">
+                                $Text{"This is the alternate value to show if Show value is set to "No" ( Default: **** )."}
+                            </p>
+                        </div>
+                        <div class="Clear"></div>
+
+                    </fieldset>
+                </div>
+            </div>
+            ]]></programlisting>
+        </para>
+        <para>
+            The second widget has the Dynamic Field specific form attributes. This is the place
+            where new attributes cat be set and it could use Java Script and AJAX technologies to
+            make it more easy or friendly for the end user.
+        </para>
+        <para>
+            <programlisting><![CDATA[
+            <fieldset class="TableLike">
+                <div class="Field SpacingTop">
+                    <button type="submit" class="Primary" value="$Text{"Save"}">$Text{"Save"}</button>
+                    $Text{"or"}
+                    <a href="$Env{"Baselink"}Action=AdminDynamicField">$Text{"Cancel"}</a>
+                </div>
+                <div class="Clear"></div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<!--dtl:js_on_document_complete-->
+<script type="text/javascript">//<![CDATA[
+$('.ShowWarning').bind('change keyup', function (Event) {
+    $('p.Warning').removeClass('Hidden');
+});
+
+Core.Agent.Admin.DynamicField.ValidationInit();
+//]]>]]&gt;<![CDATA[</script>
+<!--dtl:js_on_document_complete-->
+            ]]></programlisting>
+        </para>
+        <para>
+            The final part of the file contains the "Submit" button and the "Cancel" link, as well
+            as other needed Java Script code.
+        </para>
+    </section>
+</section>

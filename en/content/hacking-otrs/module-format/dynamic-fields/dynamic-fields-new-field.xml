@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!-- $Id: dynamic-fields-new-field.xml,v 1.1 2012-03-27 05:45:42 cr Exp $ -->
+
+<section id="dynamic-fields-new-field">
+    <title>Creating A New Dynamic Field</title>
+    <para>
+        To illustrate this process a new Dynamic Field "Password" will be created. this new Dynamic
+        Field Type will show a New password field to Ticket or Article objects. since is very
+        similar to a Text Dynamic Field we will use the Text Delegate and Text Admin Dialog as a
+        basis to build this new field.
+    </para>
+    <note>
+        <para>
+            This new password field implementation is just for educational purposes, it does not
+            provide any level of security and is not recommended for production systems.
+        </para>
+    </note>
+    <para>
+        To create this new Dynamic Field we will create 4 files: a Configuration File (XML),
+        to register the modules, an Admin Dialog Module (perl), to setup the field options, a
+        Template Module (DTL), for the Admin Dialog and a Dynamic Field Delegate (perl).
+    </para>
+    <para>
+        File Structure:
+    </para>
+        <programlisting><![CDATA[
+$HOME (e. g. /opt/otrs/)
+|
+...
+|--/Kernel/
+|   |--/Config/
+|   |   |--/Files/
+|   |   |   |DynamicFieldPassword.xml
+...
+|   |--/Modules/
+|   |   |AdminDynamicFieldPassword.pm
+...
+|   |--/Output/
+|   |   |--/HTML/
+|   |   |   |--/Standard/
+|   |   |   |   |AdminDynamicFieldPassword.dtl
+...
+|   |--/System/
+|   |   |--/DynamicField/
+|   |   |   |--/Backend/
+|   |   |   |   |Password.pm
+...
+        ]]></programlisting>
+        <note>
+            <para>
+                The creation of a new Backend and its delegates is not covered in this manual but
+                the official package iPhoneHandle v 1.1.1 can be used as an example and reference.
+            </para>
+        </note>
+        <section id="dynamic-fields-new-field-files">
+            <title>Dynamic Field Password files</title>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-config.xml" />
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-admin-module.xml" />
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-admin-module-template.xml" />
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-delegate.xml" />
+        </section>
+</section>
