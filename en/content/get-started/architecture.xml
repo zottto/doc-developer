@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.6 2011-07-27 15:26:21 cr Exp $ -->
+<!-- $Id: architecture.xml,v 1.7 2012-03-27 05:42:42 cr Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>
@@ -286,8 +286,8 @@
                 $OTRS_HOME/Kernel/GenericInterface/Invoker/*. Each Invoker is contained in a folder
                 called "Controller". This approach help to define a name space not only for
                 internal classes and methods but for filenames too. for example:
-                $OTRS_HOME/Kernel/GenericInterface/Invoker<emphasis>/SolMan/</emphasis> is the
-                Controller for all SolMan kind invokers.
+                $OTRS_HOME/Kernel/GenericInterface/Invoker<emphasis>/Test/</emphasis> is the
+                Controller for all Test kind invokers.
             </para>
             <para>
                 Generic Interface Invoker modules are used as a backend to create requests for
@@ -317,8 +317,8 @@
                 $OTRS_HOME/Kernel/GenericInterface/Operation/*. Each Operation is contained in a
                 folder called "Controller". This approach help to define a name space not only for
                 internal classes and methods but for filenames too. for example:
-                $OTRS_HOME/Kernel/GenericInterface/Operation<emphasis>/SolMan/</emphasis> is the
-                Controller for all SolMan kind operations.
+                $OTRS_HOME/Kernel/GenericInterface/Operation<emphasis>/Ticket/</emphasis> is the
+                Controller for all Ticket kind operations.
             </para>
             <para>
                 Generic Interface operation modules are used as a backend to create perform
