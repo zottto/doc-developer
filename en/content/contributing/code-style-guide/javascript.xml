@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: javascript.xml,v 1.1 2010-11-29 11:05:36 mg Exp $ -->
+<!-- $Id: javascript.xml,v 1.2 2012-04-21 23:10:26 ep Exp $ -->
 
 <section id="code-style-guide-javascript">
     <title>JavaScript</title>
@@ -53,7 +53,7 @@
         <title>Functions</title>
         <para>
             <itemizedlist>
-                <listitem><para>Function names should be !CamelCase, just like in Perl.</para></listitem>
+                <listitem><para>Function names should be CamelCase, just like in Perl.</para></listitem>
             </itemizedlist>
         </para>
     </section>
