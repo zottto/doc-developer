@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $ -->
+<!-- $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $ -->
 
 <section id="code-style-guide-perl">
     <title>Perl</title>
@@ -41,15 +41,15 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         <title>Source Code Header and Charset</title>
         <para>
             Attach the following header to each and every source file.
-            Source files are saved in Charset ISO-8859-1.
+            Source files are saved in Charset UTF-8.
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
 # --
 # (file name) - a short description what it does
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
+# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -65,9 +65,9 @@ e. g. @TicktIDs or $Output or BuildQueueView()
 #!/usr/bin/perl -w
 # --
 # (file name) - a short description what it does
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
+# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -91,7 +91,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
-# $Id: perl.xml,v 1.3 2011-03-09 14:54:40 mb Exp $
+# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
         ]]></programlisting>
         </para>
     </section>
