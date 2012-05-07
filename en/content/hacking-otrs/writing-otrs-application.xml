@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: writing-otrs-application.xml,v 1.2 2012-05-02 07:40:03 mh Exp $ -->
+<!-- $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $ -->
 
 <section>
     <title>Writing an OTRS module for a new object</title>
@@ -40,7 +40,7 @@ The impact of the various settings is described in the chapter 'Config Mechanism
         <Description Lang="en">FrontendModuleRegistration for HelloWorld modul.</Description>
         <Description Lang="de">FrontendModulRegistration für das HelloWorld Modul.</Description>
         <Group>HelloWorld</Group>
-        <SubGroup>AgentFrontendModuleRegistration</SubGroup>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
         <Setting>
             <FrontendModuleReg>
                 <Title>HelloWorld</Title>
@@ -77,7 +77,7 @@ This is the next thing to be created. To do so, we create the following file:
 # Kernel/Modules/AgentHelloWorld.pm - frontend modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.2 2012-05-02 07:40:03 mh Exp $
+# $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -143,7 +143,7 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
 # Kernel/System/HelloWorld.pm - core modul
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.2 2012-05-02 07:40:03 mh Exp $
+# $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -187,7 +187,7 @@ Thus, we create the following file:
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: writing-otrs-application.xml,v 1.2 2012-05-02 07:40:03 mh Exp $
+# $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
