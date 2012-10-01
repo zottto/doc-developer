@@ -40,7 +40,7 @@
             This kind of filter allows to process the complete HTML output for the request
             right before it is sent to the browser.
             This can be used for global transformations.
-            But in real live there is rarely a need to use this kind of filter.
+            But in real life there is rarely a need to use this kind of filter.
         </para>
     </section>
     <section id="outputfilter_filtertest">
