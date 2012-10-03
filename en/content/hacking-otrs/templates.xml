@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.6 2011-05-31 12:42:10 mg Exp $ -->
+<!-- $Id: templates.xml,v 1.7 2012-10-03 00:34:06 ep Exp $ -->
 
 <section id="TemplatingMechanism">
     <title>Templating Mechanism</title>
@@ -450,7 +450,7 @@ else {
                 </para>
                 <para>
                     For details, please refer to the documentation of <literal>Kernel::Output::HTML::Layout</literal>
-                    on <ulink url="http://dev.otrs/org">dev.otrs.org</ulink>.
+                    on <ulink url="http://dev.otrs.org">dev.otrs.org</ulink>.
                 </para>
             </section>
         </section>
