@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: auth-sync.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+<!-- $Id: auth-sync.xml,v 1.2 2012-10-30 15:08:00 mb Exp $ -->
 
 
 <section id="auth-sync-module">
     <title>Authentication Synchonisation Module</title>
     <para>
-        There is a LDAP authentication synchonisation module
+        There is a LDAP authentication synchronisation module
         which come with the OTRS framework. It is also possible to develop your own
-        authentication modules. The authentication synchonisation modules are located under
+        authentication modules. The authentication synchronisation modules are located under
         Kernel/System/Auth/Sync/*.pm. For more information about their configuration see the admin manual.
-        Following, there is an example of an authentication synchonisation module.
+        Following, there is an example of an authentication synchronisation module.
         Save it under Kernel/System/Auth/Sync/CustomAuthSync.pm.
         You just need 2 functions: new() and Sync(). Return 1, then the
-        synchonisation is ok.
+        synchronisation is ok.
     </para>
     <section id="auth-sync-module-code">
         <title>Code Example</title>
@@ -25,7 +25,7 @@
         <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/Auth/Sync/CustomAuthSync.pm - provides the CustomAuthSync
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
 # Id: CustomAuthSync.pm,v 1.9 2010/03/25 14:42:45 martin Exp $
 # --
@@ -41,7 +41,7 @@ use warnings;
 use Net::LDAP;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -83,10 +83,10 @@ sub Sync {
     <section id="auth-sync-module-configuration">
         <title>Configuration Example</title>
         <para>
-            There is the need to activate your custom synconisation authenticate module.
+            You should activate your custom synchronisation module.
             This can be done using the perl configuration below.
-            It is not recommended to use the xml configuration because you can lock
-            you out via the sysconfig.
+            It is not recommended to use the xml configuration because this
+            would allow you to lock yourself out via SysConfig.
         </para>
         <para>
         <programlisting linenumbering="numbered" ><![CDATA[
@@ -97,7 +97,7 @@ sub Sync {
     <section id="auth-sync-module-use_cases">
         <title>Use Case Examples</title>
         <para>
-            Useful synchonisation implementation could be a soap or radius backend.
+            Useful synchronisation implementation could be a soap or radius backend.
         </para>
     </section>
     <section id="auth-sync-module-releases">
@@ -124,7 +124,7 @@ sub Sync {
     <section id="auth-sync-module-caveats">
         <title>Caveats and Warnings</title>
         <para>
-        Please note that the synchonisation was part of the authentification class Kernel::System::Auth before framework 2.4.
+        Please note that the synchronisation was part of the authentication class Kernel::System::Auth before framework 2.4.
         </para>
     </section>
 </section>
