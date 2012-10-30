@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: sla-preferences.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
+<!-- $Id: sla-preferences.xml,v 1.2 2012-10-30 15:08:01 mb Exp $ -->
 
 
 <section id="sla-preferences-module">
@@ -13,7 +13,7 @@
         Following, there is an example of a sla preferences module.
         Save it under Kernel/System/SLA/PreferencesCustom.pm.
         You just need 3 functions: new(), SLAPreferencesSet() and SLAPreferencesGet(). Return 1, then the
-        synchonisation is ok.
+        synchronisation is ok.
     </para>
     <section id="sla-preferences-module-code">
         <title>Code Example</title>
@@ -25,7 +25,7 @@
         <programlisting linenumbering="numbered"><![CDATA[
 # --
 # Kernel/System/SLA/PreferencesCustom.pm - some user functions
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
 # Id: PreferencesCustom.pm,v 1.2 2009/02/16 11:47:34 tr Exp $
 # --
@@ -40,7 +40,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
