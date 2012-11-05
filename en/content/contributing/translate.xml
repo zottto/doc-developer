@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: translate.xml,v 1.3 2011-03-27 08:50:05 mh Exp $ -->
+<!-- $Id: translate.xml,v 1.4 2012-11-05 09:34:46 mg Exp $ -->
 
 <section id="translate">
     <title>Translating OTRS</title>
@@ -21,14 +21,6 @@
                 </para>
                 <para>
                     <filename>Kernel/Language/$Language.pm</filename>
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Frontend Module Translation File
-                </para>
-                <para>
-                    <filename>Kernel/Language/$Language_$FrontendModule.pm</filename>
                 </para>
             </listitem>
             <listitem>
@@ -55,7 +47,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
 
 sub Data {
     my $Self = shift;
@@ -88,41 +80,6 @@ sub Data {
                 ]]></programlisting>
             </para>
         </section>
-        <section id="frontend-translation-file">
-            <title>Frontend Translation File</title>
-            <para>
-                The Frontend Translation File is used for a specific frontend module.
-                If, for example, the frontend module "Kernel/Modules/AgentCalendar.pm",  also
-                <ulink url="http://otrs.example.com/otrs/index.pl?Action=AgentCalendar">http://otrs.example.com/otrs/index.pl?Action=AgentCalendar</ulink>,
-                is used, the Frontend Translation File "Kernel/Language/de_Agentcalendar.pm" is used, too.
-            </para>
-            <para>
-                Format:
-                <programlisting><![CDATA[
-package Kernel::Language::de_AgentCalendar;
-
-use strict;
-use warnings;
-
-sub Data {
-    my $Self = shift;
-
-    $Self->{Translation}->{'CW'} = 'KW';
-    $Self->{Translation}->{'Today'} = 'heute';
-    $Self->{Translation}->{'Tomorrow'} = 'Morgen';
-    $Self->{Translation}->{'1 St. May'} = 'Erster Mai';
-    $Self->{Translation}->{'Christmas'} = 'Weihnachten';
-    $Self->{Translation}->{'Silvester'} = 'Silvester';
-    $Self->{Translation}->{'New Year\'s Eve!'} = 'Neu Jahr!';
-    $Self->{Translation}->{'January'} = 'Januar';
-    $Self->{Translation}->{'February'} = 'Februar';
-    return 1;
-}
-
-1;
-                ]]></programlisting>
-            </para>
-        </section>
         <section id="custom-translation-file">
             <title>Custom Translation File</title>
             <para>
@@ -139,7 +96,7 @@ use strict;
 use warnings;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.4 $) [1];
 
 sub Data {
     my $Self = shift;
