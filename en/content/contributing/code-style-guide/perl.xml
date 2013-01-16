@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $ -->
+<!-- $Id: perl.xml,v 1.5 2013-01-16 09:18:05 mb Exp $ -->
 
 <section id="code-style-guide-perl">
     <title>Perl</title>
@@ -40,16 +40,16 @@ e. g. @TicktIDs or $Output or BuildQueueView()
     <section id="source-code-header">
         <title>Source Code Header and Charset</title>
         <para>
-            Attach the following header to each and every source file.
-            Source files are saved in Charset UTF-8.
+            Attach the following header to every source file.
+            Source files are saved in UTF-8 charset.
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
 # --
 # (file name) - a short description what it does
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
+# $Id: perl.xml,v 1.5 2013-01-16 09:18:05 mb Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -62,12 +62,12 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 # --
 # (file name) - a short description what it does
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
 # --
-# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
+# $Id: perl.xml,v 1.5 2013-01-16 09:18:05 mb Exp $
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -91,7 +91,7 @@ e. g. @TicktIDs or $Output or BuildQueueView()
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
-# $Id: perl.xml,v 1.4 2012-04-21 23:06:56 ep Exp $
+# $Id: perl.xml,v 1.5 2013-01-16 09:18:05 mb Exp $
         ]]></programlisting>
         </para>
     </section>
@@ -121,9 +121,9 @@ e.g. for perl-code
         </para>
         <para>
             <programlisting format="linespecific"><![CDATA[
-    # -----------------------------#
-    # here starts a special area
-    # -----------------------------#
+    # -----------------------------------#
+    # here is the start of a special area
+    # -----------------------------------#
             ]]></programlisting>
         </para>
         <para>
@@ -131,7 +131,7 @@ e.g. for perl-code
         </para>
         <para>
             <programlisting format="linespecific"><![CDATA[
-    # --- customizing for bsi
+    # --- customizing for some project
             ]]></programlisting>
         </para>
     </section>
@@ -189,7 +189,7 @@ pass the Type parameter like this:
     <section id="line-length">
         <title>Length of lines</title>
         <para>
-    Please see that a line of code is not longer then 100 charactars.
+    Make sure that a line of code is not longer than 100 charactars.
         </para>
     </section>
     <section id="core-objects">
@@ -197,8 +197,8 @@ pass the Type parameter like this:
         <section id="objects-allocation">
             <title>Objects and their allocation</title>
             <para>
-        In OTRS many objects are available. But it is not allowed to use every object in each script.
-        Please note the following definitions
+        In OTRS many objects are available. But you should not use every object in every file.
+        This is also because of the split between frontend and backend code.
             </para>
             <para>
             <itemizedlist mark="round">
@@ -228,7 +228,7 @@ pass the Type parameter like this:
                     <para>in .pm files only pass it to the next Object you initialize</para>
                 </listitem>
                 <listitem>
-                    <para>don't use the Perl "require" function any more</para>
+                    <para>don't use the Perl "require" function, use the MainObject</para>
                 </listitem>
             </itemizedlist>
             </para>
@@ -254,7 +254,7 @@ pass the Type parameter like this:
         <title>Regular Expressions</title>
         <para>
             For regular expressions we always use the m// operator with curly braces as delimiters. We also use the modifiers x, m and s.
-            The x modifiers allows you two comment your regex and use spaces to "group" logical groups.
+            The x modifiers allows you to comment your regex and use spaces to "group" logical groups.
         </para>
         <para>
         <programlisting format="linespecific"><![CDATA[
@@ -269,7 +269,7 @@ pass the Type parameter like this:
 ]]></programlisting>
         </para>
         <para>
-            As the space has no longer a special meaning, you have to use a single character class to match a single space ( [ ]). If you want to match any whitespace you can use \s.
+            As the space no longer has a special meaning, you have to use a single character class to match a single space ( [ ]). If you want to match any whitespace you can use \s.
 
 In the regex, the dot ('.') includes the newline (whereas in regex without s modifier the dot means 'everything but newline'). If you want to match anything but newline, you have to use the negated single character class ([^\n]).
         </para>
