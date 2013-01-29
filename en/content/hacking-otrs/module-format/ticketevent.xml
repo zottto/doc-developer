@@ -6,10 +6,9 @@
         Ticket event modules are running right after a ticket action takes place.
         Per convention these modules are located in the directory "Kernel/System/Ticket/Event".
         An ticket event module needs only the two functions new() and Run().
-        The method Run() receives at least the parameters Event, UserID, and TicketID.
-        For the events TicketFreeTextUpdate and TicketFreeTimeUpdate, the parameter Counter is also passed
-        to the Run() method, in order to identify which free field was updated.
-        The article related handler functions also receives the ArticleID as parameter.
+        The method Run() receives at least the parameters Event, UserID, and Data.
+        Data is a hash ref containing data of the ticket, and in case of Article-related events also
+        containing Article data.
     </para>
     <section id="ticketevent-code">
         <title>Code example</title>
@@ -38,7 +37,7 @@
             <title>Perform extra cleanup action when a ticket is deleted.</title>
             <para>
                 A customized OTRS might hold non-standard data in additional database tables.
-                When a ticket is deleteted then this additional data needs to be deleted.
+                When a ticket is deleted then this additional data needs to be deleted.
                 This functionality can be achieved with a ticket event module listening to 'TicketDelete' events.
             </para>
         </section>
