@@ -369,9 +369,9 @@
         </para>
         <para>
             For the OTRS data model please refer to the files in your /doc directory. Alternatively
-            you can look at the data model on our CVS server:
-            <ulink url="http://source.otrs.org/viewvc.cgi/otrs/doc/OTRSDatabaseDiagram.png?view=markup">
-                http://source.otrs.org/viewvc.cgi/otrs/doc/OTRSDatabaseDiagram.png?view=markup
+            you can look at the data model on github:
+            <ulink url="https://github.com/OTRS/otrs/blob/master/doc/OTRSDatabaseDiagram.png">
+                https://github.com/OTRS/otrs/blob/master/doc/OTRSDatabaseDiagram.png
             </ulink>.
         </para>
     </section>

@@ -132,8 +132,8 @@ sub Data {
             </listitem>
             <listitem>
                 <para>
-                    Take the current translation file (Kernel/Language/$Language.pm) from CVS
-                    (<ulink url="http://source.otrs.org/">http://source.otrs.org</ulink>) and save it in your
+                    Take the current translation file (Kernel/Language/$Language.pm) from git
+                    (<ulink url="https://github.com/OTRS/otrs/tree/master/Kernel/Language">github</ulink>) and save it in your
                     <filename>Kernel/Language/</filename> directory, overwriting the current one in your
                     filesystem.
                 </para>
@@ -168,8 +168,8 @@ sub Data {
             </listitem>
             <listitem>
                 <para>
-                    Take the current German translation (Kernel/Language/de.pm) from CVS
-                    (<ulink url="http://source.otrs.org/">http://source.otrs.org</ulink>).
+                    Take the current German translation (Kernel/Language/de.pm) from git
+                    (<ulink url="https://github.com/OTRS/otrs/tree/master/Kernel/Language">github</ulink>).
                     Use the German version because this is always up to date.
                 </para>
             </listitem>

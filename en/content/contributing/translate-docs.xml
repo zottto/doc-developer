@@ -39,16 +39,16 @@
     </para>
 
     <para>
-        The CVS repository for the admin documentation can be found
-        <ulink url="http://source.otrs.org/viewvc.cgi/doc-admin/">here</ulink>.
+        The git repository for the admin documentation can be found
+        <ulink url="https://github.com/OTRS/doc-admin">on github</ulink>.
         Inside of this repository, there is the
-        <ulink url="http://source.otrs.org/viewvc.cgi/doc-admin/i18n/">directory with the translation files</ulink>.
+        <ulink url="https://github.com/OTRS/doc-admin/tree/master/i18n">directory with the translation files</ulink>.
     </para>
 
     <para>
         To start a new translation, download the translation template file
-        <ulink url="http://source.otrs.org/viewvc.cgi/doc-admin/i18n/doc-admin.pot?view=co">doc-admin.pot</ulink>
-        from CVS, save it and rename the file to <literal>doc-admin.$Lanugage.po</literal>
+        <ulink url="https://github.com/OTRS/doc-admin/blob/master/i18n/doc-admin.pot">doc-admin.pot</ulink>
+        from git, save it and rename the file to <literal>doc-admin.$Lanugage.po</literal>
         (e. g. <literal>doc-admin.de.po</literal> for German).
     </para>
     <para>

@@ -8,27 +8,30 @@
 To facilitate the writing of OTRS expansion modules, the creation of a development environment is necessary.
     </para>
     <section id="environment-cvs-checkout">
-        <title>Framework checkout (CVS)</title>
+        <title>Framework checkout</title>
         <para>
 First of all a directory must be created in which the modules can be stored.
-Then switch to the new directory using the command line and check them out of OTRS 2.4
-or the CVS head by using the following command (loginpassword: cvs):
+Then switch to the new directory using the command line and check them out of OTRS 3.1
+or the git master by using the following command:
         </para>
         <para>
         <screen>
-shell> cvs -d :pserver:anonymous@source.otrs.org:/home/cvs login
-# for CVS Head
-shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co otrs
+# for git master
+shell> git clone git://github.com/OTRS/otrs.git -b master
 # for a specific branch
-shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co -r rel-2_4 otrs
+shell> git clone git://github.com/OTRS/otrs.git -b rel-3_1
         </screen>
         </para>
         <para>
-OTRS expansion modules can be checked out following the same routine.
-Check out the "module-tools" module, too for your development environment. It contains a number of useful tools.
+Most OTRS expansion modules are not yet migrated to git and can be checked out from CVS (loginpassword: cvs):
+        <screen>
+shell> cvs -d :pserver:anonymous@source.otrs.org:/home/cvs login
+shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co -r rel-3_1 ModuleName
+        </screen>
+Check out the "module-tools" module (from github) too, for your development environment. It contains a number of useful tools.
         </para>
         <para>
-To enable the CVS-OTRS it is necessary to configure it on the Apache web server and to create the Config.pm.
+To enable the new OTRS system it is necessary to configure it on the Apache web server and to create the Config.pm.
 Then the Installer.pl can be executed. The basic system is ready to run now.
         </para>
     </section>
@@ -36,9 +39,9 @@ Then the Installer.pl can be executed. The basic system is ready to run now.
         <title>Linking Expansion Modules</title>
         <para>
 A clear separation between OTRS and the modules is necessary for proper developing.
-Particularly when using a CVS, a clear separation is crucial.
+Particularly when using a git, a clear separation is crucial.
 In order to facilitate the OTRS access to the files, links must be created.
-This is done by a script in the directory module tools (to get this tools, check out the CVS module "module-tools").
+This is done by a script in the directory module tools (to get this tools, check out the git module "module-tools").
 Example: Linking the Calendar Module:
         </para>
         <para>
