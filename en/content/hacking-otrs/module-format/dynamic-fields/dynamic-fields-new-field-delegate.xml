@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: dynamic-fields-new-field-delegate.xml,v 1.1 2012-03-27 05:46:40 cr Exp $ -->
 
 <section id="dynamic-fields-new-field-delegate">
     <title>Dynamic Field Delegate Example</title>
@@ -25,8 +24,6 @@
 # --
 # Kernel/System/DynamicField/Backend/Password.pm - Delegate for DynamicField Password backend
 # Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: dynamic-fields-new-field-delegate.xml,v 1.1 2012-03-27 05:46:40 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

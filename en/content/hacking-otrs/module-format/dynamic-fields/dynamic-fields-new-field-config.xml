@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: dynamic-fields-new-field-config.xml,v 1.1 2012-03-27 05:46:26 cr Exp $ -->
 
 <section id="dynamic-fields-new-field-config">
     <title>Dynamic Field Configuration File Example</title>
@@ -19,7 +18,6 @@
             <programlisting><![CDATA[
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_config version="1.0" init="Application">
-    <CVS>$Id: dynamic-fields-new-field-config.xml,v 1.1 2012-03-27 05:46:26 cr Exp $</CVS>
             ]]></programlisting>
         </para>
         <para>

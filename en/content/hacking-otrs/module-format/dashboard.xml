@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: dashboard.xml,v 1.1 2010-08-13 08:59:28 mg Exp $ -->
 
     <section id="module-dashboard">
         <title>Dashboard Module</title>
@@ -17,8 +16,6 @@ Dashboard module to display statistics in the form of a line graph.
 # --
 # Kernel/Output/HTML/DashboardTicketStatsGeneric.pm - message of the day
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: dashboard.xml,v 1.1 2010-08-13 08:59:28 mg Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

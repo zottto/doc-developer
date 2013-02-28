@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: dynamic-fields-new-field-admin-module-template.xml,v 1.1 2012-03-27 05:46:13 cr Exp $ -->
 
 <section id="dynamic-fields-new-field-admin-module-template">
     <title>Dynamic Field DTL Template for Admin Dialog Example</title>
@@ -18,8 +17,6 @@
 # --
 # AdminDynamicFieldPassword.dtl - provides HTML form for AdminDynamicFieldPassword
 # Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: dynamic-fields-new-field-admin-module-template.xml,v 1.1 2012-03-27 05:46:13 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

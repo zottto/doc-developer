@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: dynamic-fields-new-field-admin-module.xml,v 1.2 2012-04-18 19:51:21 cr Exp $ -->
 
 <section id="dynamic-fields-new-field-admin-module">
     <title>Dynamic Field Admin Dialog Example</title>
@@ -18,8 +17,6 @@
 # --
 # Kernel/Modules/AdminDynamicFieldPassword.pm - provides a dynamic fields password config view for admins
 # Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: dynamic-fields-new-field-admin-module.xml,v 1.2 2012-04-18 19:51:21 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

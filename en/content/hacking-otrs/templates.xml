@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: templates.xml,v 1.7 2012-10-03 00:34:06 ep Exp $ -->
 
 <section id="TemplatingMechanism">
     <title>Templating Mechanism</title>

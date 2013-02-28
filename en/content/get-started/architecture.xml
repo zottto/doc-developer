@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: architecture.xml,v 1.8 2012-11-14 13:33:33 mb Exp $ -->
 
 <section id="architecture-overview">
     <title>Architecture Overview</title>

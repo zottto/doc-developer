@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: hacking-otrs.xml,v 1.3 2010-09-13 10:41:36 mg Exp $ -->
 
 <chapter id="hacking">
     <title>Hacking OTRS</title>

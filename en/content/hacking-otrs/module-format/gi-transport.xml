@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: gi-transport.xml,v 1.1 2012-03-12 13:53:45 cr Exp $ -->
 
 <section id="transport">
     <title>Network Transport</title>
@@ -82,8 +81,6 @@
 # --
 # Kernel/GenericInterface/Transport/HTTP/Test.pm - GenericInterface network transport interface for testing
 # Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: gi-transport.xml,v 1.1 2012-03-12 13:53:45 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
