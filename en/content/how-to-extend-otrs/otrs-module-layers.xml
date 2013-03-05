@@ -35,6 +35,7 @@
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/outputfilter.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/stats.xml" />
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticketnumber-generator.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticketevent.xml" />
     </section>
 
     <section id="frontend-modules">
@@ -333,187 +334,6 @@ Description of NavBar (icon points) options:
         </informaltable>
         </para>
     </section>
-    <section id="module-core">
-        <title>Core Modules</title>
-        <para>
-Core modules are located under $OTRS_HOME/Kernel/System/*. This layer is for
-the logical work. The modules are used to handle system routines like "lock ticket"
-and "create ticket". These modules  always need pod (Perl Documentation).
-        </para>
-        <para>
-A few common core modules are: Log (Kernel::System::Log); Ticket
-(Kernel::System::Ticket), Auth (Kernel::System::Auth), User (Kernel::System::User),
-Email (Kernel::System::Email).
-        </para>
-        <para>
-For more information on the core modules see
-<ulink url="http://dev.otrs.org/">http://dev.otrs.org</ulink>
-        </para>
-        <para>
-Format:
-        </para>
-        <para>
-        <programlisting><![CDATA[
-# --
-# Kernel/System/Backend.pm - a core module
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::Backend;
-
-use strict;
-use warnings;
-
-=head1 NAME
-
-Kernel::System::Log - global log interface
-
-=head1 SYNOPSIS
-
-All log functions.
-
-=head1 PUBLIC INTERFACE
-
-=over 4
-
-=item new()
-
-create a backend object
-
-use Kernel::Config;
-use Kernel::System::Backend;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
-
-my $ConfigObject = Kernel::Config->new();
-my $BackendObject    = Kernel::System::Backend->new(ConfigObject => $ConfigObject);
-
-=cut
-
-sub new {
-    my ( $Type, %Param ) = @_;
-    [...]
-    return $Self;
-}
-
-=item SomeMethodeA()
-
-some info about the methode
-
-$BackendObject->SomeMethodeA(ParamA => 'error', ParamB => "Need something!");
-
-=cut
-
-sub SomeMethodeA{
-    my ( $Self, %Param ) = @_;
-    [...]
-    return 1;
-}
-1;
-
-=head1 TERMS AND CONDITIONS
-
-This software is part of the OTRS project (http://otrs.org/).
-
-This software comes with ABSOLUTELY NO WARRANTY. For details, see
-the enclosed file COPYING for license information (AGPL). If you
-did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-
-=head1 VERSION
-
-$Revision: 1.5 $ $Date: 2012-03-27 05:43:30 $
-
-=cut
-        ]]></programlisting>
-        </para>
-    </section>
-    <section id="module-customer-user">
-        <title>Customer User Module</title>
-        <para>
-This module layer can be used as a bridge between your customer source
-system and OTRS. Thus it is possible to use your customer data directly for
-your data ware house (read only and read/write).
-        </para>
-        <para>
-Format:
-        </para>
-        <para>
-        <programlisting><![CDATA[
-# --
-# Kernel/System/CustomerUser/ABC.pm - a customer data backend
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::CustomerUser::ABD;
-
-use strict;
-use warnings;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
-
-# --
-sub new {
-    my ( $Type, %Param ) = @_;
-    [...]
-    return $Self;
-}
-# --
-sub CustomerName {
-    [...]
-    return $Name;
-}
-# --
-sub CustomerSearch {
-    [...]
-    return %Result;
-}
-# --
-sub CustomerUserList {
-    [...]
-    return %List;
-}
-# --
-sub CustomerIDs {
-    [...]
-    return @CustomerIDs;
-}
-# --
-sub CustomerUserDataGet {
-    [...]
-    return %Data;
-}
-# --
-sub CustomerUserAdd {
-    [...]
-    return 1
-}
-# --
-sub CustomerUserUpdate {
-    [...]
-    return 1;
-}
-# --
-sub SetPassword {
-    [...]
-    return 1;
-}
-1;
-        ]]></programlisting>
-        </para>
-        <para>
-To use this module, see the admin manual.
-        </para>
-    </section>
     <section id="module-customer-navigation">
         <title>Customer Navigation Module</title>
         <para>
@@ -537,56 +357,6 @@ $Self->{'CustomerFrontend::NavBarModule'}->{'99-ABC'} = {
         ]]></programlisting>
         </para>
     </section>
-    <section id="ticket-modules">
-        <title>Ticket Modules</title>
-        <section id="ticket-number-module">
-            <title>Ticket Number Module</title>
-            <para>
-If you want to create your own ticket number format, just create your own ticket
-number module. These modules are located under "Kernel/System/Ticket/Number/*.pm".
-For default modules see the admin manual. You just need 2 functions:
-CreateTicketNr() and GetTNByString():
-            </para>
-            <para>
-Format:
-            </para>
-            <para>
-            <programlisting><![CDATA[
-# --
-# Ticket/Number/Simple.pm - a ticket number auto increment generator
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
-
-package Kernel::System::Ticket::Number::Simple;
-
-use strict;
-use warnings;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
-
-sub CreateTicketNr {
-    my $Self = shift;
-    my $JumpCounter = shift || 0;
-    # get needed config options
-    [...]
-    return $Tn;
-}
-# --
-sub GetTNByString {
-    my $Self = shift;
-    my $String = shift || return;
-    [...]
-    return $Tn;
-}
-1;
-            ]]></programlisting>
-            </para>
-        </section>
         <section id="ticket-postmaster-module">
             <title>Ticket PostMaster Module</title>
             <para>
@@ -860,24 +630,5 @@ sub Run {
             ]]></programlisting>
             </para>
         </section>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticketevent.xml" />
-        <section id="more-modules">
-            <title>More Modules</title>
-            <para>
-The Agent Ticket Permission Modules (Kernel/System/Ticket/Permission/) contain functions to verify
-an agent's authorisation to access a ticket.
-            </para>
-            <para>
-The Customer Ticket Permission Modules (Kernel/System/Ticket/CustomerPermission/) contain functions
-to verify a customer's authorisation to access a ticket.
-            </para>
-            <para>
-The Article Module (Kernel/System/Ticket/Article.pm) facilitates the readout and generating of ticket articles.
-            </para>
-            <para>
-More modules and their descriptions are listed under <ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
-            </para>
-        </section>
-    </section>
     </section>
 </section>
