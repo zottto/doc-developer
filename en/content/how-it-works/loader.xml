@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: loader.xml,v 1.4 2010-10-26 14:59:17 mg Exp $ -->
 
 <section id="loader">
     <title>The CSS and JavaScript "Loader"</title>

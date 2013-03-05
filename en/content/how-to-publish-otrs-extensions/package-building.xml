@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-<!-- $Id: package-building.xml,v 1.2 2010-08-26 15:22:30 mb Exp $ -->
 
 <section>
     <title>Package Building</title>
@@ -35,17 +34,17 @@ The package version (required).
         <section id="package-framework">
             <title>Framework</title>
             <para>
-The required framework version (2.4.x means e.g. 2.4.1 or 2.4.9) (required).
+The targeted framework version (3.2.x means e.g. 3.2.1 or 3.2.2) (required).
             <programlisting><![CDATA[
-<Framework>2.4.x</Framework>
+<Framework>3.2.x</Framework>
             ]]></programlisting>
             </para>
             <para>
 Can also be used several times.
             <programlisting><![CDATA[
-<Framework>2.4.x</Framework>
-<Framework>2.3.x</Framework>
-<Framework>2.2.x</Framework>
+<Framework>3.0.x</Framework>
+<Framework>3.1.x</Framework>
+<Framework>3.2.x</Framework>
             ]]></programlisting>
             </para>
         </section>
@@ -81,8 +80,8 @@ The license of the package (required).
             <para>
 The package change log (optional).
             <programlisting><![CDATA[
-<ChangeLog Version="1.1.2" Date="2007-02-15 18:45:21">Added some feature.</ChangeLog>
-<ChangeLog Version="1.1.1" Date="2007-02-15 16:17:51">New package.</ChangeLog>
+<ChangeLog Version="1.1.2" Date="2013-02-15 18:45:21">Added some feature.</ChangeLog>
+<ChangeLog Version="1.1.1" Date="2013-02-15 16:17:51">New package.</ChangeLog>
             ]]></programlisting>
             </para>
         </section>
@@ -233,71 +232,71 @@ For more info see chapter "Package Life Cycle".
         <section id="package-intro-install">
             <title>IntroInstall</title>
             <para>
-To show a "pre" or "post" install introdution in installation dialog.
+To show a "pre" or "post" install introduction in installation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
 <IntroInstall Type="post" Lang="en" Title="Some Title">
-Some Info formated in dtl/html....
+Some Info formatted in dtl/html....
 </IntroInstall>
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
             </para>
         </section>
         <section id="package-intro-uninstall">
             <title>IntroUninstall</title>
             <para>
-To show a "pre" or "post" uninstall introdution in uninstallation dialog.
+To show a "pre" or "post" uninstall introduction in uninstallation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
 <IntroUninstall Type="post" Lang="en" Title="Some Title">
-Some Info formated in dtl/html....
+Some Info formatted in dtl/html....
 </IntroUninstall>
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
             </para>
         </section>
         <section id="package-intro-reinstall">
             <title>IntroReinstall</title>
             <para>
-To show a "pre" or "post" reinstall introdution in reinstallation dialog.
+To show a "pre" or "post" reinstall introduction in reinstallation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
 <IntroReinstall Type="post" Lang="en" Title="Some Title">
-Some Info formated in dtl/html....
+Some Info formatted in dtl/html....
 </IntroReinstall>
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
             </para>
         </section>
         <section id="package-intro-upgrade">
             <title>IntroUpgrade</title>
             <para>
-To show a "pre" or "post" upgrade introdution in upgrading dialog.
+To show a "pre" or "post" upgrade introduction in upgrading dialog.
             </para>
             <para>
             <programlisting><![CDATA[
 <IntroUpgrade Type="post" Lang="en" Title="Some Title">
-Some Info formated in dtl/html....
+Some Info formatted in dtl/html....
 </IntroUpgrade>
             ]]></programlisting>
             </para>
             <para>
-You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag wenn intro is shown (to use the new lines and spaces of the content).
+You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
             </para>
         </section>
         <section id="package-code-install">
             <title>CodeInstall</title>
             <para>
-To execute perl code if the package is installed (optional).
+To execute perl code when the package is installed (optional).
             <programlisting><![CDATA[
 <CodeInstall>
     # example
@@ -384,12 +383,12 @@ This is a whole example spec file.
 <otrs_package version="1.0">
     <Name>Calendar</Name>
     <Version>0.0.1</Version>
-    <Framework>2.4.x</Framework>
+    <Framework>3.2.x</Framework>
     <Vendor>OTRS AG</Vendor>
     <URL>http://otrs.org/</URL>
-    <License>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</License>
-    <ChangeLog Version="1.1.2" Date="2007-02-15 18:45:21">Added some feature.</ChangeLog>
-    <ChangeLog Version="1.1.1" Date="2007-02-15 16:17:51">New package.</ChangeLog>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <ChangeLog Version="1.1.2" Date="2013-02-15 18:45:21">Added some feature.</ChangeLog>
+    <ChangeLog Version="1.1.1" Date="2013-02-15 16:17:51">New package.</ChangeLog>
     <Description Lang="en">A web calendar.</Description>
     <Description Lang="de">Ein Web Kalender.</Description>
     <IntroInstall Type="post" Lang="en" Title="Thank you!">Thank you for choosing the Calendar module.</IntroInstall>
