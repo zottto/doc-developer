@@ -57,7 +57,9 @@
         </legalnotice>
     </bookinfo>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/get-started.xml" />
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/hacking-otrs.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/how-it-works.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/how-to-extend-otrs.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/how-to-publish-otrs-extensions.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/contributing.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="content/additional-resources.xml" />
 </book>
