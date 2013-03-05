@@ -1,18 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<section>
+<section id="otrs-module-layers">
     <title>Using the power of the OTRS module layers</title>
-    <abstract>
-        <para>
-            OTRS has a large number of so-called "module layers" which make it very easy to extend
-            the system without patching existing code. One example is the number generation mechanism
-            for tickets. It is a "module layer" with
-            <link linkend="ticketnumber-generator">pluggable modules</link>, and you can add
-            your own custom number generator modules if you wish to do so.
-            Let's look at the different layers in detail!
-        </para>
-    </abstract>
+    <para>
+        OTRS has a large number of so-called "module layers" which make it very easy to extend
+        the system without patching existing code. One example is the number generation mechanism
+        for tickets. It is a "module layer" with
+        <link linkend="ticketnumber-generator">pluggable modules</link>, and you can add
+        your own custom number generator modules if you wish to do so.
+        Let's look at the different layers in detail!
+    </para>
 
     <section id="authentication-user-management-modules">
         <title>Authentication and user management</title>
@@ -129,211 +127,7 @@ $Self->{'Frontend::NavBarModule'}->{'99-ABC'} = {
         ]]></programlisting>
         </para>
     </section>
-    <section id="old-frontend-modules">
-        <title>Frontend Modules</title>
-        <para>
-Frontend Modules are located under  "$OTRS_HOME/Kernel/Modules/*.pm". There
-are two public functions in there - new() and run() - which are accessed from the
-Frontend Handle (e. g. index.pl). "new()" is used to create a frontend
-module object. The Frontend Handle provides the used frontend module with the basic framework object.
-These are, for example: ParamObject (to get formular params), DBObject
-(to use existing database connects), LayoutObject (to use templates and other
-html layout functions), ConfigObject (to access config settings), LogObject
-(to use the framework log system), UserObject (to get the user functions from
-the current user), GroupObject (to get the group functions), MainObject (to get main functions
-like 'Require') and EncodeObject (for the charset encoding).
-        </para>
-        <para>
-For more information on core modules see
-<ulink url="http://dev.otrs.org/">http://dev.otrs.org/</ulink>
-        </para>
-        <para>
-Format:
-        <programlisting><![CDATA[
-# --
-# Kernel/Modules/AgentTest.pm - message of the day
-# Copyright (C) (year) (name of author) (email of author)
-# --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
-# --
 
-package Kernel::Modules::AgentTest;
-
-use strict;
-use warnings;
-
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
-
-# --
-sub new {
-    my ( $Type, %Param ) = @_;
-    [...]
-    return $Self;
-}
-# --
-sub Run {
-    my ( $Self, %Param ) = @_;
-    [...]
-    # ---------------------------------------------------------- #
-    # add a new object (Note: dtl text 'New')
-    # ---------------------------------------------------------- #
-    if ($Self->{Subaction} eq 'Add') {
-        my $Output   = '';
-        my %Frontend = ();
-        [...]
-        # add add block
-        $Self->{LayoutObject}->Block(
-            Name => 'Add',
-            Data => {%Param, %Frontend},
-        );
-        # build output
-        $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
-        $Output .= $Self->{LayoutObject}->NavigationBar();
-        $Output .= $Self->{LayoutObject}->Output(
-            Data => {%Param, %Frontend},
-            TemplateFile => 'AgentTest',
-        );
-        $Output .= $Self->{LayoutObject}->Footer();
-        return $Output;
-    }
-    # ---------------------------------------------------------- #
-    # show overview screen
-    # ---------------------------------------------------------- #
-    elsif ($Self->{Subaction} eq 'Overview') {
-        # add overview block
-        $Self->{LayoutObject}->Block(
-            Name => 'Overview',
-            Data => {%Param, %Frontend},
-        );
-        # build output
-        $Output .= $Self->{LayoutObject}->Header(Area => 'Agent', Title => "Test");
-        $Output .= $Self->{LayoutObject}->NavigationBar();
-        $Output .= $Self->{LayoutObject}->Output(
-            Data => {%Param, %Frontend},
-            TemplateFile => 'AgentTest',
-        );
-        $Output .= $Self->{LayoutObject}->Footer();
-        return $Output;
-    }
-    # ---------------------------------------------------------- #
-    # show error screen
-    # ---------------------------------------------------------- #
-    return $Self->{LayoutObject}->ErrorScreen(Message => "Invalid Subaction process!");
-}
-# --
-1;
-        ]]></programlisting>
-        </para>
-        <para>
-You also need a module registration for frontend modules. Define read
-only groups with the "GroupRo" and read/write groups with the 'Group' param (see
-table below for details). You can define navigation bar icons via the
-"NavBar'"param, too (see table below for details).
-        <programlisting><![CDATA[
-[Kernel/Config.pm]
-$Self->{'Frontend::Module'}->{'AgentTest'} = {
-    Group => ['admin'],
-    GroupRo => ['test', 'admin'],
-    Description => 'A test Module',
-    NavBarName => 'Ticket',
-    NavBar => [
-        {
-            Description => 'Test Module',
-            Name => 'Test',
-            Image => 'stats.png',
-            Link => 'Action=AgentTest',
-            NavBar => 'Ticket',
-            Prio => 85,
-        },
-    ],
-};
-        ]]></programlisting>
-        </para>
-        <para>
-You can access this frontend module via http (browse) with the Action
-param = Module or over the navigation bar.
-        </para>
-        <para>
-            <ulink url="">http://localhost/otrs/index.pl?Action=AgentTest</ulink>
-        </para>
-        <para>
-Description of Frontend::Module options:
-        </para>
-        <para>
-        <informaltable>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Key</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>Group</entry>
-                        <entry>An ARRAY reference of rw groups of this module.</entry>
-                    </row>
-                    <row>
-                        <entry>GroupRo</entry>
-                        <entry>An ARRAY reference of ro groups of this module.</entry>
-                    </row>
-                    <row>
-                        <entry>Description</entry>
-                        <entry>Module description, just for internal use - not shown in the user interface.</entry>
-                    </row>
-                    <row>
-                        <entry>NavBarName</entry>
-                        <entry>NavBar context name of this module.</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </informaltable>
-        </para>
-        <para>
-Description of NavBar (icon points) options:
-        </para>
-        <para>
-        <informaltable>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Key</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>Description</entry>
-                        <entry>The description of the icon which is shown in the navbar after the curser is pointed on it.</entry>
-                    </row>
-                    <row>
-                        <entry>Name</entry>
-                        <entry>The icon name shown in the navbar.</entry>
-                    </row>
-                    <row>
-                        <entry>Image</entry>
-                        <entry>The icon image shown in the navbar.</entry>
-                    </row>
-                    <row>
-                        <entry>Link</entry>
-                        <entry>The link behind the icon in the navbar.</entry>
-                    </row>
-                    <row>
-                        <entry>NavBar</entry>
-                        <entry>Only shown this icon in this NavBar context.</entry>
-                    </row>
-                    <row>
-                        <entry>Prio</entry>
-                        <entry>Sort prio of the icon in the navbar.</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </informaltable>
-        </para>
-    </section>
     <section id="module-customer-navigation">
         <title>Customer Navigation Module</title>
         <para>
