@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<section>
-    <title>Writing an OTRS module for a new object</title>
+<section id="writing-new-otrs-frontend-module">
+    <title>Writing a new OTRS frontend module</title>
     <para>
-In this chapter, the writing of a new OTRS module is illustrated on the basis of a simple small programme.
+In this chapter, the writing of a new OTRS module is illustrated on the basis of a simple small program.
 Necessary prerequisite is an OTRS development environment as specified in the chapter of the same name.
     </para>
     <section id="what-we-want-to-write">
@@ -244,7 +244,8 @@ sub Data {
 The example given above shows that it is not too difficult to write a new module for OTRS.
 It is important, though, to make sure that the module and file name are unique and thus
 do not interfere with the framework or other expansion modules.
-When a module is finished, an OPM package must be generated from it (see chapter 'Package Building').
+When a module is finished, an OPM package must be generated from it (see chapter
+<link linkend="package-building">Package Building</link>).
         </para>
     </section>
 </section>

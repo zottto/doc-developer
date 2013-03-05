@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<section>
+<section id="package-building">
     <title>Package Building</title>
     <para>
 If you want to create an OPM package (.opm) you need to create a spec file (.sopm)

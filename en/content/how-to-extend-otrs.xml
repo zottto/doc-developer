@@ -6,8 +6,7 @@
 
     <title>How to Extend OTRS</title>
 
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="how-to-extend-otrs/module-format.xml" />
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="how-to-extend-otrs/object-basics.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="how-to-extend-otrs/writing-otrs-application.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="how-to-extend-otrs/module-format.xml" />
 
 </chapter>
