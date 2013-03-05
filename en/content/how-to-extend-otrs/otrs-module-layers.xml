@@ -2,59 +2,70 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 <section>
-    <title>Module Format</title>
+    <title>Using the power of the OTRS module layers</title>
+    <abstract>
+        <para>
+            OTRS has a large number of so-called "module layers" which make it very easy to extend
+            the system without patching existing code. One example is the number generation mechanism
+            for tickets. It is a "module layer" with
+            <link linkend="ticketnumber-generator">pluggable modules</link>, and you can add
+            your own custom number generator modules if you wish to do so.
+            Let's look at the different layers in detail!
+        </para>
+    </abstract>
+
+    <section id="authentication-user-management-modules">
+        <title>Authentication and user management</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/agent-auth.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/auth-sync.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/customer-auth.xml" />
+    </section>
+
+    <section id="preferences-modules">
+        <title>Preferences</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/customer-user-preferences.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/queue-preferences.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/service-preferences.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/sla-preferences.xml" />
+    </section>
 
     <section id="core-modules">
-        <title>Core Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/agent-auth.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/auth-sync.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/customer-auth.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/customer-user-preferences.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/log.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/outputfilter.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/queue-preferences.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/service-preferences.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/sla-preferences.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/stats.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/virtualfs.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/ticketnumber-generator.xml" />
+        <title>Other core functions</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/log.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/outputfilter.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/stats.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticketnumber-generator.xml" />
     </section>
 
     <section id="frontend-modules">
         <title>Frontend Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dashboard.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/notify.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/ticket-menu.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dashboard.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/notify.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticket-menu.xml" />
     </section>
 
-    <section id="genericinterface-transport-modules">
-        <title>Generic Interface Transport Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/gi-transport.xml" />
+    <section id="genericinterface-modules">
+        <title>Generic Interface Modules</title>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/gi-transport.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/gi-mapping.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/gi-invoker.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/gi-operation.xml" />
     </section>
-    <section id="genericinterface-mapping-modules">
-        <title>Generic Interface Mapping Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/gi-mapping.xml" />
-    </section>
-    <section id="genericinterface-invoker-modules">
-        <title>Generic Interface Invoker Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/gi-invoker.xml" />
-    </section>
-    <section id="genericinterface-operation-modules">
-        <title>Generic Interface Operation Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/gi-operation.xml" />
-    </section>
-    <section id="schedurler-taskhandler-modules">
+
+    <section id="scheduler-taskhandler-modules">
         <title>Scheduler Task Handler Modules</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/scheduler-task-handler.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/scheduler-task-handler.xml" />
     </section>
+
     <section id="dynamicfields-modules">
         <title>Dynamic Fields</title>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dynamic-fields/dynamic-fields-overview.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dynamic-fields/dynamic-fields-framework.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dynamic-fields/dynamic-fields-interaction.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dynamic-fields/dynamic-fields-extend.xml" />
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/dynamic-fields/dynamic-fields-new-field.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dynamic-fields/dynamic-fields-overview.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dynamic-fields/dynamic-fields-framework.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dynamic-fields/dynamic-fields-interaction.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dynamic-fields/dynamic-fields-extend.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/dynamic-fields/dynamic-fields-new-field.xml" />
     </section>
+
     <section id="old-module-description">
         <title>Old Module Descriptions</title>
         <para>Please remove these old sections if newer ones were created.</para>
@@ -141,8 +152,6 @@ Format:
 # --
 # Kernel/Modules/AgentTest.pm - message of the day
 # Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -349,8 +358,6 @@ Format:
 # Kernel/System/Backend.pm - a core module
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
-# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
@@ -440,8 +447,6 @@ Format:
 # --
 # Kernel/System/CustomerUser/ABC.pm - a customer data backend
 # Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -551,8 +556,6 @@ Format:
 # Ticket/Number/Simple.pm - a ticket number auto increment generator
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
-# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
@@ -627,8 +630,6 @@ Format:
 # --
 # Kernel/System/PostMaster/Filter/Example.pm - a postmaster filter
 # Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -768,8 +769,6 @@ Format:
 # Kernel/Output/HTML/TicketMenuLock.pm
 # Copyright (C) (year) (name of author) (email of author)
 # --
-# $Id: module-format.xml,v 1.5 2012-03-27 05:43:30 cr Exp $
-# --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
@@ -861,7 +860,7 @@ sub Run {
             ]]></programlisting>
             </para>
         </section>
-        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="module-format/ticketevent.xml" />
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="otrs-module-layers/ticketevent.xml" />
         <section id="more-modules">
             <title>More Modules</title>
             <para>
