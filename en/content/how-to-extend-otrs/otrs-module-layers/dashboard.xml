@@ -145,7 +145,7 @@ sub Run {
     }
 
     @Data = reverse @Data;
-    my $Source = $Self->{LayoutObject}->JSON(
+    my $Source = $Self->{LayoutObject}->JSONEncode(
         Data => \@Data,
     );
 
@@ -170,8 +170,8 @@ To use this module add the following to the <filename>Kernel/Config.pm</filename
 and restart your webserver (if you use mod_perl).
         <programlisting linenumbering="numbered"><![CDATA[
 <ConfigItem Name="DashboardBackend###0250-TicketStats" Required="0" Valid="1">
-    <Description Lang="en">Parameters for the dashboard backend. "Group" are used to restriced access to the plugin (e. g. Group: admin;group1;group2;). "Default" means if the plugin is enabled per default or if the user needs to enable it manually. "CacheTTL" means the cache time in minutes for the plugin.</Description>
-    <Description Lang="de">Parameter f�r das Dashboard Backend. "Group" ist verwendet um den Zugriff auf das Plugin einzuschr�nken (z. B. Group: admin;group1;group2;). ""Default" bedeutet ob das Plugin per default aktiviert ist oder ob dies der Anwender manuell machen muss. "CacheTTL" ist die Cache-Zeit in Minuten nach der das Plugin erneut aufgerufen wird.</Description>
+    <Description Lang="en">Parameters for the dashboard backend. "Group" are used to restricted access to the plugin (e. g. Group: admin;group1;group2;). "Default" means if the plugin is enabled per default or if the user needs to enable it manually. "CacheTTL" means the cache time in minutes for the plugin.</Description>
+    <Description Lang="de">Parameter für das Dashboard Backend. "Group" ist verwendet um den Zugriff auf das Plugin einzuschränken (z. B. Group: admin;group1;group2;). ""Default" bedeutet ob das Plugin per default aktiviert ist oder ob dies der Anwender manuell machen muss. "CacheTTL" ist die Cache-Zeit in Minuten nach der das Plugin erneut aufgerufen wird.</Description>
     <Group>Ticket</Group>
     <SubGroup>Frontend::Agent::Dashboard</SubGroup>
     <Setting>
