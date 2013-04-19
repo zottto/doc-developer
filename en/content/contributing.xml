@@ -10,7 +10,7 @@
         </para>
     </abstract>
 
-
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/sending-contributions.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/translate.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/translate-docs.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contributing/code-style.xml" />
