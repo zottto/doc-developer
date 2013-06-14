@@ -69,7 +69,7 @@ sub Data {
     'yes' => 'ja',
     'no' => 'kein',
     'Off' => 'Aus',
-    'off' => 'aus',Kernel/Language/$Language_Custome.pm
+    'off' => 'aus',
     };
     # $$STOP$$
     return 1;
