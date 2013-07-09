@@ -11,7 +11,7 @@
     <section id="adding_taskhandler">
         <title>Task Handler backend</title>
         <para>
-            Next will see how to develop a new scheduler task handler backend, each task handler
+            Next we will see how to develop a new scheduler task handler backend. Each task handler
             backend has to implement these subroutines:
         </para>
         <para>
@@ -30,7 +30,7 @@
             (Kernel/scheduler/TaskHandler.pm).
         </para>
         <para>
-            Currently the scheduler only have one working task handler backend named
+            Currently the scheduler only has one working task handler backend named
             "GenericInterface". This task handler backend executes Generic Interface Invoker
             modules in the background.
         </para>
@@ -71,8 +71,7 @@ package Kernel::Scheduler::TaskHandler::Test;
 use strict;
 use warnings;
 
-use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+use vars qw(@ISA);
                 ]]></programlisting>
             </para>
             <para>
@@ -167,12 +166,6 @@ This software is part of the OTRS project (L<http://otrs.org/>).
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
-
-=cut
-
-=head1 VERSION
-
-$Revision: 1.1 $ $Date: 2012-03-12 13:54:29 $
 
 =cut
                 ]]></programlisting>
