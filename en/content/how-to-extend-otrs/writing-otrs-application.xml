@@ -36,8 +36,7 @@ The impact of the various settings is described in the chapter 'Config Mechanism
 <?xml version="1.0" encoding="UTF-8" ?>
 <otrs_config version="1.0" init="Application">
         <ConfigItem Name="Frontend::Module###AgentHelloWorld" Required="1" Valid="1">
-        <Description Lang="en">FrontendModuleRegistration for HelloWorld modul.</Description>
-        <Description Lang="de">FrontendModulRegistration für das HelloWorld Modul.</Description>
+        <Description Translatable="1">FrontendModuleRegistration for HelloWorld module.</Description>
         <Group>HelloWorld</Group>
         <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
         <Setting>
@@ -49,7 +48,6 @@ The impact of the various settings is described in the chapter 'Config Mechanism
                 <NavBar>
                     <Description>HelloWorld</Description>
                     <Name>HelloWorld</Name>
-                    <Image>overview.png</Image>
                     <Link>Action=AgentHelloWorld</Link>
                     <NavBar>HelloWorld</NavBar>
                     <Type>Menu</Type>
@@ -73,7 +71,7 @@ This is the next thing to be created. To do so, we create the following file:
         <para>
         <programlisting><![CDATA[
 # --
-# Kernel/Modules/AgentHelloWorld.pm - frontend modul
+# Kernel/Modules/AgentHelloWorld.pm - frontend module
 # Copyright (C) (year) (name of author) (email of author)
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -137,10 +135,8 @@ Next, we create the file for the core module "/HelloWorld/Kernel/System/HelloWor
         <para>
         <programlisting><![CDATA[
 # --
-# Kernel/System/HelloWorld.pm - core modul
+# Kernel/System/HelloWorld.pm - core module
 # Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -175,7 +171,7 @@ sub GetHelloWorldText {
     <section id="dtl-template-file">
         <title>dtl Template File</title>
         <para>
-The last thing missing before the new module can run is the relevant template.
+The last thing missing before the new module can run is the relevant HTML template.
 Thus, we create the following file:
         </para>
         <para>
@@ -183,8 +179,6 @@ Thus, we create the following file:
 # --
 # Kernel/Output/HTML/Standard/AgentHelloWorld.dtl - overview
 # Copyright (C) (year) (name of author) (email of author)
-# --
-# $Id: writing-otrs-application.xml,v 1.3 2012-05-07 07:46:47 mh Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -210,13 +204,13 @@ Thus, we create the following file:
         ]]></programlisting>
         </para>
         <para>
-The module is working now and displays the text 'Hello World' when called up.
+The module is working now and displays the text 'Hello World' when called.
         </para>
     </section>
     <section id="language-file">
         <title>Language File</title>
         <para>
-If the text 'Hello World' is to be translated into German, a language file for this language must be created:
+If the text 'Hello World' is to be translated into for instance German, you can create a translation file for this language:
 '/HelloWorld/Kernel/Language/de_AgentHelloWorld.pm'.
 Example:
         </para>
@@ -238,7 +232,7 @@ sub Data {
         ]]></programlisting>
         </para>
     </section>
-    <section id="summery">
+    <section id="summary">
         <title>Summary</title>
         <para>
 The example given above shows that it is not too difficult to write a new module for OTRS.
