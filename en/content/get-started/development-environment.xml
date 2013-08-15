@@ -21,13 +21,6 @@ shell> git clone git://github.com/OTRS/otrs.git -b master
 # for a specific branch
 shell> git clone git://github.com/OTRS/otrs.git -b rel-3_1
         </screen>
-        </para>
-        <para>
-Most OTRS expansion modules are not yet migrated to git and can be checked out from CVS (loginpassword: cvs):
-        <screen>
-shell> cvs -d :pserver:anonymous@source.otrs.org:/home/cvs login
-shell> cvs -z3 -d :pserver:anonymous@source.otrs.org:/home/cvs co -r rel-3_1 ModuleName
-        </screen>
 Check out the "module-tools" module (from github) too, for your development environment. It contains a number of useful tools.
         </para>
         <para>
