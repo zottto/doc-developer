@@ -224,7 +224,7 @@ for (@SQL) {
                 <para>Oracle</para>
             </listitem>
             <listitem>
-                <para>MSSQL</para>
+                <para>Microsoft SQL Server (mssql)</para>
             </listitem>
         </itemizedlist>
         </para>
