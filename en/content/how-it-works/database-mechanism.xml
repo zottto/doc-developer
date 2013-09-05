@@ -226,9 +226,6 @@ for (@SQL) {
             <listitem>
                 <para>MSSQL</para>
             </listitem>
-            <listitem>
-                <para>DB2</para>
-            </listitem>
         </itemizedlist>
         </para>
     </section>
