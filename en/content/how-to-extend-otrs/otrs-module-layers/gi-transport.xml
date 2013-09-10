@@ -99,7 +99,6 @@ use HTTP::Request::Common;
 use Kernel::System::Web::Request;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
                 ]]></programlisting>
             </para>
             <para>
@@ -325,10 +324,6 @@ the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =cut
-
-=head1 VERSION
-
-$Revision: 1.1 $ $Date: 2012-03-12 13:53:45 $
 
 =cut
                 ]]></programlisting>
