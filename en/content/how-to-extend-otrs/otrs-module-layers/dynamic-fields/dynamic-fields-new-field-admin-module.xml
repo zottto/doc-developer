@@ -184,7 +184,7 @@ sub _AddAction {
                 Valid      => 0,
                 ResultType => 'HASH',
                 )
-            };
+        };
 
         %DynamicFieldsList = reverse %DynamicFieldsList;
 
@@ -209,8 +209,8 @@ sub _AddAction {
 
     for my $ConfigParam (
         qw(
-            ObjectType ObjectTypeName FieldType FieldTypeName DefaultValue ValidID ShowValue
-            ValueMask
+        ObjectType ObjectTypeName FieldType FieldTypeName DefaultValue ValidID ShowValue
+        ValueMask
         )
         )
     {
@@ -391,7 +391,7 @@ sub _ChangeAction {
                 Valid      => 0,
                 ResultType => 'HASH',
                 )
-            };
+        };
 
         %DynamicFieldsList = reverse %DynamicFieldsList;
 
@@ -420,8 +420,8 @@ sub _ChangeAction {
 
     for my $ConfigParam (
         qw(
-            ObjectType ObjectTypeName FieldType FieldTypeName DefaultValue ValidID ShowValue
-            ValueMask
+        ObjectType ObjectTypeName FieldType FieldTypeName DefaultValue ValidID ShowValue
+        ValueMask
         )
         )
     {
@@ -558,8 +558,8 @@ sub _ShowScreen {
 
     # create the Show value select
     my $ShowValueStrg = $Self->{LayoutObject}->BuildSelection(
-        Data          => ['No', 'Yes'],
-        Name          => 'ShowValue',
+        Data => [ 'No', 'Yes' ],
+        Name => 'ShowValue',
         SelectedValue => $Param{ShowValue} || 'No',
         PossibleNone  => 0,
         Translation   => 1,
@@ -583,6 +583,7 @@ sub _ShowScreen {
 
     return $Output;
 }
+1;
             ]]></programlisting>
         </para>
         <para>

@@ -159,10 +159,10 @@
 
                         <label for="ShowValue">$Text{"Show value"}:</label>
                         <div class="Field">
-                                $Data{"ShowValueStrg"}
-                                <p class="FieldExplanation">
-                                    $Text{"To reveal the field value in non edit screens ( e.g. Ticket Zoom Screen )"}
-                                </p>
+                            $Data{"ShowValueStrg"}
+                            <p class="FieldExplanation">
+                                $Text{"To reveal the field value in non edit screens ( e.g. Ticket Zoom Screen )"}
+                            </p>
                         </div>
                         <div class="Clear"></div>
 

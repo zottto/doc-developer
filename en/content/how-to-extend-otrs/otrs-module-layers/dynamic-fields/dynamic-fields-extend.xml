@@ -2,185 +2,40 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 
 <section id="dynamic-fields-extend">
-    <title>How To Extend The Dynamic Fields</title>
+    <title>Creating a Dynamic Field Functionality Extension</title>
     <para>
-        There are many ways to extend the Dynamic Fields, the following sections will try to cover
-        the most common scenarios.
+        To illustrate this process a new Dynamic Field functionality extension for the function
+        <emphasis>Foo</emphasis> will be added to the Bakend Object as well as in in the Text
+        field driver.
     </para>
-    <section id="dynamic-fields-extend-new-field">
-        <title>Create a New Dynamic Field Type (for ticket or article objects)</title>
-        <para>
-            To create a new Dynamic Field Type is necessary to:
-        </para>
-        <itemizedlist mark='round'>
-            <listitem>
-                <para>
-                    Create a Dynamic Field Delegate:
-                </para>
-                <para>
-                    This is the main module of the new field.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create or use an existing Admin Dialog:
-                </para>
-                <para>
-                    To have a management interface and set its configuration options.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create a Configuration File:
-                </para>
-                <para>
-                    To register the new field in the Backend (or new Admin Dialogs in the framework
-                    if needed) and be able to create instances or it.
-                </para>
-            </listitem>
-        </itemizedlist>
-    </section>
-    <section id="dynamic-fields-extend-new-field-new-object">
-        <title>Create a New Dynamic Field Type (for other objects)</title>
-        <para>
-            To create a new Dynamic Field Type for other objects is necessary to:
-        </para>
-        <itemizedlist mark='round'>
-            <listitem>
-                <para>
-                    Create a Dynamic Field Delegate
-                </para>
-                <para>
-                    This is the main module of the new Field.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create an Object Type Delegate
-                </para>
-                <para>
-                    This is necessary, even if the "other object" does not require any specific
-                    data handling in its functions (e.g. after a value is set). All Object Type
-                    Delegates must implement the functions that the Backend requires.
-                </para>
-                <para>
-                    Take a look in the current Object Type Delegates to implement the same
-                    functions, event if they just return a successful value for the "other object".
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create or use an existing Admin Dialog
-                </para>
-                <para>
-                    To have a management interface and set its configuration options.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Implement Dynamic Fields in the Frontend Modules
-                </para>
-                <para>
-                    To be able to use the Dynamic Fields.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create a Configuration File
-                </para>
-                <para>
-                    To register the new field in the Backend (or new Admin Dialogs in the framework
-                    if needed) and be able to create instances or it. And make the needed settings
-                    to show, hide or show the Dynamic Fields as Mandatory in the new screens.
-                </para>
-            </listitem>
-        </itemizedlist>
-    </section>
-    <section id="dynamic-fields-extend-new-packages">
-        <title>Create a New package to use Dynamic Fields</title>
-        <para>
-            To create a package to use existing dynamic fields is necessary to:
-        </para>
-        <itemizedlist mark='round'>
-            <listitem>
-                <para>
-                    Implement Dynamic Fields in the Frontend Modules
-                </para>
-                <para>
-                    To be able to use the Dynamic Fields.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create a Configuration File
-                </para>
-                <para>
-                    To give the end user the possibility to show, hide or show the Dynamic Fields as
-                    Mandatory in the new screens.
-                </para>
-            </listitem>
-        </itemizedlist>
-    </section>
-    <section id="dynamic-fields-extend-backend-functionalities">
-        <title>Extend Backend and Delegates Functionalities</title>
-        <para>
-            It might be possible that the BackendObject does not have a needed function for
-            custom developments, or could also be possible that it has the function needed, but the
-            return format does not match the needs of the custom development.
-        </para>
-        <para>
-            The easiest way to do this, is to create a new BackendObject that defines the functions
-            and/or the return formats needed and create also the Delegates that implement this
-            new functions for each fields. This new Delegates will only implement the new functions
-            since the original delegates takes cares of the standard functions.
-        </para>
-        <para>
-            Put the new Backend into the DynamicField directory (e.g.
-             /$OTRS_HOME/Kernel/System/DynamicField/NewPackage/NewPackageBackend.pm and
-             Its Delegates in /$OTRS_HOME/Kernel/System/DynamicField/NewPackage/Backend/*.pm
-        </para>
-        <para>
-            To create new Backend functions or modify the existing ones is needed to:
-        </para>
-        <itemizedlist mark='round'>
-            <listitem>
-                <para>
-                    Create a New Backend module.
-                </para>
-                <para>
-                    To define only the new or modified functions.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create the Dynamic Fields Delegates.
-                </para>
-                <para>
-                    To implement only the new or modified functions.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Implement New Dynamic Fields functions in the Frontend Modules
-                </para>
-                <para>
-                    To be able to use the new Dynamic Fields functions.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    Create a Configuration File
-                </para>
-                <para>
-                    To register the new Delegates for the new Backend.
-                </para>
-            </listitem>
-        </itemizedlist>
-    </section>
-    <section id="dynamic-fields-extend-other">
-        <title>Other Extensions</title>
-        <para>
-            Other extensions could be a combination of the above examples.
-        </para>
+    <para>
+        To create this extension we will create 3 files: a Configuration File (XML),
+        to register the modules, a Backend extension (perl), to define the new function, and a
+        Text field Driver extension (perl), that implements the new funtion for Text fields.
+    </para>
+    <para>
+        File Structure:
+    </para>
+        <programlisting><![CDATA[
+$HOME (e. g. /opt/otrs/)
+|
+...
+|--/Kernel/
+|   |--/Config/
+|   |   |--/Files/
+|   |   |   |DynamicFieldFooExtension.xml
+...
+|   |--/System/
+|   |   |--/DynamicField/
+|   |   |   FooExtensionBackend.pm
+|   |   |   |--/Driver/
+|   |   |   |   |FooExtensionText.pm
+...
+        ]]></programlisting>
+    <section id="dynamic-fields-extension-full-example-files">
+        <title>Dynamic Field Foo Extension files</title>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-extend-field-config.xml" />
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-extend-field-backend.xml" />
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-extend-field-driver.xml" />
     </section>
 </section>

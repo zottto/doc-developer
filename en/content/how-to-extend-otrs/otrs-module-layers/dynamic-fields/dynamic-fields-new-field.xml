@@ -6,8 +6,8 @@
     <para>
         To illustrate this process a new Dynamic Field "Password" will be created. this new Dynamic
         Field Type will show a New password field to Ticket or Article objects. since is very
-        similar to a Text Dynamic Field we will use the Text Delegate and Text Admin Dialog as a
-        basis to build this new field.
+        similar to a Text Dynamic Field we will use the Base an BaseText Drivers as a basis to build
+        this new field.
     </para>
     <note>
         <para>
@@ -18,7 +18,7 @@
     <para>
         To create this new Dynamic Field we will create 4 files: a Configuration File (XML),
         to register the modules, an Admin Dialog Module (perl), to setup the field options, a
-        Template Module (DTL), for the Admin Dialog and a Dynamic Field Delegate (perl).
+        Template Module (DTL), for the Admin Dialog and a Dynamic Field Driver (perl).
     </para>
     <para>
         File Structure:
@@ -42,21 +42,15 @@ $HOME (e. g. /opt/otrs/)
 ...
 |   |--/System/
 |   |   |--/DynamicField/
-|   |   |   |--/Backend/
+|   |   |   |--/Driver/
 |   |   |   |   |Password.pm
 ...
         ]]></programlisting>
-        <note>
-            <para>
-                The creation of a new Backend and its delegates is not covered in this manual but
-                the official package iPhoneHandle v 1.1.1 can be used as an example and reference.
-            </para>
-        </note>
         <section id="dynamic-fields-new-field-files">
             <title>Dynamic Field Password files</title>
                 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-config.xml" />
                 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-admin-module.xml" />
                 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-admin-module-template.xml" />
-                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-delegate.xml" />
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dynamic-fields-new-field-driver.xml" />
         </section>
 </section>

@@ -4,8 +4,8 @@
 <section id="dynamic-fields-new-field-config">
     <title>Dynamic Field Configuration File Example</title>
     <para>
-        The configuration files are used to register the Dynamic Field Types (Delegates) and
-        the Object Type Delegates for the BackendObject. They also store standard registrations for
+        The configuration files are used to register the Dynamic Field Types (Driver) and
+        the Object Type Drivers for the BackendObject. They also store standard registrations for
         Admin Modules in the framework.
     </para>
     <section id="dynamic-fields-new-field-config-code">
@@ -25,14 +25,14 @@
         </para>
         <para>
             <programlisting><![CDATA[
-    <ConfigItem Name="DynamicFields::Backend###Password" Required="0" Valid="1">
+    <ConfigItem Name="DynamicFields::Driver###Password" Required="0" Valid="1">
         <Description Translatable="1">DynamicField backend registration.</Description>
-        <Group>DynamicFields</Group>
+        <Group>DynamicFieldPassword</Group>
         <SubGroup>DynamicFields::Backend::Registration</SubGroup>
         <Setting>
             <Hash>
                 <Item Key="DisplayName" Translatable="1">Password</Item>
-                <Item Key="Module">Kernel::System::DynamicField::Backend::Password</Item>
+                <Item Key="Module">Kernel::System::DynamicField::Driver::Password</Item>
                 <Item Key="ConfigDialog">AdminDynamicFieldPassword</Item>
             </Hash>
         </Setting>
@@ -40,8 +40,8 @@
             ]]></programlisting>
         </para>
         <para>
-            This setting registers the Password Dynamic Field Delegate for the Backend module so it
-            can be included in the list of avaialbe Dynamic Fields Types, it also specify its own
+            This setting registers the Password Dynamic Field Driver for the Backend module so it
+            can be included in the list of available Dynamic Fields Types, it also specify its own
             Admin Dialog in the key "ConfigDialog", this key is used by the Master Dynamic Field
             Admin Module to manage this new Dynamic Field Type.
         </para>
@@ -49,7 +49,7 @@
             <programlisting><![CDATA[
     <ConfigItem Name="Frontend::Module###AdminDynamicFieldPassword" Required="0" Valid="1">
         <Description Translatable="1">Frontend module registration for the agent interface.</Description>
-        <Group>DynamicFields</Group>
+        <Group>DynamicFieldPassword</Group>
         <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
         <Setting>
             <FrontendModuleReg>

@@ -4,10 +4,10 @@
 <section id="dynamic-fields-interaction">
     <title>Dynamic Field Interaction With Frontend Modules</title>
     <para>
-        Know about how Frontend modules interact with Dynamic fields is not strictly necessary to
+        Knowing about how Frontend modules interact with Dynamic fields is not strictly necessary to
         extend Dynamic Fields for the Ticket or Article objects, since all the screens that could
         use the Dynamic Fields are already prepared. But in case of custom developments or to
-        extend the Dynamic Fields to other objects is very useful to know to access
+        extend the Dynamic Fields to other objects is very useful to know how to access
         Dynamic Fields framework from a Frontend Module.
     </para>
     <para>
@@ -28,7 +28,7 @@
     <para>
         Next, the screen should try to get the values from the web request, it can use the
         BackendObject function <emphasis>EditFieldValueGet()</emphasis> for this purpose. and can
-        use this values to trigger ACLs. The BackendObject will use each Delegate to perform the
+        use this values to trigger ACLs. The BackendObject will use each Driver to perform the
         specific actions for all functions.
     </para>
     <para>
@@ -55,7 +55,7 @@
     </para>
     <para>
         In summary the Frontend modules does not need to know how each Dynamic Field works
-        internally  to get or set their values or to display it, It just need to call the
+        internally to get or set their values or to display them, It just needs to call the
         BackendObject module and use the fields in a generic way.
     </para>
 </section>

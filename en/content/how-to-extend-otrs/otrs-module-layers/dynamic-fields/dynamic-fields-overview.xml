@@ -23,7 +23,7 @@
         <para>
             Any custom development that uses Free Fields needs to be ported to the new Dynamic
             Fields code structure, otherwise it will not work anymore. For this reason is very
-            important to know that only updated installations of OTRS has the old Free
+            important to know that only updated installations of OTRS 3.0 has the old Free
             Fields converted to Dynamic Fields, new or clean installations of OTRS has no Dynamic
             Fields defined "out of the box" and any Dynamic Field needed by the custom development
             needs to be added.
@@ -45,6 +45,6 @@
     <para>
         Due to its modular design each Dynamic Field type can be seen as a plug-in to a framework,
         and this plug-in can be a OTRS standard package to extend the available types of the
-        Dynamic Fields.
+        Dynamic Fields or even to extend current Dynamic Field with more functions.
     </para>
 </section>
