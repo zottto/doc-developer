@@ -33,7 +33,7 @@
             </para>
             <para>
                 This module is also responsible to call specific functions on each Object Type
-                Driver (like Ticket or Article) e.g. to add a history entry or fire an event.
+                Delegate (like Ticket or Article) e.g. to add a history entry or fire an event.
             </para>
             <para>
                 This module is located in $OTRS_HOME/Kernel/System/DynamicField/Backend.pm.
