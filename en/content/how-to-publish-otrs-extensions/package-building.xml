@@ -236,13 +236,14 @@ To show a "pre" or "post" install introduction in installation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
-<IntroInstall Type="post" Lang="en" Title="Some Title">
+<IntroInstall Type="post" Lang="en" Title="Some Title"><![CDATA[
 Some Info formatted in dtl/html....
-</IntroInstall>
+]]]]><![CDATA[></IntroInstall>
             ]]></programlisting>
             </para>
             <para>
 You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
+Note that you need the "CDATA" blocks if you want to use HTML tags within IntroInstall.
             </para>
         </section>
         <section id="package-intro-uninstall">
@@ -252,13 +253,14 @@ To show a "pre" or "post" uninstall introduction in uninstallation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
-<IntroUninstall Type="post" Lang="en" Title="Some Title">
+<IntroUninstall Type="post" Lang="en" Title="Some Title"><![CDATA[
 Some Info formatted in dtl/html....
-</IntroUninstall>
+]]]]><![CDATA[></IntroUninstall>
             ]]></programlisting>
             </para>
             <para>
 You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
+Note that you need the "CDATA" blocks if you want to use HTML tags within IntroUninstall.
             </para>
         </section>
         <section id="package-intro-reinstall">
@@ -268,13 +270,14 @@ To show a "pre" or "post" reinstall introduction in reinstallation dialog.
             </para>
             <para>
             <programlisting><![CDATA[
-<IntroReinstall Type="post" Lang="en" Title="Some Title">
+<IntroReinstall Type="post" Lang="en" Title="Some Title"><![CDATA[
 Some Info formatted in dtl/html....
-</IntroReinstall>
+]]]]><![CDATA[></IntroReinstall>
             ]]></programlisting>
             </para>
             <para>
 You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
+Note that you need the "CDATA" blocks if you want to use HTML tags within IntroReinstall.
             </para>
         </section>
         <section id="package-intro-upgrade">
@@ -284,13 +287,14 @@ To show a "pre" or "post" upgrade introduction in upgrading dialog.
             </para>
             <para>
             <programlisting><![CDATA[
-<IntroUpgrade Type="post" Lang="en" Title="Some Title">
+<IntroUpgrade Type="post" Lang="en" Title="Some Title"><![CDATA[
 Some Info formatted in dtl/html....
-</IntroUpgrade>
+]]]]><![CDATA[></IntroUpgrade>
             ]]></programlisting>
             </para>
             <para>
 You can also use the "Format" attribute to define if you want to use "html" (which is default) or "plain" to use automatically a "&lt;pre&gt;&lt;/pre&gt;" tag when intro is shown (to use the new lines and spaces of the content).
+Note that you need the "CDATA" blocks if you want to use HTML tags within IntroUpgrade.
             </para>
         </section>
         <section id="package-code-install">
